@@ -15,7 +15,7 @@ To get started with Istio, just follow these three steps:
 1. [Download the release](#download)
 1. [Install Istio](#install)
 
-## Set up your platform {#platform}
+## Set up your platform {#platform}{#set-up-your-platform-{-platform}}
 
 Before you can install Istio, you need a {{< gloss >}}cluster{{< /gloss >}} running a compatible version of Kubernetes.
 Istio {{< istio_version >}} has been tested with Kubernetes releases {{< supported_kubernetes_versions >}}.
@@ -27,7 +27,7 @@ installing Istio manually. If this is the case with your selected platform, and 
 you will be finished installing Istio after creating the cluster, so you can skip the following instructions.
 Refer to your platform service provider for further details and instructions.
 
-## Download the release {#download}
+## Download the release {#download}{#download-the-release-{-download}}
 
 Download the Istio release which includes installation files, samples, and the
 [{{< istioctl >}}](/docs/reference/commands/istioctl/) command line utility.
@@ -64,7 +64,7 @@ Download the Istio release which includes installation files, samples, and the
 
 1. You can optionally enable the [auto-completion option](/docs/ops/diagnostic-tools/istioctl#enabling-auto-completion) when working with a bash or ZSH console.
 
-## Install Istio {#install}
+## Install Istio {#install}{#install-Istio-{-install}}
 
 These instructions assume you are new to Istio, providing streamlined instruction to
 install Istio's built-in `demo` [configuration profile](/docs/setup/additional-setup/config-profiles/).
@@ -136,7 +136,7 @@ access logging.
     prometheus-67cdb66cbb-9w2hm                                    1/1     Running     0          1m
     {{< /text >}}
 
-## Next steps
+## Next steps{#next-steps}
 
 With Istio installed, you can now deploy your own application or one of the sample applications
 provided with the installation.
@@ -195,7 +195,7 @@ check out the following resources:
 As you continue to use Istio, we look forward to hearing from you and welcoming
 you to our [community](/about/community/join/).
 
-## Uninstall
+## Uninstall{#uninstall}
 
 The uninstall deletes the RBAC permissions, the `istio-system` namespace, and
 all resources hierarchically under it. It is safe to ignore errors for

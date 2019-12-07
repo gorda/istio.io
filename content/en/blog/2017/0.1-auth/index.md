@@ -15,13 +15,13 @@ Conventional network security approaches fail to address security threats to dis
 Istio authentication is the security component of the broader Istio platform. It incorporates the learnings of securing millions of microservice
 endpoints in Google’s production environment.
 
-## Background
+## Background{#background}
 
 Modern application architectures are increasingly based on shared services that are deployed and scaled dynamically on cloud platforms. Traditional network edge security (e.g. firewall) is too coarse-grained and allows access from unintended clients. An example of a security risk is stolen authentication tokens that can be replayed from another client. This is a major risk for companies with sensitive data that are concerned about insider threats. Other network security approaches like IP whitelists have to be statically defined, are hard to manage at scale, and are unsuitable for dynamic production environments.
 
 Thus, security administrators need a tool that enables them to consistently, and by default, secure all communication between services across diverse production environments.
 
-## Solution: strong service identity and authentication
+## Solution: strong service identity and authentication{#solution-strong-service-identity-and-authentication}
 
 Google has, over the years, developed architecture and technology to uniformly secure millions of microservice endpoints in its production environment against
 external
@@ -45,7 +45,7 @@ The diagram below provides an overview of the Istio's service authentication arc
 
 The above diagram illustrates three key security features:
 
-### Strong identity
+### Strong identity{#strong-identity}
 
 Istio authentication uses [Kubernetes service accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) to identify who the service runs as. The identity is used to establish trust and define service level access policies. The identity is assigned at service deployment time and encoded in the SAN (Subject Alternative Name) field of an X.509 certificate. Using a service account as the identity has the following advantages:
 
@@ -55,11 +55,11 @@ Istio authentication uses [Kubernetes service accounts](https://kubernetes.io/do
 
 * Stability of the service identity for dynamically placed and auto-scaled workloads
 
-### Communication security
+### Communication security{#communication-security}
 
 Service-to-service communication is tunneled through high performance client side and server side [Envoy](https://envoyproxy.github.io/envoy/) proxies. The communication between the proxies is secured using mutual TLS. The benefit of using mutual TLS is that the service identity is not expressed as a bearer token that can be stolen or replayed from another source. Istio authentication also introduces the concept of Secure Naming to protect from a server spoofing attacks - the client side proxy verifies that the authenticated server's service account is allowed to run the named service.
 
-### Key management and distribution
+### Key management and distribution{#key-management-and-distribution}
 
 Istio authentication provides a per-cluster CA (Certificate Authority) and automated key & certificate management. In this context, Istio authentication:
 
@@ -77,7 +77,7 @@ The following diagram explains the end to end Istio authentication workflow on K
 
 Istio authentication is part of the broader security story for containers. Red Hat, a partner on the development of Kubernetes, has identified [10 Layers](https://www.redhat.com/en/resources/container-security-openshift-cloud-devops-whitepaper) of container security. Istio addresses two of these layers: "Network Isolation" and "API and Service Endpoint Management". As cluster federation evolves on Kubernetes and other platforms, our intent is for Istio to secure communications across services spanning multiple federated clusters.
 
-## Benefits of Istio authentication
+## Benefits of Istio authentication{#benefits-of-Istio-authentication}
 
 **Defense in depth**: When used in conjunction with Kubernetes (or infrastructure) network policies, users achieve higher levels of confidence, knowing that pod-to-pod or service-to-service communication is secured both at network and application layers.
 
@@ -85,7 +85,7 @@ Istio authentication is part of the broader security story for containers. Red H
 
 **Strong service authentication**: Istio authentication secures service communication using mutual TLS to ensure that the service identity is not expressed as a bearer token that can be stolen or replayed from another source. This ensures that services with sensitive data can only be accessed from strongly authenticated and authorized clients.
 
-## Join us in this journey
+## Join us in this journey{#join-us-in-this-journey}
 
 Istio authentication is the first step towards providing a full stack of capabilities to protect services with sensitive data from external attacks and insider
 threats. While the initial version runs on Kubernetes, our goal is to enable Istio authentication to secure services across diverse production environments. We encourage the

@@ -24,14 +24,14 @@ This guide shows how to use these approaches in Istio with mutual TLS enabled.
 Command and TCP type probes work with Istio regardless of whether or not mutual TLS is enabled. The HTTP request approach requires different Istio configuration with
 mutual TLS enabled.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Understand [Kubernetes liveness and readiness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/), Istio
 [authentication policy](/docs/concepts/security/#authentication-policies) and [mutual TLS authentication](/docs/concepts/security/#mutual-tls-authentication) concepts.
 
 * Have a Kubernetes cluster with Istio installed, without global mutual TLS enabled.
 
-## Liveness and readiness probes with command option
+## Liveness and readiness probes with command option{#liveness-and-readiness-probes-with-command-option}
 
 First, you need to configure health checking with mutual TLS enabled.
 
@@ -84,7 +84,7 @@ NAME                             READY     STATUS    RESTARTS   AGE
 liveness-6857c8775f-zdv9r        2/2       Running   0           4m
 {{< /text >}}
 
-## Liveness and readiness probes with HTTP request option
+## Liveness and readiness probes with HTTP request option{#liveness-and-readiness-probes-with-HTTP-request-option}
 
 This section shows how to configure health checking with the HTTP request option when mutual TLS is enabled.
 
@@ -92,7 +92,7 @@ Kubernetes HTTP health check request is sent from Kubelet, which does not have I
 
 We have two options to solve the problem: probe rewrites and separate ports.
 
-### Probe rewrite
+### Probe rewrite{#probe-rewrite}
 
 This approach rewrites the application `PodSpec` readiness/liveness probe, such that the probe request will be sent to
 [Pilot agent](/docs/reference/commands/pilot-agent/). Pilot agent then redirects the
@@ -100,7 +100,7 @@ request to application, and strips the response body only returning the response
 
 You have two ways to enable Istio to rewrite the liveness HTTP probes.
 
-#### Enable globally via install option
+#### Enable globally via install option{#enable-globally-via-install-option}
 
 [Install Istio](/docs/setup/install/istioctl/) with `--set values.sidecarInjectorWebhook.rewriteAppHTTPProbe=true`.
 
@@ -118,7 +118,7 @@ spec by yourself.
 The configuration changes above (by install or by the configuration map) effect all Istio app deployments.
 {{< /warning >}}
 
-#### Use annotations on pod
+#### Use annotations on pod{#use-annotations-on-pod}
 
 <!-- Add samples YAML or kubectl patch? -->
 
@@ -153,7 +153,7 @@ spec:
 
 This approach allows you to enable the health check prober rewrite gradually on each deployment without reinstalling Istio.
 
-#### Re-deploy the liveness health check app
+#### Re-deploy the liveness health check app{#re-deploy-the-liveness-health-check-app}
 
 Instructions below assume you turn on the feature globally via install option.
 Annotations works the same.
@@ -172,7 +172,7 @@ liveness-http-975595bb6-5b2z7c   2/2       Running   0           1m
 This feature is not currently turned on by default. We'd like to [hear your feedback](https://github.com/istio/istio/issues/10357)
 on whether we should change this to default behavior for Istio installation.
 
-### Separate port
+### Separate port{#separate-port}
 
 Another alternative is to use separate port for health checking and regular traffic.
 
@@ -193,7 +193,7 @@ liveness-http-67d5db65f5-765bb   2/2       Running   0          1m
 
 Note that the image in [liveness-http]({{< github_file >}}/samples/health-check/liveness-http.yaml) exposes two ports: 8001 and 8002 ([source code]({{< github_file >}}/samples/health-check/server.go)). In this deployment, port 8001 serves the regular traffic while port 8002 is used for liveness probes.
 
-### Cleanup
+### Cleanup{#cleanup}
 
 Remove the mutual TLS policy and corresponding destination rule added in the steps above:
 

@@ -10,7 +10,7 @@ services defined to use the same hostname and attached to a mesh gateway
 will generate an error message. Note that Istio supports merging of virtual
 services that are attached to the ingress gateways.
 
-## Resolution
+## Resolution{#resolution}
 
 To resolve this issue, you can take one of the following actions:
 
@@ -18,7 +18,7 @@ To resolve this issue, you can take one of the following actions:
 * Make the hostnames unique across virtual services attached to a mesh gateway.
 * Scope the resource to a specific namespace by setting the `exportTo` field.
 
-## Examples
+## Examples{#examples}
 
 The `productpage` virtual service in namespace `team1` conflicts with the
 `custom` virtual service in `team2` namespace because both of the following

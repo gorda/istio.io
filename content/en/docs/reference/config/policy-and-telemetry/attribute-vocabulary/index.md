@@ -97,7 +97,7 @@ deployments will have agents (Envoy or Mixer adapters) that produce these attrib
 | `check.cache_hit` | boolean | Indicates whether Mixer check call hits local cache. | |
 | `quota.cache_hit` | boolean | Indicates whether Mixer quota call hits local cache. | |
 
-## Timestamp and duration attributes format
+## Timestamp and duration attributes format{#timestamp-and-duration-attributes-format}
 
 Timestamp attributes are represented in the RFC 3339 format. When operating with timestamp attributes, you can use the `timestamp` function defined in [CEXL](/docs/reference/config/policy-and-telemetry/expression-language/) to convert a textual timestamp in RFC 3339 format into the `TIMESTAMP` type, for example: `request.time | timestamp("2018-01-01T22:08:41+00:00")`, `response.time > timestamp("2020-02-29T00:00:00-08:00")`.
 

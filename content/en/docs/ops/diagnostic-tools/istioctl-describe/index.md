@@ -35,7 +35,7 @@ sample in your mesh. If you haven't already done so,
 and [determine the IP and port of the ingress](/docs/examples/bookinfo/#determine-the-ingress-ip-and-port)
 before continuing.
 
-## Verify a pod is in the mesh
+## Verify a pod is in the mesh{#verify-a-pod-is-in-the-mesh}
 
 The `istioctl describe` command returns a warning if the {{< gloss >}}Envoy{{< /gloss >}}
 proxy is not present in a pod or if the proxy has not started. Additionally, the command warns
@@ -72,7 +72,7 @@ The output shows the following information:
 - The protocol used by the service in the pod, `HTTP` over port `9080` in this example.
 - The mutual TLS settings for the pod.
 
-## Verify destination rule configurations
+## Verify destination rule configurations{#verify-destination-rule-configurations}
 
 You can use `istioctl describe` to see what
 [destination rules](/docs/concepts/traffic-management/#destination-rules) apply to requests
@@ -106,7 +106,7 @@ The command now shows additional output:
 - The other subsets defined by the destination rule.
 - The pod accepts either HTTP or mutual TLS requests but clients use mutual TLS.
 
-## Verify virtual service configurations
+## Verify virtual service configurations{#verify-virtual-service-configurations}
 
 When [virtual services](/docs/concepts/traffic-management/#virtual-services) configure
 routes to a pod, `istioctl describe` will also include the routes in its output.
@@ -184,7 +184,7 @@ Reloading the browser shows the app working again and
 running `istioctl experimental describe pod $REVIEWS_V1_POD` no longer produces
 warnings.
 
-## Verifying traffic routes
+## Verifying traffic routes{#verifying-traffic-routes}
 
 The `istioctl describe` command shows split traffic weights too.
 For example, run the following command to route 90% of traffic to the `v1` subset
@@ -229,7 +229,7 @@ However, the virtual service configuration you applied routes traffic to the `v2
 subset if the header contains `end-user=jason` and to the `v3` subset in all
 other cases.
 
-## Verifying strict mutual TLS
+## Verifying strict mutual TLS{#verifying-strict-mutual-TLS}
 
 Following the [mutual TLS migration](/docs/tasks/security/authentication/mtls-migration/)
 instructions, you can enable strict mutual TLS for the `ratings` service:
@@ -287,7 +287,7 @@ mutual TLS:
 $ kubectl apply -f @samples/bookinfo/networking/destination-rule-all-mtls.yaml@
 {{< /text >}}
 
-## Conclusion and cleanup
+## Conclusion and cleanup{#conclusion-and-cleanup}
 
 Our goal with the `istioctl x describe` command is to help you understand the
 traffic and security configurations in your Istio mesh.

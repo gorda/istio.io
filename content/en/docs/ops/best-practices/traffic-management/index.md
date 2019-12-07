@@ -11,7 +11,7 @@ aliases:
 
 This section provides specific deployment or configuration guidelines to avoid networking or traffic management issues.
 
-## Set default routes for services
+## Set default routes for services{#set-default-routes-for-services}
 
 Although the default Istio behavior conveniently sends traffic from any
 source to all versions of a destination service without any rules being set,
@@ -93,7 +93,7 @@ spec:
         subset: v1
 {{< /text >}}
 
-## Control configuration sharing across namespaces {#cross-namespace-configuration}
+## Control configuration sharing across namespaces {#cross-namespace-configuration}{#control-configuration-sharing-across-namespaces-{-cross-namespace-configuration}}
 
 You can define virtual services, destination rules, or service entries
 in one namespace and then reuse them in other namespaces, if they are exported
@@ -177,7 +177,7 @@ Istio uses this restricted destination rule lookup path for two reasons:
 1. Have a clear lookup order in case there is more than one destination rule for
    the same host.
 
-## Split large virtual services and destination rules into multiple resources {#split-virtual-services}
+## Split large virtual services and destination rules into multiple resources {#split-virtual-services}{#split-large-virtual-services-and-destination-rules-into-multiple-resources-{-split-virtual-services}}
 
 In situations where it is inconvenient to define the complete set of route rules or policies for a particular
 host in a single `VirtualService` or `DestinationRule` resource, it may be preferable to incrementally specify
@@ -289,7 +289,7 @@ A `DestinationRule` can also be fragmented with similar merge semantic and restr
    Any following top-level `trafficPolicy` configuration is discarded.
 1. Unlike virtual service merging, destination rule merging works in both sidecars and gateways.
 
-## Avoid 503 errors while reconfiguring service routes
+## Avoid 503 errors while reconfiguring service routes{#avoid-five-zero-three-errors-while-reconfiguring-service-routes}
 
 When setting route rules to direct traffic to specific versions (subsets) of a service, care must be taken to ensure
 that the subsets are available before they are used in the routes. Otherwise, calls to the service may return

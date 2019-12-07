@@ -41,7 +41,7 @@ _1.3.4 Do not allow unauthorized outbound traffic from the cardholder data envir
 
 Let's start with the attacks that involve egress traffic.
 
-## The attacks
+## The attacks{#the-attacks}
 
 An IT organization must assume it will be attacked if it hasn't been attacked already, and that
 part of its infrastructure could already be compromised or become compromised in the future.
@@ -59,7 +59,7 @@ organization.
 To prevent the attacks described above, some form of egress traffic control must be applied. Let me present egress
 traffic control in the following section.
 
-## The solution: secure control of egress traffic
+## The solution: secure control of egress traffic{#the-solution-secure-control-of-egress-traffic}
 
 Secure control of egress traffic means monitoring the egress traffic and enforcing all the security policies regarding
 the egress traffic.
@@ -71,7 +71,7 @@ need external services should be allowed to access the external services they ne
 
 Let me now turn to the requirements for egress traffic control we collected.
 
-## Requirements for egress traffic control
+## Requirements for egress traffic control{#requirements-for-egress-traffic-control}
 
 My colleagues at IBM and I collected requirements for secure control of egress traffic from several customers, and
 combined them with the
@@ -167,7 +167,7 @@ We call such a control of egress traffic _transparent_.
 In the next posts I will show that Istio can function as an example of an egress traffic control system that satisfies
 all of these requirements, in particular it is transparent, DNS-aware, and Kubernetes-aware.
 
-## Summary
+## Summary{#summary}
 
 I hope that you are convinced that controlling egress traffic is important for the security of your cluster. In [the
 part 2 of this series](/blog/2019/egress-traffic-control-in-istio-part-2/) I describe the Istio way to perform secure

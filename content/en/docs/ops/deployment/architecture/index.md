@@ -34,11 +34,11 @@ send and receive. Control plane traffic refers to configuration and control mess
 between Istio components to program the behavior of the mesh. Traffic management
 in Istio refers exclusively to data plane traffic.
 
-## Components
+## Components{#components}
 
 The following sections provide a brief overview of each of Istio's core components.
 
-### Envoy
+### Envoy{#envoy}
 
 Istio uses an extended version of the
 [Envoy](https://envoyproxy.github.io/envoy/) proxy. Envoy is a high-performance
@@ -83,7 +83,7 @@ Some of the Istio features and tasks enabled by Envoy proxies include:
 * Security and authentication features: enforce security policies and enforce
   access control and rate limiting defined through the configuration API.
 
-### Mixer
+### Mixer{#mixer}
 
 [Mixer](/docs/reference/config/policy-and-telemetry/) is a platform-independent
 component. Mixer enforces access control and usage policies across the service
@@ -98,7 +98,7 @@ Mixer includes a flexible plugin model. This model enables Istio to interface
 with a variety of host environments and infrastructure backends. Thus, Istio
 abstracts the Envoy proxy and Istio-managed services from these details.
 
-### Pilot
+### Pilot{#pilot}
 
 Pilot provides
 service discovery for the Envoy sidecars, traffic management capabilities
@@ -133,7 +133,7 @@ You can use Istio's
 to instruct Pilot to refine the Envoy configuration to exercise more granular control
 over the traffic in your service mesh.
 
-### Citadel
+### Citadel{#citadel}
 
 [Citadel](/docs/concepts/security/) enables strong service-to-service and
 end-user authentication with built-in identity and credential management. You
@@ -143,14 +143,14 @@ on relatively unstable layer 3 or layer 4 network identifiers. Starting from
 release 0.5, you can use [Istio's authorization feature](/docs/concepts/security/#authorization)
 to control who can access your services.
 
-### Galley
+### Galley{#galley}
 
 Galley is Istio's configuration validation, ingestion, processing and
 distribution component. It is responsible for insulating
 the rest of the Istio components from the details of obtaining user
 configuration from the underlying platform (e.g. Kubernetes).
 
-## Design goals
+## Design goals{#design-goals}
 
 A few key design goals informed Istio’s architecture. These goals are essential
 to making the system capable of dealing with services at scale and with high

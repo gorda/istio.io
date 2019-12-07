@@ -19,9 +19,9 @@ rapid community growth of developers, operators, and partners. Our 0.1 release w
 
 Today we are happy to announce the 0.2 release which improves stability and performance, allows for cluster wide deployment and automated injection of sidecars in Kubernetes, adds policy and authentication for TCP services, and enables expansion of the mesh to include services deployed in virtual machines. In addition, Istio can now run outside Kubernetes, leveraging Consul/Nomad or Eureka. Beyond core features, Istio is now ready for extensions to be written by third party companies and developers.
 
-## Highlights for the 0.2 release
+## Highlights for the 0.2 release{#highlights-for-the-0.2-release}
 
-### Usability improvements
+### Usability improvements{#usability-improvements}
 
 - _Multiple namespace support_: Istio now works cluster-wide, across multiple namespaces and this was one of the top requests from community from 0.1 release.
 
@@ -39,13 +39,13 @@ you easily integrate your solution with Istio.
 
 - _Improved routing & metrics_: Support for WebSocket, MongoDB and Redis  protocols. You can apply resilience features like circuit breakers on traffic to third party services. In addition to Mixer’s metrics, hundreds of metrics from Envoy are now visible inside Prometheus for all traffic entering, leaving and within Istio mesh.
 
-### Cross environment support
+### Cross environment support{#cross-environment-support}
 
 - _Mesh expansion_: Istio mesh can now span services running outside of Kubernetes - like those running in virtual machines while enjoying benefits such as automatic mutual TLS authentication, traffic management, telemetry, and policy enforcement across the mesh.
 
 - _Running outside Kubernetes_: We know many customers use other service registry and orchestration solutions like Consul/Nomad and Eureka. Istio Pilot can now run standalone outside Kubernetes, consuming information from these systems, and manage the Envoy fleet in VMs or containers.
 
-## Get involved in shaping the future of Istio
+## Get involved in shaping the future of Istio{#get-involved-in-shaping-the-future-of-Istio}
 
 We have a growing [roadmap](/about/feature-stages/) ahead of us, full of great features to implement. Our focus next release is going to be on stability, reliability, integration with third party tools and multicluster use cases.
 
@@ -56,9 +56,9 @@ We want to thank our fantastic community for field testing new versions, filing 
 
 Thank you
 
-## Release notes
+## Release notes{#release-notes}
 
-### General
+### General{#general}
 
 - **Updated Configuration Model**. Istio now uses the Kubernetes [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
 model to describe and store its configuration. When running in Kubernetes, configuration can now be optionally managed using the `kubectl`
@@ -76,7 +76,7 @@ including Consul and Eureka.
 - **Automatic injection of sidecars**. Istio sidecar can automatically be injected into a pod upon deployment using the
 [Initializers](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/) alpha feature in Kubernetes.
 
-### Performance and quality
+### Performance and quality{#performance-and-quality}
 
 There have been many performance and reliability improvements throughout the system. We don’t consider Istio 0.2 ready for production yet, but
 we’ve made excellent progress in that direction. Here are a few items of note:
@@ -93,7 +93,7 @@ request-time for initial requests and thus delivers a smoother average latency. 
 
 - **Reduced Latency for Egress Traffic**. We now forward traffic to external services directly from the sidecar.
 
-### Traffic management
+### Traffic management{#traffic-management}
 
 - **Egress Rules**. It’s now possible to specify routing rules for egress traffic.
 
@@ -103,7 +103,7 @@ and Kubernetes [headless services](https://kubernetes.io/docs/concepts/services-
 - **Other Improvements**. Ingress properly supports gRPC services, better support for health checks, and
 Jaeger tracing.
 
-### Policy enforcement & telemetry
+### Policy enforcement & telemetry{#policy-enforcement-telemetry}
 
 - **Ingress Policies**. In addition to east-west traffic supported in 0.1. policies can now be applied to north-south traffic.
 
@@ -125,7 +125,7 @@ release. The experimental `redisquota` adapter has been removed in the 0.2 relea
 
 - **Mixer Call Tracing**. Calls between Envoy and Mixer can now be traced and analyzed in the Zipkin dashboard.
 
-### Security
+### Security{#security}
 
 - **Mutual TLS for TCP Traffic**. In addition to HTTP traffic, mutual TLS is now supported for TCP traffic as well.
 
@@ -138,7 +138,7 @@ identity provisioning. This agent runs on each node (VM / physical machine) and 
 - **Persistent CA Key/Certificate Storage**. Istio CA now stores signing key/certificates in
 persistent storage to facilitate CA restarts.
 
-## Known issues
+## Known issues{#known-issues}
 
 - **User may get periodical 404 when accessing the application**:  We have noticed that Envoy doesn't get routes properly occasionally
 thus a 404 is returned to the user.  We are actively working on this [issue](https://github.com/istio/istio/issues/1038).

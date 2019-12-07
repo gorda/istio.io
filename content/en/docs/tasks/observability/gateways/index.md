@@ -10,14 +10,14 @@ aliases:
 This task shows how to configure Istio to expose and access the telemetry addons outside of
 a cluster.
 
-## Configuring remote access
+## Configuring remote access{#configuring-remote-access}
 
 Remote access to the telemetry addons can be configured in a number of different ways. This task covers
 two basic access methods: secure (via HTTPS) and insecure (via HTTP). The secure method is *strongly
 recommended* for any production or sensitive environment. Insecure access is simpler to set up, but
 will not protect any credentials or data transmitted outside of your cluster.
 
-### Option 1: Secure access (HTTPS)
+### Option 1: Secure access (HTTPS){#option-1-secure-access-https}
 
 A server certificate is required for secure access. Follow these steps to install and configure
 server certificates for a domain that you control.
@@ -368,7 +368,7 @@ the [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/confi
     * Grafana: `https://$TELEMETRY_DOMAIN:15031/`
     * Tracing: `https://$TELEMETRY_DOMAIN:15032/`
 
-### Option 2: Insecure access (HTTP)
+### Option 2: Insecure access (HTTP){#option-2-insecure-access-HTTP}
 
 1. [Install Istio](/docs/setup/install/istioctl) in your cluster with your desired telemetry addons.
 
@@ -612,7 +612,7 @@ the [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/confi
     * Grafana: `http://<IP ADDRESS OF CLUSTER INGRESS>:15031/`
     * Tracing: `http://<IP ADDRESS OF CLUSTER INGRESS>:15032/`
 
-## Cleanup
+## Cleanup{#cleanup}
 
 * Remove all related Gateways:
 

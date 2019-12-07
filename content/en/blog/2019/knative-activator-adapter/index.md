@@ -12,7 +12,7 @@ This post demonstrates how you can use [Mixer](/faq/mixer/) to push application 
 into Istio. It describes a Mixer adapter which implements the [Knative](https://knative.dev/) scale-from-zero logic
 with simple code and similar performance to the original implementation.
 
-## Knative serving
+## Knative serving{#Knative-serving}
 
 [Knative Serving](https://knative.dev/docs/serving/) builds on [Kubernetes](https://kubernetes.io/) to support deploying
 and serving of serverless applications. A core capability of serverless platforms is scale-to-zero
@@ -32,7 +32,7 @@ and `DestinationRules`. When **Activator** receives a new request, it:
 
 Once the application is up and running again, Knative restores the routing from **Activator** to the running application.
 
-## Mixer adapter
+## Mixer adapter{#mixer-adapter}
 
 [Mixer](/faq/mixer/) provides a rich intermediation layer between the Istio components and infrastructure backends.
 It is designed as a stand-alone component, separate from [Envoy](https://www.envoyproxy.io/), and has a simple extensibility model
@@ -70,7 +70,7 @@ component using the Knative protocol.
 The metadata information (`namespace` and `service name`) required by **Autoscaler** are transferred by Istio proxy to
 **Mixer** and from there to the adapter.
 
-## Summary
+## Summary{#summary}
 
 I compared the cold-start time of the original Knative reference architecture to the new Istio Mixer adapter reference architecture.
 The results show similar cold-start times.

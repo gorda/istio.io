@@ -12,7 +12,7 @@ Istio configuration. It can run against a live cluster or a set of local configu
 It can also run against a combination of the two, allowing you to catch problems before you
 apply changes to a cluster.
 
-## Getting started in under a minute
+## Getting started in under a minute{#getting-started-in-under-a-minute}
 
 You can analyze your current Kubernetes cluster by running:
 
@@ -30,7 +30,7 @@ Warn [IST0102](Namespace default) The namespace is not enabled for Istio injecti
 
 Note that `x` in the command is because this is currently an experimental feature.
 
-## Analyzing live clusters, local files, or both
+## Analyzing live clusters, local files, or both{#analyzing-live-clusters-local-files-or-both}
 
 The example above is doing analysis on a live cluster. But the tool also supports performing analysis of a set of local Kubernetes yaml configuration files,
 or on a combination of local files and a live cluster. When analyzing a set of local files, the file set is expected to be fully self-contained.
@@ -56,7 +56,7 @@ $ ./istioctl x analyze -k *.yaml
 
 You can run `./istioctl x analyze --help` to see the full set of options.
 
-## Helping us improve this tool
+## Helping us improve this tool{#helping-us-improve-this-tool}
 
 We're continuing to add more analysis capability and we'd love your help in identifying more use cases.
 If you've discovered some Istio configuration "gotcha", some tricky situation that caused you some
@@ -72,7 +72,7 @@ To do this, [open an issue](https://github.com/istio/istio/issues) describing yo
 We already have an analyzer for this specific scenario, so this is just an example to illustrate what
 the kind of information you should provide.
 
-## Q&A
+## Q&A{#q-a}
 
 - **What Istio release does this tool target?**
 
@@ -101,7 +101,7 @@ the kind of information you should provide.
 
       The set of [configuration analysis messages](/docs/reference/config/analysis/) contains descriptions of each message along with suggested fixes.
 
-## Advanced
+## Advanced{#advanced}
 
 ### Getting the latest version of `istioctl analyze`
 
@@ -131,7 +131,7 @@ $ curl https://storage.googleapis.com/istio-build/dev/latest | xargs -I {} curl 
 
 {{< /tabset >}}
 
-### Enabling validation messages for resource status
+### Enabling validation messages for resource status{#enabling-validation-messages-for-resource-status}
 
 {{< boilerplate experimental-feature-warning >}}
 

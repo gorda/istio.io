@@ -36,12 +36,12 @@ It’s worth noting that these services have no dependencies on Istio, but make 
 service mesh example, particularly because of the multitude of services, languages and versions
 for the `reviews` service.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 If you haven't already done so, setup Istio by following the instructions
 in the [installation guide](/docs/setup/).
 
-## Deploying the application
+## Deploying the application{#deploying-the-application}
 
 To run the sample with Istio requires no changes to the
 application itself. Instead, you simply need to configure and run the services in an
@@ -55,7 +55,7 @@ and outgoing calls for the services, providing the hooks needed to externally co
 via the Istio control plane, routing, telemetry collection, and policy enforcement
 for the application as a whole.
 
-### Start the application services
+### Start the application services{#start-the-application-services}
 
 {{< tip >}}
 If you use GKE, please ensure your cluster has at least 4 standard GKE nodes. If you use Minikube, please ensure you have at least 4GB RAM.
@@ -133,7 +133,7 @@ If you use GKE, please ensure your cluster has at least 4 standard GKE nodes. If
     <title>Simple Bookstore App</title>
     {{< /text >}}
 
-### Determine the ingress IP and port
+### Determine the ingress IP and port{#the-ingress-IP-and-port}
 
 Now that the Bookinfo services are up and running, you need to make the application accessible from outside of your
 Kubernetes cluster, e.g., from a browser. An [Istio Gateway](/docs/concepts/traffic-management/#gateways)
@@ -161,7 +161,7 @@ is used for this purpose.
     $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
     {{< /text >}}
 
-## Confirm the app is accessible from outside the cluster
+## Confirm the app is accessible from outside the cluster{#confirm-the-app-is-accessible-from-outside-the-cluster}
 
 To confirm that the Bookinfo application is accessible from outside the cluster, run the following `curl` command:
 
@@ -176,7 +176,7 @@ see different versions of reviews shown in `productpage`, presented in a round r
 stars, black stars, no stars), since we haven't yet used Istio to control the
 version routing.
 
-## Apply default destination rules
+## Apply default destination rules{#apply-default-destination-rules}
 
 Before you can use Istio to control the Bookinfo version routing, you need to define the available
 versions, called *subsets*, in [destination rules](/docs/concepts/traffic-management/#destination-rules).
@@ -203,7 +203,7 @@ You can display the destination rules with the following command:
 $ kubectl get destinationrules -o yaml
 {{< /text >}}
 
-## What's next
+## What's next{#what's-next}
 
 You can now use this sample to experiment with Istio's features for
 traffic routing, fault injection, rate limiting, etc.
@@ -211,7 +211,7 @@ To proceed, refer to one or more of the [Istio Tasks](/docs/tasks),
 depending on your interest. [Configuring Request Routing](/docs/tasks/traffic-management/request-routing/)
 is a good place to start for beginners.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 When you're finished experimenting with the Bookinfo sample, uninstall and clean
 it up using the following instructions:

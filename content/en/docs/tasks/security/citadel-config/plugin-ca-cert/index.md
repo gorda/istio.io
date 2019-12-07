@@ -13,11 +13,11 @@ By default, Citadel generates self-signed root certificate and key, and uses the
 Citadel can also use the operator-specified certificate and key to sign workload certificates, with
 operator-specified root certificate. This task demonstrates an example to plug certificates and key into Citadel.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 Follow the [Istio installation guide](/docs/setup/install/istioctl/) to install Istio with mutual TLS enabled.
 
-## Plugging in the existing certificate and key
+## Plugging in the existing certificate and key{#plugging-in-the-existing-certificate-and-key}
 
 Suppose we want to have Citadel use the existing signing (CA) certificate `ca-cert.pem` and key `ca-key.pem`.
 Furthermore, the certificate `ca-cert.pem` is signed by the root certificate `root-cert.pem`.
@@ -63,7 +63,7 @@ The following steps enable plugging in the certificates and key into Citadel:
     $ kubectl delete secret istio.default
     {{< /text >}}
 
-## Verifying the new certificates
+## Verifying the new certificates{#verifying-the-new-certificates}
 
 In this section, we verify that the new workload certificates and root certificates are propagated.
 This requires you have `openssl` installed on your machine.
@@ -122,7 +122,7 @@ This requires you have `openssl` installed on your machine.
     /tmp/pod-cert-chain-workload.pem: OK
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 *   To remove the secret `cacerts` and redeploy Citadel with self-signed root certificate:
 

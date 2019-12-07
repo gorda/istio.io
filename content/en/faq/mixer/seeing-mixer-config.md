@@ -8,7 +8,7 @@ Configuration for *instances*, *handlers*, and *rules* is stored as Kubernetes
 Configuration may be accessed by using `kubectl` to query the Kubernetes
 API server for the resources.
 
-## Rules
+## Rules{#rules}
 
 To see the list of all rules, execute the following:
 
@@ -29,7 +29,7 @@ To see an individual rule configuration, execute the following:
 $ kubectl -n <namespace> get rules <name> -o yaml
 {{< /text >}}
 
-## Handlers
+## Handlers{#handlers}
 
 Handlers are defined based on Kubernetes [Custom Resource
 Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions)
@@ -79,7 +79,7 @@ To see an individual handler configuration, execute the following:
 $ kubectl -n <namespace> get <adapter kind name> <name> -o yaml
 {{< /text >}}
 
-## Instances
+## Instances{#instances}
 
 Instances are defined according to Kubernetes [Custom Resource
 Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions)

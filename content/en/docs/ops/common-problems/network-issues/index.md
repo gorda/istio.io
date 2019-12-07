@@ -9,7 +9,7 @@ aliases:
   - /docs/ops/troubleshooting/network-issues
 ---
 
-## Requests are rejected by Envoy
+## Requests are rejected by Envoy{#requests-are-rejected-by-envoy}
 
 Requests may be rejected for various reasons. The best way to understand why requests are being rejected is
 by inspecting Envoy's access logs. By default, access logs are output to the standard output of the container.
@@ -42,7 +42,7 @@ Common Mixer policy statuses are:
 - `RESOURCE_EXHAUSTED`: The request is rejected by Mixer quota.
 - `INTERNAL`: The request is rejected due to Mixer internal error.
 
-## Route rules don't seem to affect traffic flow
+## Route rules don't seem to affect traffic flow{#route-rules-don't-seem-to-affect-traffic-flow}
 
 With the current Envoy sidecar implementation, up to 100 requests may be required for weighted
 version distribution to be observed.
@@ -63,7 +63,7 @@ to propagate to all the sidecars.  With large deployments the
 propagation will take longer and there may be a lag time on the
 order of seconds.
 
-## 503 errors after setting destination rule
+## 503 errors after setting destination rule{#five-zero-three-errors-after-setting-destination-rule}
 
 If requests to a service immediately start generating HTTP 503 errors after you applied a `DestinationRule`
 and the errors continue until you remove or revert the `DestinationRule`, then the `DestinationRule` is probably
@@ -93,7 +93,7 @@ httpbin.default.svc.cluster.local:8000     CONFLICT     mTLS       HTTP       de
 
 Whenever you apply a `DestinationRule`, ensure the `trafficPolicy` TLS mode matches the global server configuration.
 
-## Route rules have no effect on ingress gateway requests
+## Route rules have no effect on ingress gateway requests{#route-rules-have-no-effect-on-ingress-gateway-requests}
 
 Let's assume you are using an ingress `Gateway` and corresponding `VirtualService` to access an internal service.
 For example, your `VirtualService` looks something like this:
@@ -201,7 +201,7 @@ spec:
         subset: v1
 {{< /text >}}
 
-## Headless TCP services losing connection
+## Headless TCP services losing connection{#headless-TCP-services-losing-connection}
 
 If `istio-citadel` is deployed, Envoy is restarted every 45 days to refresh certificates.
 This causes the disconnection of TCP streams or long-running connections between services.
@@ -225,7 +225,7 @@ $ kubectl scale --replicas=0 deploy/istio-citadel -n istio-system
 
 This should stop Istio from restarting Envoy and disconnecting TCP connections.
 
-## Envoy is crashing under load
+## Envoy is crashing under load{#envoy-is-crashing-under-load}
 
 Check your `ulimit -a`. Many systems have a 1024 open file descriptor limit by default which will cause Envoy to assert and crash with:
 
@@ -235,7 +235,7 @@ Check your `ulimit -a`. Many systems have a 1024 open file descriptor limit by d
 
 Make sure to raise your ulimit. Example: `ulimit -n 16384`
 
-## Envoy won't connect to my HTTP/1.0 service
+## Envoy won't connect to my HTTP/1.0 service{#envoy-won't-connect-to-my-HTTP-1.0-service}
 
 Envoy requires `HTTP/1.1` or `HTTP/2` traffic for upstream services. For example, when using [NGINX](https://www.nginx.com/) for serving traffic behind Envoy, you
 will need to set the [proxy_http_version](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_http_version) directive in your NGINX configuration to be "1.1", since the NGINX default is 1.0.
@@ -261,7 +261,7 @@ server {
 }
 {{< /text >}}
 
-## 404 errors occur when multiple gateways configured with same TLS certificate
+## 404 errors occur when multiple gateways configured with same TLS certificate{#four-zero-four-errors-occur-when-multiple-gateways-configured-with-same-TLS-certificate}
 
 Configuring more than one gateway using the same TLS certificate will cause browsers
 that leverage [HTTP/2 connection reuse](https://httpwg.org/specs/rfc7540.html#reuse)
@@ -289,7 +289,7 @@ Then, simply bind both `VirtualServices` to it like this:
 - `VirtualService` configuration `vs1` with host `service1.test.com` and gateway `gw`
 - `VirtualService` configuration `vs2` with host `service2.test.com` and gateway `gw`
 
-## Port conflict when configuring multiple TLS hosts in a gateway
+## Port conflict when configuring multiple TLS hosts in a gateway{#port-conflict-when-configuring-multiple-TLS-hosts-in-a-gateway}
 
 If you apply a `Gateway` configuration that has the same `selector` labels as another
 existing `Gateway`, then if they both expose the same HTTPS port you must ensure that they have

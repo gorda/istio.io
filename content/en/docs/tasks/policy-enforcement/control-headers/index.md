@@ -7,7 +7,7 @@ keywords: [policies,routing]
 
 This task demonstrates how to use a policy adapter to manipulate request headers and routing.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Set up Istio on Kubernetes by following the instructions in the
   [Installation guide](/docs/setup/).
@@ -48,7 +48,7 @@ This task demonstrates how to use a policy adapter to manipulate request headers
     EOF
     {{< /text >}}
 
-## Output-producing adapters
+## Output-producing adapters{#output-producing-adapters}
 
 In this task, we are using a sample policy adapter `keyval`. In addition to
 a policy check result, this adapter returns an output with a single field
@@ -104,7 +104,7 @@ instance key is not present in the lookup table.
     EOF
     {{< /text >}}
 
-## Request header operations
+## Request header operations{#request-header-operations}
 
 1. Ensure the _httpbin_ service is accessible through the ingress gateway:
 
@@ -201,7 +201,7 @@ instance key is not present in the lookup table.
     same proxy. Therefore, we recommend to use this feature in gateways, so
     that the server-side policy checks take effect.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Delete the policy resources for the demo adapter:
 

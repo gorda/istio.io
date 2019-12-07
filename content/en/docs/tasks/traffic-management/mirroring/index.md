@@ -15,7 +15,7 @@ traffic happens out of band of the critical request path for the primary service
 In this task, you will first force all traffic to `v1` of a test service. Then,
 you will apply a rule to mirror a portion of traffic to `v2`.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Set up Istio by following the instructions in the
   [Installation guide](/docs/setup/).
@@ -119,7 +119,7 @@ you will apply a rule to mirror a portion of traffic to `v2`.
     EOF
     {{< /text >}}
 
-## Creating a default routing policy
+## Creating a default routing policy{#creating-a-default-routing-policy}
 
 By default Kubernetes load balances across both versions of the `httpbin` service.
 In this step, you will change that behavior so that all traffic goes to `v1`.
@@ -199,7 +199,7 @@ log entries for `v1` and none for `v2`:
     <none>
     {{< /text >}}
 
-## Mirroring traffic to v2
+## Mirroring traffic to v2{#mirroring-traffic-to-v2}
 
 1.  Change the route rule to mirror traffic to v2:
 
@@ -368,7 +368,7 @@ log entries for `v1` and none for `v2`:
 
     You can see request and response contents of the traffic.
 
-## Cleaning up
+## Cleaning up{#cleaning-up}
 
 1.  Remove the rules:
 

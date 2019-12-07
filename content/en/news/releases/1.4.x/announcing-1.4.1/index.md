@@ -13,7 +13,7 @@ This release includes bug fixes to improve robustness. This release note describ
 
 {{< relnote >}}
 
-## Bug fixes
+## Bug fixes{#bug-fixes}
 
 - **Fixed** `istioctl` installation on Windows ([Issue 19020](https://github.com/istio/istio/pull/19020)).
 - **Fixed** an issue with route matching order when using cert-manager with Kubernetes Ingress ([Issue 19000](https://github.com/istio/istio/pull/19000)).

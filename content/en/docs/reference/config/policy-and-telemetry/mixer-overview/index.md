@@ -45,7 +45,7 @@ Policy enforcement and telemetry collection are entirely driven from configurati
 Policy check is disabled by default, avoiding the need to go through the Mixer policy component.
 Refer to [Installation Options](/docs/reference/config/installation-options/) for more information.
 
-## Adapters
+## Adapters{#adapters}
 
 Mixer is a highly modular and extensible component. One of its key functions is
 to abstract away the details of different policy and telemetry backend systems,
@@ -66,7 +66,7 @@ extended to target new or custom infrastructure backends.
 
 Learn more about the [set of supported adapters](/docs/reference/config/policy-and-telemetry/adapters/).
 
-## Attributes
+## Attributes{#attributes}
 
 Attributes are an essential concept to Istio's policy and telemetry functionality.
 An attribute is a small bit of data that describes a single property of a specific
@@ -95,7 +95,7 @@ given, Mixer generates calls to a variety of infrastructure backends.
 
 {{< image width="60%" link="./machine.svg" caption="Attribute Machine" >}}
 
-### Attribute vocabulary
+### Attribute vocabulary{#attribute-vocabulary}
 
 A given Istio deployment has a fixed vocabulary of attributes that it understands.
 The specific vocabulary is determined by the set of attribute producers being used
@@ -104,7 +104,7 @@ specialized Mixer adapters can also generate attributes.
 
 Learn more about the [common baseline set of attributes available in most Istio deployments](/docs/reference/config/policy-and-telemetry/attribute-vocabulary/).
 
-### Attribute expressions
+### Attribute expressions{#attribute-expressions}
 
 Attribute expressions are used when configuring [instances](#instances).
 Here's an example use of expressions:
@@ -129,7 +129,7 @@ is not present, the literal `"unknown"` is used.
 
 Refer to the [attribute expression](/docs/reference/config/policy-and-telemetry/expression-language/) page for details.
 
-## Configuration model
+## Configuration model{#configuration-model}
 
 Istio's policy and telemetry features are configured through a common model designed to
 put operators in control of every aspect of authorization policy and telemetry collection.
@@ -160,7 +160,7 @@ Configuration is based on *adapters* and *templates*:
 * **Templates** define the schema for specifying request mapping from attributes to adapter inputs.
 A given adapter may support any number of templates.
 
-### Handlers
+### Handlers{#handlers}
 
 Adapters encapsulate the logic necessary to interface Mixer with specific external infrastructure
 backends such as [Prometheus](https://prometheus.io) or [Stackdriver](https://cloud.google.com/logging).
@@ -220,7 +220,7 @@ spec:
 Each adapter defines its own particular format of configuration data. Learn more about [the full set of
 adapters and their specific configuration formats](/docs/reference/config/policy-and-telemetry/adapters/).
 
-### Instances
+### Instances{#instances}
 
 Instance configuration specifies the request mapping from attributes to adapter inputs.
 The following is an example of a metric instance configuration that produces the `requestduration` metric.
@@ -246,7 +246,7 @@ Note that all the dimensions expected in the handler configuration are specified
 Templates define the specific required content of individual instances. Learn more about the [set of
 templates and their specific configuration formats](/docs/reference/config/policy-and-telemetry/templates/).
 
-### Rules
+### Rules{#rules}
 
 Rules specify when a particular handler is invoked with a specific instance.
 Consider an example where you want to deliver the `requestduration` metric to the `prometheus` handler if

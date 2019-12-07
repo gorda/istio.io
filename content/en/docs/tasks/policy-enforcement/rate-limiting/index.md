@@ -10,7 +10,7 @@ aliases:
 This task shows you how to use Istio to dynamically limit the traffic to a
 service.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 1. Setup Istio in a Kubernetes cluster by following the instructions in the
    [Installation Guide](/docs/setup/getting-started/).
@@ -36,7 +36,7 @@ service.
     $ kubectl apply -f @samples/bookinfo/networking/virtual-service-all-v1.yaml@
     {{< /text >}}
 
-## Rate limits
+## Rate limits{#rate-limits}
 
 In this task, you configure Istio to rate limit traffic to `productpage` based on the IP address
 of the originating client. You will use `X-Forwarded-For` request header as the client
@@ -161,7 +161,7 @@ so the configuration to enable rate limiting on both adapters is the same.
     every 5 seconds. If you keep refreshing the page you should see
     `RESOURCE_EXHAUSTED:Quota is exhausted for: requestcount`.
 
-## Conditional rate limits
+## Conditional rate limits{#conditional-rate-limits}
 
 In the above example we have effectively rate limited `productpage` at `2 rps` per client IP.
 Consider a scenario where you would like to exempt clients from this rate limit if a user is logged in.
@@ -200,7 +200,7 @@ This ensures that a logged in user is not subject to this quota.
     Logout as `jason` and repeatedly refresh the `productpage`.
     You should again see `RESOURCE_EXHAUSTED:Quota is exhausted for: requestcount`.
 
-## Understanding rate limits
+## Understanding rate limits{#understanding-rate-limits}
 
 In the preceding examples you saw how Mixer applies rate limits to requests
 that match certain conditions.
@@ -228,7 +228,7 @@ If you want the policies enforced for a given namespace instead of the entire
 Istio mesh, you can replace all occurrences of `istio-system` with the given
 namespace.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1. If using `memquota`, remove the `memquota` rate limit configuration:
 

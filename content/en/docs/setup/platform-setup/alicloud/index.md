@@ -22,13 +22,13 @@ using the `Application Catalog` module, follow the
 instead.
 {{< /tip >}}
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 1. [Follow the Alibaba Cloud instructions](https://www.alibabacloud.com/help/doc-detail/53752.htm)
 to activate the following services: Container Service, Resource Orchestration
  Service (ROS), and RAM.
 
-## Procedure
+## Procedure{#procedure}
 
 1. Log on to the `Container Service console`, and click **Clusters** under
 **Kubernetes** in the left-side navigation pane to enter the **Cluster List** page.

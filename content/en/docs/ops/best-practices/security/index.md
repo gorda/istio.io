@@ -7,7 +7,7 @@ weight: 30
 
 This section provides some deployment guidelines to help keep a service mesh secure.
 
-## Use namespaces for isolation
+## Use namespaces for isolation{#use-namespaces-for-isolation}
 
 If there are multiple service operators (a.k.a. [SREs](https://en.wikipedia.org/wiki/Site_reliability_engineering))
 deploying different services in a medium- or large-size cluster, we recommend creating a separate

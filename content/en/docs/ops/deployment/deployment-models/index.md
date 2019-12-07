@@ -50,7 +50,7 @@ Choosing the right deployment model depends on the isolation, performance,
 and HA requirements for your use case. This guide describes the various options and
 considerations when configuring your Istio deployment.
 
-## Cluster models
+## Cluster models{#cluster-models}
 
 The workload instances of your application run in one or more
 {{< gloss "cluster" >}}clusters{{< /gloss >}}. For isolation, performance, and
@@ -70,7 +70,7 @@ approach helps limit the potential problems caused by incorrect configurations.
 In Istio, you can configure a single service mesh to span any number of
 clusters.
 
-### Single cluster
+### Single cluster{#single-cluster}
 
 In the simplest case, you can confine an Istio mesh to a single
 {{< gloss >}}cluster{{< /gloss >}}. A cluster usually operates over a
@@ -89,7 +89,7 @@ Single cluster deployments offer simplicity, but lack other features, for
 example, fault isolation and fail over. If you need higher availability, you
 should use multiple clusters.
 
-### Multiple clusters
+### Multiple clusters{#multiple-clusters}
 
 You can configure a single mesh to include
 multiple {{< gloss "cluster" >}}clusters{{< /gloss >}}. Using a
@@ -122,14 +122,14 @@ You can configure inter-cluster communication based on the
 example, if two clusters reside on the same underlying network, you can enable
 cross-cluster communication by simply configuring firewall rules.
 
-## Network models
+## Network models{#network-models}
 
 Many production systems require multiple networks or subnets for isolation
 and high availability. Istio supports spanning a service mesh over a variety of
 network topologies. This approach allows you to select the network model that
 fits your existing network topology.
 
-### Single network
+### Single network{#single-network}
 
 In the simplest case, a service mesh operates over a single fully connected
 network. In a single network model, all
@@ -146,7 +146,7 @@ way across the mesh with the ability to directly address workload instances.
     caption="A service mesh with a single network"
     >}}
 
-### Multiple networks
+### Multiple networks{#multiple-networks}
 
 You can span a single service mesh across multiple networks; such a
 configuration is known as **multi-network**.
@@ -172,7 +172,7 @@ network of the consumers.
     caption="A service mesh with multiple networks"
     >}}
 
-## Control plane models
+## Control plane models{#control-plane-models}
 
 An Istio mesh uses the {{< gloss >}}control plane{{< /gloss >}} to configure all
 communication between workload instances within the mesh. You can replicate the
@@ -237,7 +237,7 @@ The following list ranks control plane deployment examples by availability:
 - Multiple clusters per zone
 - Each cluster (**highest availability**)
 
-## Identity and trust models
+## Identity and trust models{#identity-and-trust-models}
 
 When a workload instance is created within a service mesh, Istio assigns the
 workload an {{< gloss >}}identity{{< /gloss >}}.
@@ -249,7 +249,7 @@ for that identity. A **trust bundle** is the set of all CA public keys used by
 an Istio mesh. With a mesh's trust bundle, anyone can verify the sender of any
 message coming from that mesh.
 
-### Trust within a mesh
+### Trust within a mesh{#trust-within-a-mesh}
 
 Within a single Istio mesh, Istio ensures each workload instance has an
 appropriate certificate representing its own identity, and the trust bundle
@@ -265,7 +265,7 @@ communicating.
     caption="A service mesh with a certificate authority"
     >}}
 
-### Trust between meshes
+### Trust between meshes{#trust-between-meshes}
 
 If a service in a mesh requires a service in another, you must federate identity
 and trust between the two meshes. To federate identity and trust, you must
@@ -281,13 +281,13 @@ those identities.
     caption="Multiple service meshes with certificate authorities"
     >}}
 
-## Mesh models
+## Mesh models{#mesh-models}
 
 Istio supports having all of your services in a
 {{< gloss "service mesh" >}}mesh{{< /gloss >}}, or federating multiple meshes
 together, which is also known as {{< gloss >}}multi-mesh{{< /gloss >}}.
 
-### Single mesh
+### Single mesh{#single-mesh}
 
 The simplest Istio deployment is a single mesh. Within a mesh, service names are
 unique. For example, only one service can have the name `mysvc` in the `foo`
@@ -298,7 +298,7 @@ A single mesh can span [one or more clusters](#cluster-models) and
 [one or more networks](#network-models). Within a mesh,
 [namespaces](#namespace-tenancy) are used for [tenancy](#tenancy-models).
 
-### Multiple meshes
+### Multiple meshes{#multiple-meshes}
 
 Multiple mesh deployments result from {{< gloss >}}mesh federation{{< /gloss >}}.
 
@@ -330,7 +330,7 @@ When federating two meshes that do not share the same
 {{< gloss >}}identity{{< /gloss >}} and **trust bundles** between them. See the
 section on [Multiple Trust Domains](#trust-between-meshes) for an overview.
 
-## Tenancy models
+## Tenancy models{#tenancy-models}
 
 In Istio, a **tenant** is a group of users that share
 common access and privileges to a set of deployed workloads. Generally, you
@@ -351,7 +351,7 @@ Istio supports two types of tenancy models:
 - [Namespace tenancy](#namespace-tenancy)
 - [Cluster tenancy](#cluster-tenancy)
 
-### Namespace tenancy
+### Namespace tenancy{#namespace-tenancy}
 
 Istio uses [namespaces](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-namespace)
 as a unit of tenancy within a mesh. Istio also works in environments that don't
@@ -391,7 +391,7 @@ endpoints for service discovery and load balancing.
     caption="A service mesh with clusters with the same namespace"
     >}}
 
-### Cluster tenancy
+### Cluster tenancy{#cluster-tenancy}
 
 Istio supports using clusters as a unit of tenancy. In this case, you can give
 each team a dedicated cluster or set of clusters to deploy their

@@ -24,12 +24,12 @@ In my previous blog post, [Consuming External Web Services](/blog/2018/egress-ht
  [Service Entry](/docs/reference/config/networking/service-entry/) to allow the in-mesh applications to
  access the external database.
 
-## Bookinfo sample application with external ratings database
+## Bookinfo sample application with external ratings database{#Bookinfo-sample-application-with-external-ratings-database}
 
 First, you set up a MySQL database instance to hold book ratings data outside of your Kubernetes cluster. Then you
 modify the [Bookinfo sample application](/docs/examples/bookinfo/) to use your database.
 
-### Setting up the database for ratings data
+### Setting up the database for ratings data{#setting-up-the-database-for-ratings-data}
 
 For this task you set up an instance of [MySQL](https://www.mysql.com). You can use any MySQL instance; I used
 [Compose for MySQL](https://www.ibm.com/cloud/compose/mysql). I used `mysqlsh`
@@ -148,7 +148,7 @@ service:
 
 Now you are ready to deploy a version of the Bookinfo application that will use your database.
 
-### Initial setting of Bookinfo application
+### Initial setting of Bookinfo application{#initial-setting-of-Bookinfo-application}
 
 To demonstrate the scenario of using an external database, you start with a Kubernetes cluster with [Istio installed](/docs/setup/getting-started/). Then you deploy the
 [Istio Bookinfo sample application](/docs/examples/bookinfo/), [apply the default destination rules](/docs/examples/bookinfo/#apply-default-destination-rules), and [change Istio to the blocking-egress-by-default policy](/docs/tasks/traffic-management/egress/egress-control/#change-to-the-blocking-by-default-policy).
@@ -169,7 +169,7 @@ As a reminder, here is the end-to-end architecture of the application from the
     caption="The original Bookinfo application"
     >}}
 
-### Use the database for ratings data in Bookinfo application
+### Use the database for ratings data in Bookinfo application{#use-the-database-for-ratings-data-in-Bookinfo-application}
 
 1.  Modify the deployment spec of a version of the _ratings_ microservice that uses a MySQL database, to use your
 database instance. The spec is in [`samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml`]({{<github_blob>}}/samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml)
@@ -226,7 +226,7 @@ The updated architecture appears below. Note that the blue arrows inside the mes
 Note that the MySQL database is outside the Istio service mesh, or more precisely outside the Kubernetes cluster. The
  boundary of the service mesh is marked by a dashed line.
 
-### Access the webpage
+### Access the webpage{#access-the-webpage}
 
 Access the webpage of the application, after
 [determining the ingress IP and port](/docs/examples/bookinfo/#determine-the-ingress-ip-and-port).
@@ -244,7 +244,7 @@ You have the same problem as in [Consuming External Web Services](/blog/2018/egr
 outside the Kubernetes cluster, both TCP and HTTP, is blocked by default by the sidecar proxies. To enable such traffic
  for TCP, a mesh-external service entry for TCP must be defined.
 
-### Mesh-external service entry for an external MySQL instance
+### Mesh-external service entry for an external MySQL instance{#mesh-external-service-entry-for-an-external-MySQL-instance}
 
 TCP mesh-external service entries come to our rescue.
 
@@ -305,7 +305,7 @@ provide us with a visual clue that our external database is indeed being used.
 
 As with service entries for HTTP/HTTPS, you can delete and create service entries for TCP using `kubectl`, dynamically.
 
-## Motivation for egress TCP traffic control
+## Motivation for egress TCP traffic control{#motivation-for-egress-TCP-traffic-control}
 
 Some in-mesh Istio applications must access external services, for example legacy systems. In many cases, the access is
 not performed over HTTP or HTTPS protocols. Other TCP protocols are used, such as database-specific protocols like
@@ -313,7 +313,7 @@ not performed over HTTP or HTTPS protocols. Other TCP protocols are used, such a
 
 Next let me provide more details about the service entries for TCP traffic.
 
-## Service entries for TCP traffic
+## Service entries for TCP traffic{#service-entries-for-TCP-traffic}
 
 The service entries for enabling TCP traffic to a specific port must specify `TCP` as the protocol of the port.
 Additionally, for the [MongoDB Wire Protocol](https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/), the
@@ -336,7 +336,7 @@ entries for TCP cannot be used and
 [the external services must be called directly](/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services),
 bypassing the sidecar proxies.
 
-## Relation to virtual machines support
+## Relation to virtual machines support{#relation-to-virtual-machines-support}
 
 Note that the scenario described in this post is different from the
 [Bookinfo with Virtual Machines](/docs/examples/virtual-machines/bookinfo/) example. In that scenario, a MySQL instance runs on an
@@ -358,7 +358,7 @@ the required components may be impossible. In our case, the MySQL instance is ad
 which could be beneficial if the consuming applications expect to use that domain name. This is especially relevant when
  that expected domain name cannot be changed in the deployment configuration of the consuming applications.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Drop the `test` database and the `bookinfo` user:
 
@@ -396,7 +396,7 @@ which could be beneficial if the consuming applications expect to use that domai
     Deleted config: serviceentry mysql-external
     {{< /text >}}
 
-## Conclusion
+## Conclusion{#conclusion}
 
 In this blog post, I demonstrated how the microservices in an Istio service mesh can consume external services via TCP.
 By default, Istio blocks all the traffic, TCP and HTTP, to the hosts outside the cluster. To enable such traffic for

@@ -16,12 +16,12 @@ We're pleased to announce the availability of Istio 1.1.4. Please see below for 
 
 {{< relnote >}}
 
-## Behavior change
+## Behavior change{#behavior-change}
 
 - Changed the default behavior for Pilot to allow traffic to outside the mesh, even if it is on the same port as an internal service.
 This behavior can be controlled by the `PILOT_ENABLE_FALLTHROUGH_ROUTE` environment variable.
 
-## Bug fixes
+## Bug fixes{#bug-fixes}
 
 - Fixed egress route generation for services of type `ExternalName`.
 
@@ -47,7 +47,7 @@ memory or IP ports over time ([Issue 13355](https://github.com/istio/istio/issue
 - Fixed bug where [`ConsistentHashLB.minimumRingSize`](/docs/reference/config/networking/destination-rule#LoadBalancerSettings-ConsistentHashLB)
 was defaulting to 0 instead of the documented 1024 ([Issue 13261](https://github.com/istio/istio/issues/13261)).
 
-## Small enhancements
+## Small enhancements{#small-enhancements}
 
 - Updated to the latest version of the [Kiali](https://www.kiali.io) add-on.
 

@@ -8,7 +8,7 @@ skip_seealso: true
 keywords: [platform-setup,kubernetes,gardener,sap]
 ---
 
-## Bootstrapping Gardener
+## Bootstrapping Gardener{#bootstrapping-gardener}
 
 To set up your own [Gardener](https://gardener.cloud), see the
 [documentation](https://github.com/gardener/gardener/blob/master/docs/README.md)
@@ -25,7 +25,7 @@ project. To learn more about this open source project, read the
 
 1.  [Install the `kubectl` CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
-### Access Gardener
+### Access Gardener{#access-gardener}
 
 1.  Create a project in the Gardener dashboard. This will essentially create a
     Kubernetes namespace with the name `garden-<my-project>`.
@@ -39,7 +39,7 @@ project. To learn more about this open source project, read the
     `export KUBECONFIG=garden-my-project.yaml` in your shell.
     ![Download kubeconfig for Gardener](images/gardener_service_account.png "downloading the kubeconfig using a service account")
 
-### Creating a Kubernetes cluster
+### Creating a Kubernetes cluster{#creating-a-Kubernetes-cluster}
 
 You can create your cluster using `kubectl` cli by providing a cluster
 specification yaml file. You can find an example for GCP
@@ -67,7 +67,7 @@ $ kubectl --namespace shoot--my-project--my-cluster get secret kubecfg --output 
 This kubeconfig file has full administrators access to you cluster. For the rest
 of this guide be sure you have `export KUBECONFIG=my-cluster.yaml` set.
 
-## Cleaning up
+## Cleaning up{#cleaning-up}
 
 Use the Gardener dashboard to delete your cluster, or execute the following with
 `kubectl` pointing to your `garden-my-project.yaml` kubeconfig:

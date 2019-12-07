@@ -17,7 +17,7 @@ Today, we’re excited to announce Istio 1.0! It’s been a little over a year s
 
 {{< relnote >}}
 
-## Ecosystem
+## Ecosystem{#ecosystem}
 
 We’ve seen substantial growth in Istio's ecosystem in the last year. [Envoy](https://www.envoyproxy.io/) continues its impressive growth and added numerous
 features that are crucial for a production quality service mesh. Observability providers like [Datadog](https://www.datadoghq.com/),
@@ -26,7 +26,7 @@ features that are crucial for a production quality service mesh. Observability p
 [Tigera](https://www.tigera.io/resources/using-network-policy-concert-istio-2/), [Aporeto](https://www.aporeto.com/), [Cilium](https://cilium.io/)
 and [Styra](https://styra.com/) built extensions to our policy enforcement and networking capabilities. [Red Hat](https://www.redhat.com/en) built [Kiali](https://www.kiali.io) to wrap a nice user-experience around mesh management and observability. [Cloud Foundry](https://www.cloudfoundry.org/) is building on  Istio for it’s next generation traffic routing stack, the recently announced [Knative](https://github.com/knative/docs) serverless project is doing the same and [Apigee](https://apigee.com/) announced that they plan to use it in their API management solution. These are just some of the integrations the community has added in the last year.
 
-## Features
+## Features{#features}
 
 Since the 0.8 release we’ve added some important new features and more importantly marked many of our existing features as Beta signaling that they’re ready for production use.
 Here are some highlights:
@@ -46,23 +46,23 @@ their performance and reliability.
 
 - We’ve put a lot of effort into performance including continuous regression testing, large scale environment simulation and targeted fixes. We’re very happy with the results and will share more on this in detail in the coming weeks.
 
-## What’s next?
+## What’s next?{#what’s-next}
 
 While this is a significant milestone for the project there’s lots more to do. In working with adopters we’ve gotten a lot of great feedback about what to focus next. We’ve heard consistent themes around support for hybrid-cloud, install modularity, richer networking features and scalability for massive deployments. We’ve already taken some of this feedback into account in the 1.0 release and we’ll continue to aggressively tackle this work in the coming months.
 
-## Getting started
+## Getting started{#getting-started}
 
 If you’re new to Istio and looking to use it for your deployment we’d love to hear from you. Take a look at [our docs](/docs/) or stop by our
 [chat forum](https://discuss.istio.io). If you’d like
 to go deeper and [contribute to the project](/about/community) come to one of our community meetings and say hello.
 
-## Thanks
+## Thanks{#thanks}
 
 The Istio team would like to give huge thanks to everyone who has made a contribution to the project. It wouldn’t be where it is today without your help. The last year has been pretty amazing and we look forward to the next one with excitement about what we can achieve together as a community.
 
-## Release notes
+## Release notes{#release-notes}
 
-### Networking
+### Networking{#networking}
 
 - **SNI Routing using Virtual Services**. Newly introduced `TLS` sections in
 [`VirtualService`](/docs/reference/config/networking/virtual-service/) can be used to route TLS traffic
@@ -76,7 +76,7 @@ has been removed.
 
 - **Istio Ingress Deprecated**. The old Istio ingress is deprecated and disabled by default. We encourage users to use [gateways](/docs/concepts/traffic-management/#gateways) instead.
 
-### Policy and telemetry
+### Policy and telemetry{#policy-and-telemetry}
 
 - **Updated Attributes**. The set of [attributes](/docs/reference/config/policy-and-telemetry/attribute-vocabulary/) used to describe the source and
 destination of traffic have been completely revamped in order to be more
@@ -99,14 +99,14 @@ and the [Out Of Process Adapter Walk-through](https://github.com/istio/istio/wik
 - **Client-Side Telemetry**. It's now possible to collect telemetry from the client of an interaction,
 in addition to the server-side telemetry.
 
-#### Adapters
+#### Adapters{#adapters}
 
 - **SignalFX**. There is a new `signalfx` adapter.
 
 - **Stackdriver**. The [`stackdriver`](/docs/reference/config/policy-and-telemetry/adapters/stackdriver/) adapter has been substantially enhanced in this
 release to add new features and improve performance.
 
-### Security
+### Security{#security}
 
 - **Authorization**. We've reimplemented our [authorization functionality](/docs/concepts/security/#authorization).
 RPC-level authorization policies can now be implemented without the need for Mixer and Mixer adapters.
@@ -137,7 +137,7 @@ be configured using [authentication policies](/docs/concepts/security/#authentic
 
     - Added the `--all-namespaces` flag to `istioctl get` to retrieve resources across all namespaces.
 
-### Known issues with 1.0
+### Known issues with 1.0{#known-issues-with-1.0}
 
 - Amazon's EKS service does not implement automatic sidecar injection.  Istio can be used in Amazon's
   EKS by using [manual injection](/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection) for

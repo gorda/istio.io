@@ -10,9 +10,9 @@ compatibility.  We also mention cases where backwards compatibility was
 preserved but new behavior was introduced that would be surprising to someone
 familiar with the use and operation of Istio 1.3.
 
-## Traffic management
+## Traffic management{#traffic-management}
 
-### HTTP services on port 443
+### HTTP services on port 443{#HTTP-services-on-port-four-four-three}
 
 Services of type `http` are no longer allowed on port 443. This change was made to prevent protocol conflicts with external HTTPS services.
 
@@ -24,13 +24,13 @@ If you depend on this behavior, there are a few options:
 
 See [Protocol Selection](/docs/ops/configuration/traffic-management/protocol-selection/) for more information about specifying the protocol of a port
 
-### Regex Engine Changes
+### Regex Engine Changes{#regex-engine-changes}
 
 To prevent excessive resource consumption from large regular expressions, Envoy has moved to a new regular expression engine based on [`re2`](https://github.com/google/re2). Previously, `std::regex` was used. These two engines may have slightly different syntax; in particular, the regex fields are now limited to 100 bytes.
 
 If you depend on specific behavior of the old regex engine, you can opt out of this change by adding the environment variable `PILOT_ENABLE_UNSAFE_REGEX=true` to the Pilot deployment. Note: this will be removed in future releases.
 
-## Configuration management
+## Configuration management{#configuration-management}
 
 We introduced OpenAPI v3 schemas in the Kubernetes [Custom Resource Definitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) of Istio resources. The schemas describe the Istio resources and help ensure the Istio resources you create and modify are structurally correct.
 
@@ -44,7 +44,7 @@ To help with your upgrade, here are some steps you could take:
 
 If you choose to ignore the validation errors, add `--validate=false` to your `kubectl` command when you create or modify Istio resources. We strongly discourage doing so however, since it is willingly introducing incorrect configuration.
 
-## Leftover CRD
+## Leftover CRD{#leftover-CRD}
 
 Istio 1.4 introduces a new CRD `authorizationpolicies.security.istio.io` for the
 [authorization policy](/docs/reference/config/security/authorization-policy/).

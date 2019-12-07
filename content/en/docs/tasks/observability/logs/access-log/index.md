@@ -17,7 +17,7 @@ The standard output of Envoy's containers can then be printed by the `kubectl lo
 
 {{< boilerplate start-httpbin-service >}}
 
-## Enable Envoy's access logging
+## Enable Envoy's access logging{#enable-envoy's-access-logging}
 
 Edit the `istio` configuration map:
 
@@ -39,7 +39,7 @@ All three of these parameters may also be configured via [install options](/docs
 * `global.proxy.accessLogEncoding`
 * `global.proxy.accessLogFormat`
 
-## Test the access log
+## Test the access log{#test-the-access-log}
 
 1.  Send a request from `sleep` to `httpbin`:
 
@@ -83,7 +83,7 @@ All three of these parameters may also be configured via [install options](/docs
 
 Note that the messages corresponding to the request appear in logs of the Istio proxies of both the source and the destination, `sleep` and `httpbin`, respectively. You can see in the log the HTTP verb (`GET`), the HTTP path (`/status/418`), the response code (`418`) and other [request-related information](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log#format-rules).
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Shutdown the [sleep]({{< github_tree >}}/samples/sleep) and [httpbin]({{< github_tree >}}/samples/httpbin) services:
 
@@ -92,7 +92,7 @@ $ kubectl delete -f @samples/sleep/sleep.yaml@
 $ kubectl delete -f @samples/httpbin/httpbin.yaml@
 {{< /text >}}
 
-### Disable Envoy's access logging
+### Disable Envoy's access logging{#disable-envoy's-access-logging}
 
 Edit the `istio` configuration map and set `accessLogFile` to `""`.
 

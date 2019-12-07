@@ -9,19 +9,19 @@ target_release: 1.0
 
 To celebrate the 1.0 release and to promote the software to a wider audience, the Istio community is hosting an all day live stream on Twitch on August 17th.
 
-## What is Twitch?
+## What is Twitch?{#what-is-twitch}
 
 [Twitch](https://twitch.tv/) is a popular video gaming live streaming platform and recently has seen a lot of coding content showing up. The IBM Advocates have been doing live coding and presentations there and it's been fun. While mostly used for gaming content, there is a [growing community](https://www.twitch.tv/communities/programming) sharing and watching programming content on the site.
 
-## What does this have to do with Istio?
+## What does this have to do with Istio?{#what-does-this-have-to-do-with-Istio}
 
 The stream is going to be a full day of Istio content. Hopefully we'll have a good mix of deep technical content, beginner content and line-of-business content for our audience. We'll have developers, users, and evangelists on throughout the day to share their demos and stories. Expect live coding, q and a, and some surprises. We have stellar guests lined up from IBM, Google, Datadog, Pivotal, and more!
 
-## Recordings
+## Recordings{#recordings}
 
 Recordings are available [here](https://www.youtube.com/playlist?list=PLzpeuWUENMK0V3dwpx5gPJun-SLG0USqU).
 
-## Schedule
+## Schedule{#schedule}
 
 All times are `PDT`.
 

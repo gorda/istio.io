@@ -17,12 +17,12 @@ updated features detailed below.
 
 {{< relnote >}}
 
-## Networking
+## Networking{#networking}
 
 - **Custom Envoy Configuration**. Pilot now supports ferrying custom Envoy configuration to the
 proxy. [Learn more](https://github.com/mandarjog/istioluawebhook)
 
-## Mixer adapters
+## Mixer adapters{#mixer-adapters}
 
 - **SolarWinds**. Mixer can now interface to AppOptics and Papertrail.
 [Learn more](/docs/reference/config/policy-and-telemetry/adapters/solarwinds/)
@@ -33,7 +33,7 @@ proxy. [Learn more](https://github.com/mandarjog/istioluawebhook)
 - **Datadog**. Mixer now provides an adapter to deliver metric data to a Datadog agent.
 [Learn more](/docs/reference/config/policy-and-telemetry/adapters/datadog/)
 
-## Other
+## Other{#other}
 
 - **Separate Check & Report Clusters**. When configuring Envoy, it's now possible to use different clusters
 for Mixer instances that are used for Mixer's Check functionality from those used for Mixer's Report

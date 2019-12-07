@@ -31,7 +31,7 @@ for a detailed in-depth explanation of the `v1beta1` authorization policy.
 We welcome your feedback about the `v1beta1` authorization policy at
 [discuss.istio.io](https://discuss.istio.io/c/security).
 
-## Background
+## Background{#background}
 
 To date, Istio provided RBAC policies to enforce access control on
 {{< gloss "service" >}}services{{< /gloss >}} using three configuration
@@ -56,7 +56,7 @@ An other example is that it's proven difficult for users to maintain and
 manage the Istio RBAC configurations because of the need to deeply understand
 three related resources.
 
-## Design goals
+## Design goals{#design-goals}
 
 The new `v1beta1` authorization policy had several design goals:
 
@@ -91,7 +91,7 @@ The `selector` replaces the functionality provided by `ClusterRbacConfig`
 and the `services` field in `ServiceRole`. The `rule` replaces the other
 fields in the `ServiceRole` and `ServiceRoleBinding`.
 
-### Example
+### Example{#example}
 
 The following authorization policy applies to workloads with `app: httpbin`
 and `version: v1` label in the `foo` namespace:
@@ -179,7 +179,7 @@ spec:
     name: "httpbin"
 {{< /text >}}
 
-### Workload selector
+### Workload selector{#workload-selector}
 
 A major change in the `v1beta1` authorization policy is that it now uses
 workload selector to specify where to apply the policy. This is the same
@@ -206,7 +206,7 @@ spec:
  # omitted
 {{< /text >}}
 
-### Root namespace
+### Root namespace{#root-namespace}
 
 A policy in the root namespace applies to all workloads in the mesh in every
 namespaces. The root namespace is configurable in the
@@ -230,7 +230,7 @@ spec:
  # omitted
 {{< /text >}}
 
-### Ingress/Egress Gateway support
+### Ingress/Egress Gateway support{#ingress-egress-gateway-support}
 
 The `v1beta1` authorization policy can also be applied on ingress/egress
 gateway to enforce access control on traffic entering/leaving the mesh,
@@ -265,12 +265,12 @@ namespace as the policy, unless the policy is applied in the root namespace:
   policy will only apply to workloads with the `app: istio-ingressgateway`
   label **only** in the `istio-system` namespace.
 
-### Comparison
+### Comparison{#comparison}
 
 The following table highlights the key differences between the old `v1alpha1`
 RBAC policies and the new `v1beta1` authorization policy.
 
-#### Feature
+#### Feature{#feature}
 
 | Feature | `v1alpha1` RBAC policy | `v1beta1` Authorization Policy |
 |---------|------------------------|--------------------------------|
@@ -347,7 +347,7 @@ Istio only supports one of the two versions for a given workload:
   only the `v1beta1` policy will be used and the the `v1alpha1` policy
   will be ignored.
 
-### General Guideline
+### General Guideline{#general-guideline}
 
 {{< warning >}}
 When migrating to use `v1beta1` policy for a given workload, make sure the
@@ -373,7 +373,7 @@ For each namespace enabled with RBAC:
 
 1. Apply a `v1beta1` policy that denies all traffic to the given namespace.
 
-### Migration Example
+### Migration Example{#migration-example}
 
 Assume you have the following `v1alpha1` policies for the `httpbin` service
 in the `foo` namespace:
@@ -478,7 +478,7 @@ as expected.
 Make sure the `v1beta1` policy is working as expected and then you can delete
 the `v1alpha1` policies from the cluster.
 
-### Automation of the Migration
+### Automation of the Migration{#automation-of-the-migration}
 
 To help ease the migration, the `istioctl experimental authz convert`
 command is provided to automatically convert the `v1alpha1` policies to

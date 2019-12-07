@@ -15,7 +15,7 @@ dedicated _egress gateway_ service. This example combines the previous two by
 describing how to configure an egress gateway to perform TLS origination for
 traffic to external services.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 *   Setup Istio by following the instructions in the [Installation guide](/docs/setup/).
 
@@ -47,7 +47,7 @@ traffic to external services.
 
 *   [Enable Envoy’s access logging](/docs/tasks/observability/logs/access-log/#enable-envoy-s-access-logging)
 
-## Perform TLS origination with an egress gateway
+## Perform TLS origination with an egress gateway{#perform-TLS-origination-with-an-egress-gateway}
 
 This section describes how to perform the same TLS origination as in the
 [TLS Origination for Egress Traffic](/docs/tasks/traffic-management/egress/egress-tls-origination/) example,
@@ -265,7 +265,7 @@ be done by the egress gateway, as opposed to by the sidecar in the previous exam
     "[2018-06-14T13:49:36.340Z] "GET /politics HTTP/1.1" 200 - 0 148528 5096 90 "172.30.146.87" "curl/7.35.0" "c6bfdfc3-07ec-9c30-8957-6904230fd037" "edition.cnn.com" "151.101.65.67:443"
     {{< /text >}}
 
-### Cleanup the TLS origination example
+### Cleanup the TLS origination example{#cleanup-the-TLS-origination-example}
 
 Remove the Istio configuration items you created:
 
@@ -277,7 +277,7 @@ $ kubectl delete destinationrule originate-tls-for-edition-cnn-com
 $ kubectl delete destinationrule egressgateway-for-cnn
 {{< /text >}}
 
-## Perform mutual TLS origination with an egress gateway
+## Perform mutual TLS origination with an egress gateway{#perform-mutual-TLS-origination-with-an-egress-gateway}
 
 Similar to the previous section, this section describes how to configure an egress gateway to perform
 TLS origination for an external service, only this time using a service that requires mutual TLS.
@@ -291,7 +291,7 @@ This example is considerably more involved because you need to first:
 Only then can you configure the external traffic to go through the egress gateway which will perform
 TLS origination.
 
-### Generate client and server certificates and keys
+### Generate client and server certificates and keys{#generate-client-and-server-certificates-and-keys}
 
 1.  Clone the <https://github.com/nicholasjackson/mtls-go-example> repository:
 
@@ -326,7 +326,7 @@ TLS origination.
     $ cd ..
     {{< /text >}}
 
-### Deploy a mutual TLS server
+### Deploy a mutual TLS server{#deploy-a-mutual-TLS-server}
 
 To simulate an actual external service that supports the mutual TLS protocol,
 deploy an [NGINX](https://www.nginx.com) server in your Kubernetes cluster, but running outside of
@@ -492,7 +492,7 @@ to hold the configuration of the NGINX server:
     EOF
     {{< /text >}}
 
-#### Deploy a container to test the NGINX deployment
+#### Deploy a container to test the NGINX deployment{#deploy-a-container-to-test-the-nginx-deployment}
 
 1.  Create Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to hold the client's and CA
     certificates:
@@ -621,7 +621,7 @@ to hold the configuration of the NGINX server:
     </html>
     {{< /text >}}
 
-### Redeploy the egress gateway with the client certificates
+### Redeploy the egress gateway with the client certificates{#redeploy-the-egress-gateway-with-the-client-certificates}
 
 1. Create Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to hold the client's and CA
    certificates.
@@ -668,7 +668,7 @@ to hold the configuration of the NGINX server:
     `tls.crt` and `tls.key` should exist in `/etc/istio/nginx-client-certs`, while `ca-chain.cert.pem` in
     `/etc/istio/nginx-ca-certs`.
 
-### Configure mutual TLS origination for egress traffic
+### Configure mutual TLS origination for egress traffic{#configure-mutual-TLS-origination-for-egress-traffic}
 
 1.  Create an egress `Gateway` for `nginx.example.com`, port 443, and destination rules and
     virtual services to direct the traffic through the egress gateway and from the egress gateway to the external
@@ -799,7 +799,7 @@ to hold the configuration of the NGINX server:
     [2018-08-19T18:20:40.096Z] "GET / HTTP/1.1" 200 - 0 612 7 5 "172.30.146.114" "curl/7.35.0" "b942b587-fac2-9756-8ec6-303561356204" "nginx.example.com" "172.21.72.197:443"
     {{< /text >}}
 
-### Cleanup the mutual TLS origination example
+### Cleanup the mutual TLS origination example{#cleanup-the-mutual-TLS-origination-example}
 
 1.  Remove created Kubernetes resources:
 
@@ -830,7 +830,7 @@ to hold the configuration of the NGINX server:
     $ rm -f ./nginx.conf ./istio-egressgateway.yaml
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Delete the `sleep` service and deployment:
 

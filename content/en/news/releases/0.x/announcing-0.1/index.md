@@ -18,7 +18,7 @@ aliases:
 Google, IBM, and Lyft are proud to announce the first public release of [Istio](/): an open source project that provides a uniform way to connect, secure, manage and monitor microservices. Our current release is targeted at the [Kubernetes](https://kubernetes.io/) environment; we intend to add support for other environments such as virtual machines and Cloud Foundry in the coming months.
 Istio adds traffic management to microservices and creates a basis for value-add capabilities like security, monitoring, routing, connectivity management and policy.  The software is built using the battle-tested [Envoy](https://envoyproxy.github.io/envoy/) proxy from Lyft, and gives visibility and control over traffic *without requiring any changes to application code*. Istio gives CIOs a powerful tool to enforce security, policy and compliance requirements across the enterprise.
 
-## Background
+## Background{#background}
 
 Writing reliable, loosely coupled, production-grade applications based on microservices can be challenging. As monolithic applications are decomposed into microservices, software teams have to worry about the challenges inherent in integrating services in distributed systems: they must account for service discovery, load balancing, fault tolerance, end-to-end monitoring, dynamic routing for feature experimentation, and perhaps most important of all, compliance and security.
 
@@ -27,13 +27,13 @@ Inconsistent attempts at solving these challenges, cobbled together from librari
 One solution is to standardize implementations on a common RPC library like [gRPC](https://grpc.io), but this can be costly for organizations to adopt wholesale
 and leaves out brownfield applications which may be practically impossible to change. Operators need a flexible toolkit to make their microservices secure, compliant, trackable and highly available, and developers need the ability to experiment with different features in production, or deploy canary releases, without impacting the system as a whole.
 
-## Solution: service mesh
+## Solution: service mesh{#solution-service-mesh}
 
 Imagine if we could transparently inject a layer of infrastructure between a service and the network that gives operators the controls they need while freeing developers from having to bake solutions to distributed system problems into their code. This uniform layer of infrastructure combined with service deployments is commonly referred to as a **_service mesh_**. Just as microservices help to decouple feature teams from each other, a service mesh helps to decouple operators from application feature development and release processes. Istio turns disparate microservices into an integrated service mesh by systemically injecting a proxy into the network paths among them.
 
 Google, IBM and Lyft joined forces to create Istio from a desire to provide a reliable substrate for microservice development and maintenance, based on our common experiences building and operating massive scale microservices for internal and enterprise customers. Google and IBM have extensive experience with these large scale microservices in their own applications and with their enterprise customers in sensitive/regulated environments, while Lyft developed Envoy to address their internal operability challenges. [Lyft open sourced Envoy](https://eng.lyft.com/announcing-envoy-c-l7-proxy-and-communication-bus-92520b6c8191) after successfully using it in production for over a year to manage more than 100 services spanning 10,000 VMs, processing 2M requests/second.
 
-## Benefits of Istio
+## Benefits of Istio{#benefits-of-Istio}
 
 **Fleet-wide Visibility**: Failures happen, and operators need tools to stay on top of the health of clusters and their graphs of microservices. Istio produces detailed monitoring data about application and network behaviors that is rendered using [Prometheus](https://prometheus.io/) & [Grafana](https://github.com/grafana/grafana), and can be easily extended to send metrics and logs to any collection, aggregation and querying system. Istio enables analysis of performance hotspots and diagnosis of distributed failure modes with [Zipkin](https://github.com/openzipkin/zipkin) tracing.
 
@@ -51,7 +51,7 @@ Google, IBM and Lyft joined forces to create Istio from a desire to provide a re
 
 **Incremental Adoption**: We designed Istio to be completely transparent to the services running in the mesh, allowing teams to incrementally adopt features of Istio over time. Adopters can start with enabling fleet-wide visibility and once they’re comfortable with Istio in their environment they can switch on other features as needed.
 
-## Join us in this journey
+## Join us in this journey{#join-us-in-this-journey}
 
 Istio is a completely open development project. Today we are releasing version 0.1, which works in a Kubernetes cluster, and we plan to have major new
 releases every 3 months, including support for additional environments. Our goal is to enable developers and operators to rollout and operate microservices
@@ -62,7 +62,7 @@ Visit [here](https://github.com/istio/istio/releases) to get the latest released
 
 View the [presentation](/talks/istio_talk_gluecon_2017.pdf) from GlueCon 2017, where Istio was unveiled.
 
-## Community
+## Community{#community}
 
 We are excited to see early commitment to support the project from many companies in the community:
 [Red Hat](https://blog.openshift.com/red-hat-istio-launch/) with Red Hat OpenShift and OpenShift Application Runtimes,
@@ -86,7 +86,7 @@ To get involved, connect with us via any of these channels:
 
 From everyone working on Istio, welcome aboard!
 
-## Release notes
+## Release notes{#release-notes}
 
 - Installation of Istio into a Kubernetes namespace with a single command.
 - Semi-automated injection of Envoy proxies into Kubernetes pods.

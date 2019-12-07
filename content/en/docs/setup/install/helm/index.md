@@ -29,7 +29,7 @@ Using these instructions, you can select any one of Istio's built-in
 [configuration profiles](/docs/setup/additional-setup/config-profiles/)
 and then further customize the configuration for your specific needs.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 1. [Download the Istio release](/docs/setup/getting-started/#download).
 
@@ -43,7 +43,7 @@ and then further customize the configuration for your specific needs.
     Use a 2.x version of Helm. Helm 3 is not supported.
     {{< /warning >}}
 
-## Helm chart release repositories
+## Helm chart release repositories{#helm-chart-release-repositories}
 
 The commands in this guide use the Helm charts that are included in the Istio release image.
 If you want to use the Istio release Helm chart repository instead, adjust the commands accordingly and
@@ -53,7 +53,7 @@ add the Istio release repository as follows:
 $ helm repo add istio.io https://storage.googleapis.com/istio-release/releases/{{< istio_full_version >}}/charts/
 {{< /text >}}
 
-## Installation steps
+## Installation steps{#installation-steps}
 
 Change directory to the root of the release and then
 choose one of the following two **mutually exclusive** options:
@@ -283,7 +283,7 @@ $ helm install install/kubernetes/helm/istio --name istio --namespace istio-syst
 
 {{< /tabset >}}
 
-## Verifying the installation
+## Verifying the installation{#verifying-the-installation}
 
 1. Referring to components table in
     [configuration profiles](/docs/setup/additional-setup/config-profiles/),
@@ -299,7 +299,7 @@ $ helm install install/kubernetes/helm/istio --name istio --namespace istio-syst
     $ kubectl get pods -n istio-system
     {{< /text >}}
 
-## Uninstall
+## Uninstall{#uninstall}
 
 - If you installed Istio using the `helm template` command, uninstall with these commands:
 
@@ -372,7 +372,7 @@ $ helm template install/kubernetes/helm/istio-cni --name=istio-cni --namespace=k
     $ kubectl delete namespace istio-system
     {{< /text >}}
 
-## Deleting CRDs and Istio Configuration
+## Deleting CRDs and Istio Configuration{#deleting-CRDs-and-Istio-configuration}
 
 Istio, by design, expects Istio's Custom Resources contained within CRDs to leak into the
 Kubernetes environment. CRDs contain the runtime configuration set by the operator.

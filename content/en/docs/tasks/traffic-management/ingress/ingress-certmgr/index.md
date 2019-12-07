@@ -11,7 +11,7 @@ This example demonstrates the use of Istio as a secure Kubernetes Ingress contro
 
 You will start with a clean Istio installation, create an example service, expose it using the Kubernetes `Ingress` resource and get it secured by instructing cert-manager (bundled with Istio) to manage issuance and renewal of TLS certificates that will be further delivered to the Istio ingress [gateway](/docs/reference/config/networking/gateway) and hot-swapped as necessary via the means of [Secrets Discovery Service (SDS)](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret).
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 1. [Install Istio](/docs/setup/) making sure to enable ingress [gateway](/docs/reference/config/networking/gateway) with Kubernetes Ingress support, [SDS](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret). Here's an example of how to do it:
 
@@ -29,7 +29,7 @@ You will start with a clean Istio installation, create an example service, expos
 
 1. [Install cert-manager](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html) to manage certificates automatically.
 
-## Configuring DNS name and gateway
+## Configuring DNS name and gateway{#configuring-DNS-name-and-gateway}
 
 Take a note of the external IP address of the `istio-ingressgateway` service:
 
@@ -59,7 +59,7 @@ $ kubectl -n istio-system \
 
 Now it's time to setup a demo application.
 
-## Setting up a demo application
+## Setting up a demo application{#setting-up-a-demo-application}
 
 You will be using a simple `helloworld` application for this example. The following command will spin up the `Deployment` and `Service` for the demo application and expose the service using an `Ingress` resource that will be handled by `istio-ingressgateway`.
 
@@ -133,7 +133,7 @@ Hello version: v1, instance: helloworld-5d498979b6-jp2mf
 
 HTTPS access still won't work as you don't have any TLS certificates. Let's fix that.
 
-## Getting a Let's Encrypt certificate issued using cert-manager
+## Getting a Let's Encrypt certificate issued using cert-manager{#getting-a-let's-encrypt-certificate-issued-using-cert-manager}
 
 At this point your Istio installation should have cert-manager up and running with two `ClusterIssuer` resources configured (for production and staging ACME-endpoints provided by [Let's Encrypt](https://letsencrypt.org/)). You will be using staging endpoint for this example (feel free to try swapping `letsencrypt-staging` for `letsencrypt` to get a browser-trusted certificate issued).
 
@@ -180,7 +180,7 @@ Hello version: v1, instance: helloworld-5d498979b6-jp2mf
 
 Note that you have to use the `--insecure` flag as certificates issued by the "staging" ACME-endpoints aren't trusted.
 
-## Moving to production from staging
+## Moving to production from staging{#moving-to-production-from-staging}
 
 Now to switch to the production `letsencrypt` issuer.  First we'll reapply the certificate.
 

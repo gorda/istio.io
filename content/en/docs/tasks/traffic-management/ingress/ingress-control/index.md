@@ -16,7 +16,7 @@ A `Gateway` allows Istio features such as monitoring and route rules to be appli
 
 This task describes how to configure Istio to expose a service outside of the service mesh using an Istio `Gateway`.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 *   Setup Istio by following the instructions in the [Installation guide](/docs/setup/).
 
@@ -26,7 +26,7 @@ This task describes how to configure Istio to expose a service outside of the se
 
 *   Determine the ingress IP and ports as described in the following subsection.
 
-### Determining the ingress IP and ports
+### Determining the ingress IP and ports{#determining-the-ingress-IP-and-ports}
 
 Execute the following command to determine if your Kubernetes cluster is running in an environment that supports external load balancers:
 
@@ -120,7 +120,7 @@ Setting the ingress IP depends on the cluster provider:
 
 {{< /tabset >}}
 
-## Configuring ingress using an Istio gateway
+## Configuring ingress using an Istio gateway{#configuring-ingress-using-an-Istio-gateway}
 
 An ingress [Gateway](/docs/reference/config/networking/gateway/) describes a load balancer operating at the edge of the mesh that receives incoming HTTP/TCP connections.
 It configures exposed ports, protocols, etc.
@@ -224,7 +224,7 @@ Let's see how you can configure a `Gateway` on port 80 for HTTP traffic.
     content-length: 0
     {{< /text >}}
 
-## Accessing ingress services using a browser
+## Accessing ingress services using a browser{#accessing-ingress-services-using-a-browser}
 
 Entering the `httpbin` service URL in a browser won't work because you can't pass the _Host_ header
 to a browser like you did with `curl`. In a real world situation, this is not a problem
@@ -275,7 +275,7 @@ EOF
 You can then use `$INGRESS_HOST:$INGRESS_PORT` in the browser URL. For example,
 `http://$INGRESS_HOST:$INGRESS_PORT/headers` will display all the headers that your browser sends.
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 The `Gateway` configuration resources allow external traffic to enter the
 Istio service mesh and make the traffic management and policy features of Istio
@@ -284,7 +284,7 @@ available for edge services.
 In the preceding steps, you created a service inside the service mesh
 and exposed an HTTP endpoint of the service to external traffic.
 
-## Troubleshooting
+## Troubleshooting{#troubleshooting}
 
 1.  Inspect the values of the `INGRESS_HOST` and `INGRESS_PORT` environment variables. Make sure
 they have valid values, according to the output of the following commands:
@@ -309,7 +309,7 @@ they have valid values, according to the output of the following commands:
 1.  If you have an external load balancer and it does not work for you, try to
     [access the gateway using its node port](/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports).
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Delete the `Gateway` and `VirtualService` configuration, and shutdown the [httpbin]({{< github_tree >}}/samples/httpbin) service:
 

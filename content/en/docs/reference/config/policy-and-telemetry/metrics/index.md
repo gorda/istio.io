@@ -11,7 +11,7 @@ template](/docs/reference/config/policy-and-telemetry/templates/metric/) to defi
 
 We will describe metrics first and then the labels for each metric.
 
-## Metrics
+## Metrics{#metrics}
 
 For HTTP, HTTP/2, and GRPC traffic, Istio generates the following metrics:
 
@@ -35,7 +35,7 @@ For TCP traffic, Istio generates the following metrics:
 
 *   **Tcp Connections Closed** (`istio_tcp_connections_closed_total`): This is a `COUNTER` incremented for every closed connection.
 
-## Labels
+## Labels{#labels}
 
 *   **Reporter**: This identifies the reporter of the request. It is set to `destination`
     if report is from a server Istio proxy and `source` if report is from a client

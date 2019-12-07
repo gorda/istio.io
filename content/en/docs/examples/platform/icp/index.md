@@ -13,7 +13,7 @@ This example demonstrates how to setup network connectivity between two
 and then compose them into a multicluster mesh using a
 [single-network deployment](/docs/ops/deployment/deployment-models/#single-network).
 
-## Create the IBM Cloud Private clusters
+## Create the IBM Cloud Private clusters{#create-the-IBM-cloud-private-clusters}
 
 1.  [Install two IBM Cloud Private clusters](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/installing/install.html).
 
@@ -48,7 +48,7 @@ and then compose them into a multicluster mesh using a
 
     1.  Repeat above two steps to validate `cluster-2`.
 
-## Configure pod communication across IBM Cloud Private clusters
+## Configure pod communication across IBM Cloud Private clusters{#configure-pod-communication-across-IBM-cloud-private-clusters}
 
 IBM Cloud Private uses Calico Node-to-Node Mesh by default to manage container networks. The BGP client
 on each node distributes the IP router information to all nodes.
@@ -146,14 +146,14 @@ The `hosts` file for `cluster-2`:
 The steps above in this section enables pod communication across the two clusters by configuring a full IP routing mesh
 across all nodes in the two IBM Cloud Private Clusters.
 
-## Install Istio for multicluster
+## Install Istio for multicluster{#install-Istio-for-multicluster}
 
 Follow the [single-network shared control plane instructions](/docs/setup/install/multicluster/shared-vpn/) to install and configure
 local Istio control plane and Istio remote on `cluster-1` and `cluster-2`.
 
 In this guide, it is assumed that the local Istio control plane is deployed in `cluster-1`, while the Istio remote is deployed in `cluster-2`.
 
-## Deploy the Bookinfo example across clusters
+## Deploy the Bookinfo example across clusters{#deploy-the-Bookinfo-example-across-clusters}
 
 The following example enables [automatic sidecar injection](/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection).
 

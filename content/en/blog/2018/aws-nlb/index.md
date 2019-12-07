@@ -17,7 +17,7 @@ This post provides instructions to use and configure ingress Istio with [AWS Net
 
 Network load balancer (NLB) could be used instead of classical load balancer. You can see the [comparison](https://aws.amazon.com/elasticloadbalancing/details/#Product_comparisons) between different AWS `loadbalancer` for more explanation.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 The following instructions require a Kubernetes **1.9.0 or newer** cluster.
 
@@ -27,7 +27,7 @@ Usage of AWS `nlb` on Kubernetes is an Alpha feature and not recommended for pro
 Usage of AWS `nlb` does not support the creation of two or more Kubernetes clusters running Istio in the same zone as a result of [Kubernetes Bug #69264](https://github.com/kubernetes/kubernetes/issues/69264).
 {{< /warning >}}
 
-## IAM policy
+## IAM policy{#policy}
 
 You need to apply policy on the master role in order to be able to provision network load balancer.
 
@@ -90,7 +90,7 @@ You need to apply policy on the master role in order to be able to provision net
 
 1. Your policy is now attach to your master node.
 
-## Generate the Istio manifest
+## Generate the Istio manifest{#generate-the-Istio-manifest}
 
 To use an AWS `nlb` load balancer, it is necessary to add an AWS specific
 annotation to the Istio installation.  These instructions explain how to

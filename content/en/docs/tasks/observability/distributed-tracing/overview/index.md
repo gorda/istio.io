@@ -15,7 +15,7 @@ to provide tracing integration out of the box. Specifically, Istio provides opti
 and configure proxies to send trace spans to them automatically.
 See [Zipkin](../zipkin/), [Jaeger](../jaeger/) and [LightStep](/docs/tasks/observability/distributed-tracing/lightstep/) task docs about how Istio works with those tracing systems.
 
-## Trace context propagation
+## Trace context propagation{#trace-context-propagation}
 
 Although Istio proxies are able to automatically send spans, they need some hints to tie together the entire trace.
 Applications need to propagate the appropriate HTTP headers so that when the proxies send span information,
@@ -90,7 +90,7 @@ public Response bookReviewsById(@PathParam("productId") int productId,
 
 When you make downstream calls in your applications, make sure to include these headers.
 
-## Trace sampling
+## Trace sampling{#trace-sampling}
 
 Istio captures a trace for all requests by default when installing with the demo profile.
 For example, when using the Bookinfo sample application above, every time you access

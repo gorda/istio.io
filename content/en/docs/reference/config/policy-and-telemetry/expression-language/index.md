@@ -8,16 +8,16 @@ aliases:
 
 This page describes how to use the Mixer configuration expression language (CEXL).
 
-## Background
+## Background{#background}
 
 Mixer configuration uses an expression language (CEXL) to specify match expressions and [mapping expressions](/docs/reference/config/policy-and-telemetry/mixer-overview/#attribute-expressions). CEXL expressions map a set of typed [attributes](/docs/reference/config/policy-and-telemetry/mixer-overview/#attributes) and constants to a typed
 [value](https://github.com/istio/api/blob/{{< source_branch_name >}}/policy/v1beta1/value_type.proto).
 
-## Syntax
+## Syntax{#syntax}
 
 CEXL accepts a subset of **[Go expressions](https://golang.org/ref/spec#Expressions)**, which defines the syntax. CEXL implements a subset of the Go operators that constrains the set of accepted Go expressions. CEXL also supports arbitrary parenthesization.
 
-## Functions
+## Functions{#functions}
 
 CEXL supports the following functions.
 
@@ -48,7 +48,7 @@ CEXL supports the following functions.
 |`toLower` | Convert a string to lowercase letters | `toLower("User-Agent")` | Returns `"user-agent"`.
 |`size` | Length of a string | `size("admin")` | Returns 5
 
-## Type checking
+## Type checking{#type-checking}
 
 CEXL variables are attributes from the typed [attribute vocabulary](/docs/reference/config/policy-and-telemetry/attribute-vocabulary/), constants are implicitly typed and, functions are explicitly typed.
 
@@ -57,13 +57,13 @@ Selectors must resolve to a boolean value and mapping expressions must resolve t
 
 For example, if an operator specifies a *string* label as `request.size | 200`, validation fails because the expression resolves to an integer.
 
-## Missing attributes
+## Missing attributes{#missing-attributes}
 
 If an expression uses an attribute that is not available during request processing, the expression evaluation fails. Use the `|` operator to provide a default value if an attribute may be missing.
 
 For example, the expression `request.auth.principal == "user1"` fails evaluation if the `request.auth.principal` attribute is missing. The `|` (OR) operator addresses the problem: `(request.auth.principal | "nobody" ) == "user1"`.
 
-## Examples
+## Examples{#examples}
 
 |Expression |Return Type |Description|
 |-----------|------------|-----------|

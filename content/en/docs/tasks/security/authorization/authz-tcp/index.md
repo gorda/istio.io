@@ -11,7 +11,7 @@ This task shows you how to set up Istio authorization for TCP traffic in an Isti
 You can learn more about the Istio authorization in the
 [authorization concept page](/docs/concepts/security/#authorization).
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 The activities in this task assume that you:
 
@@ -36,7 +36,7 @@ If you don't see the expected output in the browser as you follow the task, retr
 because some delay is possible due to caching and other propagation overhead.
 {{< /tip >}}
 
-## Configure access control for a TCP workload
+## Configure access control for a TCP workload{#configure-access-control-for-a-TCP-workload}
 
 By default, the [Bookinfo](/docs/examples/bookinfo/) example application only uses the HTTP protocol.
 To showcase the authorization of TCP traffic, you must update the application to use TCP.
@@ -175,7 +175,7 @@ which talks to a MongoDB backend using TCP, and then apply the authorization pol
     **Congratulations!** You successfully deployed a workload communicating over TCP traffic and applied
     both a mesh-level and a workload-level authorization policy to enforce access control for the requests.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1. Remove Istio authorization policy configuration:
 

@@ -22,7 +22,7 @@ On IBM Cloud or other platforms where overlay network of Pods is isolated from V
 VMs cannot initiate any direct communication to Kubernetes Pods even when using Istio.
 {{< /warning >}}
 
-## Overview
+## Overview{#overview}
 
 {{< image width="80%" link="./vm-bookinfo.svg" caption="Bookinfo running on VMs" >}}
 
@@ -30,7 +30,7 @@ VMs cannot initiate any direct communication to Kubernetes Pods even when using 
 https://docs.google.com/drawings/d/1G1592HlOVgtbsIqxJnmMzvy6ejIdhajCosxF1LbvspI/edit
  -->
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 - Setup Istio by following the instructions in the
   [Installation guide](/docs/setup/getting-started/).
@@ -39,7 +39,7 @@ https://docs.google.com/drawings/d/1G1592HlOVgtbsIqxJnmMzvy6ejIdhajCosxF1LbvspI/
 
 - Create a VM named 'vm-1' in the same project as the Istio cluster, and [join the mesh](/docs/examples/virtual-machines/single-network/).
 
-## Running MySQL on the VM
+## Running MySQL on the VM{#running-MySQL-on-the-VM}
 
 We will first install MySQL on the VM, and configure it as a backend for the ratings service.
 
@@ -90,7 +90,7 @@ $ mysql -u root -ppassword test -e  "update ratings set rating=1 where reviewid=
 +----------+--------+
  {{< /text >}}
 
-## Find out the IP address of the VM that will be used to add it to the mesh
+## Find out the IP address of the VM that will be used to add it to the mesh{#find-out-the-IP-address-of-the-VM-that-will-be-used-to-add-it-to-the-mesh}
 
 On the VM:
 
@@ -98,7 +98,7 @@ On the VM:
 $ hostname -I
 {{< /text >}}
 
-## Registering the mysql service with the mesh
+## Registering the mysql service with the mesh{#registering-the-mysql-service-with-the-mesh}
 
 On a host with access to [`istioctl`](/docs/reference/commands/istioctl) commands, register the VM and mysql db service
 
@@ -114,7 +114,7 @@ I1108 20:17:54.959744   40419 register.go:191] Successfully updated mysqldb, now
 
 Note that the 'mysqldb' virtual machine does not need and should not have special Kubernetes privileges.
 
-## Using the mysql service
+## Using the mysql service{#using-the-mysql-service}
 
 The ratings service in Bookinfo will use the DB on the machine. To verify that it works, create version 2 of the ratings service that uses the mysql db on the VM. Then specify route rules that force the review service to use the ratings version 2.
 

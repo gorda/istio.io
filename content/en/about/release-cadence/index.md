@@ -23,7 +23,7 @@ You can find available releases on the [releases page](https://github.com/istio/
 and if you're the adventurous type, you can learn about our development builds on the [development builds wiki](https://github.com/istio/istio/wiki/Dev%20Builds).
 You can find high-level releases notes for each LTS release [here](/news).
 
-## Naming scheme
+## Naming scheme{#naming-scheme}
 
 Our naming scheme for LTS releases is:
 

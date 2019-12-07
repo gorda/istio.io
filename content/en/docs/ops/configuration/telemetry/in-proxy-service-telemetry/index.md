@@ -17,7 +17,7 @@ metrics that Mixer currently generates:
 - `istio_request_duration_seconds`
 - `istio_request_size`
 
-## Enable service-level metrics generation in Envoy
+## Enable service-level metrics generation in Envoy{#enable-service-level-metrics-generation-in-envoy}
 
 To generate service-level metrics directly in the Envoy proxies, follow these steps:
 
@@ -62,7 +62,7 @@ Follow these steps manually:
 Go to the **Istio Mesh** Grafana dashboard. Verify that the dashboard displays the same telemetry as before but without
     any requests flowing through Istio's Mixer.
 
-## Differences with Mixer-based generation
+## Differences with Mixer-based generation{#differences-with-mixer-based-generation}
 
 Small differences between the in-proxy generation and Mixer-based generation of service-level metrics
 persist in Istio 1.3. We won't consider the functionality stable until in-proxy generation has full feature-parity with
@@ -76,7 +76,7 @@ Until then, please consider these differences:
 - The `istio_request_duration_milliseconds` metric uses more granular buckets inside the proxy, providing
   increased accuracy in latency reporting.
 
-## Performance impact
+## Performance impact{#performance-impact}
 
 {{< warning >}}
 
@@ -104,7 +104,7 @@ Here's what we've measured so far:
   1000 rps of mesh traffic, and could halve the CPU consumed by Istio while collecting
   [standard metrics](/docs/reference/config/policy-and-telemetry/metrics/).
 
-## Known limitations
+## Known limitations{#known-limitations}
 
 - We only provide support for exporting these metrics via Prometheus.
 - We provide no support to generate TCP metrics.

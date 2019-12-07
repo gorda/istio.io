@@ -6,13 +6,13 @@ aliases:
     - /about/notes/1.1
 ---
 
-## Incompatible changes from 1.0
+## Incompatible changes from 1.0{#incompatible-changes-from-1.0}
 
 In addition to the new features and improvements listed below, Istio 1.1 has introduced
 a number of significant changes from 1.0 that can alter the behavior of applications.
 A concise list of these changes can be found in the [upgrade notice](/news/releases/1.1.x/announcing-1.1/upgrade-notes).
 
-## Upgrades
+## Upgrades{#upgrades}
 
 We recommend a manual upgrade of the control plane and data plane to 1.1. See
 the [upgrades documents](/docs/setup/upgrade/) for more information.
@@ -22,7 +22,7 @@ Be sure to check out the [upgrade notice](/news/releases/1.1.x/announcing-1.1/up
 concise list of things you should know before upgrading your deployment to Istio 1.1.
 {{< /warning >}}
 
-## Installation
+## Installation{#installation}
 
 - **CRD Install Separated from Istio Install**.  Placed Istio’s Custom Resource
   Definitions (CRDs) into the `istio-init` Helm chart. Placing the CRDs in
@@ -41,7 +41,7 @@ concise list of things you should know before upgrading your deployment to Istio
   [multicluster split horizon](/docs/setup/install/multicluster/shared-gateways/) remote cluster installation
   into the Istio Helm chart simplifying the operational experience.
 
-## Traffic management
+## Traffic management{#traffic-management}
 
 - **New `Sidecar` Resource**. The new [sidecar](/docs/concepts/traffic-management/#sidecars) resource
   enables more fine-grained control over the behavior of the sidecar proxies attached to workloads within a namespace.
@@ -91,7 +91,7 @@ concise list of things you should know before upgrading your deployment to Istio
 - **Access Logging Off by Default**. Disabled the access logs for all Envoy
   sidecars by default to improve performance.
 
-### Security
+### Security{#security}
 
 - **Readiness and Liveness Probes**. Added support for Kubernetes' HTTP
   [readiness and liveness probes](/faq/security/#k8s-health-checks) when
@@ -124,7 +124,7 @@ concise list of things you should know before upgrading your deployment to Istio
 - **Customized (non `cluster.local`) Trust Domains**. Added support for
   organization- or cluster-specific trust domains in the identities.
 
-## Policies and telemetry
+## Policies and telemetry{#policies-and-telemetry}
 
 - **Policy Checks Off By Default**. Changed policy checks to be turned off by
   default to improve performance for most customer scenarios. [Enabling Policy Enforcement](/docs/tasks/policy-enforcement/enabling-policy/)
@@ -181,7 +181,7 @@ concise list of things you should know before upgrading your deployment to Istio
   collector. Istio now supports bring your own `statsd` for
   improved flexibility with existing Kubernetes deployments.
 
-### Configuration management
+### Configuration management{#configuration-management}
 
 - **Galley**. Added [Galley](/docs/ops/deployment/architecture/#galley) as the
   primary configuration ingestion and distribution mechanism within Istio. It

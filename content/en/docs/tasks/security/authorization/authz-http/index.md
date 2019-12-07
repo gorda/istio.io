@@ -11,7 +11,7 @@ aliases:
 This task shows you how to set up Istio authorization for HTTP traffic in an Istio mesh.
 Learn more in our [authorization concept page](/docs/concepts/security/#authorization).
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 The activities in this task assume that you:
 
@@ -36,7 +36,7 @@ If you don't see the expected output in the browser as you follow the task, retr
 because some delay is possible due to caching and other propagation overhead.
 {{< /tip >}}
 
-## Configure access control for workloads using HTTP traffic
+## Configure access control for workloads using HTTP traffic{#configure-access-control-for-workloads-using-HTTP-traffic}
 
 Using Istio, you can easily setup access control for {{< gloss "workload" >}}workloads{{< /gloss >}}
 in your mesh. This task shows you how to set up access control using Istio authorization.
@@ -188,7 +188,7 @@ and then grant more access to the workload gradually and incrementally.
     **Congratulations!** You successfully applied authorization policy to enforce access
     control for workloads using HTTP traffic.
 
-## Clean up
+## Clean up{#clean-up}
 
 1. Remove all authorization policies from your configuration:
 

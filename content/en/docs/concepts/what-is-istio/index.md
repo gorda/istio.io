@@ -16,7 +16,7 @@ mesh that layers transparently onto existing distributed applications. It is als
 telemetry or policy system. Istio’s diverse feature set lets you successfully, and efficiently, run a distributed microservice architecture, and provides a
 uniform way to secure, connect, and monitor microservices.
 
-## What is a service mesh?
+## What is a service mesh?{#what-is-a-service-mesh}
 
 Istio addresses the challenges developers and operators face as monolithic applications transition towards a distributed microservice architecture. To see how,
 it helps to take a more detailed look at Istio’s service mesh.
@@ -29,7 +29,7 @@ The term service mesh is used to describe the network of microservices that make
 Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of
  microservice applications.
 
-## Why use Istio?
+## Why use Istio?{#why-use-Istio}
 
 Istio makes it easy to create a network of deployed services with load balancing, service-to-service authentication, monitoring, and more, with [few](/docs/tasks/observability/distributed-tracing/overview/#trace-context-propagation) or no code changes
 in service code. You add Istio support to services by deploying a special sidecar proxy throughout your environment that intercepts all network communication
@@ -47,12 +47,12 @@ between microservices, then configure and manage Istio using its control plane f
 
 Istio is designed for extensibility and meets diverse deployment needs.
 
-## Core features
+## Core features{#core-features}
 
 Istio provides a number of key capabilities uniformly across a network of
 services:
 
-### Traffic management
+### Traffic management{#traffic-management}
 
 Istio’s easy rules configuration and traffic routing lets you control the flow of traffic and API calls between services. Istio simplifies configuration of
 service-level properties like circuit breakers, timeouts, and retries, and makes it a breeze to set up important tasks like A/B testing, canary rollouts, and
@@ -63,7 +63,7 @@ and your network more robust -- no matter what conditions you face.
 
 Refer to the [Traffic management concepts guide](/docs/concepts/traffic-management/) for more details.
 
-### Security
+### Security{#security}
 
 Istio’s security capabilities free developers to focus on security at the application level. Istio provides the underlying secure communication channel, and
 manages authentication, authorization, and encryption of service communication at scale. With Istio, service communications are secured by default,
@@ -74,7 +74,7 @@ secure {{<gloss>}}pod{{</gloss>}}-to-pod or service-to-service communication at 
 
 Refer to the [Security concepts guide](/docs/concepts/security/) for more details.
 
-### Policies
+### Policies{#policies}
 
 Istio lets you configure custom policies for your application to enforce rules at runtime such as:
 
@@ -86,7 +86,7 @@ Istio also lets you create your own [policy adapters](/docs/tasks/policy-enforce
 
 Refer to the [Policies concepts guide](/docs/concepts/policies/) for more details.
 
-### Observability
+### Observability{#observability}
 
 Istio’s robust tracing, monitoring, and logging features give you deep insights into your service mesh deployment. Gain a real understanding of how service performance
 impacts things upstream and downstream with Istio’s monitoring features, while its custom dashboards provide visibility into the performance of all your
@@ -101,7 +101,7 @@ and efficiently.
 
 Refer to the [Observability concepts guide](/docs/concepts/observability/) for more details.
 
-## Platform support
+## Platform support{#platform-support}
 
 Istio is platform-independent and designed to run in a variety of environments, including those spanning Cloud, on-premise, Kubernetes, Mesos, and more. You can
  deploy Istio on Kubernetes, or on Nomad with Consul. Istio currently supports:
@@ -112,7 +112,7 @@ Istio is platform-independent and designed to run in a variety of environments, 
 
 * Services running on individual virtual machines
 
-## Integration and customization
+## Integration and customization{#integration-and-customization}
 
 The policy enforcement component of Istio can be extended and customized to integrate with existing solutions for ACLs, logging, monitoring, quotas, auditing,
 and more.

@@ -12,7 +12,7 @@ This post provides instructions to manually create a custom ingress [gateway](/d
 
 The creation of custom ingress gateway could be used in order to have different `loadbalancer` in order to isolate traffic.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Setup Istio by following the instructions in the
   [Installation guide](/docs/setup/).
@@ -20,7 +20,7 @@ The creation of custom ingress gateway could be used in order to have different 
 * We will use `demo.mydemo.com` for our example,
   it must be resolved with your DNS
 
-## Configuring the custom ingress gateway
+## Configuring the custom ingress gateway{#configuring-the-custom-ingress-gateway}
 
 1. Check if [cert-manager](https://github.com/helm/charts/tree/master/stable/cert-manager) was installed using Helm with the following command:
 

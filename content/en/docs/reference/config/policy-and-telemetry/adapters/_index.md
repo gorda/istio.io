@@ -12,7 +12,7 @@ To implement a new adapter for Mixer, please refer to the
 [Adapter Developer's Guide](https://github.com/istio/istio/wiki/Mixer-Compiled-In-Adapter-Dev-Guide).
 {{< /idea >}}
 
-## Templates
+## Templates{#templates}
 
 The table below shows the set of [templates](/docs/reference/config/policy-and-telemetry/templates) that are implemented by each supported adapter.
 

@@ -20,7 +20,7 @@ Istio 1.4 continues our efforts at improving the Istio user experience,
 with a focus on simplification. We've also continued to add features that
 improve the performance and experience of running Istio.
 
-## Mixer-less telemetry
+## Mixer-less telemetry{#mixer-less-telemetry}
 
 Our implementation of telemetry without Mixer will simplify installation and
 operation of meshes, all while vastly improving performance. The in-proxy
@@ -36,7 +36,7 @@ The authorization policy model is now in Beta with the introduction of the
 focuses on simplification and flexibility. This will also replace the old
 [`v1alpha1` RBAC policy](/docs/reference/config/security/istio.rbac.v1alpha1/).
 
-## Automatic mutual TLS
+## Automatic mutual TLS{#automatic-mutual-TLS}
 
 We added [automatic mutual TLS support](/docs/tasks/security/authentication/auto-mtls/). It allows
 you to adopt mutual TLS without needing to configure destination rules. Istio automatically programs
@@ -45,7 +45,7 @@ client sidecar proxies to send mutual TLS to server endpoints that are able to a
 Currently this feature must be explicitly enabled, but we plan to enable it by default in a
 future release.
 
-## Improved troubleshooting
+## Improved troubleshooting{#improved-troubleshooting}
 
 We're introducing the
 [`istioctl analyze`](/docs/ops/diagnostic-tools/istioctl-analyze/) command to
@@ -53,7 +53,7 @@ improve troubleshooting of your mesh. Check for problems with
 configuration in your mesh, and even validate new configuration prior to
 submitting it to the mesh.
 
-## Better sidecar
+## Better sidecar{#better-sidecar}
 
 We've been doing tons of work to improve Envoy, its feature set, and the
 experience of using it. Envoy now exits more gracefully on crashes, supports
@@ -64,7 +64,7 @@ Finally, there is a new
 that can tell you when configuration
 has been pushed to all proxies in the mesh.
 
-## Other enhancements
+## Other enhancements{#other-enhancements}
 
 - Citadel will now periodically check for and rotate expired root certificates
 - We've added support for OpenAPI v3 schema validation

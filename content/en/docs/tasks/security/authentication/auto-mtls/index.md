@@ -12,7 +12,7 @@ With Istio auto mutual TLS feature, you can adopt mutual TLS by only configuring
 Istio tracks the server workloads migrated to Istio sidecar, and configures client sidecar to send mutual TLS traffic to those workloads automatically, and send plain text traffic to workloads
 without sidecars. This allows you to adopt Istio mutual TLS incrementally with minimal manual configuration.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Understand Istio [authentication policy](/docs/concepts/security/#authentication-policies) and related
 [mutual TLS authentication](/docs/concepts/security/#mutual-tls-authentication) concepts.
@@ -26,9 +26,9 @@ $ istioctl manifest apply --set profile=demo \
   --set values.global.mtls.enabled=false
 {{< /text >}}
 
-## Instructions
+## Instructions{#instructions}
 
-### Setup
+### Setup{#setup}
 
 Our examples deploy `httpbin` service into three namespaces, `full`, `partial`, and `legacy`.
 Each represents different phase of Istio migration.
@@ -138,7 +138,7 @@ The SPIFFE URI shows the client identity from X509 certificate, which
 indicates the traffic is sent in mutual TLS. If the traffic is in plain text, no client certificate
 will be displayed.
 
-### Start from PERMISSIVE mode
+### Start from PERMISSIVE mode{#start-from-permissive-mode}
 
 In the setup, we start with `PERMISSIVE` for all services in the mesh.
 
@@ -176,7 +176,7 @@ response code: 200
 
 {{< /text >}}
 
-### Working with Sidecar Migration
+### Working with Sidecar Migration{#working-with-sidecar-migration}
 
 The request to `httpbin.partial` can reach to server workloads with or without sidecar. Istio
 automatically configures the `sleep.full` client to initiates mutual TLS connection to workload
@@ -213,7 +213,7 @@ response code: 200
 Without automatic mutual TLS feature, you have to track the sidecar migration finishes, and then
 explicitly configure the destination rule to make client send mutual TLS traffic to `httpbin.full`.
 
-### Lock down mutual TLS to STRICT
+### Lock down mutual TLS to STRICT{#lock-down-mutual-TLS-to-strict}
 
 Imagine now you need to lock down the `httpbin.full` service to only accept mutual TLS traffic. You
 can configure authentication policy to `STRICT`.
@@ -264,7 +264,7 @@ response code: 200
 
 {{< /text >}}
 
-### Disable mutual TLS to plain text
+### Disable mutual TLS to plain text{#disable-mutual-TLS-to-plain-text}
 
 If for some reason, you want service to be in plain text mode explicitly, we can configure authentication policy as plain text.
 
@@ -306,7 +306,7 @@ response code: 200
 
 All traffic are now in plain text.
 
-### Destination rule overrides
+### Destination rule overrides{#destination-rule-overrides}
 
 For backward compatibility, you can still use destination rule to override the TLS configuration as
 before. When destination rule has an explicit TLS configuration, that overrides the client sidecars'
@@ -355,13 +355,13 @@ response code: 200
 
 {{< /text >}}
 
-### Cleanup
+### Cleanup{#cleanup}
 
 {{< text bash >}}
 $ kubectl delete ns full partial legacy
 {{< /text >}}
 
-## Summary
+## Summary{#summary}
 
 Automatic mutual TLS configures the client sidecar to send TLS traffic by default between sidecars.
 You only need to configure authentication policy.

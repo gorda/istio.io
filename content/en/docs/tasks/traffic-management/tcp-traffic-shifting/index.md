@@ -18,13 +18,13 @@ another. In this task, you will send 100% of the TCP traffic to `tcp-echo:v1`.
 Then, you will route 20% of the TCP traffic to `tcp-echo:v2` using Istio's
 weighted routing feature.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Setup Istio by following the instructions in the [Installation guide](/docs/setup/).
 
 * Review the [Traffic Management](/docs/concepts/traffic-management) concepts doc.
 
-## Apply weight-based TCP routing
+## Apply weight-based TCP routing{#apply-weight-based-TCP-routing}
 
 1.  To get started, deploy the `v1` version of the `tcp-echo` microservice.
 
@@ -156,7 +156,7 @@ was routed to the `v1` version of the `tcp-echo` service.
 80% of the TCP traffic was routed to the `v1` version of the `tcp-echo` service, while 20% was
 routed to `v2`.
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 In this task you partially migrated TCP traffic from an old to new version of
 the `tcp-echo` service using Istio's weighted routing feature. Note that this is
@@ -170,7 +170,7 @@ and down independently, without affecting the traffic distribution between them.
 For more information about version routing with autoscaling, check out the blog
 article [Canary Deployments using Istio](/blog/2017/0.1-canary/).
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1. Remove the `tcp-echo` application and routing rules:
 

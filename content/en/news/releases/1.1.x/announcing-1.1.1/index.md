@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.1.1. Please see below for 
 
 {{< relnote >}}
 
-## Bug fixes and minor enhancements
+## Bug fixes and minor enhancements{#bug-fixes-and-minor-enhancements}
 
 - Configure Prometheus to monitor Citadel ([Issue 12175](https://github.com/istio/istio/pull/12175))
 - Improve output of [`istioctl verify-install`](/docs/reference/commands/istioctl/#istioctl-verify-install) command ([Issue 12174](https://github.com/istio/istio/pull/12174))

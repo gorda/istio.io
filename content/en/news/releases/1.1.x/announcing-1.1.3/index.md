@@ -16,11 +16,11 @@ We're pleased to announce the availability of Istio 1.1.3. Please see below for 
 
 {{< relnote >}}
 
-## Known issues with 1.1.3
+## Known issues with 1.1.3{#known-issues-with-1.1.3}
 
 - A [panic in the Node Agent](https://github.com/istio/istio/issues/13325) was discovered late in the 1.1.3 qualification process.  The panic only occurs in clusters with the alpha-quality SDS certificate rotation feature enabled.  Since this is the first time we have included SDS certificate rotation in our long-running release tests, we don't know whether this is a latent bug or a new regression.  Considering SDS certificate rotation is in alpha, we have decided to release 1.1.3 with this issue and target a fix for the 1.1.4 release.
 
-## Bug fixes
+## Bug fixes{#bug-fixes}
 
 - Istio-specific back-ports of Envoy patches for [`CVE-2019-9900`](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900) and
 [`CVE-2019-9901`](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901) included in Istio 1.1.2 have been dropped in favor of an
@@ -59,7 +59,7 @@ to services for `Sidecar` listeners ([Issue 12536](https://github.com/istio/isti
 
 - Fix SDS memory leak in the presence of invalid or missing keying materials ([Issue 13197](https://github.com/istio/istio/issues/13197)).
 
-## Small enhancements
+## Small enhancements{#small-enhancements}
 
 - Hide `ServiceAccounts` from `PushContext` log to reduce log volume.
 

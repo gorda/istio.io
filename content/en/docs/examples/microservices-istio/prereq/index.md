@@ -14,14 +14,14 @@ If you are in a workshop and the instructors provide a cluster, let
 them handle the cluster prerequisites, while you skip ahead to setup your local
 computer.
 
-## Kubernetes cluster
+## Kubernetes cluster{#Kubernetes-cluster}
 
 Ensure the following conditions are met:
 
 - You have administrator privileges on a Kubernetes cluster.
 - You can create a namespace in the cluster for each participant.
 
-## Local computer
+## Local computer{#local-computer}
 
 Ensure the following conditions are met:
 

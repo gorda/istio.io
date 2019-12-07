@@ -9,13 +9,13 @@ aliases:
     - /docs/ops/troubleshooting/validation
 ---
 
-## Seemingly valid configuration is rejected
+## Seemingly valid configuration is rejected{#seemingly-valid-configuration-is-rejected}
 
 Manually verify your configuration is correct, cross-referencing
 [Istio API reference](/docs/reference/config) when
 necessary.
 
-## Invalid configuration is accepted
+## Invalid configuration is accepted{#invalid-configuration-is-accepted}
 
 Verify the `istio-galley validationwebhookconfiguration` exists and
 is correct. The `apiVersion`, `apiGroup`, and `resource` of the
@@ -189,7 +189,7 @@ created/updated. If you don’t see any error message and the webhook
 wasn’t invoked and the webhook configuration is valid, your cluster is
 misconfigured.
 
-## Creating configuration fails with x509 certificate errors
+## Creating configuration fails with x509 certificate errors{#creating-configuration-fails-with-x509-certificate-errors}
 
 `x509: certificate signed by unknown authority` related errors are
 typically caused by an empty `caBundle` in the webhook

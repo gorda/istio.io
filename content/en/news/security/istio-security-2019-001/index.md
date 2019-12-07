@@ -28,7 +28,7 @@ We are revisiting our processes to flag vulnerabilities that are initially repor
 
 We tracked the bug to a code change introduced in Istio 1.1 and affecting all releases up to 1.1.6.
 
-## Impact and detection
+## Impact and detection{#impact-and-detection}
 
 Since Istio 1.1, In the default Istio installation profile, policy enforcement is disabled by default.
 
@@ -48,12 +48,12 @@ You are impacted by the vulnerability issue if the following conditions are all 
 * Your workload is NOT using HTTP, HTTP/2, or gRPC protocols
 * A mixer adapter (e.g., Deny Checker, List Checker) is used to provide authorization for your backend TCP service.
 
-## Mitigation
+## Mitigation{#mitigation}
 
 * Users of Istio 1.0.x are not affected.
 * For Istio 1.1.x deployments: update to [Istio 1.1.7](/news/releases/1.1.x/announcing-1.1.7) or later.
 
-## Credit
+## Credit{#credit}
 
 The Istio team would like to thank `Haim Helman` for the original bug report.
 

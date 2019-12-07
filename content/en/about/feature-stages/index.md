@@ -19,7 +19,7 @@ This page lists the relative maturity and support
 level of every Istio feature. Please note that the phases (Alpha, Beta, and Stable) are applied to individual features
 within the project, not to the project as a whole. Here is a high level description of what these labels mean.
 
-## Feature phase definitions
+## Feature phase definitions{#feature-phase-definitions}
 
 |            | Alpha      | Beta         | Stable
 |-------------------|-------------------|-------------------|-------------------
@@ -29,11 +29,11 @@ within the project, not to the project as a whole. Here is a high level descript
 |   **Deprecation Policy**        | None     | Weak - 3 months         | Dependable,  Firm. 1 year notice will be provided before changes
 | **Security** | Security vulnerabilities will be handled publicly as simple bug fixes | Security vulnerabilities will be handled according to our [security vulnerability policy](/about/security-vulnerabilities/) | Security vulnerabilities will be handled according to our [security vulnerability policy](/about/security-vulnerabilities/)
 
-## Istio features
+## Istio features{#Istio-features}
 
 Below is our list of existing features and their current phases. This information will be updated after every monthly release.
 
-### Traffic management
+### Traffic management{#traffic-management}
 
 | Feature           | Phase
 |-------------------|-------------------
@@ -49,7 +49,7 @@ Below is our list of existing features and their current phases. This informatio
 | CNI container interface | Alpha
 | [Sidecar API](/docs/reference/config/networking/sidecar/) | Beta
 
-### Observability
+### Observability{#observability}
 
 | Feature           | Phase
 |-------------------|-------------------
@@ -65,7 +65,7 @@ Below is our list of existing features and their current phases. This informatio
 | [Logging with Fluentd](/docs/tasks/observability/logs/fluentd/) | Beta
 | [Trace Sampling](/docs/tasks/observability/distributed-tracing/overview/#trace-sampling) | Beta
 
-### Security and policy enforcement
+### Security and policy enforcement{#security-and-policy-enforcement}
 
 | Feature           | Phase
 |-------------------|-------------------
@@ -82,7 +82,7 @@ Below is our list of existing features and their current phases. This informatio
 | [OPA Checker](/docs/reference/config/policy-and-telemetry/adapters/opa/)    | Alpha
 | [SDS Integration](/docs/tasks/security/citadel-config/auth-sds/) | Alpha
 
-### Core
+### Core{#core}
 
 | Feature           | Phase
 |-------------------|-------------------

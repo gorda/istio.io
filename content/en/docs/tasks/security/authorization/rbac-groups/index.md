@@ -10,7 +10,7 @@ aliases:
 This tutorial walks you through examples to configure the groups-base
 authorization and the authorization of list-typed claims in Istio.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Read the [authorization](/docs/concepts/security/#authorization) concept
 and go through the guide on how to
@@ -25,7 +25,7 @@ concepts.
 * Follow the [Istio installation guide](/docs/setup/install/istioctl/)
 to install Istio with mutual TLS enabled.
 
-## Setup the required namespace and workloads
+## Setup the required namespace and workloads{#setup-the-required-namespace-and-workloads}
 
 This tutorial runs in a new namespace called `authz-groups-test-ns`,
 with two workloads, `httpbin` and `sleep`, both running with an Envoy sidecar
@@ -70,7 +70,7 @@ pointed by the `NS` environmental variable.
 
     When the command succeeds, it returns the HTTP code 200.
 
-## Configure JSON Web Token (JWT) authentication with mutual TLS
+## Configure JSON Web Token (JWT) authentication with mutual TLS{#configure-json-web-token-JWT-authentication-with-mutual-TLS}
 
 The authentication policy you apply next enforces that a valid JWT is needed to
 access the `httpbin` workload.
@@ -145,7 +145,7 @@ communicating with `httpbin`.
 
     When no valid JWT is attached, it returns the HTTP code 401.
 
-## Configure groups-based authorization
+## Configure groups-based authorization{#configure-groups-based-authorization}
 
 This section creates a policy to authorize the access to the `httpbin`
 workload if the requests are originated from specific groups.
@@ -214,7 +214,7 @@ workload succeeds:
     value of [`"group1"`, `"group2"`] returns HTTP code 200
     since it contains `group1`.
 
-## Configure the authorization of list-typed claims
+## Configure the authorization of list-typed claims{#configure-the-authorization-of-list-typed-claims}
 
 Istio supports configuring the authorization of list-typed claims.
 The example JWT contains a JWT claim with a `scope` claim key and
@@ -260,7 +260,7 @@ the `httpbin` workload succeeds:
     value of [`"scope1"`, `"scope2"`] returns HTTP code 200
     since it contains `scope1`.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 After completing this tutorial, run the following command to delete all
 resources created in the namespace.

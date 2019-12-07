@@ -33,7 +33,7 @@ As the generated client sets are functionally equivalent, switching the imported
 client libraries should be sufficient in order to consume the newly
 generated library.
 
-## How to use client-go
+## How to use client-go{#how-to-use-client-go}
 
 The Istio [client go](https://github.com/istio/client-go) repository follows the
 same branching strategy as the [Istio API](https://github.com/istio/api)
@@ -88,7 +88,7 @@ func main() {
 
 You can find a more in-depth example [here](https://github.com/istio/client-go/blob/{{< source_branch_name >}}/cmd/example/client.go).
 
-## Useful tools created for generating Istio client-go
+## Useful tools created for generating Istio client-go{#useful-tools-created-for-generating-Istio-client-go}
 
 If you're wondering why it took so long or why was it difficult to generate
 this client set, this section is for you. In Istio, we use

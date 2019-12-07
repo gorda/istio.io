@@ -7,7 +7,7 @@ aliases:
   - /docs/ops/troubleshooting/injection
 ---
 
-## The result of sidecar injection was not what I expected
+## The result of sidecar injection was not what I expected{#the-result-of-sidecar-injection-was-not-what-i-expected}
 
 This includes an injected sidecar when it wasn't expected and a lack
 of injected sidecar when it was.
@@ -122,13 +122,13 @@ of injected sidecar when it was.
           app: sleep
     {{< /text >}}
 
-## Pods cannot be created at all
+## Pods cannot be created at all{#pods-cannot-be-created-at-all}
 
 Run `kubectl describe -n namespace deployment name` on the failing
 pod's deployment. Failure to invoke the injection webhook will
 typically be captured in the event log.
 
-### x509 certificate related errors
+### x509 certificate related errors{#x509-certificate-related-errors}
 
 {{< text plain >}}
 Warning  FailedCreate  3m (x17 over 8m)  replicaset-controller  Error creating: Internal error occurred: \
@@ -196,7 +196,7 @@ $ for pod in $(kubectl -n istio-system get pod -listio=sidecar-injector -o name)
 done
 {{< /text >}}
 
-## Automatic sidecar injection fails if the Kubernetes API server has proxy settings
+## Automatic sidecar injection fails if the Kubernetes API server has proxy settings{#automatic-sidecar-injection-fails-if-the-Kubernetes-API-server-has-proxy-settings}
 
 When the Kubernetes API server includes proxy settings such as:
 
@@ -223,14 +223,14 @@ One workaround is to remove the proxy settings from the `kube-apiserver` manifes
 An [issue](https://github.com/kubernetes/kubeadm/issues/666) was filed with Kubernetes related to this and has since been closed.
 [https://github.com/kubernetes/kubernetes/pull/58698#discussion_r163879443](https://github.com/kubernetes/kubernetes/pull/58698#discussion_r163879443)
 
-## Limitations for using Tcpdump in pods
+## Limitations for using Tcpdump in pods{#limitations-for-using-Tcpdump-in-pods}
 
 Tcpdump doesn't work in the sidecar pod - the container doesn't run as root. However any other container in the same pod will see all the packets, since the
 network namespace is shared. `iptables` will also see the pod-wide configuration.
 
 Communication between Envoy and the app happens on 127.0.0.1, and is not encrypted.
 
-## Cluster is not scaled down automatically
+## Cluster is not scaled down automatically{#cluster-is-not-scaled-down-automatically}
 
 Due to the fact that the sidecar container mounts a local storage volume, the
 node autoscaler is unable to evict nodes with the injected pods. This is

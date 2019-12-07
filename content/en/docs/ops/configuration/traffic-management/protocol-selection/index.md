@@ -14,7 +14,7 @@ Istio supports proxying all TCP traffic by default, but in order to provide addi
 such as routing and rich metrics, the protocol must be determined.
 This can be done automatically or explicitly specified.
 
-## Manual protocol selection
+## Manual protocol selection{#manual-protocol-selection}
 
 Protocols can be specified manually by naming the Service port `name: <protocol>[-<suffix>]`.
 The following protocols are supported:
@@ -48,7 +48,7 @@ spec:
     name: http-web
 {{< /text >}}
 
-## Automatic protocol selection (experimental)
+## Automatic protocol selection (experimental){#automatic-protocol-selection-experimental}
 
 Istio can automatically detect HTTP and HTTP/2 traffic. If the protocol cannot automatically be determined, traffic will be treated as plain TCP traffic.
 

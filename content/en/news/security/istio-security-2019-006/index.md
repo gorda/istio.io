@@ -19,11 +19,11 @@ Envoy, and subsequently Istio, are vulnerable to the following DoS attack.
 An infinite loop can be triggered in Envoy if the option `continue_on_listener_filters_timeout` is set to `True`. This has been the case for Istio since the introduction of the Protocol Detection feature in Istio 1.3
 A remote attacker may trivially trigger that vulnerability, effectively exhausting Envoy’s CPU resources and causing a denial-of-service attack.
 
-## Impact and detection
+## Impact and detection{#impact-and-detection}
 
 Both Istio gateways and sidecars are vulnerable to this issue. If you are running one of the affected releases, your cluster is vulnerable.
 
-## Mitigation
+## Mitigation{#mitigation}
 
 * Workaround: The exploitation of that vulnerability can be prevented by customizing Istio installation (as described in [installation options](/docs/reference/config/installation-options/#pilot-options) ), using Helm to override the following options:
 

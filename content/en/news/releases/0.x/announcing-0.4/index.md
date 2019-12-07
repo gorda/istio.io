@@ -19,7 +19,7 @@ below.
 
 {{< relnote >}}
 
-## General
+## General{#general}
 
 - **Cloud Foundry**. Added minimum Pilot support for the [Cloud Foundry](https://www.cloudfoundry.org) platform, making it
 possible for Pilot to discover CF services and service instances.

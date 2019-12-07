@@ -15,7 +15,7 @@ The example HTTPS service used for this task is a simple [NGINX](https://www.ngi
 In the following steps you first deploy the NGINX service in your Kubernetes cluster.
 Then you configure a gateway to provide ingress access to the service via host `nginx.example.com`.
 
-## Generate client and server certificates and keys
+## Generate client and server certificates and keys{#generate-client-and-server-certificates-and-keys}
 
 1.  Clone the <https://github.com/nicholasjackson/mtls-go-example> repository:
 
@@ -50,7 +50,7 @@ Then you configure a gateway to provide ingress access to the service via host `
     $ popd
     {{< /text >}}
 
-## Deploy an NGINX server
+## Deploy an NGINX server{#deploy-an-nginx-server}
 
 1. Create a Kubernetes [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) to hold the server's
    certificate.
@@ -182,7 +182,7 @@ to hold the configuration of the NGINX server:
     ...
     {{< /text >}}
 
-## Configure an ingress gateway
+## Configure an ingress gateway{#configure-an-ingress-gateway}
 
 1.  Define a `Gateway` with a `server` section for port 443. Note the `PASSTHROUGH` TLS mode which instructs
     the gateway to pass the ingress traffic AS IS, without terminating TLS.
@@ -259,7 +259,7 @@ to hold the configuration of the NGINX server:
       <title>Welcome to nginx!</title>
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Remove created Kubernetes resources:
 

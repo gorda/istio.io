@@ -12,7 +12,7 @@ This example shows how to configure a multicluster mesh with a
 [single-network deployment](/docs/ops/deployment/deployment-models/#single-network)
 over 2 [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/) clusters.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 In addition to the prerequisites for installing Istio the following setup is required for this example:
 
@@ -24,7 +24,7 @@ In addition to the prerequisites for installing Istio the following setup is req
 
 * Install and initialize the [Google Cloud SDK](https://cloud.google.com/sdk/install)
 
-## Create the GKE clusters
+## Create the GKE clusters{#create-the-clusters}
 
 1.  Set the default project for `gcloud` to perform actions on:
 
@@ -88,7 +88,7 @@ In addition to the prerequisites for installing Istio the following setup is req
         $ kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user="$(gcloud config get-value core/account)"
         {{< /text >}}
 
-## Create a Google Cloud firewall rule
+## Create a Google Cloud firewall rule{#create-a-google-cloud-firewall-rule}
 
 To allow the pods on each cluster to directly communicate, create the following rule:
 
@@ -106,7 +106,7 @@ $ gcloud compute firewall-rules create istio-multicluster-test-pods \
   --target-tags="${ALL_CLUSTER_NETTAGS}" --quiet
 {{< /text >}}
 
-## Install the Istio control plane
+## Install the Istio control plane{#install-the-Istio-control-plane}
 
 The following generates an Istio installation manifest, installs it, and enables automatic sidecar injection in
 the `default` namespace:
@@ -126,7 +126,7 @@ Wait for pods to come up by polling their statuses via the following command:
 $ kubectl get pods -n istio-system
 {{< /text >}}
 
-## Generate remote cluster manifest
+## Generate remote cluster manifest{#generate-remote-cluster-manifest}
 
 1.  Get the IPs of the control plane pods:
 
@@ -147,7 +147,7 @@ $ kubectl get pods -n istio-system
       --set global.remoteTelemetryAddress=${TELEMETRY_POD_IP} > $HOME/istio-remote.yaml
     {{< /text >}}
 
-## Install remote cluster manifest
+## Install remote cluster manifest{#install-remote-cluster-manifest}
 
 The following installs the minimal Istio components and enables automatic sidecar injection on
 the namespace `default` in the remote cluster:
@@ -159,7 +159,7 @@ $ kubectl apply -f $HOME/istio-remote.yaml
 $ kubectl label namespace default istio-injection=enabled
 {{< /text >}}
 
-## Create remote cluster's kubeconfig for Istio Pilot
+## Create remote cluster's kubeconfig for Istio Pilot{#create-remote-cluster's-kubeconfig-for-Istio-pilot}
 
 The `istio-remote` Helm chart creates a service account with minimal access for use by Istio Pilot
 discovery.
@@ -211,7 +211,7 @@ discovery.
 At this point, the remote clusters' `kubeconfig` files have been created in the `${WORK_DIR}` directory.
 The filename for a cluster is the same as the original `kubeconfig` cluster name.
 
-## Configure Istio control plane to discover the remote cluster
+## Configure Istio control plane to discover the remote cluster{#configure-Istio-control-plane-to-discover-the-remote-cluster}
 
 Create a secret and label it properly for each remote cluster:
 
@@ -221,7 +221,7 @@ $ kubectl create secret generic ${CLUSTER_NAME} --from-file ${KUBECFG_FILE} -n $
 $ kubectl label secret ${CLUSTER_NAME} istio/multiCluster=true -n ${NAMESPACE}
 {{< /text >}}
 
-## Deploy the Bookinfo example across clusters
+## Deploy the Bookinfo example across clusters{#deploy-the-Bookinfo-example-across-clusters}
 
 1.  Install Bookinfo on the first cluster.  Remove the `reviews-v3` deployment to deploy on remote:
 
@@ -260,7 +260,7 @@ $ kubectl label secret ${CLUSTER_NAME} istio/multiCluster=true -n ${NAMESPACE}
     including `reviews-v3` in the remote cluster (red stars).  It may take several accesses (dozens) to demonstrate
     the equal loadbalancing between `reviews` versions.
 
-## Uninstalling
+## Uninstalling{#uninstalling}
 
 The following should be done in addition to the uninstall of Istio as described in the
 [VPN-based multicluster uninstall section](/docs/setup/install/multicluster/shared-vpn/):

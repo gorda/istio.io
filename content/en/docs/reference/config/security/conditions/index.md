@@ -15,7 +15,7 @@ Unsupported keys and values are silently ignored.
 
 For more information, refer to the [authorization concept page](/docs/concepts/security/#authorization).
 
-## Supported Conditions
+## Supported Conditions{#supported-conditions}
 
 | Name | Description | Supported Protocols | Example |
 |------|-------------|--------------------|---------|

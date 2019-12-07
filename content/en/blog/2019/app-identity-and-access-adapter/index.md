@@ -14,7 +14,7 @@ Whether your computing environment is based on a single cloud provider, a combin
 
 With the [App Identity and Access Adapter](https://github.com/ibm-cloud-security/app-identity-and-access-adapter), you can use any OAuth2/OIDC provider: IBM Cloud App ID, Auth0, Okta, Ping Identity, AWS Cognito, Azure AD B2C and more. Authentication and authorization policies can be applied in a streamlined way in all environments — including frontend and backend applications — all without code changes or redeploys.
 
-## Understanding Istio and the adapter
+## Understanding Istio and the adapter{#understanding-Istio-and-the-adapter}
 
 [Istio](/docs/concepts/what-is-istio/) is an open source service mesh that
 transparently layers onto distributed applications and seamlessly integrates
@@ -28,7 +28,7 @@ The App Identity and Access adapter extends the Mixer functionality by analyzing
 
 When [App Identity and Access Adapter](https://github.com/ibm-cloud-security/app-identity-and-access-adapter) is combined with Istio, it provides a scalable, integrated identity and access solution for multicloud architectures that does not require any custom application code changes.
 
-## Installation
+## Installation{#installation}
 
 App Identity and Access adapter can be installed using Helm directly from the `github.com` repository
 
@@ -44,7 +44,7 @@ $ git clone git@github.com:ibm-cloud-security/app-identity-and-access-adapter.gi
 $ helm install ./helm/appidentityandaccessadapter --name appidentityandaccessadapter.
 {{< /text >}}
 
-## Protecting web applications
+## Protecting web applications{#protecting-web-applications}
 
 Web applications are most commonly protected by the OpenID Connect (OIDC) workflow called `authorization_code`. When an unauthenticated/unauthorized user is detected, they are automatically redirected to the identity service of your choice and presented with the authentication page. When authentication completes, the browser is redirected back to an implicit `/oidc/callback` endpoint intercepted by the adapter. At this point, the adapter obtains access and identity tokens from the identity service and then redirects users back to their originally requested URL in the web app.
 
@@ -56,7 +56,7 @@ In order to terminate the authenticated session and wipe tokens, aka user logout
 
 Whenever access token expires, a refresh token is used to automatically acquire new access and identity tokens without your user's needing to re-authenticate. If the configured identity provider returns a refresh token, it is persisted by the adapter and used to retrieve new access and identity tokens when the old ones expire.
 
-### Applying web application protection
+### Applying web application protection{#applying-web-application-protection}
 
 Protecting web applications requires creating two types of resources - use `OidcConfig` resources to define various OIDC providers, and `Policy` resources to define the web app protection policies.
 
@@ -104,11 +104,11 @@ spec:
 
 [Read more about protecting web applications](https://github.com/ibm-cloud-security/app-identity-and-access-adapter)
 
-## Protecting backend application and APIs
+## Protecting backend application and APIs{#protecting-backend-application-and-APIs}
 
 Backend applications and APIs are protected using the Bearer Token flow, where an incoming token is validated against a particular policy. The Bearer Token authorization flow expects a request to contain the `Authorization` header with a valid access token in JWT format. The expected header structure is `Authorization: Bearer {access_token}`. In case token is successfully validated request will be forwarded to the requested service. In case token validation fails the HTTP 401 will be returned back to the client with a list of scopes that are required to access the API.
 
-### Applying backend application and APIs protection
+### Applying backend application and APIs protection{#applying-backend-application-and-APIs-protection}
 
 Protecting backend applications and APIs requires creating two types of resources - use `JwtConfig` resources to define various JWT providers, and `Policy` resources to define the backend app protection policies.
 
@@ -153,7 +153,7 @@ spec:
 
 [Read more about protecting backend applications](https://github.com/ibm-cloud-security/app-identity-and-access-adapter)
 
-## Known limitations
+## Known limitations{#known-limitations}
 
 At the time of writing this blog there are two known limitations of the App Identity and Access adapter:
 
@@ -161,7 +161,7 @@ At the time of writing this blog there are two known limitations of the App Iden
 
 - As a general best practice you should always consider using mutual-tls for any in-cluster communications. At the moment the communications channel between Mixer and App Identity and Access adapter currently does not use mutual-tls. In future we plan to address this by implementing an approach described in the [Mixer Adapter developer guide](https://github.com/istio/istio/wiki/Mixer-Out-of-Process-Adapter-Walkthrough#step-7-encrypt-connection-between-mixer-and-grpc-adapter).
 
-## Summary
+## Summary{#summary}
 
 When a multicloud strategy is in place, security can become complicated as the environment grows and diversifies. While cloud providers supply protocols and tools to ensure their offerings are safe, the development teams are still responsible for the application-level security, such as API access control with OAuth2, defending against man-in-the-middle attacks with traffic encryption, and providing mutual TLS for service access control. However, this becomes complex in a multicloud environment since you might need to define those security details for each service separately. With proper security protocols in place, those external and internal threats can be mitigated.
 

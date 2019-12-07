@@ -20,7 +20,7 @@ If you already have Istio installed, you can add or modify authentication polici
     $ kubectl apply -f <(istioctl kube-inject -f @samples/sleep/sleep.yaml@)
     {{< /text >}}
 
-## Verify Citadel runs properly
+## Verify Citadel runs properly{#verify-citadel-runs-properly}
 
 [Citadel](/docs/concepts/security/#pki) is Istio's key management service. Citadel must run properly for mutual TLS to work correctly. Verify the
 cluster-level Citadel runs properly with the following command:
@@ -33,7 +33,7 @@ istio-citadel   1         1         1            1           1m
 
 Citadel is up if the "AVAILABLE" column is 1.
 
-## Verify keys and certificates installation
+## Verify keys and certificates installation{#verify-keys-and-certificates-installation}
 
 Istio automatically installs necessary keys and certificates for mutual TLS authentication in all sidecar containers. Run command below to confirm key and certificate files exist under `/etc/certs`:
 
@@ -69,7 +69,7 @@ $ kubectl exec $(kubectl get pod -l app=httpbin -o jsonpath={.items..metadata.na
 
 Please check [Istio identity](/docs/concepts/security/#istio-identity) for more information about  _service identity_ in Istio.
 
-## Verify mutual TLS configuration
+## Verify mutual TLS configuration{#verify-mutual-TLS-configuration}
 
 Use [`istioctl authn tls-check`](/docs/reference/commands/istioctl/#istioctl-authn-tls-check) to check if the mutual TLS settings are in effect. The `istioctl` command needs the client's pod because the destination rule depends on the client's namespace.
 You can also provide the destination service to filter the status to that service only.
@@ -147,7 +147,7 @@ Before you continue, remove the bad destination rule to make mutual TLS work aga
 $ kubectl delete destinationrule --ignore-not-found=true bad-rule
 {{< /text >}}
 
-## Verify requests
+## Verify requests{#verify-requests}
 
 This task shows how a server with mutual TLS enabled responses to requests that are:
 
@@ -196,7 +196,7 @@ with the `-k` option. The option prevents the client from verifying and looking 
 certificate provided by the server.
 {{< /tip >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 {{< text bash >}}
 $ kubectl delete --ignore-not-found=true -f @samples/httpbin/httpbin.yaml@

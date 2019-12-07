@@ -23,7 +23,7 @@ For details about the impact and how Envoy hot restart works, please refer to
 [here](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart) and
 [here](https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5).
 
-## Scenarios
+## Scenarios{#scenarios}
 
 If you are not currently using the mutual TLS feature in Istio and will not use it in the future,
 you are not affected and no action is required.
@@ -34,7 +34,7 @@ follow the procedure below to perform a root certificate transition.
 If you are currently using the mutual TLS feature in Istio with self-signed certificates,
 please follow the procedure and check whether you will be affected.
 
-## Root transition procedure
+## Root transition procedure{#root-transition-procedure}
 
 1. Check when the root certificate expires:
 
@@ -159,9 +159,9 @@ please follow the procedure and check whether you will be affected.
     If it matches the `_Not_ _Before_` value in the new certificate as shown in Step 3,
     your Envoy has loaded the new root certificate.
 
-## Troubleshooting
+## Troubleshooting{#troubleshooting}
 
-### Why aren't workloads picking up the new certificates (in Step 5)?
+### Why aren't workloads picking up the new certificates (in Step 5)?{#why-aren't-workloads-picking-up-the-new-certificates-in-step-5}
 
 Please make sure you have updated to 1.0.8, 1.1.8 or later for the `istio-proxy` sidecars in Step 2.
 
@@ -170,7 +170,7 @@ If you are using Istio releases 1.1.3 - 1.1.7, the Envoy may not be hot-restarte
 after the new certificates are generated.
 {{< /warning >}}
 
-### Why does Pilot not work and log "handshake error"?
+### Why does Pilot not work and log "handshake error"?{#why-does-pilot-not-work-and-log-handshake-error}
 
 This may because Pilot is
 [not using an Envoy sidecar](#how-can-i-check-if-pilot-has-a-sidecar),
@@ -183,7 +183,7 @@ $ kubectl delete po <galley-pod> -n istio-system
 $ kubectl delete po <pilot-pod> -n istio-system
 {{< /text >}}
 
-### How can I check if Pilot has a sidecar?
+### How can I check if Pilot has a sidecar?{#how-can-i-check-if-pilot-has-a-sidecar}
 
 If the following command shows `1/1`, that means your Pilot does not have an Envoy sidecar,
 otherwise, if it is showing `2/2`, your Pilot is using an Envoy sidecar.
@@ -193,7 +193,7 @@ $ kubectl get po -l istio=pilot -n istio-system
 istio-pilot-569bc6d9c-tfwjr   1/1     Running   0          11m
 {{< /text >}}
 
-### Why can't I deploy new workloads with the sidecar-injector?
+### Why can't I deploy new workloads with the sidecar-injector?{#why-can't-i-deploy-new-workloads-with-the-sidecar-injector}
 
 This may happen if you did not upgrade to 1.0.8, 1.1.8 or later.
 Try to restart the sidecar injector.

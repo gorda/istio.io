@@ -56,7 +56,7 @@ requirements:
   this requirement no longer applies. To learn more about the `NET_ADMIN`
   capability, see [Required pod capabilities](#required-pod-capabilities), below.
 
-## Ports used by Istio
+## Ports used by Istio{#ports-used-by-Istio}
 
 The following ports and protocols are used by Istio. Ensure that there are no
 TCP headless services using a TCP port used by one of Istio's services.
@@ -85,7 +85,7 @@ TCP headless services using a TCP port used by one of Istio's services.
 | 15090 | HTTP | Mixer | Proxy |
 | 42422 | TCP | Mixer | Telemetry - Prometheus |
 
-## Required pod capabilities
+## Required pod capabilities{#required-pod-capabilities}
 
 If [pod security policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
 are [enforced](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#enabling-pod-security-policies)

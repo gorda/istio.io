@@ -13,7 +13,7 @@ compatibility.  We also mention cases where backwards compatibility was
 preserved but new behavior was introduced that would be surprising to someone
 familiar with the use and operation of Istio 1.2.
 
-## Installation and upgrade
+## Installation and upgrade{#installation-and-upgrade}
 
 We simplified the configuration model for Mixer and removed support for
 adapter-specific and template-specific Custom Resource Definitions (CRDs)
@@ -23,7 +23,7 @@ We removed the Mixer CRDs from the system to simplify the configuration
 model, improve Mixer's performance in Kubernetes deployments, and improve
 reliability in various Kubernetes environments.
 
-## Traffic management
+## Traffic management{#traffic-management}
 
 Istio now captures all ports by default. If you don't specify container ports
 to intentionally bypass Envoy, you must opt out of port capturing with the
@@ -36,7 +36,7 @@ previous behavior. To learn more see our [protocol selection page](/docs/ops/con
 To specify a hostname in multiple namespaces, you must select a single host using
 a [`Sidecar` resource](/docs/reference/config/networking/sidecar/).
 
-## Trust domain validation
+## Trust domain validation{#trust-domain-validation}
 
 Trust domain validation is new in Istio 1.3. If you only have one trust domain
 or you don't enable mutual TLS through authentication policies, there is nothing
@@ -46,7 +46,7 @@ To opt-out the trust domain validation, include the following flag in your Helm
 template before upgrading to Istio 1.3:
 `--set pilot.env.PILOT_SKIP_VALIDATE_TRUST_DOMAIN=true`
 
-## Secret discovery service
+## Secret discovery service{#secret-discovery-service}
 
 In Istio 1.3, we are taking advantage of improvements in Kubernetes to issue
 certificates for workload instances more securely.

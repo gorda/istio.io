@@ -8,7 +8,7 @@ aliases:
 
 A cluster operator might decide not to generate `ServiceAccount` secrets for some subset of namespaces, or to make `ServiceAccount` secret generation opt-in per namespace. This task describes how an operator can configure their cluster for these situations. Full documentation of the Citadel namespace targeting mechanism can be found [here]((/docs/ops/configuration/mesh/secret-creation/).
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 To complete this task, you should first take the following actions:
 
@@ -16,7 +16,7 @@ To complete this task, you should first take the following actions:
 
 * Follow the [Istio installation guide](/docs/setup/install/istioctl/) to install Istio with mutual TLS enabled.
 
-### Deactivating service account secret generation for a single namespace
+### Deactivating service account secret generation for a single namespace{#deactivating-service-account-secret-generation-for-a-single-namespace}
 
 To create a new sample namespace `foo`, run:
 
@@ -60,7 +60,7 @@ istio.default           istio.io/key-and-cert          3         11m
 
 You can observe that no new `istio.io/key-and-cert` secret was generated for the `sample-service-account` service account.
 
-### Opt-in service account secret generation
+### Opt-in service account secret generation{#opt-in-service-account-secret-generation}
 
 Set the `enableNamespacesByDefault` installation option to `false` to make `ServiceAcount` secret generation opt-in (i.e., to disable generating secrets unless otherwise specified):
 
@@ -107,7 +107,7 @@ istio.sample-service-account         istio.io/key-and-cert                 3    
 
 You can observe that an `istio.io/key-and-cert` secret has been created for the `default` service account in addition to the `sample-service-account`. This is due to the retroactive secret generation feature, which will create secrets for all service accounts in a namespace once it transitions from inactive to active.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 To delete the `foo` test namespace and all its resources, run:
 

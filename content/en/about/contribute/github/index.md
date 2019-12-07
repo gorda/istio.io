@@ -26,7 +26,7 @@ To work on Istio documentation, you need to:
 The documentation is published under the [Apache
 2.0](https://github.com/istio/community/blob/master/LICENSE) license.
 
-## How to contribute
+## How to contribute{#how-to-contribute}
 
 There are three ways you can contribute to the Istio documentation:
 
@@ -46,7 +46,7 @@ Once your changes are merged, they show up immediately on
 show up on `istio.io` the next time we produce a new
 release, which happens around once a quarter.
 
-### How to add content {#add}
+### How to add content {#add}{#how-to-add-content-{-add}}
 
 To add content you must create a fork of the repository and submit a PR from
 your fork to the docs main repository. The following steps describe the
@@ -69,7 +69,7 @@ code</a>
 1.  Go to the index page for your fork, and click **New Pull Request** to let
     us know about it.
 
-### How to review content {#review}
+### How to review content {#review}{#how-to-review-content-{-review}}
 
 If your review is small, simply comment on the PR directly. If you review the
 content in detail, follow these steps:
@@ -105,7 +105,7 @@ content in detail, follow these steps:
 1.  Once you publish your review, leave a comment with the text:
     `/hold cancel`. That command unblocks the PR from being merged.
 
-## Previewing your work
+## Previewing your work{#previewing-your-work}
 
 When you submit a pull request, your PR page on GitHub shows a link to a
 staging site built automatically for your PR. This is useful for you to see
@@ -117,7 +117,7 @@ See this
 [README](https://github.com/istio/istio.io/blob/master/README.md) for
 instructions.
 
-## Branching
+## Branching{#branching}
 
 We use multiple branches to track documentation for different versions of Istio.
 The master branch is where active doc work takes place, this is where you should
@@ -155,7 +155,7 @@ Note that we only ever cherry pick changes into the current release branch,
 and never to older branches. Older branches are considered to be archived and
 generally no longer receive any changes.
 
-## Istio community roles
+## Istio community roles{#Istio-community-roles}
 
 Depending on your contributions and responsibilities, there are several roles
 you can assume.

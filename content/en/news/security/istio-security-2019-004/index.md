@@ -24,11 +24,11 @@ Envoy, and subsequently Istio are vulnerable to a series of trivial HTTP/2-based
 Those vulnerabilities were reported externally and affect multiple proxy implementations.
 See [this security bulletin](https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md) for more information.
 
-## Impact and detection
+## Impact and detection{#impact-and-detection}
 
 If Istio terminates externally originated HTTP then it is vulnerable.   If Istio is instead fronted by an intermediary that terminates HTTP (e.g., a HTTP load balancer), then that intermediary would protect Istio, assuming the intermediary is not itself vulnerable to the same HTTP/2 exploits.
 
-## Mitigation
+## Mitigation{#mitigation}
 
 * For Istio 1.1.x deployments: update to a [Istio 1.1.13](/news/releases/1.1.x/announcing-1.1.13) or later.
 * For Istio 1.2.x deployments: update to a [Istio 1.2.4](/news/releases/1.2.x/announcing-1.2.4) or later.

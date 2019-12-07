@@ -19,7 +19,7 @@ In addition to canary deployments and general traffic shifting, Istio also gives
 
 This post walks through a technique that highlights a particularly useful way that you can implement Istio incrementally -- in this case, only the traffic management features -- without having to individually update each of your Pods.
 
-## Setup: why implement Istio traffic management features?
+## Setup: why implement Istio traffic management features?{#setup-why-implement-Istio-traffic-management-features}
 
 Of course, the first question is: Why would you want to do this?
 
@@ -27,7 +27,7 @@ If you’re part of one of the many organizations out there that have a large cl
 
 With Istio, Team A can still implement their canaries by having Service B call Service A through Istio’s ingress gateway.
 
-## Background: traffic routing in an Istio mesh
+## Background: traffic routing in an Istio mesh{#background-traffic-routing-in-an-Istio-mesh}
 
 But how can you use Istio’s traffic management capabilities without updating each of your applications’ Pods to include the Istio sidecar? Before answering that question, let’s take a quick high-level look at how traffic enters an Istio mesh and how it’s routed.
 
@@ -43,7 +43,7 @@ Fortunately, a standard Istio deployment already includes a [Gateway](/docs/conc
 
 {{< image width="60%" link="./fifty-fifty-ingress-gateway.png" caption="50/50 Traffic Split using Ingress Gateway" >}}
 
-## In action: traffic routing with Istio
+## In action: traffic routing with Istio{#in-action-traffic-routing-with-Istio}
 
 A simple way to see this type of approach in action is to first setup your Kubernetes environment using the [Platform Setup](/docs/setup/platform-setup/) instructions, and then install the **minimal** Istio profile using [Helm](/docs/setup/install/helm/), including only the traffic management components (ingress gateway, egress gateway, Pilot). The following example uses [Google Kubernetes Engine](https://cloud.google.com/gke).
 
@@ -151,7 +151,7 @@ Finally, deploy a pod that you can use for testing with `curl` (and without the 
 $ kubectl apply -f @samples/sleep/sleep.yaml@
 {{< /text >}}
 
-## Testing your deployment
+## Testing your deployment{#testing-your-deployment}
 
 Now, you can test different behaviors using the `curl` commands via the sleep Pod.
 

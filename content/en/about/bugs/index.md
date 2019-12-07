@@ -11,7 +11,7 @@ icon: bugs
 
 Oh no! You found a bug? We'd love to hear about it.
 
-## Product bugs
+## Product bugs{#product-bugs}
 
 Search our [issue database](https://github.com/istio/istio/issues/) to see if
 we already know about your problem and learn about when we think we can fix
@@ -22,7 +22,7 @@ what's going on.
 If you think a bug is in fact a security vulnerability, please visit [Reporting Security Vulnerabilities](/about/security-vulnerabilities/)
 to learn what to do.
 
-### Kubernetes cluster state archives
+### Kubernetes cluster state archives{#Kubernetes-cluster-state-archives}
 
 If you're running on Kubernetes, consider including a cluster state
 archive with your bug report.
@@ -87,7 +87,7 @@ containing:
     $ kubectl get $(kubectl get crd  --no-headers | awk '{printf "%s,",$1}END{printf "attributemanifests.config.istio.io\n"}') --all-namespaces
     {{< /text >}}
 
-## Documentation bugs
+## Documentation bugs{#documentation-bugs}
 
 Search our [documentation issue database](https://github.com/istio/istio.io/issues/) to see if
 we already know about your problem and learn about when we think we can fix

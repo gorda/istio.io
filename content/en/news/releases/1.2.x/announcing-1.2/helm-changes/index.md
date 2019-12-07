@@ -15,7 +15,7 @@ The tables below show changes made to the installation options used to customize
 
 <!-- AUTO-GENERATED-START -->
 
-## Modified configuration options
+## Modified configuration options{#modified-configuration-options}
 
 ### Modified `kiali` key/value pairs
 
@@ -50,7 +50,7 @@ The tables below show changes made to the installation options used to customize
 | --- | --- | --- | --- | --- |
 | `grafana.image.tag` | `5.4.0` | `6.1.6` |  |  |
 
-## New configuration options
+## New configuration options{#new-configuration-options}
 
 ### New `tracing` key/value pairs
 
@@ -190,7 +190,7 @@ The tables below show changes made to the installation options used to customize
 | `pilot.podAntiAffinityLabelSelector` | `[]` |  |
 | `pilot.podAntiAffinityTermLabelSelector` | `[]` |  |
 
-## Removed configuration options
+## Removed configuration options{#removed-configuration-options}
 
 ### Removed `kiali` key/value pairs
 

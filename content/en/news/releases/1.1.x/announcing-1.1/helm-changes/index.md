@@ -15,7 +15,7 @@ The tables below show changes made to the installation options used to customize
 
 <!-- AUTO-GENERATED-START -->
 
-## Modified configuration options
+## Modified configuration options{#modified-configuration-options}
 
 ### Modified `servicegraph` key/value pairs
 
@@ -83,7 +83,7 @@ The tables below show changes made to the installation options used to customize
 | `pilot.autoscaleMax` | `1` | `5` |  |  |
 | `pilot.traceSampling` | `100.0` | `1.0` |  |  |
 
-## New configuration options
+## New configuration options{#new-configuration-options}
 
 ### New `istio_cni` key/value pairs
 
@@ -341,7 +341,7 @@ The tables below show changes made to the installation options used to customize
 | `pilot.nodeSelector` | `{}` |  |
 | `pilot.keepaliveMaxServerConnectionAge` | `30m` | `The following is used to limit how long a sidecar can be connectedto a pilot. It balances out load across pilot instances at the cost ofincreasing system churn.` |
 
-## Removed configuration options
+## Removed configuration options{#removed-configuration-options}
 
 ### Removed `ingress` key/value pairs
 

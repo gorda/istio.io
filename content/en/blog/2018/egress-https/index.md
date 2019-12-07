@@ -19,7 +19,7 @@ an external web service ([Google Books APIs](https://developers.google.com/books
 to enable egress HTTPS traffic in Istio by using _mesh-external service entries_. I provide two options for egress
 HTTPS traffic and describe the pros and cons of each of the options.
 
-## Initial setting
+## Initial setting{#initial-setting}
 
 To demonstrate the scenario of consuming an external web service, I start with a Kubernetes cluster with [Istio installed](/docs/setup/getting-started/). Then I deploy
 [Istio Bookinfo Sample Application](/docs/examples/bookinfo/). This application uses the _details_ microservice to fetch
@@ -45,7 +45,7 @@ Perform the steps in the
 sections, and
 [change Istio to the blocking-egress-by-default policy](/docs/tasks/traffic-management/egress/egress-control/#change-to-the-blocking-by-default-policy).
 
-## Bookinfo with HTTPS access to a Google Books web service
+## Bookinfo with HTTPS access to a Google Books web service{#Bookinfo-with-https-access-to-a-google-books-web-service}
 
 Deploy a new version of the _details_ microservice, _v2_, that fetches the book details from [Google Books APIs](https://developers.google.com/books/docs/v1/getting_started). Run the following command; it sets the
 `DO_NOT_ENCRYPT` environment variable of the service's container to `false`. This setting will instruct the deployed
@@ -92,7 +92,7 @@ an external service, in this case to the Google Books web service. By default, t
 such traffic, you must define a
 [mesh-external service entry](/docs/reference/config/networking/service-entry/).
 
-### Enable HTTPS access to a Google Books web service
+### Enable HTTPS access to a Google Books web service{#enable-https-access-to-a-google-books-web-service}
 
 No worries, define a **mesh-external service entry** and fix your application. You must also define a _virtual
 service_ to perform routing by [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication) to the external service.
@@ -160,7 +160,7 @@ _Error fetching product details_. As you can see, the service entries are define
 Istio configuration artifacts. The Istio operators can decide dynamically which domains they allow the microservices to
 access. They can enable and disable traffic to the external domains on the fly, without redeploying the microservices.
 
-### Cleanup of HTTPS access to a Google Books web service
+### Cleanup of HTTPS access to a Google Books web service{#cleanup-of-https-access-to-a-google-books-web-service}
 
 {{< text bash >}}
 $ kubectl delete serviceentry googleapis
@@ -169,7 +169,7 @@ $ kubectl delete -f @samples/bookinfo/networking/virtual-service-details-v2.yaml
 $ kubectl delete -f @samples/bookinfo/platform/kube/bookinfo-details-v2.yaml@
 {{< /text >}}
 
-## TLS origination by Istio
+## TLS origination by Istio{#TLS-origination-by-Istio}
 
 There is a caveat to this story. Suppose you want to monitor which specific set of
 [Google APIs](https://developers.google.com/apis-explorer/) your microservices use
@@ -229,7 +229,7 @@ env:
 
 In the next section you will configure TLS origination for accessing an external web service.
 
-## Bookinfo with TLS origination to a Google Books web service
+## Bookinfo with TLS origination to a Google Books web service{#Bookinfo-with-TLS-origination-to-a-google-books-web-service}
 
 1.  Deploy a version of _details v2_ that sends an HTTP request to
     [Google Books APIs](https://developers.google.com/books/docs/v1/getting_started). The `DO_NOT_ENCRYPT` variable
@@ -315,7 +315,7 @@ In the next section you will configure TLS origination for accessing an external
     Note the URL path in the log, the path can be monitored and access policies can be applied based on it. To read more
     about monitoring and access policies for HTTP egress traffic, check out [this blog post](https://archive.istio.io/v0.8/blog/2018/egress-monitoring-access-control/#logging).
 
-### Cleanup of TLS origination to a Google Books web service
+### Cleanup of TLS origination to a Google Books web service{#cleanup-of-TLS-origination-to-a-google-books-web-service}
 
 {{< text bash >}}
 $ kubectl delete serviceentry googleapis
@@ -325,7 +325,7 @@ $ kubectl delete -f @samples/bookinfo/networking/virtual-service-details-v2.yaml
 $ kubectl delete -f @samples/bookinfo/platform/kube/bookinfo-details-v2.yaml@
 {{< /text >}}
 
-### Relation to Istio mutual TLS
+### Relation to Istio mutual TLS{#relation-to-Istio-mutual-TLS}
 
 Note that the TLS origination in this case is unrelated to
 [the mutual TLS](/docs/concepts/security/#mutual-tls-authentication) applied by Istio. The TLS origination for the
@@ -335,7 +335,7 @@ service-to-service communication **inside** the service mesh and provides each s
 web browser and a web server. TLS is applied to the communication with external services to verify the identity of the
 external server and to encrypt the traffic.
 
-## Conclusion
+## Conclusion{#conclusion}
 
 In this blog post I demonstrated how microservices in an Istio service mesh can consume external web services by
 HTTPS. By default, Istio blocks all the traffic to the hosts outside the cluster. To enable such traffic, mesh-external

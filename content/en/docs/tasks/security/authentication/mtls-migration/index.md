@@ -26,7 +26,7 @@ lose communication. Moreover, you can use the
 still sending plaintext traffic to the service in "PERMISSIVE" mode and choose to lock
 down once the migration is done.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Understand Istio [authentication policy](/docs/concepts/security/#authentication-policies) and related [mutual TLS authentication](/docs/concepts/security/#mutual-tls-authentication) concepts.
 
@@ -76,7 +76,7 @@ down once the migration is done.
     istio-system   istio-telemetry   25m
     {{< /text >}}
 
-## Configure clients to send mutual TLS traffic
+## Configure clients to send mutual TLS traffic{#configure-clients-to-send-mutual-TLS-traffic}
 
 Configure Istio services to send mutual TLS traffic by setting `DestinationRule`.
 
@@ -111,7 +111,7 @@ You can also specify a subset of the clients' request to use `ISTIO_MUTUAL` mutu
 After verifying it works by checking [Grafana to monitor](/docs/tasks/observability/metrics/using-istio-dashboard/),
 then increase the rollout scope and finally apply to all Istio client services.
 
-## Lock down to mutual TLS (optional)
+## Lock down to mutual TLS (optional){#lock-down-to-mutual-TLS-optional}
 
 After migrating all clients to Istio services, injecting Envoy sidecar, we can lock down the `httpbin.foo` to only accept mutual TLS traffic.
 
@@ -144,7 +144,7 @@ If you can't migrate all your services to Istio (injecting Envoy sidecar), you h
 However, when configured with `PERMISSIVE` mode, no authentication or authorization checks will be performed for plaintext traffic by default.
 We recommend you use [Istio Authorization](/docs/tasks/security/authorization/authz-http/) to configure different paths with different authorization policies.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Remove all resources.
 

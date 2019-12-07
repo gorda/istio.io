@@ -18,7 +18,7 @@ Using the approach shown in this guide results in an instance of the Istio contr
 within the mesh. Although this is a common configuration, other more complex topologies are possible, but have to be done
 using a more manual process, not described herein.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 The procedures we describe here are primarily intended to be used with relatively pristine clusters,
 where Istio hasn't already been deployed. We hope to expand support in the future to existing clusters.
@@ -34,7 +34,7 @@ direct connectivity, while the third cluster is on a different network.
 Take a look at the [platform setup instructions](/docs/setup/platform-setup)
 for any special instructions for your particular environment.
 
-## Initial preparations
+## Initial preparations{#initial-preparations}
 
 You need to do a few one-time steps in order to be able to setup a multicluster mesh:
 
@@ -101,7 +101,7 @@ file which will be used to control the Istio configuration deployed on all the c
     Note that this step doesn't actually do anything to the clusters, it is merely cresting a number of files within your
     working directory.
 
-## Customizing Istio
+## Customizing Istio{#customizing-Istio}
 
 Preparing the mesh above created a file called `base.yaml` in your working directory. This file defines the
 basic [`IstioControlPlane`](/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane) configuration that will be used when deploying Istio in your clusters (which will happen below). You
@@ -121,7 +121,7 @@ values.pilot.meshNetworks=
 
 These values are set automatically by the procedures below, any manual setting will therefore be lost.
 
-## Creating the mesh
+## Creating the mesh{#creating-the-mesh}
 
 You indicate which clusters to include in the mesh by editing the `topology.yaml` file
 within your working directory. Add an entry for all three clusters such that the file will
@@ -159,7 +159,7 @@ certs/intermediate-*/ca-key.pem - intermediates' private keys
 
 {{< /warning >}}
 
-## Clean up
+## Clean up{#clean-up}
 
 You can remove Istio from all the known clusters with:
 

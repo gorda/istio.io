@@ -7,7 +7,7 @@ keywords: [policies]
 
 This task shows you how to enable Istio policy enforcement.
 
-## At install time
+## At install time{#at-install-time}
 
 In the default Istio installation profile, policy enforcement is disabled. To install Istio
 with policy enforcement on, use the `--set values.global.disablePolicyChecks=false` install option.
@@ -15,7 +15,7 @@ with policy enforcement on, use the `--set values.global.disablePolicyChecks=fal
 Alternatively, you may [install Istio using the demo profile](/docs/setup/getting-started/),
 which enables policy checks by default.
 
-## For an existing Istio mesh
+## For an existing Istio mesh{#for-an-existing-Istio-mesh}
 
 1. Check the status of policy enforcement for your mesh.
 

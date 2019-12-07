@@ -28,7 +28,7 @@ The control plane manages and configures the proxies to route traffic. Additiona
 
 It is important to understand that the sidecar injection into the application pods happens automatically, though manual injection is also possible. Traffic is directed from the application services to and from these sidecars without developers needing to worry about it. Once the applications are connected to the Istio service mesh, developers can start using and reaping the benefits of all that the service mesh has to offer. However, how does the data plane plumbing happen and what is really required to make it work seamlessly? In this post, we will deep-dive into the specifics of the sidecar injection models to gain a very clear understanding of how sidecar injection works.
 
-## Sidecar injection
+## Sidecar injection{#sidecar-injection}
 
 In simple terms, sidecar injection is adding the configuration of additional containers to the pod template. The added containers needed for the Istio service mesh are:
 
@@ -43,7 +43,7 @@ So, you can see how this type of container is perfect for a set-up or initializa
 `istio-proxy`
 This is the actual sidecar proxy (based on Envoy).
 
-### Manual injection
+### Manual injection{#manual-injection}
 
 In the manual injection method, you can use [`istioctl`](/docs/reference/commands/istioctl) to modify the pod template and add the configuration of the two containers previously mentioned. For both manual as well as automatic injection, Istio takes the configuration from the `istio-sidecar-injector` configuration map (configmap) and the mesh's `istio` configmap.
 
@@ -187,7 +187,7 @@ Containers:
 
 As seen in the output, the `State` of the `istio-init` container is `Terminated` with the `Reason` being `Completed`. The only two containers running are the main application `demo-red` container and the `istio-proxy` container.
 
-### Automatic injection
+### Automatic injection{#automatic-injection}
 
 Most of the times, you don’t want to manually inject a sidecar every time you deploy an application, using the [`istioctl`](/docs/reference/commands/istioctl) command, but would prefer that Istio automatically inject the sidecar to your pod. This is the recommended approach and for it to work, all you need to do is to label the namespace where you are deploying the app with `istio-injection=enabled`.
 
@@ -308,7 +308,7 @@ This example shows there are many variables, based on whether the automatic side
 
 The [injection status table](/docs/ops/common-problems/injection/) shows a clear picture of the final injection status based on the value of the above variables.
 
-## Traffic flow from application container to sidecar proxy
+## Traffic flow from application container to sidecar proxy{#traffic-flow-from-application-container-to-sidecar-proxy}
 
 Now that we are clear about how a sidecar container and an init container are injected into an application manifest, how does the sidecar proxy grab the inbound and outbound traffic to and from the container? We did briefly mention that it is done by setting up the `iptable` rules within the pod namespace, which in turn is done by the `istio-init` container. Now, it is time to verify what actually gets updated within the namespace.
 

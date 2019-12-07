@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.1.13. Please see below for
 
 {{< relnote >}}
 
-## Security update
+## Security update{#security-update}
 
 This release contains fixes for the security vulnerabilities described in [ISTIO-SECURITY-2019-003](/news/security/istio-security-2019-003/) and
 [ISTIO-SECURITY-2019-004](/news/security/istio-security-2019-004/). Specifically:

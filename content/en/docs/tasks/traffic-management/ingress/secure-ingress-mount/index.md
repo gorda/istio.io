@@ -15,7 +15,7 @@ service using either simple or mutual TLS.
 The TLS required private key, server certificate, and root certificate, are configured
 using a file mount based approach.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 1.  Perform the steps in the [Before you begin](/docs/tasks/traffic-management/ingress/ingress-control#before-you-begin)
 and [Determining the ingress IP and ports](/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports)
@@ -33,7 +33,7 @@ and the environment variables `INGRESS_HOST` and `SECURE_INGRESS_PORT` set.
     If a version of _LibreSSL_ is printed as in the output above, your _curl_ should work correctly with the
     instructions in this task. Otherwise, try another installation of _curl_, for example on a Linux machine.
 
-## Generate server certificate and private key
+## Generate server certificate and private key{#generate-server-certificate-and-private-key}
 
 For this task you can use your favorite tool to generate certificates and keys. The commands below use
 [openssl](https://man.openbsd.org/openssl.1)
@@ -51,7 +51,7 @@ For this task you can use your favorite tool to generate certificates and keys. 
     $ openssl x509 -req -days 365 -CA example.com.crt -CAkey example.com.key -set_serial 0 -in httpbin.example.com.csr -out httpbin.example.com.crt
     {{< /text >}}
 
-## Configure a TLS ingress gateway with a file mount-based approach
+## Configure a TLS ingress gateway with a file mount-based approach{#configure-a-TLS-ingress-gateway-with-a-file-mount-based-approach}
 
 In this section you configure an ingress gateway with port 443 to handle HTTPS
 traffic. You first create a secret with a certificate and a private key. The
@@ -189,7 +189,7 @@ create a gateway definition that configures a server on port 443.
     that the server's certificate was verified successfully. If all went well, you should also see a returned
     status of 418 along with a nice drawing of a teapot.
 
-## Configure a mutual TLS ingress gateway
+## Configure a mutual TLS ingress gateway{#configure-a-mutual-TLS-ingress-gateway}
 
 In this section you extend your gateway's definition from the previous section to support
 [mutual TLS](https://en.wikipedia.org/wiki/Mutual_authentication) between external clients and the gateway.
@@ -282,7 +282,7 @@ the server will use to verify its clients. Create the secret `istio-ingressgatew
 
     This time the server performed client authentication successfully and you received the pretty teapot drawing again.
 
-## Configure a TLS ingress gateway for multiple hosts
+## Configure a TLS ingress gateway for multiple hosts{#configure-a-TLS-ingress-gateway-for-multiple-hosts}
 
 In this section you will configure an ingress gateway for multiple hosts, `httpbin.example.com` and `bookinfo.com`.
 The ingress gateway will present to clients a unique certificate corresponding to each requested server.
@@ -447,7 +447,7 @@ $ openssl x509 -req -days 365 -CA example.com.crt -CAkey example.com.key -set_se
         `"""`
     {{< /text >}}
 
-## Troubleshooting
+## Troubleshooting{#troubleshooting}
 
 *   Inspect the values of the `INGRESS_HOST` and `SECURE_INGRESS_PORT` environment
     variables. Make sure they have valid values, according to the output of the
@@ -501,7 +501,7 @@ $ openssl x509 -req -days 365 -CA example.com.crt -CAkey example.com.key -set_se
 *   For macOS users, verify that you use `curl` compiled with the [LibreSSL](http://www.libressl.org)
     library, as described in the [Before you begin](#before-you-begin) section.
 
-### Troubleshooting for mutual TLS
+### Troubleshooting for mutual TLS{#troubleshooting-for-mutual-TLS}
 
 In addition to the steps in the previous section, perform the following:
 
@@ -528,7 +528,7 @@ In addition to the steps in the previous section, perform the following:
     Subject: O=example Inc., CN=example.com
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Delete the `Gateway` configuration, the `VirtualService`, and the secrets:
 

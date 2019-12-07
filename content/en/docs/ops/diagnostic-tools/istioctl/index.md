@@ -18,7 +18,7 @@ The [`istioctl`](/docs/reference/commands/istioctl) tool is a configuration comm
 `istioctl` only has auto-completion enabled for non-deprecated commands.
 {{< /tip >}}
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 We recommend you use an `istioctl` version that is the same version as your Istio control plane. Using matching versions helps avoid unforeseen issues.
 
@@ -27,7 +27,7 @@ If you have already [downloaded the Istio release](/docs/setup/getting-started/#
 already have `istioctl` and do not need to install it again.
 {{< /tip >}}
 
-## Install {{< istioctl >}}
+## Install {{< istioctl >}}{#install-{{< istioctl >}}}
 
 Install the `istioctl` binary with `curl`:
 
@@ -45,7 +45,7 @@ Install the `istioctl` binary with `curl`:
 
 1. You can optionally enable the [auto-completion option](#enabling-auto-completion) when working with a bash or ZSH console.
 
-## Get an overview of your mesh
+## Get an overview of your mesh{#get-an-overview-of-your-mesh}
 
 You can get an overview of your mesh using the `proxy-status` command:
 
@@ -57,7 +57,7 @@ If a proxy is missing from the output list it means that it is not currently con
 will not receive any configuration. Additionally, if it is marked stale, it likely means there are networking issues or
 Pilot needs to be scaled.
 
-## Get proxy configuration
+## Get proxy configuration{#get-proxy-configuration}
 
 [`istioctl`](/docs/reference/commands/istioctl) allows you to retrieve information about proxy configuration using the `proxy-config` or `pc` command.
 
@@ -134,7 +134,7 @@ Once the `bash-completion` package has been installed on your Linux system, add 
 
 {{< /tabset >}}
 
-### Enabling auto-completion
+### Enabling auto-completion{#enabling-auto-completion}
 
 To enable `istioctl` completion on your system, follow the steps for your preferred shell:
 
@@ -181,7 +181,7 @@ If your auto-completion is not working, try again after restarting your terminal
 
 {{< /tabset >}}
 
-### Using auto-completion
+### Using auto-completion{#using-auto-completion}
 
 If the `istioctl` completion file has been installed correctly, press the Tab key while writing an `istioctl` command, and it should return a set of command suggestions for you to choose from:
 

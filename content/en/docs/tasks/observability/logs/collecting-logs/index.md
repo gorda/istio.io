@@ -14,14 +14,14 @@ for calls to services within your mesh.
 The [Bookinfo](/docs/examples/bookinfo/) sample application is used
 as the example application throughout this task.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * [Install Istio](/docs/setup) in your cluster and deploy an
   application. This task assumes that Mixer is setup in a default configuration
   (`--configDefaultNamespace=istio-system`). If you use a different
   value, update the configuration and commands in this task to match the value.
 
-## Collecting new logs data
+## Collecting new logs data{#collecting-new-logs-data}
 
 1.  Apply a YAML file with configuration for the new log
     stream that Istio will generate and collect automatically.
@@ -61,7 +61,7 @@ as the example application throughout this task.
     {"level":"warn","time":"2018-09-15T20:46:35.982761Z","instance":"newlog.xxxxx.istio-system","destination":"productpage","latency":"968.030256ms","responseCode":200,"responseSize":4415,"source":"istio-ingressgateway","user":"unknown"}
     {{< /text >}}
 
-## Understanding the logs configuration
+## Understanding the logs configuration{#understanding-the-logs-configuration}
 
 In this task, you added Istio configuration that instructed Mixer to
 automatically generate and report a new log stream for all
@@ -119,7 +119,7 @@ configure a rule to be executed for all requests. Omitting the entire `match`
 parameter from the `spec` is equivalent to setting `match: true`. It is included
 here to illustrate how to use `match` expressions to control rule execution.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 *   Remove the new logs configuration:
 

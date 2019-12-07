@@ -16,19 +16,19 @@ We're pleased to announce the availability of Istio 1.0.4. Please see below for 
 
 {{< relnote >}}
 
-## Known issues
+## Known issues{#known-issues}
 
 - Pilot may deadlock when using [`istioctl proxy-status`](/docs/reference/commands/istioctl/#istioctl-proxy-status) to get proxy synchronization status.
   The work around is to *not use* `istioctl proxy-status`.
   Once Pilot enters a deadlock, it exhibits continuous memory growth eventually running out of memory.
 
-## Networking
+## Networking{#networking}
 
 - Fixed the lack of removal of stale endpoints causing `503` errors.
 
 - Fixed sidecar injection when a pod label contains a `/`.
 
-## Policy and telemetry
+## Policy and telemetry{#policy-and-telemetry}
 
 - Fixed occasional data corruption problem with out-of-process Mixer adapters leading to incorrect behavior.
 

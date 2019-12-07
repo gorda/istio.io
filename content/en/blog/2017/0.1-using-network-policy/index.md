@@ -19,7 +19,7 @@ Let’s start with the basics: why might you want to use both Istio and Kubernet
 | **Implementation**    | User space        | Kernel             |
 | **Enforcement Point** | Pod               | Node               |
 
-## Layer
+## Layer{#layer}
 
 Istio policy operates at the "service” layer of your network application. This is Layer 7 (Application) from the perspective of the OSI model, but the de facto model of cloud native applications is that Layer 7 actually consists of at least two layers: a service layer and a content layer. The service layer is typically HTTP, which encapsulates the actual application data (the content layer). It is at this service layer of HTTP that the Istio’s Envoy proxy operates. In contrast, Network Policy operates at Layers 3 (Network) and 4 (Transport) in the OSI model.
 
@@ -27,7 +27,7 @@ Operating at the service layer gives the Envoy proxy a rich set of attributes to
 
 In contrast, operating at the network layer has the advantage of being universal, since all network applications use IP. At the network layer you can apply policy regardless of the layer 7 protocol: DNS, SQL databases, real-time streaming, and a plethora of other services that do not use HTTP can be secured. Network Policy isn’t limited to a classic firewall’s tuple of IP addresses, proto, and ports. Both Istio and Network Policy are aware of rich Kubernetes labels to describe pod endpoints.
 
-## Implementation
+## Implementation{#implementation}
 
 The Istio’s proxy is based on [Envoy](https://envoyproxy.github.io/envoy/), which is implemented as a user space daemon in the data plane that
 interacts with  the network layer using standard sockets. This gives it a large amount of flexibility in processing, and allows it to be
@@ -36,7 +36,7 @@ distributed (and upgraded!) in a container.
 Network Policy data plane is typically implemented in kernel space (e.g. using iptables, eBPF filters, or even custom kernel modules). Being in kernel space
 allows them to be extremely fast, but not as flexible as the Envoy proxy.
 
-## Enforcement point
+## Enforcement point{#enforcement-point}
 
 Policy enforcement using the Envoy proxy is implemented inside the pod, as a sidecar container in the same network namespace. This allows a simple deployment model. Some containers are given permission to reconfigure the networking inside their pod (`CAP_NET_ADMIN`).  If such a service instance is compromised, or misbehaves (as in a malicious tenant) the proxy can be bypassed.
 
@@ -50,14 +50,14 @@ While this won’t let an attacker access other Istio-enabled pods, so long as t
 
 Network Policy is typically enforced at the host node, outside the network namespace of the guest pods. This means that compromised or misbehaving pods must break into the root namespace to avoid enforcement. With the addition of egress policy due in Kubernetes 1.8, this difference makes Network Policy a key part of protecting your infrastructure from compromised workloads.
 
-## Examples
+## Examples{#examples}
 
 Let’s walk through a few examples of what you might want to do with Kubernetes Network Policy for an Istio-enabled application.  Consider the Bookinfo sample application.  We’re going to cover the following use cases for Network Policy:
 
 - Reduce attack surface of the application ingress
 - Enforce fine-grained isolation within the application
 
-### Reduce attack surface of the application ingress
+### Reduce attack surface of the application ingress{#reduce-attack-surface-of-the-application-ingress}
 
 Our application ingress controller is the main entry-point to our application from the outside world.  A quick peek at `istio.yaml` (used to install Istio) defines the Istio ingress like this:
 
@@ -99,7 +99,7 @@ spec:
       port: 443
 {{< /text >}}
 
-### Enforce fine-grained isolation within the application
+### Enforce fine-grained isolation within the application{#enforce-fine-grained-isolation-within-the-application}
 
 Here is the service graph for the Bookinfo application.
 
@@ -132,7 +132,7 @@ spec:
 
 You can and should write a similar policy for each service to enforce which other pods are allowed to access each.
 
-## Summary
+## Summary{#summary}
 
 Our take is that Istio and Network Policy have different strengths in applying policy. Istio is application-protocol aware and highly flexible, making it ideal for applying policy in support of operational goals, like service routing, retries, circuit-breaking, etc, and for security that operates at the application layer, such as token validation. Network Policy is universal, highly efficient, and isolated from the pods, making it ideal for applying policy in support of network security goals. Furthermore, having policy that operates at different layers of the network stack is a really good thing as it gives each layer specific context without commingling of state and allows separation of responsibility.
 

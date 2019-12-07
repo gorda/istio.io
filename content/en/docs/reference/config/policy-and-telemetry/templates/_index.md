@@ -6,7 +6,7 @@ aliases:
     - /docs/reference/config/template/index.html
 ---
 
-## Adapters
+## Adapters{#adapters}
 
 The table below shows the set of [adapters](/docs/reference/config/policy-and-telemetry/adapters) that implement each supported template.
 

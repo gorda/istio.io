@@ -18,7 +18,7 @@ Using these instructions, you can select any one of Istio's built-in
 [configuration profiles](/docs/setup/additional-setup/config-profiles/)
 and then further customize the configuration for your specific needs.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 Before you begin, check the following prerequisites:
 
@@ -26,7 +26,7 @@ Before you begin, check the following prerequisites:
 1. Perform any necessary [platform-specific setup](/docs/setup/platform-setup/).
 1. Check the [Requirements for Pods and Services](/docs/ops/deployment/requirements/).
 
-## Install Istio using the default profile
+## Install Istio using the default profile{#install-Istio-using-the-default-profile}
 
 The simplest option is to install the `default` Istio
 [configuration profile](/docs/setup/additional-setup/config-profiles/)
@@ -52,7 +52,7 @@ In general, you can use the `--set` flag in `istioctl` as you would with
 [Helm](/docs/setup/install/helm/). The only difference is you must
 prefix the setting paths with `values.` because this is the path to the Helm pass-through API, described below.
 
-## Install from external charts
+## Install from external charts{#install-from-external-charts}
 
 By default, `istioctl` uses compiled-in charts to generate the install manifest. These charts are released together with
 `istioctl` for auditing and customization purposes and can be found in the release tar in the
@@ -69,7 +69,7 @@ same charts as the compiled-in ones.
 Other than for experimenting with or testing new features, we recommend using the compiled-in charts rather than external ones to ensure compatibility of the
 `istioctl` binary with the charts.
 
-## Install a different profile
+## Install a different profile{#install-a-different-profile}
 
 Other Istio configuration profiles can be installed in a cluster by passing the
 profile name on the command line. For example, the following command can be used
@@ -79,7 +79,7 @@ to install the `demo` profile:
 $ istioctl manifest apply --set profile=demo
 {{< /text >}}
 
-## Display the list of available profiles
+## Display the list of available profiles{#display-the-list-of-available-profiles}
 
 You can display the names of Istio configuration profiles that are
 accessible to `istioctl` by using this command:
@@ -94,7 +94,7 @@ Istio configuration profiles:
     demo
 {{< /text >}}
 
-## Display the configuration of a profile
+## Display the configuration of a profile{#display-the-configuration-of-a-profile}
 
 You can view the configuration settings of a profile. For example, to view the setting for the `demo` profile
 run the following command:
@@ -150,7 +150,7 @@ k8s:
 ...
 {{< /text >}}
 
-## Show differences in profiles
+## Show differences in profiles{#show-differences-in-profiles}
 
 The `profile diff` sub-command can be used to show the differences between profiles,
 which is useful for checking the effects of customizations before applying changes to a cluster.
@@ -176,7 +176,7 @@ $ istioctl profile diff 1.yaml 2.yaml
 ...
 {{< /text >}}
 
-## Generate a manifest before installation
+## Generate a manifest before installation{#generate-a-manifest-before-installation}
 
 You can generate the manifest before installing Istio using the `manifest generate`
 sub-command, instead of `manifest apply`.
@@ -197,7 +197,7 @@ This command might show transient errors due to resources not being available in
 the cluster in the correct order.
 {{< /tip >}}
 
-## Show differences in manifests
+## Show differences in manifests{#show-differences-in-manifests}
 
 You can show the differences in the generated manifests in a YAML style diff between the default profile and a
 customized install using these commands:
@@ -231,7 +231,7 @@ spec:
   minReplicas: 1 -> 2
 {{< /text >}}
 
-## Verify a successful installation
+## Verify a successful installation{#verify-a-successful-installation}
 
 You can check if the Istio installation succeeded using the `verify-install` command
 which compares the installation on your cluster to a manifest you specify.
@@ -249,7 +249,7 @@ Then run the following `verify-install` command to see if the installation was s
 $ istioctl verify-install -f $HOME/generated-manifest.yaml
 {{< /text >}}
 
-## Customizing the configuration
+## Customizing the configuration{#customizing-the-configuration}
 
 In addition to installing any of Istio's built-in
 [configuration profiles](/docs/setup/additional-setup/config-profiles/),
@@ -284,7 +284,7 @@ Helm values can also be set in an `IstioControlPlane` definition as described in
 [Customize Istio settings using the Helm API](#customize-istio-settings-using-the-helm-api), below.
 {{< /tip >}}
 
-### Identify an Istio feature or component
+### Identify an Istio feature or component{#identify-an-Istio-feature-or-component}
 
 The `IstioControlPlane` API groups control plane components by feature, as shown in the table below:
 
@@ -311,7 +311,7 @@ be enabled and configured through the Helm pass-through API:
 Features can be enabled or disabled, which enables or disables all of the components that are a part of the feature.
 Namespaces that components are installed into can be set by component, feature, or globally.
 
-### Configure the feature or component settings
+### Configure the feature or component settings{#configure-the-feature-or-component-settings}
 
 After you identify the name of the feature or component from the previous table, you can use the API to set the values
 using the `--set` flag, or create an overlay file and use the `--filename` flag. The `--set` flag
@@ -372,7 +372,7 @@ namespaces:
 - All other components in the security feature installed into `istio-security` namespace
 - Remaining Istio components installed into istio-system namespace
 
-### Customize Kubernetes settings
+### Customize Kubernetes settings{#customize-Kubernetes-settings}
 
 The `IstioControlPlane` API allows each component's Kubernetes settings to be customized in a consistent way.
 
@@ -427,7 +427,7 @@ Use `manifest apply` to apply the modified settings to the cluster:
 $ istioctl manifest apply -f samples/operator/pilot-k8s.yaml
 {{< /text >}}
 
-### Customize Istio settings using the Helm API
+### Customize Istio settings using the Helm API{#customize-Istio-settings-using-the-helm-API}
 
 The `IstioControlPlane` API includes a pass-through interface to the [Helm API](/docs/reference/config/installation-options/)
 using the `values` field.
@@ -454,7 +454,7 @@ Some parameters will temporarily exist in both the Helm and `IstioControlPlane` 
 namespaces and enablement settings. The Istio community recommends using the `IstioControlPlane` API as it is more
 consistent, is validated, and follows the [community graduation process](https://github.com/istio/community/blob/master/FEATURE-LIFECYCLE-CHECKLIST.md#feature-lifecycle-checklist).
 
-## Uninstall Istio
+## Uninstall Istio{#uninstall-Istio}
 
 To uninstall Istio, run the following command:
 

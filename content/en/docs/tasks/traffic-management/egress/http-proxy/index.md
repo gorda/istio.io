@@ -20,7 +20,7 @@ services.
 
 *   [Enable Envoy’s access logging](/docs/tasks/observability/logs/access-log/#enable-envoy-s-access-logging)
 
-## Deploy an HTTPS proxy
+## Deploy an HTTPS proxy{#deploy-an-https-proxy}
 
 To simulate a legacy proxy and only for this example, you deploy an HTTPS proxy inside your cluster.
 Also, to simulate a more realistic proxy that is running outside of your cluster, you will address the proxy's pod
@@ -132,7 +132,7 @@ So far, you completed the following tasks without Istio:
 
 Next, you must configure the traffic from the Istio-enabled pods to use the HTTPS proxy.
 
-## Configure traffic to external HTTPS proxy
+## Configure traffic to external HTTPS proxy{#configure-traffic-to-external-https-proxy}
 
 1.  Define a TCP (not HTTP!) Service Entry for the HTTPS proxy. Although applications use the HTTP CONNECT method to
     establish connections with HTTPS proxies, you must configure the proxy for TCP traffic, instead of HTTP. Once the
@@ -179,7 +179,7 @@ Next, you must configure the traffic from the Istio-enabled pods to use the HTTP
     1544160065.248    228 172.30.109.89 TCP_TUNNEL/200 87633 CONNECT en.wikipedia.org:443 - HIER_DIRECT/91.198.174.192 -
     {{< /text >}}
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 In this example, you took the following steps:
 
@@ -190,7 +190,7 @@ Note that you must not create service entries for the external services you acce
 `wikipedia.org`. This is because from Istio's point of view the requests are sent to the external proxy only; Istio is
 not aware of the fact that the external proxy forwards the requests further.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Shutdown the [sleep]({{< github_tree >}}/samples/sleep) service:
 

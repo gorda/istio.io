@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.2.6. Please see below for 
 
 {{< relnote >}}
 
-## Bug fixes
+## Bug fixes{#bug-fixes}
 
 - Fix `redisquota` inconsistency in regards to `memquota` counting ([Issue 15543](https://github.com/istio/istio/issues/15543)).
 - Fix an Envoy crash introduced in Istio 1.2.5 ([Issue 16357](https://github.com/istio/istio/issues/16357)).
@@ -25,7 +25,7 @@ We're pleased to announce the availability of Istio 1.2.6. Please see below for 
 - Fix a bug where the service account map would be erased for service hostnames with more than one port.
 - Fix incorrect `filterChainMatch` wildcard hosts duplication produced by Pilot ([Issue 16573](https://github.com/istio/istio/issues/16573)).
 
-## Small enhancements
+## Small enhancements{#small-enhancements}
 
 - Expose `sidecarToTelemetrySessionAffinity` (required for Mixer V1) when it talks to services like Stackdriver. ([Issue 16862](https://github.com/istio/istio/issues/16862)).
 - Expose `HTTP/2` window size settings as Pilot environment variables ([Issue 17117](https://github.com/istio/istio/issues/17117)).

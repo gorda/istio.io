@@ -18,17 +18,17 @@ multi-network Istio mesh deployed on Kubernetes using gateways. This approach
 doesn't require VPN connectivity or direct network access between the VM, the
 bare metal and the clusters.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 - One or more Kubernetes clusters with versions: {{< supported_kubernetes_versions >}}.
 
 - Virtual machines (VMs) must have IP connectivity to the Ingress gateways in the mesh.
 
-## Installation steps
+## Installation steps{#installation-steps}
 
 Setup consists of preparing the mesh for expansion and installing and configuring each VM.
 
-### Customized installation of Istio on the cluster
+### Customized installation of Istio on the cluster{#customized-installation-of-Istio-on-the-cluster}
 
 The first step when adding non-Kubernetes services to an Istio mesh is to
 configure the Istio installation itself, and generate the configuration files
@@ -119,11 +119,11 @@ following commands on a machine with cluster admin privileges:
     $ echo "ISTIO_INBOUND_PORTS=8888" >> cluster.env
     {{< /text >}}
 
-### Setup DNS
+### Setup DNS{#setup-DNS}
 
 Reference [Setup DNS](/docs/setup/install/multicluster/gateways/#setup-dns) to set up DNS for the cluster.
 
-### Setting up the VM
+### Setting up the VM{#setting-up-the-VM}
 
 Next, run the following commands on each machine that you want to add to the mesh:
 
@@ -169,7 +169,7 @@ The following example updates the `/etc/hosts` file with the Istio gateway addre
     $ sudo systemctl start istio
     {{< /text >}}
 
-## Added Istio resources
+## Added Istio resources{#added-Istio-resources}
 
 The Istio resources below are added to support adding VMs to the mesh with
 gateways. These resources remove the flat network requirement between the VM and
@@ -189,7 +189,7 @@ cluster.
 | `virtualservice.networking.istio.io`  | `meshexpansion-vs-pilot`             | Set route info for `istio-pilot`             |
 | `virtualservice.networking.istio.io`  | `meshexpansion-vs-citadel`           | Set route info for `istio-citadel`           |
 
-## Expose service running on cluster to VMs
+## Expose service running on cluster to VMs{#expose-service-running-on-cluster-to-VMs}
 
 Every service in the cluster that needs to be accessed from the VM requires a service entry configuration in the cluster. The host used in the service entry should be of the form `<name>.<namespace>.global` where name and namespace correspond to the service’s name and namespace respectively.
 
@@ -274,7 +274,7 @@ in the cluster.
     Do not create a `Gateway` configuration for port 15443.
     {{< /warning >}}
 
-## Send requests from VM to Kubernetes services
+## Send requests from VM to Kubernetes services{#send-requests-from-VM-to-Kubernetes-services}
 
 After setup, the machine can access services running in the Kubernetes cluster.
 
@@ -299,7 +299,7 @@ $ curl -v httpbin.bar.global:8000
 
 The `server: envoy` header indicates that the sidecar intercepted the traffic.
 
-## Running services on the added VM
+## Running services on the added VM{#running-services-on-the-added-VM}
 
 1. Setup an HTTP server on the VM instance to serve HTTP traffic on port 8888:
 
@@ -354,7 +354,7 @@ The `server: envoy` header indicates that the sidecar intercepted the traffic.
 send traffic to a service running on a VM outside of the cluster and tested that
 the configuration worked.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Run the following commands to remove the expansion VM from the mesh's abstract
 model.

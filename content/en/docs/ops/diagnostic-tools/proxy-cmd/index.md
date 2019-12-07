@@ -25,7 +25,7 @@ OR
 
 * Use similar commands against your own application running in a Kubernetes cluster.
 
-## Get an overview of your mesh
+## Get an overview of your mesh{#get-an-overview-of-your-mesh}
 
 The `proxy-status` command allows you to get an overview of your mesh. If you suspect one of your sidecars isn't
 receiving configuration or is out of sync then `proxy-status` will tell you this.
@@ -52,7 +52,7 @@ receiving any configuration.
 * `STALE` means that Pilot has sent an update to Envoy but has not received an acknowledgement. This usually indicates
 a networking issue between Envoy and Pilot or a bug with Istio itself.
 
-## Retrieve diffs between Envoy and Istio Pilot
+## Retrieve diffs between Envoy and Istio Pilot{#retrieve-diffs-between-envoy-and-Istio-pilot}
 
 The `proxy-status` command can also be used to retrieve a diff between the configuration Envoy has loaded and the
 configuration Pilot would send, by providing a proxy ID. This can help you determine exactly what is out of sync and
@@ -106,7 +106,7 @@ Routes Match
 
 Here you can see that the listeners and routes match but the clusters are out of sync.
 
-## Deep dive into Envoy configuration
+## Deep dive into Envoy configuration{#deep-dive-into-envoy-configuration}
 
 The `proxy-config` command can be used to see how a given Envoy instance is configured. This can then be used to
 pinpoint any issues you are unable to detect by just looking through your Istio configuration and custom resources.
@@ -295,7 +295,7 @@ one route that matches on everything. This route tells Envoy to send the request
     172.17.0.5:9080      HEALTHY     OK                outbound|9080||reviews.default.svc.cluster.local
     {{< /text >}}
 
-## Inspecting bootstrap configuration
+## Inspecting bootstrap configuration{#inspecting-bootstrap-configuration}
 
 So far we have looked at configuration retrieved (mostly) from Pilot, however Envoy requires some bootstrap configuration that
 includes information like where Pilot can be found. To view this use the following command:
@@ -316,7 +316,7 @@ $ istioctl proxy-config bootstrap -n istio-system istio-ingressgateway-7d6874b48
 ...
 {{< /text >}}
 
-## Verifying connectivity to Istio Pilot
+## Verifying connectivity to Istio Pilot{#verifying-connectivity-to-Istio-pilot}
 
 Verifying connectivity to Pilot is a useful troubleshooting step. Every proxy container in the service mesh should be able to communicate with Pilot. This can be accomplished in a few simple steps:
 
@@ -346,7 +346,7 @@ Verifying connectivity to Pilot is a useful troubleshooting step. Every proxy co
 
 You should receive a response listing the "service-key" and "hosts" for each service in the mesh.
 
-## What Envoy version is Istio using?
+## What Envoy version is Istio using?{#what-envoy-version-is-Istio-using}
 
 To find out the Envoy version used in deployment, you can `exec` into the container and query the `server_info` endpoint:
 

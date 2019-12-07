@@ -14,12 +14,12 @@ this task, you will use the web-based interface for querying metric values.
 The [Bookinfo](/docs/examples/bookinfo/) sample application is used as
 the example application throughout this task.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 [Install Istio](/docs/setup/) in your cluster and deploy an
 application.
 
-## Querying Istio metrics
+## Querying Istio metrics{#querying-Istio-metrics}
 
 1.  Verify that the `prometheus` service is running in your cluster.
 
@@ -85,7 +85,7 @@ Other queries to try:
     rate(istio_requests_total{destination_service=~"productpage.*", response_code="200"}[5m])
     {{< /text >}}
 
-### About the Prometheus add-on
+### About the Prometheus add-on{#about-the-Prometheus-add-on}
 
 Mixer comes with a built-in [Prometheus](https://prometheus.io) adapter that
 exposes an endpoint serving generated metric values. The Prometheus add-on is a
@@ -106,7 +106,7 @@ The configured Prometheus add-on scrapes the following endpoints:
 For more on querying Prometheus, please read their [querying
 docs](https://prometheus.io/docs/querying/basics/).
 
-## Cleanup
+## Cleanup{#cleanup}
 
 -   Remove any `istioctl` processes that may still be running using control-C or:
 

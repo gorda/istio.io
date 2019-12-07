@@ -20,7 +20,7 @@ This task shows you how to access external services in three different ways:
 1. Configure [service entries](/docs/reference/config/networking/service-entry/) to provide controlled access to external services.
 1. Completely bypass the Envoy proxy for a specific range of IPs.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 *   Setup Istio by following the instructions in the [Installation guide](/docs/setup/).
 
@@ -49,7 +49,7 @@ This task shows you how to access external services in three different ways:
     $ export SOURCE_POD=$(kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name})
     {{< /text >}}
 
-## Envoy passthrough to external services
+## Envoy passthrough to external services{#envoy-passthrough-to-external-services}
 
 Istio has an [installation option](/docs/reference/config/installation-options/),
 `global.outboundTrafficPolicy.mode`, that configures the sidecar handling
@@ -99,14 +99,14 @@ This simple approach to access external services, has the drawback that you lose
 for traffic to external services; calls to external services will not appear in the Mixer log, for example.
 The next section shows you how to monitor and control your mesh's access to external services.
 
-## Controlled access to external services
+## Controlled access to external services{#controlled-access-to-external-services}
 
 Using Istio `ServiceEntry` configurations, you can access any publicly accessible service
 from within your Istio cluster. This section shows you how to configure access to an external HTTP service,
 [httpbin.org](http://httpbin.org), as well as an external HTTPS service,
 [www.google.com](https://www.google.com) without losing Istio's traffic monitoring and control features.
 
-### Change to the blocking-by-default policy
+### Change to the blocking-by-default policy{#change-to-the-blocking-by-default-policy}
 
 To demonstrate the controlled way of enabling access to external services, you need to change the
 `global.outboundTrafficPolicy.mode` option from the `ALLOW_ANY` mode to the `REGISTRY_ONLY` mode.
@@ -138,7 +138,7 @@ any other unintentional accesses.
     Wait for several seconds and then retry the last command.
     {{< /warning >}}
 
-### Access an external HTTP service
+### Access an external HTTP service{#access-an-external-HTTP-service}
 
 1.  Create a `ServiceEntry` to allow access to an external HTTP service:
 
@@ -198,7 +198,7 @@ any other unintentional accesses.
     `method`, `url`, `responseCode` and others. Using Istio egress traffic control, you can monitor access to external
     HTTP services, including the HTTP-related information of each access.
 
-### Access an external HTTPS service
+### Access an external HTTPS service{#access-an-external-https-service}
 
 1.  Create a `ServiceEntry` to allow access to an external HTTPS service.
 
@@ -251,7 +251,7 @@ any other unintentional accesses.
     HTTPS services, you may want to let your applications issue HTTP requests and
     [configure Istio to perform TLS origination](/docs/tasks/traffic-management/egress/egress-tls-origination/).
 
-### Manage traffic to external services
+### Manage traffic to external services{#manage-traffic-to-external-services}
 
 Similar to inter-cluster requests, Istio
 [routing rules](/docs/concepts/traffic-management/#routing-rules)
@@ -308,14 +308,14 @@ In this example, you set a timeout rule on calls to the `httpbin.org` service.
     This time a 504 (Gateway Timeout) appears after 3 seconds.
     Although httpbin.org was waiting 5 seconds, Istio cut off the request at 3 seconds.
 
-### Cleanup the controlled access to external services
+### Cleanup the controlled access to external services{#cleanup-the-controlled-access-to-external-services}
 
 {{< text bash >}}
 $ kubectl delete serviceentry httpbin-ext google
 $ kubectl delete virtualservice httpbin-ext --ignore-not-found=true
 {{< /text >}}
 
-## Direct access to external services
+## Direct access to external services{#direct-access-to-external-services}
 
 If you want to completely bypass Istio for a specific IP range,
 you can configure the Envoy sidecars to prevent them from
@@ -344,11 +344,11 @@ to set the `global.proxy.includeIPRanges` configuration option to the IP range o
 used for internal cluster services.
 These IP range values depend on the platform where your cluster runs.
 
-### Determine the internal IP ranges for your platform
+### Determine the internal IP ranges for your platform{#the-internal-IP-ranges-for-your-platform}
 
 Set the value of `global.proxy.includeIPRanges` according to your cluster provider.
 
-#### IBM Cloud Private
+#### IBM Cloud Private{#IBM-cloud-private}
 
 1.  Get your `service_cluster_ip_range` from IBM Cloud Private configuration file under `cluster/config.yaml`:
 
@@ -364,11 +364,11 @@ Set the value of `global.proxy.includeIPRanges` according to your cluster provid
 
 1.  Use `--set global.proxy.includeIPRanges="10.0.0.1/24"`
 
-#### IBM Cloud Kubernetes Service
+#### IBM Cloud Kubernetes Service{#IBM-cloud-Kubernetes-service}
 
 Use `--set global.proxy.includeIPRanges="172.30.0.0/16\,172.21.0.0/16\,10.10.10.0/24"`
 
-#### Google Container Engine (GKE)
+#### Google Container Engine (GKE){#google-container-engine}
 
 The ranges are not fixed, so you will need to run the `gcloud container clusters describe` command to determine the
 ranges to use. For example:
@@ -381,11 +381,11 @@ servicesIpv4Cidr: 10.7.240.0/20
 
 Use `--set global.proxy.includeIPRanges="10.4.0.0/14\,10.7.240.0/20"`
 
-#### Azure Container Service(ACS)
+#### Azure Container Service(ACS){#azure-container-service}
 
 Use `--set global.proxy.includeIPRanges="10.244.0.0/16\,10.240.0.0/16`
 
-#### Minikube, Docker For Desktop, Bare Metal
+#### Minikube, Docker For Desktop, Bare Metal{#minikube-docker-for-desktop-bare-metal}
 
 The default value is `10.96.0.0/12`, but it's not fixed. Use the following command to determine your actual value:
 
@@ -396,7 +396,7 @@ $ kubectl describe pod kube-apiserver -n kube-system | grep 'service-cluster-ip-
 
 Use `--set global.proxy.includeIPRanges="10.96.0.0/12"`
 
-### Configuring the proxy bypass
+### Configuring the proxy bypass{#configuring-the-proxy-bypass}
 
 {{< warning >}}
 Remove the service entry and virtual service previously deployed in this guide.
@@ -412,7 +412,7 @@ $ istioctl manifest apply <the flags you used to install Istio> --set values.glo
 Use the same command that you used to [install Istio](/docs/setup/install/istioctl) and
 add `--set values.global.proxy.includeIPRanges="10.0.0.1/24"`.
 
-### Access the external services
+### Access the external services{#access-the-external-services}
 
 Because the bypass configuration only affects new deployments, you need to redeploy the `sleep`
 application as described in the [Before you begin](#before-you-begin) section.
@@ -439,7 +439,7 @@ Unlike accessing external services through HTTP or HTTPS, you don't see any head
 requests sent to external services appear neither in the log of the sidecar nor in the Mixer log.
 Bypassing the Istio sidecars means you can no longer monitor the access to external services.
 
-### Cleanup the direct access to external services
+### Cleanup the direct access to external services{#cleanup-the-direct-access-to-external-services}
 
 Update the `istio-sidecar-injector.configmap.yaml` configuration map to redirect all outbound traffic to the sidecar
 proxies:
@@ -448,7 +448,7 @@ proxies:
 $ istioctl manifest apply <the flags you used to install Istio>
 {{< /text >}}
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 In this task you looked at three ways to call external services from an Istio mesh:
 
@@ -475,7 +475,7 @@ However, configuring the proxy this way does require cluster-provider specific k
 Similar to the first approach, you also lose monitoring of access to external services and you can't apply
 Istio features on traffic to external services.
 
-## Security note
+## Security note{#security-note}
 
 {{< warning >}}
 Note that configuration examples in this task **do not enable secure egress traffic control** in Istio.
@@ -488,7 +488,7 @@ and review the security concerns described in the
 [additional security considerations](/docs/tasks/traffic-management/egress/egress-gateway/#additional-security-considerations)
 section.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Shutdown the [sleep]({{< github_tree >}}/samples/sleep) service:
 
@@ -496,7 +496,7 @@ Shutdown the [sleep]({{< github_tree >}}/samples/sleep) service:
 $ kubectl delete -f @samples/sleep/sleep.yaml@
 {{< /text >}}
 
-### Set the outbound traffic policy mode to your desired value
+### Set the outbound traffic policy mode to your desired value{#set-the-outbound-traffic-policy-mode-to-your-desired-value}
 
 1.  Check the current value:
 

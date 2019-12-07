@@ -34,7 +34,7 @@ implementation intended to simplify the common administrative tasks of installat
 and complex configuration changes for Istio. Validation and checking for installation and upgrade
 is tightly integrated with the tools to prevent common errors and simplify troubleshooting.
 
-## The Operator API
+## The Operator API{#the-operator-API}
 
 Every operator implementation requires a
 [custom resource definition (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions)
@@ -70,7 +70,7 @@ spec:
     enabled: false
 {{< /text >}}
 
-## Installing with {{< istioctl >}}
+## Installing with {{< istioctl >}}{#installing-with-{{< istioctl >}}}
 
 The recommended way to use the Istio operator API is through a new set of `istioctl` commands.
 For example, to install Istio into a cluster:
@@ -100,7 +100,7 @@ and compare configuration profiles and manifests.
 
 Refer to the Istio [install instructions](/docs/setup/install/istioctl) for more details.
 
-## Istio Controller (alpha)
+## Istio Controller (alpha){#Istio-controller-alpha}
 
 Operator implementations use a Kubernetes controller to continuously monitor their custom resource
 and apply the corresponding configuration changes. The Istio controller monitors an `IstioControlPlane`
@@ -132,7 +132,7 @@ command execution and security context. In the controller case, a pod in the clu
 in its security context. In both cases, configuration is validated against a schema and the same correctness
 checks are performed.
 
-## Migration from Helm
+## Migration from Helm{#migration-from-helm}
 
 To help ease the transition from previous configurations using Helm,
 `istioctl` and the controller support pass-through access for the full Helm installation API.
@@ -159,7 +159,7 @@ Another feature to help with the transition from Helm is the alpha
 This command can be used to automatically convert a Helm `values.yaml` file to a corresponding
 `IstioControlPlane` configuration.
 
-## Implementation
+## Implementation{#implementation}
 
 Several frameworks have been created to help implement operators by generating stubs for some or all of
 the components. The Istio operator was created with the help of a combination of
@@ -170,7 +170,7 @@ describe the API such that runtime validation can be executed against a schema.
 More information about the implementation can be found in the README and ARCHITECTURE documents
 in the [Istio operator repository](https://github.com/istio/operator).
 
-## Summary
+## Summary{#summary}
 
 Starting in Istio 1.4, Helm installation is being replaced by new `istioctl` commands using
 a new operator custom resource definition, `IstioControlPlane`, for the configuration API.

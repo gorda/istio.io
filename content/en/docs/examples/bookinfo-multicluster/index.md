@@ -11,7 +11,7 @@ This example complements the [simplified multicluster setup procedure](/docs/set
 It shows you how to deploy Istio's classic [Bookinfo](/docs/examples/bookinfo) sample application across
 a multicluster mesh.
 
-## Getting it running
+## Getting it running{#getting-it-running}
 
 1. Start by following [these instructions](/docs/setup/install/multicluster/simplified) which will show you how to
 configure a 3 cluster mesh.
@@ -27,7 +27,7 @@ the working directory created in the previous step.
 
     This will deploy Bookinfo on all the clusters in the mesh.
 
-## Showing that its working
+## Showing that its working{#showing-that-its-working}
 
 Now that Bookinfo has been deployed to all clusters, we can disable some of its service in some of its clusters,
 and then see that the overall app continues to be responsive, indicating that traffic transparently flows between
@@ -49,7 +49,7 @@ $ done
 
 Now use [Bookinfo normally](/docs/examples/bookinfo) to demonstrate that the multicluster deployment is working properly.
 
-## Clean up
+## Clean up{#clean-up}
 
 You can remove Bookinfo from all clusters with:
 

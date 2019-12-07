@@ -32,7 +32,7 @@ After installation is complete, expose an OpenShift route for the ingress gatewa
 $ oc -n istio-system expose svc/istio-ingressgateway --port=80
 {{< /text >}}
 
-## Automatic sidecar injection
+## Automatic sidecar injection{#automatic-sidecar-injection}
 
 {{< tip >}}
 This setup is not necessary if you are running OpenShift 4.1 or higher. If this is the case, skip to the next section.
@@ -70,7 +70,7 @@ $ master-restart api
 $ master-restart controllers
 {{< /text >}}
 
-## Privileged security context constraints for application sidecars
+## Privileged security context constraints for application sidecars{#privileged-security-context-constraints-for-application-sidecars}
 
 The Istio sidecar injected into each application pod runs with user ID 1337, which is not allowed by default in OpenShift. To allow this user ID to be used, execute the following commands. Replace `<target-namespace>` with the appropriate namespace.
 

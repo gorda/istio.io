@@ -8,7 +8,7 @@ aliases:
     - /docs/ops/troubleshooting/missing-traces
 ---
 
-## Expected metrics are not being collected
+## Expected metrics are not being collected{#expected-metrics-are-not-being-collected}
 
 The following procedure helps you diagnose problems where metrics
 you are expecting to see reported are not being collected.
@@ -27,7 +27,7 @@ The Mixer default installations include a Prometheus adapter and the configurati
 
 If the Istio Dashboard or the Prometheus queries don’t show the expected metrics, any step of the flow above may present an issue. The following sections provide instructions to troubleshoot each step.
 
-### Verify Istio CNI pods are running (if used)
+### Verify Istio CNI pods are running (if used){#verify-Istio-CNI-pods-are-running-if-used}
 
 The Istio CNI plugin performs the Istio mesh pod traffic redirection in the Kubernetes pod lifecycle’s network setup phase, thereby removing the [`NET_ADMIN` capability requirement](/docs/ops/deployment/requirements/) for users deploying pods into the Istio mesh. The Istio CNI plugin replaces the functionality provided by the `istio-init` container.
 
@@ -38,7 +38,7 @@ The Istio CNI plugin performs the Istio mesh pod traffic redirection in the Kube
     {{< /text >}}
 
 1. If `PodSecurityPolicy` is being enforced in your cluster, ensure the `istio-cni` service account can use a `PodSecurityPolicy` with the [`NET_ADMIN` capability requirement](/docs/ops/deployment/requirements/)
-### Verify Mixer is receiving report calls
+### Verify Mixer is receiving report calls{#verify-mixer-is-receiving-report-calls}
 
 Mixer generates metrics to monitor its own behavior. The first step is to check these metrics:
 
@@ -58,7 +58,7 @@ Mixer generates metrics to monitor its own behavior. The first step is to check 
 
 1. In this case, ensure you integrated the services properly into the mesh. You can achieve this task with either [automatic or manual sidecar injection](/docs/setup/additional-setup/sidecar-injection/).
 
-### Verify the Mixer rules exist
+### Verify the Mixer rules exist{#verify-the-mixer-rules-exist}
 
 In Kubernetes environments, issue the following command:
 
@@ -77,7 +77,7 @@ If the output shows no rules named `promhttp` or `promtcp`, then the Mixer confi
 
 For reference, please consult the [default rules for Prometheus]({{< github_file >}}/install/kubernetes/helm/istio/charts/mixer/templates/config.yaml).
 
-### Verify the Prometheus handler configuration exists
+### Verify the Prometheus handler configuration exists{#verify-the-Prometheus-handler-configuration-exists}
 
 1. In Kubernetes environments, issue the following command:
 
@@ -100,7 +100,7 @@ For reference, please consult the [default rules for Prometheus]({{< github_file
 
     For reference, please consult the [default handler configuration for Prometheus]({{< github_file >}}/install/kubernetes/helm/istio/charts/mixer/templates/config.yaml).
 
-### Verify Mixer metric instances configuration exists
+### Verify Mixer metric instances configuration exists{#verify-mixer-metric-instances-configuration-exists}
 
 1. In Kubernetes environments, issue the following command:
 
@@ -118,7 +118,7 @@ For reference, please consult the [default rules for Prometheus]({{< github_file
 
     For reference, please consult the [default instances configuration for metrics]({{< github_file >}}/install/kubernetes/helm/istio/charts/mixer/templates/config.yaml).
 
-### Verify there are no known configuration errors
+### Verify there are no known configuration errors{#verify-there-are-no-known-configuration-errors}
 
 1. To establish a connection to the Istio-telemetry self-monitoring endpoint, setup a port-forward to the Istio-telemetry self-monitoring port as described in
 [Verify Mixer is receiving Report calls](#verify-mixer-is-receiving-report-calls).
@@ -147,7 +147,7 @@ configured correctly.
 If any of those metrics have a value, confirm that the metric value with the largest configuration ID is 0. This will verify that Mixer has generated no errors
 in processing the most recent configuration as supplied.
 
-### Verify Mixer is sending metric instances to the Prometheus adapter
+### Verify Mixer is sending metric instances to the Prometheus adapter{#verify-mixer-is-sending-metric-instances-to-the-Prometheus-adapter}
 
 1. Establish a connection to the `istio-telemetry` self-monitoring endpoint. Setup a port-forward to the `istio-telemetry` self-monitoring port as described in
 [Verify Mixer is receiving Report calls](#verify-mixer-is-receiving-report-calls).
@@ -176,7 +176,7 @@ in processing the most recent configuration as supplied.
     $ kubectl -n istio-system logs <istio-telemetry pod> -c mixer
     {{< /text >}}
 
-### Verify Prometheus configuration
+### Verify Prometheus configuration{#verify-Prometheus-configuration}
 
 1. Connect to the Prometheus UI
 
@@ -206,7 +206,7 @@ in processing the most recent configuration as supplied.
     - targets: ['istio-mixer.istio-system:42422']</td>
     {{< /text >}}
 
-## No traces appearing in Zipkin when running Istio locally on Mac
+## No traces appearing in Zipkin when running Istio locally on Mac{#no-traces-appearing-in-Zipkin-when-running-Istio-locally-on-mac}
 
 Istio is installed and everything seems to be working except there are no traces showing up in Zipkin when there
 should be.
@@ -229,7 +229,7 @@ Thu Jun 15 02:25:42 UTC 2017
 
 To fix the problem, you'll need to shutdown and then restart Docker before reinstalling Istio.
 
-## Missing Grafana output
+## Missing Grafana output{#missing-Grafana-output}
 
 If you're unable to get Grafana output when connecting from a local web client to Istio remotely hosted, you
 should validate the client and server date and time match.

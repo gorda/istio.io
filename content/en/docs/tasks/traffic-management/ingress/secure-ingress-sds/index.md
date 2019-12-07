@@ -15,7 +15,7 @@ service using either simple or mutual TLS.
 The TLS required private key, server certificate, and root certificate, are configured
 using the Secret Discovery Service (SDS).
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 1.  Perform the steps in the [Before you begin](/docs/tasks/traffic-management/ingress/ingress-control#before-you-begin)
 and [Determining the ingress IP and ports](/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports)
@@ -40,7 +40,7 @@ and you want to migrate your ingress gateway to use the SDS approach, there are 
 extra steps required.
 {{< /tip >}}
 
-## Generate client and server certificates and keys
+## Generate client and server certificates and keys{#generate-client-and-server-certificates-and-keys}
 
 For this task you can use your favorite tool to generate certificates and keys.
 This example uses [a script](https://github.com/nicholasjackson/mtls-go-example/blob/master/generate.sh)
@@ -82,7 +82,7 @@ from the <https://github.com/nicholasjackson/mtls-go-example> repository.
     $ popd
     {{< /text >}}
 
-## Configure a TLS ingress gateway using SDS
+## Configure a TLS ingress gateway using SDS{#configure-a-TLS-ingress-gateway-using-sds}
 
 You can configure a TLS ingress gateway to fetch credentials
  from the ingress gateway agent via secret discovery service (SDS). The ingress
@@ -122,7 +122,7 @@ need to create secrets for multiple hosts and update the gateway definitions.
     get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
     {{< /text >}}
 
-### Configure a TLS ingress gateway for a single host
+### Configure a TLS ingress gateway for a single host{#configure-a-TLS-ingress-gateway-for-a-single-host}
 
 1.  Start the `httpbin` sample:
 
@@ -298,7 +298,7 @@ need to create secrets for multiple hosts and update the gateway definitions.
     * SSL certificate problem: unable to get local issuer certificate
     {{< /text >}}
 
-### Configure a TLS ingress gateway for multiple hosts
+### Configure a TLS ingress gateway for multiple hosts{#configure-a-TLS-ingress-gateway-for-multiple-hosts}
 
 You can configure an ingress gateway for multiple hosts,
 `httpbin.example.com` and `helloworld-v1.example.com`, for example. The ingress gateway
@@ -460,7 +460,7 @@ retrieves unique credentials corresponding to a specific `credentialName`.
             `"""`
     {{< /text >}}
 
-### Configure a mutual TLS ingress gateway
+### Configure a mutual TLS ingress gateway{#configure-a-mutual-TLS-ingress-gateway}
 
 You can extend your gateway's definition to support
 [mutual TLS](https://en.wikipedia.org/wiki/Mutual_authentication). Change
@@ -561,7 +561,7 @@ $ kubectl create -n istio-system secret generic httpbin-credential  \
     --from-file=cacert=httpbin.example.com/2_intermediate/certs/ca-chain.cert.pem
     {{< /text >}}
 
-## Troubleshooting
+## Troubleshooting{#troubleshooting}
 
 *   Inspect the values of the `INGRESS_HOST` and `SECURE_INGRESS_PORT` environment
     variables. Make sure they have valid values, according to the output of the
@@ -609,7 +609,7 @@ $ kubectl create -n istio-system secret generic httpbin-credential  \
     that the gateway agent received the SDS request with the `httpbin-credential-cacert`
     resource name,   and that the ingress gateway obtained the root certificate.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Delete the gateway configuration, the virtual service definition, and the secrets:
 

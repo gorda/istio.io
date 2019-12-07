@@ -13,7 +13,7 @@ describe how to configure egress traffic for specific hostnames, like `edition.c
 This example shows how to enable egress traffic for a set of hosts in a common domain, for
 example `*.wikipedia.org`, instead of configuring each and every host separately.
 
-## Background
+## Background{#background}
 
 Suppose you want to enable egress traffic in Istio for the `wikipedia.org` sites in all languages.
 Each version of `wikipedia.org` in a particular language has its own hostname, e.g., `en.wikipedia.org` and
@@ -27,7 +27,7 @@ without the need to specify every language's site separately.
 
 *   [Enable Envoy’s access logging](/docs/tasks/observability/logs/access-log/#enable-envoy-s-access-logging)
 
-## Configure direct traffic to a wildcard host
+## Configure direct traffic to a wildcard host{#configure-direct-traffic-to-a-wildcard-host}
 
 The first, and simplest, way to access a set of hosts within a common domain is by configuring
 a simple `ServiceEntry` with a wildcard host and calling the services directly from the sidecar.
@@ -80,14 +80,14 @@ only much more convenient when there are many hosts within the common domain.
     <title>Wikipedia – Die freie Enzyklopädie</title>
     {{< /text >}}
 
-### Cleanup direct traffic to a wildcard host
+### Cleanup direct traffic to a wildcard host{#cleanup-direct-traffic-to-a-wildcard-host}
 
 {{< text bash >}}
 $ kubectl delete serviceentry wikipedia
 $ kubectl delete virtualservice wikipedia
 {{< /text >}}
 
-## Configure egress gateway traffic to a wildcard host
+## Configure egress gateway traffic to a wildcard host{#configure-egress-gateway-traffic-to-a-wildcard-host}
 
 The configuration for accessing a wildcard host via an egress gateway depends on whether or not
 the set of wildcard domains are served by a single common host.
@@ -99,7 +99,7 @@ any specific site.
 In the general case, where all the domain names of a wildcard are not served by a single hosting server,
 a more complex configuration is required.
 
-### Wildcard configuration for a single hosting server
+### Wildcard configuration for a single hosting server{#wildcard-configuration-for-a-single-hosting-server}
 
 When all wildcard hosts are served by a single server, the configuration for
 egress gateway-based access to a wildcard host is very similar to that of any host, with one exception:
@@ -214,7 +214,7 @@ the set of domains.
     outbound|443||www.wikipedia.org::208.80.154.224:443::cx_total::2
     {{< /text >}}
 
-#### Cleanup wildcard configuration for a single hosting server
+#### Cleanup wildcard configuration for a single hosting server{#cleanup-wildcard-configuration-for-a-single-hosting-server}
 
 {{< text bash >}}
 $ kubectl delete serviceentry www-wikipedia
@@ -223,7 +223,7 @@ $ kubectl delete virtualservice direct-wikipedia-through-egress-gateway
 $ kubectl delete destinationrule egressgateway-for-wikipedia
 {{< /text >}}
 
-### Wildcard configuration for arbitrary domains
+### Wildcard configuration for arbitrary domains{#wildcard-configuration-for-arbitrary-domains}
 
 The configuration in the previous section worked because all the _*.wikipedia.org_ sites can
 be served by any one of the _wikipedia.org_ servers. However, this is not always the case.
@@ -251,7 +251,7 @@ The egress gateway with SNI proxy and the related parts of the Istio architectur
 The following sections show you how to redeploy the egress gateway with an SNI proxy and then configure Istio to route
 HTTPS traffic through the gateway to arbitrary wildcard domains.
 
-#### Setup egress gateway with SNI proxy
+#### Setup egress gateway with SNI proxy{#setup-egress-gateway-with-SNI-proxy}
 
 In this section you deploy an egress gateway with an SNI proxy in addition to the standard Istio Envoy proxy.
 This example uses [Nginx](http://nginx.org) for the SNI proxy, although any SNI proxy that is capable of routing traffic
@@ -395,7 +395,7 @@ The SNI proxy will forward the traffic to port `443`.
     EOF
     {{< /text >}}
 
-#### Configure traffic through egress gateway with SNI proxy
+#### Configure traffic through egress gateway with SNI proxy{#configure-traffic-through-egress-gateway-with-SNI-proxy}
 
 1.  Define a `ServiceEntry` for `*.wikipedia.org`:
 
@@ -659,7 +659,7 @@ The SNI proxy will forward the traffic to port `443`.
 
     Note the `requestedServerName` attribute.
 
-#### Cleanup wildcard configuration for arbitrary domains
+#### Cleanup wildcard configuration for arbitrary domains{#cleanup-wildcard-configuration-for-arbitrary-domains}
 
 1.  Delete the configuration items for _*.wikipedia.org_:
 
@@ -687,7 +687,7 @@ The SNI proxy will forward the traffic to port `443`.
     $ rm ./sni-proxy.conf
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Shutdown the [sleep]({{< github_tree >}}/samples/sleep) service:
 

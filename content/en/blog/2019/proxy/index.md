@@ -19,7 +19,7 @@ observability, traffic management and policy enforcement.
 The blog post shows configuring access to an HTTP and an HTTPS external service, namely `httpbin.org` and
 `edition.cnn.com`.
 
-## Configure an ingress gateway
+## Configure an ingress gateway{#configure-an-ingress-gateway}
 
 1.  Define an ingress gateway with a `servers:` section configuring the `80` and `443` ports.
     Ensure `mode:` is set to `PASSTHROUGH` for `tls:` in the port `443`, which instructs the gateway to pass the
@@ -259,7 +259,7 @@ The blog post shows configuring access to an HTTP and an HTTPS external service,
     [2019-01-31T13:40:11.076Z] "- - -" 0 - 589 17798 1644 - "-" "-" "-" "-" "172.217.31.132:443" outbound|443||edition.cnn.com 172.30.230.33:54508 172.30.230.33:443 10.127.220.75:49467 edition.cnn.com
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Remove the gateway, the virtual services and the service entries:
 

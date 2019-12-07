@@ -19,7 +19,7 @@ aliases:
 An Envoy user reported publicly an issue (c.f. [Envoy Issue 7728](https://github.com/envoyproxy/envoy/issues/7728)) about regular expressions (or regex) matching
 that crashes Envoy with very large URIs. After investigation, the Istio team has found that this issue could be leveraged for a DoS attack in Istio, if users are employing regular expressions in some of the Istio APIs: `JWT`, `VirtualService`, `HTTPAPISpecBinding`, `QuotaSpecBinding`.
 
-## Impact and detection
+## Impact and detection{#impact-and-detection}
 
 To detect if there is any regular expressions used in Istio APIs in your cluster, run the following command which prints either of the following output:
 
@@ -74,7 +74,7 @@ echo "${green}YOU ARE NOT AFFECTED: did not find regex usage${reset}"
 EOF
 {{< /text >}}
 
-## Mitigation
+## Mitigation{#mitigation}
 
 * For Istio 1.1.x deployments: update to [Istio 1.1.13](/news/releases/1.1.x/announcing-1.1.13) or later
 * For Istio 1.2.x deployments: update to [Istio 1.2.4](/news/releases/1.2.x/announcing-1.2.4) or later.

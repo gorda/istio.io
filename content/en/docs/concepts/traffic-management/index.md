@@ -32,7 +32,7 @@ work, you can find out more about Istio’s traffic management implementation in
 [architecture overview](/docs/ops/deployment/architecture/). The rest of
 this guide introduces Istio’s traffic management features.
 
-## Introducing Istio traffic management
+## Introducing Istio traffic management{#introducing-Istio-traffic-management}
 
 In order to direct traffic within your mesh, Istio needs to know where all your
 endpoints are, and which services they belong to. To populate its own
@@ -76,7 +76,7 @@ This guide also gives an overview of some of the
 [network resilience and testing features](#network-resilience-and-testing) that
 are built in to the API resources.
 
-## Virtual services {#virtual-services}
+## Virtual services {#virtual-services}{#virtual-services-{-virtual-services}}
 
 [Virtual services](/docs/reference/config/networking/virtual-service/#VirtualService),
 along with [destination rules](#destination-rules), are the key building blocks of Istio’s traffic
@@ -88,7 +88,7 @@ Istio match each given request to the virtual service to a specific real
 destination within the mesh. Your mesh can require multiple virtual services or
 none depending on your use case.
 
-### Why use virtual services? {#why-use-virtual-services}
+### Why use virtual services? {#why-use-virtual-services}{#why-use-virtual-services-{-why-use-virtual-services}}
 
 Virtual services play a key role in making Istio’s traffic management flexible
 and powerful. They do this by strongly decoupling where clients send their
@@ -144,7 +144,7 @@ service subsets and other destination-specific policies in a separate object
 lets you reuse these cleanly between virtual services. You can find out more
 about destination rules in the next section.
 
-### Virtual service example {#virtual-service-example}
+### Virtual service example {#virtual-service-example}{#virtual-service-example-{-virtual-service-example}}
 
 The following virtual service routes
 requests to different versions of a service depending on whether the request
@@ -173,7 +173,7 @@ spec:
         subset: v3
 {{< /text >}}
 
-#### The hosts field {#the-hosts-field}
+#### The hosts field {#the-hosts-field}{#the-hosts-field-{-the-hosts-field}}
 
 The `hosts` field lists the virtual service’s hosts - in other words, the user-addressable
 destination or destinations that these routing rules apply to. This is the
@@ -192,7 +192,7 @@ all matching services. Virtual service hosts don't actually have to be part of t
 Istio service registry, they are simply virtual destinations. This lets you model
 traffic for virtual hosts that don't have routable entries inside the mesh.
 
-#### Routing rules {#routing-rules}
+#### Routing rules {#routing-rules}{#routing-rules-{-routing-rules}}
 
 The `http` section contains the virtual service’s routing rules, describing
 match conditions and actions for routing HTTP/1.1, HTTP2, and gRPC traffic sent
@@ -204,7 +204,7 @@ unterminated
 traffic). A routing rule consists of the destination where you want the traffic
 to go and zero or more match conditions, depending on your use case.
 
-##### Match condition {#match-condition}
+##### Match condition {#match-condition}{#match-condition-{-match-condition}}
 
 The first routing rule in the example has a condition and so begins with the
 `match` field. In this case you want this routing to apply to all requests from
@@ -218,7 +218,7 @@ the appropriate requests.
          exact: jason
 {{< /text >}}
 
-##### Destination {#destination}
+##### Destination {#destination}{#destination-{-destination}}
 
 The route section’s `destination` field specifies the actual destination for
 traffic that matches this condition. Unlike the virtual service’s host(s), the
@@ -253,7 +253,7 @@ you want requests that match this rule’s conditions to go to, in this case the
 subset named v2. You’ll see how you define a service subset in the section on
 [destination rules](#destination-rules) below.
 
-#### Routing rule precedence {#routing-rule-precedence}
+#### Routing rule precedence {#routing-rule-precedence}{#routing-rule-precedence-{-routing-rule-precedence}}
 
 Routing rules are **evaluated in sequential order from top to bottom**, with the
 first rule in the virtual service definition being given highest priority. In
@@ -272,7 +272,7 @@ We recommend providing a default "no condition" or weight-based rule (described
 below) like this as the last rule in each virtual service to ensure that traffic
 to the virtual service always has at least one matching route.
 
-### More about routing rules {#more-about-routing-rules}
+### More about routing rules {#more-about-routing-rules}{#more-about-routing-rules-{-more-about-routing-rules}}
 
 As you saw above, routing rules are a powerful tool for routing particular
 subsets of traffic to particular destinations. You can set match conditions on
@@ -353,7 +353,7 @@ example:
 To learn more about the actions available, see the
 [`HTTPRoute` reference](/docs/reference/config/networking/virtual-service/#HTTPRoute).
 
-## Destination rules {#destination-rules}
+## Destination rules {#destination-rules}{#destination-rules-{-destination-rules}}
 
 Along with [virtual services](#virtual-services),
 [destination rules](/docs/reference/config/networking/destination-rule/#DestinationRule)
@@ -374,7 +374,7 @@ preferred load balancing model, TLS security mode, or circuit breaker settings.
 You can see a complete list of destination rule options in the
 [Destination Rule reference](/docs/reference/config/networking/destination-rule/).
 
-### Load balancing options
+### Load balancing options{#load-balancing-options}
 
 By default, Istio uses a round-robin load balancing policy, where each service
 instance in the instance pool gets a request in turn. Istio also supports the
@@ -391,7 +391,7 @@ See the
 [Envoy load balancing documentation](https://www.envoyproxy.io/docs/envoy/v1.5.0/intro/arch_overview/load_balancing)
 for more information about each option.
 
-### Destination rule example {#destination-rule-example}
+### Destination rule example {#destination-rule-example}{#destination-rule-example-{-destination-rule-example}}
 
 The following example destination rule configures three different subsets for
 the `my-svc` destination service, with different load balancing policies:
@@ -433,7 +433,7 @@ field, sets a simple random load balancer for the `v1` and `v3` subsets. In the
 `v2` policy, a round-robin load balancer is specified in the corresponding
 subset’s field.
 
-## Gateways {#gateways}
+## Gateways {#gateways}{#gateways-{-gateways}}
 
 You use a [gateway](/docs/reference/config/networking/gateway/#Gateway) to
 manage inbound and outbound traffic for your mesh, letting you specify which
@@ -467,7 +467,7 @@ while just the ingress gateway is deployed with our
 can apply your own gateway configurations to these deployments or deploy and
 configure your own gateway proxies.
 
-### Gateway example {#gateway-example}
+### Gateway example {#gateway-example}{#gateway-example-{-gateway-example}}
 
 The following example shows a possible gateway configuration for external HTTPS
 ingress traffic:
@@ -515,7 +515,7 @@ spec:
 You can then configure the virtual service with routing rules for the external
 traffic.
 
-## Service entries {#service-entries}
+## Service entries {#service-entries}{#service-entries-{-service-entries}}
 
 You use a
 [service entry](/docs/reference/config/networking/service-entry/#ServiceEntry) to add
@@ -539,7 +539,7 @@ your mesh services to use. By default, Istio configures the Envoy proxies to
 passthrough requests to unknown services. However, you can’t use Istio features
 to control the traffic to destinations that aren't registered in the mesh.
 
-### Service entry example {#service-entry-example}
+### Service entry example {#service-entry-example}{#service-entry-example-{-service-entry-example}}
 
 The following example mesh-external service entry adds the `ext-resource`
 external dependency to Istio’s service registry:
@@ -588,7 +588,7 @@ See the
 [Service Entry reference](/docs/reference/config/networking/service-entry)
 for more possible configuration options.
 
-## Sidecars {#sidecars}
+## Sidecars {#sidecars}{#sidecars-{-sidecars}}
 
 By default, Istio configures every Envoy proxy to accept traffic on all the
 ports of its associated workload, and to reach every workload in the mesh when
@@ -624,7 +624,7 @@ spec:
 See the [Sidecar reference](/docs/reference/config/networking/sidecar/)
 for more details.
 
-## Network resilience and testing {#network-resilience-and-testing}
+## Network resilience and testing {#network-resilience-and-testing}{#network-resilience-and-testing-{-network-resilience-and-testing}}
 
 As well as helping you direct traffic around your mesh, Istio provides opt-in
 failure recovery and fault injection features that you can configure dynamically
@@ -632,7 +632,7 @@ at runtime. Using these features helps your applications operate reliably,
 ensuring that the service mesh can tolerate failing nodes and preventing
 localized failures from cascading to other nodes.
 
-### Timeouts {#timeouts}
+### Timeouts {#timeouts}{#timeouts-{-timeouts}}
 
 A timeout is the amount of time that an Envoy proxy should wait for replies from
 a given service, ensuring that services don’t hang around waiting for replies
@@ -666,7 +666,7 @@ spec:
     timeout: 10s
 {{< /text >}}
 
-### Retries {#retries}
+### Retries {#retries}{#retries-{-retries}}
 
 A retry setting specifies the maximum number of times an Envoy proxy attempts to
 connect to a service if the initial call fails. Retries can enhance service
@@ -705,7 +705,7 @@ spec:
       perTryTimeout: 2s
 {{< /text >}}
 
-### Circuit breakers {#circuit-breakers}
+### Circuit breakers {#circuit-breakers}{#circuit-breakers-{-circuit-breakers}}
 
 Circuit breakers are another useful mechanism Istio provides for creating
 resilient microservice-based applications. In a circuit breaker, you set limits
@@ -742,7 +742,7 @@ spec:
 You can find out more about creating circuit breakers in
 [Circuit Breaking](/docs/tasks/traffic-management/circuit-breaking/).
 
-### Fault injection {#fault-injection}
+### Fault injection {#fault-injection}{#fault-injection-{-fault-injection}}
 
 After you’ve configured your network, including failure recovery policies, you
 can use Istio’s fault injection mechanisms to test the failure recovery capacity
@@ -792,7 +792,7 @@ spec:
 For detailed instructions on how to configure delays and aborts, see
 [Fault Injection](/docs/tasks/traffic-management/fault-injection/).
 
-### Working with your applications {#working-with-your-applications}
+### Working with your applications {#working-with-your-applications}{#working-with-your-applications-{-working-with-your-applications}}
 
 Istio failure recovery features are completely transparent to the
 application. Applications don’t know if an Envoy sidecar proxy is handling

@@ -17,7 +17,7 @@ The upgrade command can also perform a downgrade of Istio.
 See the [`istioctl` upgrade reference](/docs/reference/commands/istioctl/#istioctl-experimental-upgrade)
 for all the options provided by the `istioctl experimental upgrade` command.
 
-## Upgrade prerequisites
+## Upgrade prerequisites{#upgrade-prerequisites}
 
 Ensure you meet these requirements before starting the upgrade process:
 
@@ -25,7 +25,7 @@ Ensure you meet these requirements before starting the upgrade process:
 
 * Your Istio installation was [installed using {{< istioctl >}}](/docs/setup/install/istioctl/).
 
-## Upgrade steps
+## Upgrade steps{#upgrade-steps}
 
 {{< warning >}}
 Traffic disruption may occur during the upgrade process. To minimize the disruption, ensure
@@ -88,7 +88,7 @@ can be found in the `bin/` subdirectory of the downloaded package.
     $ kubectl rollout restart deployment
     {{< /text >}}
 
-## Downgrade prerequisites
+## Downgrade prerequisites{#downgrade-prerequisites}
 
 Ensure you meet these requirements before starting the downgrade process:
 
@@ -101,7 +101,7 @@ corresponds to the Istio version that you intend to downgrade to.
 For example, if you are downgrading from Istio 1.4 to 1.3.3, use `istioctl`
 version 1.3.3.
 
-## Downgrade to Istio 1.4 and higher versions steps
+## Downgrade to Istio 1.4 and higher versions steps{#downgrade-to-Istio-1.4-and-higher-versions-steps}
 
 You can also use `istioctl upgrade` to downgrade versions. The process steps are
 identical to the upgrade process mentioned in the previous section, only use the
@@ -109,7 +109,7 @@ identical to the upgrade process mentioned in the previous section, only use the
 process will restore Istio back to the Istio version that was installed before
 you ran `istioctl experimental upgrade`.
 
-### Downgrade to Istio 1.3.3 and lower versions steps
+### Downgrade to Istio 1.3.3 and lower versions steps{#downgrade-to-Istio-1.3.3-and-lower-versions-steps}
 
 The `istioctl experimental upgrade` command is not available in Istio 1.3.3 and lower.
 Therefore, downgrade must be performed using the

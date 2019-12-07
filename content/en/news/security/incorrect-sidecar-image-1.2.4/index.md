@@ -16,7 +16,7 @@ contained a faulty version of the proxy against the vulnerabilities [ISTIO-SECUR
 
 If you have installed Istio 1.2.4 during that time, please consider upgrading to Istio 1.2.5 that also contains additional security fixes.
 
-## Detailed explanation
+## Detailed explanation{#detailed-explanation}
 
 Because of the communication embargo that we have exercised when fixing the recent HTTP2 DoS vulnerabilities, as it is usual for this type of release, we have built, in advance, a fixed image of the sidecar privately. At the moment of the public disclosure, we pushed that image manually on Docker hub.
 

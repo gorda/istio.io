@@ -16,6 +16,6 @@ We're pleased to announce the availability of Istio 1.1.11. Please see below for
 
 {{< relnote >}}
 
-## Small enhancements
+## Small enhancements{#small-enhancements}
 
 - Add ability to enable `HTTP/1.0` support in ingress gateway ([Issue 13085](https://github.com/istio/istio/issues/13085)).

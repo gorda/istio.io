@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.2.3. Please see below for 
 
 {{< relnote >}}
 
-## Bug fixes
+## Bug fixes{#bug-fixes}
 
 - Fix a bug where the sidecar could infinitely forward requests to itself when pod defines a port undefined for service ([Issue 14443](https://github.com/istio/istio/issues/14443)) and ([Issue 14242](https://github.com/istio/istio/issues/14242))
 - Fix a bug where Stackdriver adapter shuts down after telemetry is started.
@@ -26,7 +26,7 @@ We're pleased to announce the availability of Istio 1.2.3. Please see below for 
 - Relax Keep-Alive enforcement policy to avoid dropping connections under load ([Issue 15088](https://github.com/istio/istio/issues/15088))
 - When SDS is not used, skip Kubernetes JWT authentication to mitigate the risk of compromised (untrustworthy) JWTs being used.
 
-## Tests upgrade
+## Tests upgrade{#tests-upgrade}
 
 - Update base image version for Bookinfo reviews sample app ([Issue 15477](https://github.com/istio/istio/issues/15477))
 - Bookinfo samples image qualification ([Issue 14237](https://github.com/istio/istio/issues/14237))

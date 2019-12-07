@@ -10,7 +10,7 @@ aliases:
 This document shows how to manually integrate Istio with existing
 Google Cloud Endpoints services.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 If you don't have an Endpoints service and want to try it out, you can follow
 the [instructions](https://cloud.google.com/endpoints/docs/openapi/get-started-kubernetes-engine)
@@ -24,7 +24,7 @@ $ curl --request POST --header "content-type:application/json" --data '{"message
 
 To install Istio for GKE, follow our [Quick Start with Google Kubernetes Engine](/docs/setup/platform-setup/gke).
 
-## HTTP endpoints service
+## HTTP endpoints service{#HTTP-endpoints-service}
 
 1.  Inject the service and the deployment into the mesh using `--includeIPRanges` by following the
 [instructions](/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services)
@@ -81,7 +81,7 @@ You can verify accessing the Endpoints service through Istio ingress:
     $ curl --request POST --header "content-type:application/json" --data '{"message":"hello world"}' "http://${INGRESS_HOST}:${INGRESS_PORT}/echo?key=${ENDPOINTS_KEY}"
     {{< /text >}}
 
-## HTTPS endpoints service using secured Ingress
+## HTTPS endpoints service using secured Ingress{#https-endpoints-service-using-secured-ingress}
 
 The recommended way to securely access a mesh Endpoints service is through an ingress configured with TLS.
 

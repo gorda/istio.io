@@ -9,7 +9,7 @@ target_release: 1.2
 
 One of Istio’s main goals has always been, and continues to be, enabling teams to develop abstractions that work best for their specific organization and workloads. Istio provides robust and powerful building blocks for service-to-service networking. Since [Istio 0.1](/news/releases/0.x/announcing-0.1), the Istio team has been learning from production users about how they map their own architectures, workloads, and constraints to Istio’s capabilities, and we’ve been evolving Istio’s APIs to make them work better for you.
 
-## Evolving Istio’s APIs
+## Evolving Istio’s APIs{#evolving-Istio-is-APIs}
 
 The next step in Istio’s evolution is to sharpen our focus and align with the roles of Istio’s users. A security admin should be able to interact with an API that logically groups and simplifies security operations within an Istio mesh; the same goes for service operators and traffic management operations.
 
@@ -25,7 +25,7 @@ To provide these sorts of role-centric abstractions, however, the APIs underneat
 
 Over the course of the next several releases we will share our progress as we strengthen the alignment between Istio’s APIs and the roles of Istio users.
 
-## Composability and abstractions
+## Composability and abstractions{#Composability-and-abstractions}
 
 Istio and Kubernetes often go together, but Istio is much more than an add-on to Kubernetes – it is as much a _platform_ as Kubernetes is. Istio aims to provide infrastructure, and surface the capabilities you need in a powerful service mesh. For example, there are platform-as-a-service offerings that use Kubernetes as their foundation, and build on Kubernetes’ composability to provide a subset of APIs to application developers.
 
@@ -47,7 +47,7 @@ As Istio has matured, we’ve also seen production users develop workload- and o
 
 AutoTrader UK has one of our favorite examples of a custom platform built on Istio. In [an interview with the Kubernetes Podcast from Google](https://kubernetespodcast.com/episode/052-autotrader/), Russel Warman and Karl Stoney describe their Kubernetes-based delivery platform, with [cost dashboards using Prometheus and Grafana](https://karlstoney.com/2018/07/07/managing-your-costs-on-kubernetes/). With minimal effort, they added configuration options to determine what their developers want configured on the network, and it now manages the Istio objects required to make that happen. There are countless other platforms being built in enterprise and cloud-native companies: some designed to replace a web of company-specific custom scripts, and some aimed to be a general-purpose public tool. As more companies start to talk about their tooling publicly, we'll bring their stories to this blog.
 
-## What’s coming next
+## What’s coming next{#what’s-coming-next}
 
 Some areas of improvement that we’re working on for upcoming releases include:
 

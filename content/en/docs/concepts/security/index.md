@@ -40,7 +40,7 @@ and audit (AAA) tools to protect your services and data. The goals of Istio secu
 Visit our [Mutual TLS Migration docs](/docs/tasks/security/authentication/mtls-migration/) to start using Istio security features with your deployed services.
 Visit our [Security Tasks](/docs/tasks/security/) for detailed instructions to use the security features.
 
-## High-level architecture
+## High-level architecture{#high-level-architecture}
 
 Security in Istio involves multiple components:
 
@@ -57,7 +57,7 @@ Security in Istio involves multiple components:
 
 In the following sections, we introduce the Istio security features in detail.
 
-## Istio identity
+## Istio identity{#Istio-identity}
 
 Identity is a fundamental concept of any security infrastructure. At the beginning of a service-to-service communication,
 the two parties must exchange credentials with their identity information for mutual authentication purposes.
@@ -86,7 +86,7 @@ Istio service identities on different platforms:
 - **On-premises (non-Kubernetes)**: user account, custom service account, service name, Istio service account, or GCP service account.
   The custom service account refers to the existing service account just like the identities that the customer's Identity Directory manages.
 
-### Istio security vs SPIFFE
+### Istio security vs SPIFFE{#Istio-security-vs-SPIFFE}
 
 The [SPIFFE](https://spiffe.io/) standard provides a specification for a framework capable of bootstrapping and issuing identities to services
 across heterogeneous environments.
@@ -99,7 +99,7 @@ This enables Istio services to establish and accept connections with other SPIFF
 Istio security and [SPIRE](https://spiffe.io/spire/), which is the implementation of SPIFFE, differ in the PKI implementation details.
 Istio provides a more comprehensive security solution, including authentication, authorization, and auditing.
 
-## PKI
+## PKI{#PKI}
 
 The Istio PKI is built on top of Istio Citadel and securely provisions strong identities to every workload.
 Istio uses X.509 certificates to carry the identities in [SPIFFE](https://spiffe.io/) format.
@@ -108,7 +108,7 @@ The PKI also automates the key & certificate rotation at scale.
 Istio supports services running on both Kubernetes pods and on-premises machines.
 Currently we use different certificate key provisioning mechanisms for each scenario.
 
-### Kubernetes scenario
+### Kubernetes scenario{#Kubernetes-scenario}
 
 1. Citadel watches the Kubernetes `apiserver`, creates a SPIFFE certificate and key pair for each of the existing and new service accounts.
    Citadel stores the certificate and key pairs as
@@ -123,7 +123,7 @@ Currently we use different certificate key provisioning mechanisms for each scen
    which defines what service account or accounts can run a certain service.
    Pilot then passes the secure naming information to the sidecar Envoy.
 
-### On-premises machines scenario
+### On-premises machines scenario{#on-premises-machines-scenario}
 
 1. Citadel creates a gRPC service to take [Certificate Signing Requests](https://en.wikipedia.org/wiki/Certificate_signing_request) (CSRs).
 
@@ -136,7 +136,7 @@ Currently we use different certificate key provisioning mechanisms for each scen
 
 1. The above CSR process repeats periodically for certificate and key rotation.
 
-### Node agent in Kubernetes
+### Node agent in Kubernetes{#node-agent-in-Kubernetes}
 
 Istio provides the option of using node agent in Kubernetes for certificate and key provisioning, as shown in the figure below.
 Note that the identity provisioning flow for on-premises machines will be similar in the near future, we only describe the Kubernetes scenario here.
@@ -161,7 +161,7 @@ The flow goes as follows:
 Use the node agent debug endpoint to view the secrets a node agent is actively serving to its client proxies. Navigate to `/debug/sds/workload` on the agent's port `8080` to dump active workload secrets, or `/debug/sds/gateway` to dump active gateway secrets.
 {{< /idea >}}
 
-## Authentication
+## Authentication{#authentication}
 
 Istio provides two types of authentication:
 
@@ -192,7 +192,7 @@ Pilot keeps them up-to-date for each proxy, along with the keys where appropriat
 Additionally, Istio supports authentication in permissive mode to help you understand how a policy change can affect your security posture
 before it becomes effective.
 
-### Mutual TLS authentication
+### Mutual TLS authentication{#mutual-TLS-authentication}
 
 Istio tunnels service-to-service communication through the client side and server side [Envoy proxies](https://envoyproxy.github.io/envoy/).
 For a client to call a server with mutual TLS authentication:
@@ -208,7 +208,7 @@ For a client to call a server with mutual TLS authentication:
 
 1. After authorization, the server side Envoy forwards the traffic to the server service through local TCP connections.
 
-#### Permissive mode
+#### Permissive mode{#permissive-mode}
 
 Istio mutual TLS has a permissive mode, which allows a service to accept
 both plaintext traffic and mutual TLS traffic at the same time. This
@@ -232,7 +232,7 @@ clients is complete, the operator can configure the server to mutual TLS
 only mode. For more information, visit the
 [Mutual TLS Migration tutorial](/docs/tasks/security/authentication/mtls-migration).
 
-#### Secure naming
+#### Secure naming{#secure-naming}
 
 The secure naming information contains *N-to-N* mappings from the server identities, which are encoded in certificates,
 to the service names that are referred by discovery service or DNS.
@@ -258,7 +258,7 @@ is because TCP traffic does not contain the hostname information and we can only
 address for routing. And this DNS hijack can happen even before the client-side Envoy receives the
 traffic.
 
-### Authentication architecture
+### Authentication architecture{#authentication-architecture}
 
 You can specify authentication requirements for services receiving requests in
 an Istio mesh using authentication policies. The mesh operator uses `.yaml`
@@ -292,7 +292,7 @@ claims in the credential if applicable, to the next layer:
 operators can specify which identity, either from transport or origin
 authentication, should Istio use as ‘the principal'.
 
-### Authentication policies
+### Authentication policies{#authentication-policies}
 
 This section provides more details about how Istio authentication policies
 work. As you'll remember from the [Architecture section](/docs/concepts/security/#authentication-architecture),
@@ -318,7 +318,7 @@ spec:
   - mtls: {}
 {{< /text >}}
 
-#### Policy storage scope
+#### Policy storage scope{#policy-storage-scope}
 
 Istio can store authentication policies in namespace-scope or mesh-scope
 storage:
@@ -364,7 +364,7 @@ cluster-scope `CRDs` and automatically inherit access protection via the
 Kubernetes RBAC. You can read more on the
 [Kubernetes CRD documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions)
 
-#### Target selectors
+#### Target selectors{#target-selectors}
 
 An authentication policy's targets specify the service or services to which the
 policy applies. The following example shows a `targets:` section specifying
@@ -410,7 +410,7 @@ the specific name `default`.
 If a service has no matching policies, both transport authentication and
 origin authentication are disabled.
 
-#### Transport authentication
+#### Transport authentication{#transport-authentication}
 
 The `peers:` section defines the authentication methods and associated
 parameters supported for transport authentication in a policy. The section can
@@ -440,7 +440,7 @@ When you do not specify a mutual TLS mode, peers cannot use transport
 authentication, and Istio rejects mutual TLS connections bound for the sidecar.
 At the application layer, services may still handle their own mutual TLS sessions.
 
-#### Origin authentication
+#### Origin authentication{#origin-authentication}
 
 The `origins:` section defines authentication methods and associated parameters
 supported for origin authentication. Istio only supports JWT origin
@@ -463,7 +463,7 @@ origins:
       - exact: /health
 {{< /text >}}
 
-#### Principal binding
+#### Principal binding{#principal-binding}
 
 The principal binding key-value pair defines the principal authentication for a
 policy. By default, Istio uses the authentication configured in the `peers:`
@@ -481,7 +481,7 @@ The following example shows the `principalBinding` key with a value of
 principalBinding: USE_ORIGIN
 {{< /text >}}
 
-### Updating authentication policies
+### Updating authentication policies{#updating-authentication-policies}
 
 You can change an authentication policy at any time and Istio pushes the change
 to the endpoints almost in real time. However, Istio cannot guarantee that all
@@ -506,7 +506,7 @@ peers:
   policy, the old JWT, if there is any, can be removed. Client applications
   need to be changed for these changes to work.
 
-## Authorization
+## Authorization{#authorization}
 
 Istio's authorization feature provides mesh-level, namespace-level, and workload-level
 access control on workloads in an Istio Mesh. It provides:
@@ -517,7 +517,7 @@ access control on workloads in an Istio Mesh. It provides:
 - **High performance**, as Istio authorization is enforced natively on Envoy.
 - **High compatibility**, supports HTTP, HTTPS and HTTP2 natively, as well as any plain TCP protocols.
 
-### Authorization architecture
+### Authorization architecture{#authorization-architecture}
 
 {{< image width="90%" link="./authz.svg"
     alt="Istio Authorization"
@@ -532,7 +532,7 @@ runtime. When a request comes to the proxy, the authorization engine evaluates
 the request context against the current authorization policies, and returns the
 authorization result, `ALLOW` or `DENY`.
 
-### Implicit enablement
+### Implicit enablement{#implicit-enablement}
 
 There is no need to explicitly enable Istio's authorization feature, you just apply
 the `AuthorizationPolicy` on **workloads** to enforce access control.
@@ -546,7 +546,7 @@ denied by default, unless explicitly allowed by a rule declared in the policy.
 Currently `AuthorizationPolicy` only supports `ALLOW` action. This means that if
 multiple authorization policies apply to the same workload, the effect is additive.
 
-### Authorization policy
+### Authorization policy{#authorization-policy}
 
 To configure an Istio authorization policy, you create an
 [`AuthorizationPolicy` resource](/docs/reference/config/security/authorization-policy/).
@@ -596,7 +596,7 @@ spec:
      values: ["https://accounts.google.com"]
 {{< /text >}}
 
-#### Policy Target
+#### Policy Target{#policy-target}
 
 Policy scope (target) is determined by `metadata/namespace` and an optional `selector`.
 
@@ -630,7 +630,7 @@ spec:
          methods: ["GET", "HEAD"]
 {{< /text >}}
 
-#### Value matching
+#### Value matching{#value-matching}
 
 Exact match, prefix match, suffix match, and presence match are supported for most
 of the field with a few exceptions (e.g., the `key` field under the `when` section,
@@ -660,7 +660,7 @@ spec:
         paths: ["/test/*", "*/info"]
 {{< /text >}}
 
-#### Allow-all and deny-all
+#### Allow-all and deny-all{#allow-all-and-deny-all}
 
 The example below shows a simple policy `allow-all` which allows full access to all
 workloads in the `default` namespace.
@@ -689,7 +689,7 @@ spec:
   {}
 {{< /text >}}
 
-#### Custom conditions
+#### Custom conditions{#custom-conditions}
 
 You can also use the `when` section to specify additional conditions. For example, the following
 `AuthorizationPolicy` definition includes a condition that `request.headers[version]` is either `"v1"` or `"v2"`.
@@ -722,7 +722,7 @@ spec:
 The supported `key` values of a condition are listed in the
 [conditions page](/docs/reference/config/security/conditions/).
 
-#### Authenticated and unauthenticated identity
+#### Authenticated and unauthenticated identity{#authenticated-and-unauthenticated-identity}
 
 If you want to make a workload publicly accessible, you need to leave the
 `source` section empty. This allows sources from **all (both authenticated and
@@ -767,7 +767,7 @@ spec:
        methods: ["GET", "POST"]
 {{< /text >}}
 
-### Using Istio authorization on plain TCP protocols
+### Using Istio authorization on plain TCP protocols{#using-Istio-authorization-on-plain-TCP-protocols}
 
 Istio authorization supports workloads using any plain TCP protocols, such as MongoDB. In this case,
 you configure the authorization policy in the same way you did for the HTTP workloads.
@@ -804,7 +804,7 @@ spec:
        ports: ["27017"]
 {{< /text >}}
 
-### Using other authorization mechanisms
+### Using other authorization mechanisms{#using-other-authorization-mechanisms}
 
 While we strongly recommend using the Istio authorization mechanisms,
 Istio is flexible enough to allow you to plug in your own authentication and authorization mechanisms via the Mixer component.

@@ -22,14 +22,14 @@ see the [Kiali website](http://kiali.io/documentation/features/).
 
 This task uses the [Bookinfo](/docs/examples/bookinfo/) sample application as the example throughout.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 {{< tip >}}
 The following instructions assume you have installed `istioctl` and will use it to install Kiali.
 To install Kiali without `istioctl`, follow the [Kiali installation instructions](https://www.kiali.io/documentation/getting-started/).
 {{< /tip >}}
 
-### Create a secret
+### Create a secret{#create-a-secret}
 
 {{< tip >}}
 If you plan on installing Kiali using the Istio demo profile as described in the [Istio Quick Start Installation Steps](/docs/setup/getting-started/) then a default secret will be created for you with a username of `admin` and passphrase of `admin`. You can therefore skip this section.
@@ -102,7 +102,7 @@ $ istioctl manifest apply \
 
 Once you install Istio and Kiali, deploy the [Bookinfo](/docs/examples/bookinfo/) sample application.
 
-### Running on OpenShift
+### Running on OpenShift{#running-on-OpenShift}
 
 When Kiali runs on OpenShift it needs access to some OpenShift specific resources in order to function properly,
 which can be done using the following commands after Kiali has been installed:
@@ -113,7 +113,7 @@ $ oc patch clusterrole kiali -p '[{"op":"add", "path":"/rules/-", "value":{"apiG
 $ oc patch clusterrole kiali -p '[{"op":"add", "path":"/rules/-", "value":{"apiGroups":["route.openshift.io"], "resources":["routes"],"verbs": ["get"]}}]' --type json
 {{< /text >}}
 
-## Generating a service graph
+## Generating a service graph{#generating-a-service-graph}
 
 1.  To verify the service is running in your cluster, run the following command:
 
@@ -190,7 +190,7 @@ $ oc patch clusterrole kiali -p '[{"op":"add", "path":"/rules/-", "value":{"apiG
 
         {{< image width="70%" link="./kiali-service-graph.png" caption="Example Service Graph" >}}
 
-## Examining Istio configuration
+## Examining Istio configuration{#examining-Istio-configuration}
 
 1.  To view detailed information about Istio configuration, click on the
     **Applications**, **Workloads**, and **Services** menu icons on the left menu
@@ -198,7 +198,7 @@ $ oc patch clusterrole kiali -p '[{"op":"add", "path":"/rules/-", "value":{"apiG
 
     {{< image width="80%" link="./kiali-services.png" caption="Example Details" >}}
 
-## Creating weighted routes
+## Creating weighted routes{#creating-weighted-routes}
 
 You can use the Kiali weighted routing wizard to define the specific percentage of
 request traffic to route to two or more workloads.
@@ -247,7 +247,7 @@ request traffic to route to two or more workloads.
 
     {{< image width="80%" link="./kiali-wiz4-ratings-weighted-route-90-10.png" caption="90% Ratings Traffic Routed to ratings-v2" >}}
 
-## Validating Istio configuration
+## Validating Istio configuration{#validating-Istio-configuration}
 
 Kiali can validate your Istio resources to ensure they follow proper conventions and semantics. Any problems detected in the configuration of your Istio resources can be flagged as errors or warnings depending on the severity of the incorrect configuration. See the [Kiali validations page](http://kiali.io/documentation/validations/) for the list of all validation checks Kiali performs.
 
@@ -285,7 +285,7 @@ Force an invalid configuration of a service port name to see how Kiali reports a
 
     {{< image width="80%" link="./kiali-validate3-ok.png" caption="Service Details Showing Valid Configuration" >}}
 
-## Viewing and editing Istio configuration YAML
+## Viewing and editing Istio configuration YAML{#viewing-and-editing-Istio-configuration-yaml}
 
 Kiali provides a YAML editor for viewing and editing Istio configuration resources. The YAML editor will also provide validation messages
 when it detects incorrect configurations.
@@ -338,7 +338,7 @@ when it detects incorrect configurations.
     $ kubectl delete -f samples/bookinfo/networking/destination-rule-all.yaml
     {{< /text >}}
 
-## About the Kiali Public API
+## About the Kiali Public API{#about-the-Kiali-public-API}
 
 To generate JSON files representing the graphs and other metrics, health, and
 configuration information, you can access the
@@ -353,7 +353,7 @@ Kiali, use the metadata labels `app` and `version` on your application
 components. As a template, the Bookinfo sample application follows this
 convention.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 If you are not planning any follow-up tasks, remove the Bookinfo sample application and Kiali from your cluster.
 

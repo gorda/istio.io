@@ -16,11 +16,11 @@ analytics on Istio data from your favorite places such as BigQuery, GCS or Cloud
 The [Bookinfo](/docs/examples/bookinfo/) sample application is used as the example
 application throughout this task.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 [Install Istio](/docs/setup/) in your cluster and deploy an application.
 
-## Configuring Istio to export logs
+## Configuring Istio to export logs{#configuring-Istio-to-export-logs}
 
 Istio exports logs using the `logentry` [template](/docs/reference/config/policy-and-telemetry/templates/logentry).
 This specifies all the variables that are available for analysis. It
@@ -34,7 +34,7 @@ logs to your favorite sink like BigQuery, Pub/Sub or GCS. Please follow the step
 below to setup your favorite sink for exporting logs first and then Stackdriver
 in Istio.
 
-### Setting up various log sinks
+### Setting up various log sinks{#setting-up-various-log-sinks}
 
 Common setup for all sinks:
 
@@ -42,7 +42,7 @@ Common setup for all sinks:
 1. Make sure `principalEmail` that would be setting up the sink has write access to the project and Logging Admin role permissions.
 1. Make sure the `GOOGLE_APPLICATION_CREDENTIALS` environment variable is set. Please follow instructions [here](https://cloud.google.com/docs/authentication/getting-started) to set it up.
 
-#### BigQuery
+#### BigQuery{#BigQuery}
 
 1.  [Create a BigQuery dataset](https://cloud.google.com/bigquery/docs/datasets) as a destination for the logs export.
 1.  Record the ID of the dataset. It will be needed to configure the Stackdriver handler.
@@ -50,14 +50,14 @@ Common setup for all sinks:
 1.  Give [sink’s writer identity](https://cloud.google.com/logging/docs/api/tasks/exporting-logs#writing_to_the_destination): `cloud-logs@system.gserviceaccount.com` BigQuery Data Editor role in IAM.
 1.  If using [Google Kubernetes Engine](/docs/setup/platform-setup/gke/), make sure `bigquery` [Scope](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) is enabled on the cluster.
 
-#### Google Cloud Storage (GCS)
+#### Google Cloud Storage (GCS){#google-cloud-storage}
 
 1.  [Create a GCS bucket](https://cloud.google.com/storage/docs/creating-buckets) where you would like logs to get exported in GCS.
 1.  Recode the ID of the bucket. It will be needed to configure Stackdriver.
     It would be of the form `storage.googleapis.com/[BUCKET_ID]`
 1.  Give [sink’s writer identity](https://cloud.google.com/logging/docs/api/tasks/exporting-logs#writing_to_the_destination): `cloud-logs@system.gserviceaccount.com` Storage Object Creator role in IAM.
 
-#### Google Cloud Pub/Sub
+#### Google Cloud Pub/Sub{#google-cloud-pub-sub}
 
 1.  [Create a topic](https://cloud.google.com/pubsub/docs/admin) where you would like logs to get exported in Google Cloud Pub/Sub.
 1.  Recode the ID of the topic. It will be needed to configure Stackdriver.
@@ -65,7 +65,7 @@ Common setup for all sinks:
 1.  Give [sink’s writer identity](https://cloud.google.com/logging/docs/api/tasks/exporting-logs#writing_to_the_destination): `cloud-logs@system.gserviceaccount.com` Pub/Sub Publisher role in IAM.
 1.  If using [Google Kubernetes Engine](/docs/setup/platform-setup/gke/), make sure `pubsub` [Scope](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create) is enabled on the cluster.
 
-### Setting up Stackdriver
+### Setting up Stackdriver{#setting-up-Stackdriver}
 
 A Stackdriver handler must be created to export data to Stackdriver. The configuration for
 a Stackdriver handler is described [here](/docs/reference/config/policy-and-telemetry/adapters/stackdriver/).
@@ -189,7 +189,7 @@ a Stackdriver handler is described [here](/docs/reference/config/policy-and-tele
         your project and you should find a topic for `accesslog` in your sink
         topic.
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 `Stackdriver.yaml` file above configured Istio to send access logs to
 Stackdriver and then added a sink configuration where these logs could be
@@ -240,7 +240,7 @@ exported. In detail as follows:
       - accesslog.logentry
      {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 *   Remove the new Stackdriver configuration:
 
@@ -252,7 +252,7 @@ exported. In detail as follows:
     [Bookinfo cleanup](/docs/examples/bookinfo/#cleanup) instructions to shutdown
     the application.
 
-## Availability of logs in export sinks
+## Availability of logs in export sinks{#availability-of-logs-in-export-sinks}
 
 Export to BigQuery is within minutes (we see it to be almost instant), GCS can
 have a delay of 2 to 12 hours and Pub/Sub is almost immediately.

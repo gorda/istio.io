@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.0.5. Please see below for 
 
 {{< relnote >}}
 
-## General
+## General{#general}
 
 - Disabled the precondition cache in the `istio-policy` service as it lead to invalid results. The
 cache will be reintroduced in a later release.

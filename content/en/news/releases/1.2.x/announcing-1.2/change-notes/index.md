@@ -6,12 +6,12 @@ aliases:
     - /about/notes/1.2
 ---
 
-## General
+## General{#general}
 
 - **Added** `traffic.sidecar.istio.io/includeInboundPorts` annotation to eliminate the need for service owner to declare `containerPort` in the deployment yaml file.  This will become the default in a future release.
 - **Added** IPv6 experimental support for Kubernetes clusters.
 
-## Traffic management
+## Traffic management{#traffic-management}
 
 - **Improved** [locality based routing](/docs/ops/configuration/traffic-management/locality-load-balancing/) in multicluster environments.
 - **Improved** outbound traffic policy in [`ALLOW_ANY` mode](/docs/reference/config/installation-options/#global-options). Traffic for unknown HTTP/HTTPS hosts on an existing port will be [forwarded as is](/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services). Unknown traffic will be logged in Envoy access logs.
@@ -20,7 +20,7 @@ aliases:
 - **Added** ability to configure the [DNS refresh rate](/docs/reference/config/installation-options/#global-options) for sidecar Envoys, to reduce the load on the DNS servers.
 - **Graduated** [Sidecar API](/docs/reference/config/networking/sidecar/) from Alpha to Alpha API and Beta runtime.
 
-## Security
+## Security{#security}
 
 - **Improved** extend the default lifetime of self-signed Citadel root certificates to 10 years.
 - **Added** Kubernetes health check prober rewrite per deployment via `sidecar.istio.io/rewriteAppHTTPProbers: "true"` in the `PodSpec` [annotation](/docs/ops/configuration/mesh/app-health-check/#use-annotations-on-pod).
@@ -32,24 +32,24 @@ aliases:
 - **Graduated** [SNI with multiple certificates support at ingress gateway](/docs/reference/config/networking/gateway/) from Alpha to Stable.
 - **Graduated** [certification management on Ingress Gateway](/docs/tasks/traffic-management/ingress/secure-ingress-sds/) from Alpha to Beta.
 
-## Telemetry
+## Telemetry{#telemetry}
 
 - **Added** Full support for control over Envoy stats generation, based on stats prefixes, suffixes, and regular expressions through the use of annotations.
 - **Changed** Prometheus generated traffic is excluded from metrics.
 - **Added** support for sending traces to Datadog.
 - **Graduated** [distributed tracing](/docs/tasks/observability/distributed-tracing/) from Beta to Stable.
 
-## Policy
+## Policy{#policy}
 
 - **Fixed** [Mixer based](https://github.com/istio/istio/issues/13868)TCP Policy enforcement.
 - **Graduated** [Authorization (RBAC)](/docs/reference/config/security/istio.rbac.v1alpha1/) from Alpha to Alpha API and Beta runtime.
 
-## Configuration management
+## Configuration management{#configuration-management}
 
 - **Improved** validation of Policy & Telemetry CRDs.
 - **Graduated** basic configuration resource validation from Alpha to Beta.
 
-## Installation and upgrade
+## Installation and upgrade{#installation-and-upgrade}
 
 - **Updated** default proxy memory limit size(`global.proxy.resources.limits.memory`) from `128Mi` to `1024Mi` to ensure proxy has sufficient memory.
 - **Added** pod [anti-affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity) and [toleration](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) support to all of our control plane components.
@@ -70,7 +70,7 @@ Refer to the [installation option change page](/news/releases/1.2.x/announcing-1
 - **Improved** `istioctl version` to report both Istio control plane and `istioctl` version info by default.
 - **Improved** `istioctl validate` to validate Mixer configuration and supports deep validation with referential integrity.
 
-## Miscellaneous
+## Miscellaneous{#miscellaneous}
 
 - **Added** [Istio CNI support](/docs/setup/additional-setup/cni/) to setup sidecar network redirection and remove the use of `istio-init` containers requiring `NET_ADMIN` capability.
 - **Added** a new experimental ['a-la-carte' Istio installer](https://github.com/istio/installer/wiki) to enable users to install and upgrade Istio with desired isolation and security.

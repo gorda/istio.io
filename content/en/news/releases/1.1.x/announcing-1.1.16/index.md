@@ -14,7 +14,7 @@ We're pleased to announce the availability of Istio 1.1.16. Please see below for
 
 {{< relnote >}}
 
-## Security update
+## Security update{#security-update}
 
 This release contains fixes for the security vulnerability described in [our October 8th, 2019 news post](/news/security/istio-security-2019-005).  Specifically:
 

@@ -20,12 +20,12 @@ The geographic location typically represents a data center. Istio uses
 this information to prioritize load balancing pools to control
 the geographic location where requests are sent.
 
-## Configuring locality load balancing
+## Configuring locality load balancing{#configuring-locality-load-balancing}
 
 This feature is enabled by default. To disable locality load balancing,
 pass the `--set global.localityLbSetting.enabled=false` flag when installing Istio.
 
-## Requirements
+## Requirements{#requirements}
 
 Currently, the service discovery platform populates the locality automatically.
 In Kubernetes, a pod's locality is determined via the [well-known labels for region and zone](https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/#failure-domain-beta-kubernetes-io-region)
@@ -39,7 +39,7 @@ In order for Istio to determine locality, a Service must be associated with the 
 To determine when instances are unhealthy, the proxies require an [outlier detection](/docs/reference/config/networking/destination-rule/#OutlierDetection)
 configuration in a destination rule for each service.
 
-## Locality-prioritized load balancing
+## Locality-prioritized load balancing{#locality-prioritized-load-balancing}
 
 _Locality-prioritized load balancing_ is the default behavior for _locality load balancing_.
 In this mode, Istio tells Envoy to prioritize traffic to the workload instances most closely matching
@@ -67,7 +67,7 @@ The hierarchy of prioritization matches in the following order:
 
 Proxies in the same zone but different regions are not considered local to one another.
 
-### Overriding the locality fail-over
+### Overriding the locality fail-over{#overriding-the-locality-fail-over}
 
 Sometimes, you need to constrain the traffic fail-over to avoid sending traffic to
 endpoints across the globe when there are not enough healthy endpoints in the
@@ -90,7 +90,7 @@ global:
       to: us-east
 {{< /text >}}
 
-## Locality-weighted load balancing
+## Locality-weighted load balancing{#locality-weighted-load-balancing}
 
 Locality-weighted load balancing distributes user-defined percentages of traffic to certain localities.
 

@@ -26,11 +26,11 @@ this feature is not needed if the production setup is not using
 [SDS](/docs/tasks/security/citadel-config/auth-sds/) or [adding virtual machines](/docs/examples/virtual-machines/).
 {{< /tip >}}
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 Follow the [Istio installation guide](/docs/setup/install/istioctl/) to install Istio with mutual TLS enabled.
 
-## Deploying Citadel with health checking
+## Deploying Citadel with health checking{#deploying-citadel-with-health-checking}
 
 To enable health checking, redeploy Citadel:
 
@@ -39,7 +39,7 @@ $ istioctl manifest generate --set values.global.mtls.enabled=true,values.securi
 $ kubectl apply -f citadel-health-check.yaml
 {{< /text >}}
 
-## Verify that health checking works
+## Verify that health checking works{#verify-that-health-checking-works}
 
 Citadel will log the health checking results. Run the following in command line:
 
@@ -56,7 +56,7 @@ You will see the output similar to:
 The log above indicates the periodic health checking is working.
 The default health checking interval is 15 seconds and is logged once every 100 checks.
 
-## (Optional) Configuring the health checking
+## (Optional) Configuring the health checking{#optional-configuring-the-health-checking}
 
 This section talks about how to modify the health checking configuration. Open the file
 `citadel-health-check.yaml`, and locate the following lines.
@@ -95,7 +95,7 @@ To avoid the prober restarting Citadel due to temporary unavailability, the `int
 configured to be more than `N` times of the `liveness-probe-interval`. This will allow the prober to tolerate `N-1`
 continuously failed health checks.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 *   To disable health checking on Citadel:
 

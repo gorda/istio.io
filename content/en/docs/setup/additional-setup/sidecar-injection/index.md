@@ -9,7 +9,7 @@ aliases:
     - /docs/setup/kubernetes/additional-setup/sidecar-injection/
 ---
 
-## Injection
+## Injection{#injection}
 
 In order to take advantage of all of Istio's features, pods in the mesh must be running an Istio sidecar proxy.
 
@@ -23,7 +23,7 @@ Automatic injection injects at pod creation time using an admission controller.
 
 Injection occurs by applying a template defined in the `istio-sidecar-injector` ConfigMap.
 
-### Manual sidecar injection
+### Manual sidecar injection{#manual-sidecar-injection}
 
 To manually inject a deployment, use [`istioctl kube-inject`](/docs/reference/commands/istioctl/#istioctl-kube-inject):
 
@@ -58,7 +58,7 @@ NAME                     READY   STATUS    RESTARTS   AGE
 sleep-64c6f57bc8-f5n4x   2/2     Running   0          24s
 {{< /text >}}
 
-### Automatic sidecar injection
+### Automatic sidecar injection{#automatic-sidecar-injection}
 
 Sidecars can be automatically added to applicable Kubernetes pods using a
 [mutating webhook admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) provided by Istio.
@@ -71,14 +71,14 @@ When the injection webhook is enabled, any new pods that are created will automa
 
 Note that unlike manual injection, automatic injection occurs at the pod-level. You won't see any change to the deployment itself. Instead you'll want to check individual pods (via `kubectl describe`) to see the injected proxy.
 
-#### Disabling or updating the webhook
+#### Disabling or updating the webhook{#disabling-or-updating-the-webhook}
 
 The sidecar injecting webhook is enabled by default. If you wish to disable the webhook, you can
 use [Helm](/docs/setup/install/helm/) to set option `sidecarInjectorWebhook.enabled` to `false`.
 
 There are also a [variety of other options](/docs/reference/config/installation-options/#sidecarinjectorwebhook-options) that can be configured.
 
-#### Deploying an app
+#### Deploying an app{#deploying-an-app}
 
 Deploy sleep app. Verify both deployment and pod have a single container.
 
@@ -134,7 +134,7 @@ sleep-776b7bcdcd-bhn9m   2/2       Terminating   0          2m
 sleep-776b7bcdcd-gmvnr   1/1       Running       0          2s
 {{< /text >}}
 
-#### Understanding what happened
+#### Understanding what happened{#understanding-what-happened}
 
 When Kubernetes invokes the webhook, the [`admissionregistration.k8s.io/v1beta1#MutatingWebhookConfiguration`](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#mutatingwebhookconfiguration-v1beta1-admissionregistration-k8s-io)
 configuration is applied. The default configuration injects the sidecar into
@@ -158,7 +158,7 @@ configuration is an advanced operation. Refer to the Kubernetes documentation
 for the [`MutatingWebhookConfiguration` API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#mutatingwebhookconfiguration-v1beta1-admissionregistration-k8s-io)
 for more information.
 
-##### _**policy**_
+##### _**policy**_{#-policy-}
 
 `disabled` - The sidecar injector will not inject the sidecar into
 pods by default. Add the `sidecar.istio.io/inject` annotation with
@@ -187,7 +187,7 @@ spec:
         command: ["/bin/sleep","infinity"]
 {{< /text >}}
 
-##### _**template**_
+##### _**template**_{#-template-}
 
 The sidecar injection template uses <https://golang.org/pkg/text/template> which,
 when parsed and executed, is decoded to the following
@@ -260,7 +260,7 @@ containers:
 
 when applied over a pod defined by the pod template spec in [`samples/sleep/sleep.yaml`]({{< github_tree >}}/samples/sleep/sleep.yaml)
 
-#### More control: adding exceptions
+#### More control: adding exceptions{#more-control-adding-exceptions}
 
 There are cases where users do not have control of the pod creation, for instance, when they are created by someone else. Therefore they are unable to add the annotation `sidecar.istio.io/inject` in the pod, to explicitly instruct Istio whether to install the sidecar or not.
 
@@ -298,7 +298,7 @@ It's worth noting that annotations in the pods have higher precedence than the l
 `Pod Annotations → NeverInjectSelector → AlwaysInjectSelector → Default Policy`
 {{< /tip >}}
 
-#### Uninstalling the automatic sidecar injector
+#### Uninstalling the automatic sidecar injector{#uninstalling-the-automatic-sidecar-injector}
 
 {{< text bash >}}
 $ kubectl delete mutatingwebhookconfiguration istio-sidecar-injector

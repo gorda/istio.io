@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.0.1. Please see below for 
 
 {{< relnote >}}
 
-## Networking
+## Networking{#networking}
 
 - Improved Pilot scalability and Envoy startup time.
 
@@ -26,7 +26,7 @@ We're pleased to announce the availability of Istio 1.0.1. Please see below for 
 
 - Allow [outlier](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/cluster/outlier_detection.proto) consecutive gateway failures when using HTTP.
 
-## Environment
+## Environment{#environment}
 
 - Made it possible to use Pilot standalone, for those users who want to only leverage Istio's traffic management functionality.
 
@@ -38,16 +38,16 @@ We're pleased to announce the availability of Istio 1.0.1. Please see below for 
 
 - Fixed a variety of issues around mesh expansion.
 
-## Policy and telemetry
+## Policy and telemetry{#policy-and-telemetry}
 
 - Added an experimental metrics expiration configuration to the Mixer Prometheus adapter.
 
 - Updated Grafana to 5.2.2.
 
-### Adapters
+### Adapters{#adapters}
 
 - Ability to specify sink options for the Stackdriver adapter.
 
-## Galley
+## Galley{#galley}
 
 - Improved configuration validation for health checks.

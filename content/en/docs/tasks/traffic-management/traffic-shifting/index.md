@@ -17,7 +17,7 @@ that route a percentage of traffic to one service or another. In this task, you 
 50% of traffic to `reviews:v1` and 50% to `reviews:v3`. Then, you will
 complete the migration by sending 100% of traffic to `reviews:v3`.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Setup Istio by following the instructions in the
   [Installation guide](/docs/setup/).
@@ -26,7 +26,7 @@ complete the migration by sending 100% of traffic to `reviews:v3`.
 
 * Review the [Traffic Management](/docs/concepts/traffic-management) concepts doc.
 
-## Apply weight-based routing
+## Apply weight-based routing{#apply-weight-based-routing}
 
 {{< warning >}}
 If you haven't already applied destination rules, follow the instructions in [Apply Default Destination Rules](/docs/examples/bookinfo/#apply-default-destination-rules).
@@ -99,7 +99,7 @@ route 100% of the traffic to `reviews:v3` by applying this virtual service:
     Now when you refresh the `/productpage` you will always see book reviews
     with *red* colored star ratings for each review.
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 In this task you migrated traffic from an old to new version of the `reviews` service using Istio's weighted routing feature. Note that this is very different than doing version migration using the deployment features of container orchestration platforms, which use instance scaling to manage the traffic.
 
@@ -108,7 +108,7 @@ With Istio, you can allow the two versions of the `reviews` service to scale up 
 For more information about version routing with autoscaling, check out the blog
 article [Canary Deployments using Istio](/blog/2017/0.1-canary/).
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1. Remove the application routing rules:
 

@@ -4,7 +4,7 @@ description: Istio 1.4 release notes.
 weight: 10
 ---
 
-## Traffic management
+## Traffic management{#traffic-management}
 
 - **Added** support for [mirroring](/docs/tasks/traffic-management/mirroring/) a percentage of traffic.
 - **Improved** the Envoy sidecar. The Envoy sidecar now exits when it crashes. This change makes it easier to see whether or not the Envoy sidecar is healthy.
@@ -13,7 +13,7 @@ weight: 10
 - **Disabled** default [circuit breakers](/docs/tasks/traffic-management/circuit-breaking/).
 - **Updated** the default regex engine to `re2`. Please see the [Upgrade Notes](/news/releases/1.4.x/announcing-1.4/upgrade-notes) for details.
 
-## Security
+## Security{#security}
 
 - **Added** the [`v1beta1` authorization policy model](/blog/2019/v1beta1-authorization-policy/) for enforcing access control. This will eventually replace the [`v1alpha1` RBAC policy](/docs/reference/config/security/istio.rbac.v1alpha1/).
 - **Added** experimental support for [automatic mutual TLS](/docs/tasks/security/authentication/auto-mtls/) to enable mutual TLS without destination rule configuration.
@@ -21,7 +21,7 @@ weight: 10
 - **Added** experimental [DNS certificate management](/blog/2019/dns-cert/) to securely provision and manage DNS certificates signed by the Kubernetes CA.
 - **Improved** Citadel to periodically check and rotate the expired root certificate when running in self-sign CA mode.
 
-## Telemetry
+## Telemetry{#telemetry}
 
 - **Added** experimental in-proxy telemetry reporting to [Stackdriver](https://github.com/istio/proxy/blob/{{< source_branch_name >}}/extensions/stackdriver/README.md).
 - **Improved** support for [in-proxy](/docs/ops/configuration/telemetry/in-proxy-service-telemetry/) Prometheus generation of HTTP service metrics (from experimental to alpha).
@@ -30,14 +30,14 @@ weight: 10
 - **Added** the `inbound` and `outbound` prefixes to the Envoy HTTP stats to specify traffic direction.
 - **Improved** reporting of telemetry for traffic that goes through an egress gateway.
 
-## Configuration management
+## Configuration management{#configuration-management}
 
 - **Added** multiple validation checks to the [`istioctl analyze`](/docs/ops/diagnostic-tools/istioctl-analyze/) sub-command.
 - **Added** the experimental option to enable validation messages for Istio [resource statuses](/docs/ops/diagnostic-tools/istioctl-analyze/#enabling-validation-messages-for-resource-status).
 - **Added** OpenAPI v3 schema validation of Custom Resource Definitions (CRDs). Please see the [Upgrade Notes](/news/releases/1.4.x/announcing-1.4/upgrade-notes) for details.
 - **Added** [client-go](https://github.com/istio/client-go) libraries to access Istio APIs.
 
-## Installation
+## Installation{#installation}
 
 - **Added** the experimental [operator controller](/docs/setup/install/standalone-operator/) for dynamic updates to an Istio installation.
 - **Removed** the `proxy_init` Docker image. Instead, the `istio-init` container reuses the `proxyv2` image.

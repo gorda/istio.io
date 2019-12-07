@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.0.2. Please see below for 
 
 {{< relnote >}}
 
-## General
+## General{#general}
 
 - Fixed bug in Envoy where the sidecar would crash if receiving normal traffic on the mutual TLS port.
 

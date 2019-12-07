@@ -16,7 +16,7 @@ We're pleased to announce the availability of Istio 1.0.3. Please see below for 
 
 {{< relnote >}}
 
-## Behavior changes
+## Behavior changes{#behavior-changes}
 
 - [Validating webhook](/docs/ops/common-problems/validation) is now mandatory. Disabling it may result in Pilot crashes.
 
@@ -24,7 +24,7 @@ We're pleased to announce the availability of Istio 1.0.3. Please see below for 
 
 - The core dump path for `istio-proxy` has changed to `/var/lib/istio`.
 
-## Networking
+## Networking{#networking}
 
 - [Mutual TLS](/docs/tasks/security/authentication/mutual-tls) Permissive mode is enabled by default.
 
@@ -32,7 +32,7 @@ We're pleased to announce the availability of Istio 1.0.3. Please see below for 
 
 - Default [trace sampling](/docs/tasks/observability/distributed-tracing/overview/#trace-sampling) is set to 1%.
 
-## Policy and telemetry
+## Policy and telemetry{#policy-and-telemetry}
 
 - Mixer (`istio-telemetry`) now supports load shedding based on request rate and expected latency.
 

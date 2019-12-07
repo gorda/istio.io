@@ -22,7 +22,7 @@ can be based on the region, user, or other properties of the request.
 
 Depending on your level of expertise in this area, you may wonder why Istio's support for canary deployment is even needed, given that platforms like Kubernetes already provide a way to do [version rollout](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment) and [canary deployment](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#canary-deployments). Problem solved, right? Well, not exactly. Although doing a rollout this way works in simple cases, it’s very limited, especially in large scale cloud environments receiving lots of (and especially varying amounts of) traffic, where autoscaling is needed.
 
-## Canary deployment in Kubernetes
+## Canary deployment in Kubernetes{#canary-deployment-in-Kubernetes}
 
 As an example, let's say we have a deployed service, **helloworld** version **v1**, for which we would like to test (or simply rollout) a new version, **v2**. Using Kubernetes, you can rollout a new version of the **helloworld** service by simply updating the image in the service’s corresponding [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and letting the [rollout](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment) happen automatically. If we take particular care to ensure that there are enough **v1** replicas running when we start and [pause](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#pausing-and-resuming-a-deployment) the rollout after only one or two **v2** replicas have been started, we can keep the canary’s effect on the system very small. We can then observe the effect before deciding to proceed or, if necessary, [rollback](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment). Best of all, we can even attach a [horizontal pod autoscaler](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment) to the Deployment and it will keep the replica ratios consistent if, during the rollout process, it also needs to scale replicas up or down to handle traffic load.
 
@@ -30,7 +30,7 @@ Although fine for what it does, this approach is only useful when we have a prop
 
 Whether we use one deployment or two, canary management using deployment features of container orchestration platforms like Docker, Mesos/Marathon, or Kubernetes has a fundamental problem: the use of instance scaling to manage the traffic; traffic version distribution and replica deployment are not independent in these systems. All replica pods, regardless of version, are treated the same in the `kube-proxy` round-robin pool, so the only way to manage the amount of traffic that a particular version receives is by controlling the replica ratio. Maintaining canary traffic at small percentages requires many replicas (e.g., 1% would require a minimum of 100 replicas). Even if we ignore this problem, the deployment approach is still very limited in that it only supports the simple (random percentage) canary approach. If, instead, we wanted to limit the visibility of the canary to requests based on some specific criteria, we still need another solution.
 
-## Enter Istio
+## Enter Istio{#enter-Istio}
 
 With Istio, traffic routing and replica deployment are two completely independent functions. The number of pods implementing services are free to scale up and down based on traffic load, completely orthogonal to the control of version traffic routing. This makes managing a canary version in the presence of autoscaling a much simpler problem. Autoscalers may, in fact, respond to load variations resulting from traffic routing changes, but they are nevertheless functioning independently and no differently than when loads change for other reasons.
 
@@ -132,7 +132,7 @@ EOF
 
 After setting this rule, Istio will ensure that only one tenth of the requests will be sent to the canary version, regardless of how many replicas of each version are running.
 
-## Autoscaling the deployments
+## Autoscaling the deployments{#autoscaling-the-deployments}
 
 Because we don’t need to maintain replica ratios anymore, we can safely add Kubernetes [horizontal pod autoscalers](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to manage the replicas for both version Deployments:
 
@@ -195,7 +195,7 @@ helloworld-v1-3523621687-dt7n7   2/2       Running   0          1h
 helloworld-v2-4095161145-963wt   2/2       Running   0          1h
 {{< /text >}}
 
-## Focused canary testing
+## Focused canary testing{#focused-canary-testing}
 
 As mentioned above, the Istio routing rules can be used to route traffic based on specific criteria, allowing more sophisticated canary deployment scenarios. Say, for example, instead of exposing the canary to an arbitrary percentage of users, we want to try it out on internal users, maybe even just a percentage of them. The following command could be used to send 50% of traffic from users at *some-company-name.com* to the canary version, leaving all other users unaffected:
 
@@ -231,7 +231,7 @@ EOF
 
 As before, the autoscalers bound to the 2 version Deployments will automatically scale the replicas accordingly, but that will have no affect on the traffic distribution.
 
-## Summary
+## Summary{#summary}
 
 In this article we’ve seen how Istio supports general scalable canary deployments, and how this differs from the basic deployment support in Kubernetes. Istio’s service mesh provides the control necessary to manage traffic distribution with complete independence from deployment scaling. This allows for a simpler, yet significantly more functional, way to do canary test and rollout.
 

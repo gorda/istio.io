@@ -30,7 +30,7 @@ in the Envoy logs.
 
 The Envoy crash can be triggered using a malformed JWT without a valid signature, and on any URI being accessed regardless of the `trigger_rules` in the JWT specification. Thus, this bug makes Envoy vulnerable to a potential DoS attack.
 
-## Impact and detection
+## Impact and detection{#impact-and-detection}
 
 Envoy is vulnerable if the following two conditions are satisfied:
 
@@ -76,7 +76,7 @@ echo "${green}Did NOT find JWT in authentication policy, YOU ARE NOT AFFECTED${r
 EOF
 {{< /text >}}
 
-## Mitigation
+## Mitigation{#mitigation}
 
 This bug is fixed in the following Istio releases:
 
@@ -101,7 +101,7 @@ $ ./setup.sh
 
 The setup script uses helm template to produce an `envoyFilter` resource that deploys to gateways. You may change the listener type to `ANY` to also apply it to sidecars. You should only do this if you enforce JWT policies on sidecars *and* sidecars receive direct traffic from the outside.
 
-## Credit
+## Credit{#credit}
 
 The Istio team would like to thank Divya Raj for the original bug report.
 

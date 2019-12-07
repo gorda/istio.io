@@ -25,7 +25,7 @@ The primary cluster, `cluster1`, runs the full set of Istio control plane compon
 runs Istio Citadel, Sidecar Injector, and Ingress gateway.
 No VPN connectivity nor direct network access between workloads in different clusters is required.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 * Two or more Kubernetes clusters with versions: {{< supported_kubernetes_versions >}}.
 
@@ -39,7 +39,7 @@ No VPN connectivity nor direct network access between workloads in different clu
 
 {{< boilerplate kubectl-multicluster-contexts >}}
 
-## Setup the multicluster mesh
+## Setup the multicluster mesh{#setup-the-multicluster-mesh}
 
 In this configuration you install Istio with mutual TLS enabled for both the control plane and application pods.
 For the shared root CA, you create a `cacerts` secret on both `cluster1` and `cluster2` clusters using the same Istio
@@ -49,7 +49,7 @@ The instructions, below, also set up `cluster2` with a selector-less service and
 that has the address of `cluster1` Istio ingress gateway.
 This will be used to access pilot on `cluster1` securely using the ingress gateway without mutual TLS termination.
 
-### Setup cluster 1 (primary)
+### Setup cluster 1 (primary){#setup-cluster-1-primary}
 
 1. Deploy Istio to `cluster1`:
 
@@ -157,7 +157,7 @@ This will be used to access pilot on `cluster1` securely using the ingress gatew
 
     Once saved, Pilot will automatically read the updated network configuration.
 
-### Setup cluster 2
+### Setup cluster 2{#setup-cluster-2}
 
 1. Export the `cluster1` gateway address:
 
@@ -282,7 +282,7 @@ This will be used to access pilot on `cluster1` securely using the ingress gatew
     EOF
     {{< /text >}}
 
-### Start watching cluster 2
+### Start watching cluster 2{#start-watching-cluster-2}
 
 1.  Execute the following commands to add and label the secret of the `cluster2` Kubernetes.
     After executing these commands Istio Pilot on `cluster1` will begin watching `cluster2` for services and instances,
@@ -303,13 +303,13 @@ This will be used to access pilot on `cluster1` securely using the ingress gatew
 
 Now that you have your `cluster1` and `cluster2` clusters set up, you can deploy an example service.
 
-## Deploy example service
+## Deploy example service{#deploy-example-service}
 
 As shown in the diagram, above, deploy two instances of the `helloworld` service,
 one on `cluster1` and one on `cluster2`.
 The difference between the two instances is the version of their `helloworld` image.
 
-### Deploy helloworld v2 in cluster 2
+### Deploy helloworld v2 in cluster 2{#deploy-helloworld-v2-in-cluster-2}
 
 1. Create a `sample` namespace with a sidecar auto-injection label:
 
@@ -333,7 +333,7 @@ The difference between the two instances is the version of their `helloworld` im
     helloworld-v2-7dd57c44c4-f56gq   2/2       Running   0          35s
     {{< /text >}}
 
-### Deploy helloworld v1 in cluster 1
+### Deploy helloworld v1 in cluster 1{#deploy-helloworld-v1-in-cluster-1}
 
 1. Create a `sample` namespace with a sidecar auto-injection label:
 
@@ -357,7 +357,7 @@ The difference between the two instances is the version of their `helloworld` im
     helloworld-v1-d4557d97b-pv2hr   2/2       Running   0          40s
     {{< /text >}}
 
-### Cross-cluster routing in action
+### Cross-cluster routing in action{#cross-cluster-routing-in-action}
 
 To demonstrate how traffic to the `helloworld` service is distributed across the two clusters,
 call the `helloworld` service from another in-mesh `sleep` service.
@@ -419,7 +419,7 @@ $ kubectl logs --context=$CTX_CLUSTER2 -n sample $(kubectl get pod --context=$CT
 
 In `cluster2`, the gateway IP of `cluster1` (`192.168.1.246:15443`) is logged when v1 was called and the gateway IP in `cluster2` (`10.32.0.9:5000`) is logged when v2 was called.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Execute the following commands to clean up the example services __and__ the Istio components.
 

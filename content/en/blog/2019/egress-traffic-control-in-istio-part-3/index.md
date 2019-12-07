@@ -18,7 +18,7 @@ In this installment, I compare secure control of egress traffic in Istio with al
 network policies and legacy egress proxies and firewalls. Finally, I describe the performance considerations regarding the
 secure control of egress traffic in Istio.
 
-## Alternative solutions for egress traffic control
+## Alternative solutions for egress traffic control{#alternative-solutions-for-egress-traffic-control}
 
 First, let's remember the [requirements for egress traffic control](/blog/2019/egress-traffic-control-in-istio-part-1/#requirements-for-egress-traffic-control) we previously collected:
 
@@ -54,7 +54,7 @@ egress proxies cannot enforce policies by source if a Kubernetes artifact specif
 In summary, egress proxies can fulfill the first, second, third and fifth requirements, but can't satisfy the fourth and
 the six requirements because they are not transparent and not Kubernetes-aware.
 
-## Advantages of Istio egress traffic control
+## Advantages of Istio egress traffic control{#advantages-of-Istio-egress-traffic-control}
 
 Istio egress traffic control is **DNS-aware**: you can define policies based on URLs or on wildcard domains like
 `*.ibm.com`. In this sense, it is better than Kubernetes network policies which are not DNS-aware.
@@ -93,7 +93,7 @@ The following table summarizes the egress traffic control features that Istio an
 | Transparent | {{< checkmark_icon >}} | {{< checkmark_icon >}} | {{< cancel_icon >}} |
 | Istio-aware | {{< checkmark_icon >}} | {{< cancel_icon >}} | {{< cancel_icon >}} |
 
-## Performance considerations
+## Performance considerations{#performance-considerations}
 
 Controlling egress traffic using Istio has a price: increased latency of calls to external services and
 increased CPU usage by the cluster's pods.
@@ -129,7 +129,7 @@ Possible optimizations include:
 - Using mutual TLS for authentication only without encrypting the TLS traffic, since the traffic is already
   encrypted.
 
-## Summary
+## Summary{#summary}
 
 I hope that after reading this series you are convinced that controlling egress traffic is very important for the
 security of your cluster.

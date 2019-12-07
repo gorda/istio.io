@@ -14,7 +14,7 @@ This task uses the [Bookinfo](/docs/examples/bookinfo/) sample as the example ap
 
 To learn how Istio handles tracing, visit this task's [overview](../overview/).
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 1.  To set up Istio, follow the instructions in the [Installation guide](/docs/setup/install/istioctl)
     and then configure:
@@ -30,7 +30,7 @@ To learn how Istio handles tracing, visit this task's [overview](../overview/).
 
 1.  Deploy the [Bookinfo](/docs/examples/bookinfo/#deploying-the-application) sample application.
 
-## Accessing the dashboard
+## Accessing the dashboard{#accessing-the-dashboard}
 
 [Remotely Accessing Telemetry Addons](/docs/tasks/observability/gateways) details how to configure access to the Istio addons through a gateway. Alternatively, to use a Kubernetes ingress, specify the option `--set values.tracing.ingress.enabled=true` during install.
 
@@ -40,7 +40,7 @@ For testing (and temporary access), you may also use port-forwarding. Use the fo
 $ istioctl dashboard zipkin
 {{< /text >}}
 
-## Generating traces using the Bookinfo sample
+## Generating traces using the Bookinfo sample{#generating-traces-using-the-Bookinfo-sample}
 
 1.  When the Bookinfo application is up and running, access `http://$GATEWAY_URL/productpage` one or more times
     to generate trace information.
@@ -61,7 +61,7 @@ $ istioctl dashboard zipkin
     where each span corresponds to a Bookinfo service, invoked during the execution of a `/productpage` request, or
     internal Istio component, for example: `istio-ingressgateway`.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Remove any `istioctl` processes that may still be running using control-C or:
 

@@ -14,7 +14,7 @@ egress traffic and the requirements we collected for a secure control system for
 In this installment, I describe the Istio way to securely control the egress traffic, and show how Istio can help you
 prevent the attacks.
 
-## Secure control of egress traffic in Istio
+## Secure control of egress traffic in Istio{#secure-control-of-egress-traffic-in-Istio}
 
 To implement secure control of egress traffic in Istio, you must
 [direct TLS traffic to external services through an egress gateway](/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-https-traffic).
@@ -76,7 +76,7 @@ policies and report telemetry just as all other proxies in the mesh do.
 
 Now let's examine possible attacks and let me show you how the secure control of egress traffic in Istio prevents them.
 
-## Preventing possible attacks
+## Preventing possible attacks{#preventing-possible-attacks}
 
 Consider the following security policies for egress traffic:
 
@@ -120,7 +120,7 @@ As far as we can see, all the forbidden access is prevented, or at least is moni
 If you see other attacks that involve egress traffic or security holes in the current design, we would be happy
 [to hear about it](https://discuss.istio.io).
 
-## Summary
+## Summary{#summary}
 
 Hopefully, I managed to convince you that Istio is an effective tool to prevent attacks involving egress
 traffic. In [the next part of this series](/blog/2019/egress-traffic-control-in-istio-part-3/), I compare secure control of egress traffic in Istio with alternative

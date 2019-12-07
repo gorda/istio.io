@@ -22,16 +22,16 @@ provides micro-segmentation for services in an Istio mesh. It features:
 
 In this blog post, you'll learn about the main authorization features and how to use them in different situations.
 
-## Characteristics
+## Characteristics{#characteristics}
 
-### RPC level authorization
+### RPC level authorization{#RPC-level-authorization}
 
 Authorization is performed at the level of individual RPCs. Specifically, it controls "who can access my `bookstore` service”,
 or "who can access method `getBook` in my `bookstore` service”. It is not designed to control access to application-specific
 resource instances, like access to "storage bucket X” or access to "3rd book on 2nd shelf”. Today this kind of application
 specific access control logic needs to be handled by the application itself.
 
-### Role-based access control with conditions
+### Role-based access control with conditions{#role-based-access-control-with-conditions}
 
 Authorization is a [role-based access control (RBAC)](https://en.wikipedia.org/wiki/Role-based_access_control) system,
 contrast this to an [attribute-based access control (ABAC)](https://en.wikipedia.org/wiki/Attribute-based_access_control)
@@ -54,13 +54,13 @@ flexibility to express complex access control policies. In fact, **the "RBAC + c
 that Istio authorization adopts, has all the benefits an RBAC system has, and supports the level of flexibility that
 normally an ABAC system provides.** You'll see some [examples](#examples) below.
 
-### High performance
+### High performance{#high-performance}
 
 Because of its simple semantics, Istio authorization is enforced on Envoy as a native authorization support. At runtime, the
 authorization decision is completely done locally inside an Envoy filter, without dependency to any external module.
 This allows Istio authorization to achieve high performance and availability.
 
-### Work with/without primary identities
+### Work with/without primary identities{#work-with-without-primary-identities}
 
 Like any other RBAC system, Istio authorization is identity aware. In Istio authorization policy, there is a primary
 identity called `user`, which represents the principal of the client.
@@ -75,14 +75,14 @@ for using authorization. Istio authorization works with or without identities. I
 you may not have mutual TLS or JWT authentication setup for your mesh. In this case, the only way to identify the client is, for example,
 through IP. You can still use Istio authorization to control which IP addresses or IP ranges are allowed to access your service.
 
-## Examples
+## Examples{#examples}
 
 The [authorization task](/docs/tasks/security/authorization/authz-http/) shows you how to
 use Istio's authorization feature to control namespace level and service level access using the
 [Bookinfo application](/docs/examples/bookinfo/). In this section, you'll see more examples on how to achieve
 micro-segmentation with Istio authorization.
 
-### Namespace level segmentation via RBAC + conditions
+### Namespace level segmentation via RBAC + conditions{#namespace-level-segmentation-via-rbac-conditions}
 
 Suppose you have services in the `frontend` and `backend` namespaces. You would like to allow all your services
 in the `frontend` namespace to access all services that are marked `external` in the `backend` namespace.
@@ -122,7 +122,7 @@ The `ServiceRole` and `ServiceRoleBinding` above expressed "*who* is allowed to 
 * **"what”** is to call services in `backend` namespace.
 * **"conditions”** is the `visibility` label of the destination service having the value `external`.
 
-### Service/method level isolation with/without primary identities
+### Service/method level isolation with/without primary identities{#service-method-level-isolation-with-without-primary-identities}
 
 Here is another example that demonstrates finer grained access control at service/method level. The first step
  is to define a `book-reader` service role that allows READ access to `/books/*` resource in `bookstore` service.
@@ -140,7 +140,7 @@ spec:
     methods: ["GET”]
 {{< /text >}}
 
-#### Using authenticated client identities
+#### Using authenticated client identities{#using-authenticated-client-identities}
 
 Suppose you want to grant this `book-reader` role to your `bookstore-frontend` service. If you have enabled
 [mutual TLS authentication](/docs/concepts/security/#mutual-tls-authentication) for your mesh, you can use a
@@ -182,7 +182,7 @@ spec:
     name: "book-reader"
 {{< /text >}}
 
-#### Client does not have identity
+#### Client does not have identity{#client-does-not-have-identity}
 
 Using authenticated identities in authorization policies is strongly recommended for security. However, if you have a
 legacy system that does not support authentication, you may not have authenticated identities for your services.
@@ -204,7 +204,7 @@ spec:
     name: "book-reader"
 {{< /text >}}
 
-## Summary
+## Summary{#summary}
 
 Istio’s authorization feature provides authorization at namespace-level, service-level, and method-level granularity.
 It adopts "RBAC + conditions” model, which makes it easy to use and understand as an RBAC system, while providing the level of

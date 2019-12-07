@@ -26,7 +26,7 @@ Istio's use of Mixer has two main benefits in terms of overall system availabili
 
 We'll explain this in more detail below.
 
-## How we got here
+## How we got here{#how-we-got-here}
 
 For many years at Google, we’ve been using an internal API & service management system to handle the many APIs exposed by Google. This system has been fronting the world’s biggest services (Google Maps, YouTube, Gmail, etc) and sustains a peak rate of hundreds of millions of QPS. Although this system has served us well, it had problems keeping up with Google’s rapid growth, and it became clear that a new architecture was needed in order to tamp down ballooning operational costs.
 
@@ -42,7 +42,7 @@ The older system was built around a centralized fleet of fairly heavy proxies in
 
 Look familiar? Of course: it’s just like Istio! Istio was conceived as a second generation of this distributed proxy architecture. We took the core lessons from this internal system, generalized many of the concepts by working with our partners, and created Istio.
 
-## Architecture recap
+## Architecture recap{#architecture-recap}
 
 As shown in the diagram below, Mixer sits between the mesh and the infrastructure backends that support it:
 
@@ -61,7 +61,7 @@ At a high level, Mixer provides:
 
 However, even beyond these purely functional aspects, Mixer has other characteristics that provide the system with additional benefits.
 
-## Mixer: SLO booster
+## Mixer: SLO booster{#mixer-booster}
 
 Contrary to the claim that Mixer is a SPOF and can therefore lead to mesh outages, we believe it in fact improves the effective availability of a mesh. How can that be? There are three basic characteristics at play:
 
@@ -75,17 +75,17 @@ The sidecar proxies that sit next to each service instance in the mesh must nece
 
 Mixer’s expected availability is considerably higher than most infrastructure backends (those often have availability of perhaps 99.9%). Its local caches and buffers help mask infrastructure backend failures by being able to continue operating even when a backend has become unresponsive.
 
-## Mixer: Latency slasher
+## Mixer: Latency slasher{#mixer-latency-slasher}
 
 As we explained above, the Istio sidecars generally have fairly effective first-level caching. They can serve the majority of their traffic from cache. Mixer provides a much greater shared pool of second-level cache, which helps Mixer contribute to a lower average per-request latency.
 
 While it’s busy cutting down latency, Mixer is also inherently cutting down the number of calls your mesh makes to infrastructure backends. Depending on how you’re paying for these backends, this might end up saving you some cash by cutting down the effective QPS to the backends.
 
-## Work ahead
+## Work ahead{#work-ahead}
 
 We have opportunities ahead to continue improving the system in many ways.
 
-### Configuration canaries
+### Configuration canaries{#configuration-canaries}
 
 Mixer is highly scaled so it is generally resistant to individual instance failures. However, Mixer is still susceptible to cascading
 failures in the case when a poison configuration is deployed which causes all Mixer instances to crash basically at the same time
@@ -95,15 +95,15 @@ and then more broadly rolled out.
 Mixer doesn’t yet do canarying of configuration changes, but we expect this to come online as part of Istio’s ongoing work on reliable
 configuration distribution.
 
-### Cache tuning
+### Cache tuning{#cache-tuning}
 
 We have yet to fine-tune the sizes of the sidecar and Mixer caches. This work will focus on achieving the highest performance possible using the least amount of resources.
 
-### Cache sharing
+### Cache sharing{#cache-sharing}
 
 At the moment, each Mixer instance operates independently of all other instances. A request handled by one Mixer instance will not leverage data cached in a different instance. We will eventually experiment with a distributed cache such as memcached or Redis in order to provide a much larger mesh-wide shared cache, and further reduce the number of calls to infrastructure backends.
 
-### Sharding
+### Sharding{#Sharding}
 
 In very large meshes, the load on Mixer can be great. There can be a large number of Mixer instances, each straining to keep caches primed to
 satisfy incoming traffic. We expect to eventually introduce intelligent sharding such that Mixer instances become slightly specialized in
@@ -111,7 +111,7 @@ handling particular data streams in order to increase the likelihood of cache hi
 efficiency by routing related traffic to the same Mixer instance over time, rather than randomly dispatching to
 any available Mixer instance.
 
-## Conclusion
+## Conclusion{#conclusion}
 
 Practical experience at Google showed that the model of a slim sidecar proxy and a large shared caching control plane intermediary hits a sweet
 spot, delivering excellent perceived availability and latency. We’ve taken the lessons learned there and applied them to create more sophisticated and

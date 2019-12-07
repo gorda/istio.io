@@ -15,12 +15,12 @@ the web-based interface for viewing service mesh traffic data.
 The [Bookinfo](/docs/examples/bookinfo/) sample application is used as
 the example application throughout this task.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * [Install Istio](/docs/setup) in your cluster. If not enabled in your chosen configuration profile, enable the Grafana add-on `--set values.grafana.enabled=true` [option](/docs/reference/config/installation-options/).
 * Deploy [Bookinfo](/docs/examples/bookinfo/) application.
 
-## Viewing the Istio dashboard
+## Viewing the Istio dashboard{#viewing-the-Istio-dashboard}
 
 1.  Verify that the `prometheus` service is running in your cluster.
 
@@ -104,7 +104,7 @@ the example application throughout this task.
     This gives details about metrics for each workload and then inbound workloads (workloads that are sending request to
     this workload) and outbound services (services to which this workload send requests) for that workload.
 
-### About the Grafana add-on
+### About the Grafana add-on{#about-the-Grafana-add-on}
 
 The Grafana add-on is a preconfigured instance of Grafana. The base image
 ([`grafana/grafana:5.2.3`](https://hub.docker.com/r/grafana/grafana/)) has been
@@ -130,7 +130,7 @@ The Istio Dashboard consists of three main sections:
 For more on how to create, configure, and edit dashboards, please see the
 [Grafana documentation](https://docs.grafana.org/).
 
-## Cleanup
+## Cleanup{#cleanup}
 
 *   Remove any `kubectl port-forward` processes that may be running:
 

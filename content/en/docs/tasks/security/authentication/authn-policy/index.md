@@ -11,7 +11,7 @@ aliases:
 This task covers the primary activities you might need to perform when enabling, configuring, and using Istio authentication policies. Find out more about
 the underlying concepts in the [authentication overview](/docs/concepts/security/#authentication).
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Understand Istio [authentication policy](/docs/concepts/security/#authentication-policies) and related
 [mutual TLS authentication](/docs/concepts/security/#mutual-tls-authentication) concepts.
@@ -19,7 +19,7 @@ the underlying concepts in the [authentication overview](/docs/concepts/security
 * Install Istio on a Kubernetes cluster with global mutual TLS disabled (e.g, use the demo configuration profile, as described in
 [installation steps](/docs/setup/getting-started), or set the `global.mtls.enabled` installation option to false).
 
-### Setup
+### Setup{#setup}
 
 Our examples use two namespaces `foo` and `bar`, with two services, `httpbin` and `sleep`, both running with an Envoy sidecar proxy. We also use second
 instances of `httpbin` and `sleep` running without the sidecar  in the `legacy` namespace. If you’d like to use the same examples when trying the tasks,
@@ -89,7 +89,7 @@ Depending on the version of Istio, you may see destination rules for hosts other
 `bar` and `legacy` namespace, nor is the match-all wildcard `*`
 {{< /tip >}}
 
-## Globally enabling Istio mutual TLS
+## Globally enabling Istio mutual TLS{#globally-enabling-Istio-mutual-TLS}
 
 To set a mesh-wide authentication policy that enables mutual TLS, submit *mesh authentication policy* like below:
 
@@ -165,7 +165,7 @@ sleep.bar to httpbin.foo: 200
 sleep.bar to httpbin.bar: 200
 {{< /text >}}
 
-### Request from non-Istio services to Istio services
+### Request from non-Istio services to Istio services{#request-from-non-Istio-services-to-Istio-services}
 
 The non-Istio service, e.g `sleep.legacy` doesn't have a sidecar, so it cannot initiate the required TLS connection to Istio services. As a result,
 requests from `sleep.legacy` to `httpbin.foo` or `httpbin.bar` will fail:
@@ -184,7 +184,7 @@ Due to the way Envoy rejects plain-text requests, you will see `curl` exit code 
 
 This works as intended, and unfortunately, there is no solution for this without reducing authentication requirements for these services.
 
-### Request from Istio services to non-Istio services
+### Request from Istio services to non-Istio services{#request-from-Istio-services-to-non-Istio-services}
 
 Try to send requests to `httpbin.legacy` from `sleep.foo` (or `sleep.bar`). You will see requests fail as Istio configures clients as instructed in our
 destination rule to use mutual TLS, but `httpbin.legacy` does not have a sidecar so it's unable to handle it.
@@ -224,7 +224,7 @@ sleep.bar to httpbin.legacy: 200
 This destination rule is in the namespace of the server (`httpbin.legacy`), so it will be preferred over the global destination rule defined in `istio-system`
 {{< /tip >}}
 
-### Request from Istio services to Kubernetes API server
+### Request from Istio services to Kubernetes API server{#request-from-Istio-services-to-Kubernetes-API-server}
 
 The Kubernetes API server doesn't have a sidecar, thus request from Istio services such as `sleep.foo` will fail due to the same problem as when sending
 requests to any non-Istio service.
@@ -266,7 +266,7 @@ $ kubectl exec $(kubectl get pod -l app=sleep -n foo -o jsonpath={.items..metada
 200
 {{< /text >}}
 
-### Cleanup part 1
+### Cleanup part 1{#cleanup-part-1}
 
 Remove global authentication policy and destination rules added in the session:
 
@@ -277,12 +277,12 @@ $ kubectl delete destinationrules api-server -n istio-system
 $ kubectl delete destinationrules default -n istio-system
 {{< /text >}}
 
-## Enable mutual TLS per namespace or service
+## Enable mutual TLS per namespace or service{#enable-mutual-TLS-per-namespace-or-service}
 
 In addition to specifying an authentication policy for your entire mesh, Istio also lets you specify policies for particular namespaces or services. A
 namespace-wide policy takes precedence over the mesh-wide policy, while a service-specific policy has higher precedence still.
 
-### Namespace-wide policy
+### Namespace-wide policy{#namespace-wide-policy}
 
 The example below shows the policy to enable mutual TLS for all services in namespace `foo`. As you can see, it uses kind: `Policy` rather than `MeshPolicy`,
 and specifies a namespace, in this case, `foo`. If you don’t specify a namespace value the policy will apply to the default namespace.
@@ -341,7 +341,7 @@ sleep.legacy to httpbin.bar: 200
 sleep.legacy to httpbin.legacy: 200
 {{< /text >}}
 
-### Service-specific policy
+### Service-specific policy{#service-specific-policy}
 
 You can also set authentication policy and destination rule for a specific service. Run this command to set another policy only for `httpbin.bar` service.
 
@@ -436,7 +436,7 @@ $ kubectl exec $(kubectl get pod -l app=sleep -n legacy -o jsonpath={.items..met
 200
 {{< /text >}}
 
-### Policy precedence
+### Policy precedence{#policy-precedence}
 
 To illustrate how a service-specific policy takes precedence over namespace-wide policy, you can add a policy to disable mutual TLS for `httpbin.foo` as below.
 Note that you've already created a namespace-wide policy that enables mutual TLS for all services in namespace `foo` and observe that requests from
@@ -477,7 +477,7 @@ $ kubectl exec $(kubectl get pod -l app=sleep -n legacy -o jsonpath={.items..met
 200
 {{< /text >}}
 
-### Cleanup part 2
+### Cleanup part 2{#cleanup-part-2}
 
 Remove policies and destination rules created in the above steps:
 
@@ -488,7 +488,7 @@ $ kubectl delete destinationrules default overwrite-example -n foo
 $ kubectl delete destinationrules httpbin -n bar
 {{< /text >}}
 
-## End-user authentication
+## End-user authentication{#end-user-authentication}
 
 To experiment with this feature, you need a valid JWT. The JWT must correspond to the JWKS endpoint you want to use for the demo. In
 this tutorial, we use this [JWT test]({{< github_file >}}/security/tools/jwt/samples/demo.jwt) and this
@@ -625,7 +625,7 @@ $ for i in `seq 1 10`; do curl --header "Authorization: Bearer $TOKEN" $INGRESS_
 You can also add a JWT policy to an ingress gateway (e.g., service `istio-ingressgateway.istio-system.svc.cluster.local`).
 This is often used to define a JWT policy for all services bound to the gateway, instead of for individual services.
 
-### End-user authentication with per-path requirements
+### End-user authentication with per-path requirements{#end-user-authentication-with-per-path-requirements}
 
 End-user authentication can be enabled or disabled based on request path. This is useful if you want to
 disable authentication for some paths, for example, the path used for health check or status report.
@@ -636,7 +636,7 @@ The end-user authentication with per-path requirements is an experimental featur
 is **NOT** recommended for production use.
 {{< /warning >}}
 
-#### Disable End-user authentication for specific paths
+#### Disable End-user authentication for specific paths{#disable-end-user-authentication-for-specific-paths}
 
 Modify the `jwt-example` policy to disable End-user authentication for path `/user-agent`:
 
@@ -674,7 +674,7 @@ $ curl $INGRESS_HOST/headers -s -o /dev/null -w "%{http_code}\n"
 401
 {{< /text >}}
 
-#### Enable End-user authentication for specific paths
+#### Enable End-user authentication for specific paths{#enable-end-user-authentication-for-specific-paths}
 
 Modify the `jwt-example` policy to enable End-user authentication only for path `/ip`:
 
@@ -720,7 +720,7 @@ $ curl --header "Authorization: Bearer $TOKEN" $INGRESS_HOST/ip -s -o /dev/null 
 200
 {{< /text >}}
 
-### End-user authentication with mutual TLS
+### End-user authentication with mutual TLS{#end-user-authentication-with-mutual-TLS}
 
 End-user authentication and mutual TLS can be used together. Modify the policy above to define both mutual TLS and end-user JWT authentication:
 
@@ -781,7 +781,7 @@ $ kubectl exec $(kubectl get pod -l app=sleep -n legacy -o jsonpath={.items..met
 command terminated with exit code 56
 {{< /text >}}
 
-### Cleanup part 3
+### Cleanup part 3{#cleanup-part-3}
 
 1. Remove authentication policy:
 

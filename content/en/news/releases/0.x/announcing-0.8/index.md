@@ -16,7 +16,7 @@ This is a major release for Istio on the road to 1.0. There are a great many new
 
 {{< relnote >}}
 
-## Networking
+## Networking{#networking}
 
 - **Revamped Traffic Management Model**. We're finally ready to take the wraps off our
 [new traffic management APIs](/blog/2018/v1alpha3-routing/). We believe this new model is easier to understand while covering more real world
@@ -30,7 +30,7 @@ as well as serving a certificate based on the server name presented by the clien
 
 - **Constrained Inbound Ports**. We now restrict the inbound ports in a pod to the ones declared by the apps running inside that pod.
 
-## Security
+## Security{#security}
 
 - **Introducing Citadel**. We've finally given a name to our security component. What was formerly known as Istio-Auth or Istio-CA is now called Citadel.
 
@@ -38,23 +38,23 @@ as well as serving a certificate based on the server name presented by the clien
 
 - **Authentication Policy**. We've created a unified API for [authentication policy](/docs/tasks/security/authentication/authn-policy/) that controls whether service-to-service communication uses mutual TLS as well as end user authentication. This is now the recommended way to control these behaviors.
 
-## Telemetry
+## Telemetry{#telemetry}
 
 - **Self-Reporting**. Mixer and Pilot now produce telemetry that flows through the normal
 Istio telemetry pipeline, just like services in the mesh.
 
-## Setup
+## Setup{#setup}
 
 - **A la Carte Istio**. Istio has a rich set of features, however you don't need to install or consume them all together. By using
 Helm or `istioctl gen-deploy`, users can install only the features they want. For example, users can install Pilot only and enjoy traffic
 management functionality without dealing with Mixer or Citadel.
 
-## Mixer adapters
+## Mixer adapters{#mixer-adapters}
 
 - **CloudWatch**. Mixer can now report metrics to AWS CloudWatch.
 [Learn more](/docs/reference/config/policy-and-telemetry/adapters/cloudwatch/)
 
-## Known issues with 0.8
+## Known issues with 0.8{#known-issues-with-0.8}
 
 - A gateway with virtual services pointing to a headless service won't work ([Issue #5005](https://github.com/istio/istio/issues/5005)).
 

@@ -16,7 +16,7 @@ Overall, we found that Istio's [sidecar proxy](/docs/ops/deployment/architecture
 
 In the [Istio Tools repository](https://github.com/istio/tools/tree/3ac7ab40db8a0d595b71f47b8ba246763ecd6213/perf/benchmark), you’ll find scripts and instructions for measuring Istio's data plane performance, with additional instructions on how to run the scripts with [Linkerd](https://linkerd.io), another service mesh implementation. [Follow along](https://github.com/istio/tools/tree/3ac7ab40db8a0d595b71f47b8ba246763ecd6213/perf/benchmark#setup) as we detail some best practices for each step of the performance test framework.
 
-## 1. Use a production-ready Istio installation
+## 1. Use a production-ready Istio installation{#1.-use-a-production-ready-Istio-installation}
 
 To accurately measure the performance of a service mesh at scale, it's important to use an [adequately-sized](https://github.com/istio/tools/tree/3ac7ab40db8a0d595b71f47b8ba246763ecd6213/perf/istio-install#istio-setup) Kubernetes cluster. We test using three worker nodes, each with at least 4 vCPUs and 15 GB of memory.
 
@@ -24,7 +24,7 @@ Then, it's important to use a production-ready Istio **installation profile** on
 
 {{< warning_icon >}} Istio's [demo installation](/docs/setup/getting-started/) is not suitable for performance testing, because it is designed to be deployed on a small trial cluster, and has full tracing and access logs enabled to showcase Istio's features.
 
-## 2. Focus on the data plane
+## 2. Focus on the data plane{#2.-focus-on-the-data-plane}
 
 Our benchmarking scripts focus on evaluating the Istio data plane: the {{<gloss>}}Envoy{{</gloss>}} proxies that mediate traffic between application containers. Why focus on the data plane? Because at scale, with lots of application containers, the data plane’s **memory** and **CPU** usage quickly eclipses that of the Istio control plane. Let's look at an example of how this happens:
 
@@ -43,7 +43,7 @@ Lastly, our test environment measures requests between two pods, not many. The c
 
 Why test with only two pods? Because scaling up throughput (RPS) and connections (threads) has a greater effect on Envoy's performance than increasing the total size of the service registry — or, the total number of pods and services in the Kubernetes cluster. When the size of the service registry grows, Envoy does have to keep track of more endpoints, and lookup time per request does increase, but by a tiny constant. If you have many services, and this constant becomes a latency concern, Istio provides a [Sidecar resource](/docs/reference/config/networking/sidecar/), which allows you to limit which services each Envoy knows about.
 
-## 3. Measure with and without proxies
+## 3. Measure with and without proxies{#3.-measure-with-and-without-proxies}
 
 While many Istio features, such as [mutual TLS authentication](/docs/concepts/security/#mutual-tls-authentication), rely on an Envoy proxy next to an application pod, you can [selectively disable](/docs/setup/additional-setup/sidecar-injection/#disabling-or-updating-the-webhook) sidecar proxy injection for some of your mesh services. As you scale up Istio for production, you may want to incrementally add the sidecar proxy to your workloads.
 
@@ -51,7 +51,7 @@ To that end, the test scripts provide [three different modes](https://github.com
 
 You can also disable [Mixer](/docs/concepts/observability/) to stop Istio's telemetry during the performance tests, which provides results in line with the performance we expect when the Mixer V2 work is completed. Istio also supports [Envoy native telemetry](https://github.com/istio/istio/wiki/Envoy-native-telemetry), which performs similarly to having Istio's telemetry disabled.
 
-## Istio 1.2 Performance
+## Istio 1.2 Performance{#Istio-1.2-performance}
 
 Let's see how to use this test environment to analyze the data plane performance of Istio 1.2. We also provide instructions to run the [same performance tests for the Linkerd data plane](https://github.com/istio/tools/tree/3ac7ab40db8a0d595b71f47b8ba246763ecd6213/perf/benchmark/linkerd). Currently, only latency benchmarking is supported for Linkerd.
 
@@ -93,7 +93,7 @@ For CPU usage, we measured with an increasing request throughput (RPS), and a co
     caption=""
     >}}
 
-## Summary
+## Summary{#summary}
 
 In the process of benchmarking Istio's performance, we learned several key lessons:
 

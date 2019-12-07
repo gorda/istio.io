@@ -14,7 +14,7 @@ This release includes bug fixes to improve robustness. This release note describ
 
 {{< relnote >}}
 
-## Bug fixes
+## Bug fixes{#bug-fixes}
 
 - **Fixed** an issue which caused the secret cleanup job to erroneously run during upgrades ([Issue 16873](https://github.com/istio/istio/issues/16873)).
 - **Fixed** an issue where the default configuration disabled Kubernetes Ingress support ([Issue 17148](https://github.com/istio/istio/issues/17148))
@@ -25,7 +25,7 @@ This release includes bug fixes to improve robustness. This release note describ
 - **Fixed** Istio CNI sidecar initialization when IPv6 is disabled on the node ([Issue 15895](https://github.com/istio/istio/issues/15895)).
 - **Fixed** a regression affecting support of RS384 and RS512 algorithms in JWTs ([Issue 15380](https://github.com/istio/istio/issues/15380)).
 
-## Minor enhancements
+## Minor enhancements{#minor-enhancements}
 
 - **Added** support for `.Values.global.priorityClassName` to the telemetry deployment.
 - **Added** annotations for Datadog tracing that controls extra features in sidecars.

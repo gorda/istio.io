@@ -21,14 +21,14 @@ example Fluentd / Elasticsearch / Kibana stack.
 The [Bookinfo](/docs/examples/bookinfo/) sample application is used
 as the example application throughout this task.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * [Install Istio](/docs/setup/) in your cluster and deploy an
   application. This task assumes that Mixer is setup in a default configuration
   (`--configDefaultNamespace=istio-system`). If you use a different
   value, update the configuration and commands in this task to match the value.
 
-## Setup Fluentd
+## Setup Fluentd{#setup-Fluentd}
 
 In your cluster, you may already have a Fluentd daemon set running,
 such the add-on described
@@ -56,7 +56,7 @@ is:
 The full details of connecting Mixer to all possible Fluentd
 configurations is beyond the scope of this task.
 
-### Example Fluentd, Elasticsearch, Kibana Stack
+### Example Fluentd, Elasticsearch, Kibana Stack{#example-Fluentd-Elasticsearch-Kibana-stack}
 
 For the purposes of this task, you may deploy the example stack
 provided. This stack includes Fluentd, Elasticsearch, and Kibana in a
@@ -302,7 +302,7 @@ service "kibana" created
 deployment "kibana" created
 {{< /text >}}
 
-## Configure Istio
+## Configure Istio{#configure-Istio}
 
 Now that there is a running Fluentd daemon, configure Istio with a new
 log type, and send those logs to the listening daemon. Apply a
@@ -326,7 +326,7 @@ Notice that the `address: "fluentd-es.logging:24224"` line in the
 handler configuration is pointing to the Fluentd daemon we setup in the
 example stack.
 
-## View the new logs
+## View the new logs{#view-the-new-logs}
 
 1.  Send traffic to the sample application.
 
@@ -356,7 +356,7 @@ example stack.
 
 1. Now click "Discover" on the left menu, and start exploring the logs generated
 
-## Cleanup
+## Cleanup{#cleanup}
 
 *   Remove the new telemetry configuration:
 

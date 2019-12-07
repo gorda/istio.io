@@ -10,7 +10,7 @@ keywords: [traffic-management,routing]
 This task shows you how to route requests dynamically to multiple versions of a
 microservice.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Setup Istio by following the instructions in the
 [Installation guide](/docs/setup/).
@@ -19,7 +19,7 @@ microservice.
 
 * Review the [Traffic Management](/docs/concepts/traffic-management) concepts doc. Before attempting this task, you should be familiar with important terms such as *destination rule*, *virtual service*, and *subset*.
 
-## About this task
+## About this task{#about-this-task}
 
 The Istio [Bookinfo](/docs/examples/bookinfo/) sample consists of four separate microservices, each with multiple versions.
 Three different versions of one of the microservices, `reviews`, have been deployed and are running concurrently.
@@ -31,7 +31,7 @@ in a round robin fashion.
 The initial goal of this task is to apply rules that route all traffic to `v1` (version 1) of the microservices. Later, you
 will apply a rule to route traffic based on the value of an HTTP request header.
 
-## Apply a virtual service
+## Apply a virtual service{#apply-a-virtual-service}
 
 To route to one version only, you apply virtual services that set the default version for the microservices.
 In this case, the virtual services will route all traffic to `v1` of each microservice.
@@ -123,7 +123,7 @@ If you haven't already applied destination rules, follow the instructions in [Ap
 You have configured Istio to route to the `v1` version of the Bookinfo microservices,
 most importantly the `reviews` service version 1.
 
-## Test the new routing configuration
+## Test the new routing configuration{#test-the-new-routing-configuration}
 
 You can easily test the new configuration by once again refreshing the `/productpage`
 of the Bookinfo app.
@@ -139,7 +139,7 @@ the [Bookinfo](/docs/examples/bookinfo/#determine-the-ingress-ip-and-port) doc.
 You have successfully accomplished the first part of this task: route traffic to one
 version of a service.
 
-## Route based on user identity
+## Route based on user identity{#route-based-on-user-identity}
 
 Next, you will change the route configuration so that all traffic from a specific user
 is routed to a specific service version. In this case, all traffic from a user
@@ -197,7 +197,7 @@ Remember, `reviews:v2` is the version that includes the star ratings feature.
 
 You have successfully configured Istio to route traffic based on user identity.
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 In this task, you used Istio to send 100% of the traffic to the `v1` version
 of each of the Bookinfo services. You then set a rule to selectively send traffic
@@ -212,7 +212,7 @@ In the [traffic shifting](/docs/tasks/traffic-management/traffic-shifting) task,
 will follow the same basic pattern you learned here to configure route rules to
 gradually send traffic from one version of a service to another.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1. Remove the application virtual services:
 

@@ -15,7 +15,7 @@ The only dependencies required are a supported Kubernetes cluster and the `kubec
 To install Istio for production use, we recommend [installing with {{< istioctl >}}](/docs/setup/install/istioctl/)
 instead.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 1. Perform any necessary [platform-specific setup](/docs/setup/platform-setup/).
 
@@ -34,7 +34,7 @@ instead.
     - A service to access operator metrics
     - Necessary Istio operator RBAC rules
 
-## Install
+## Install{#install}
 
 To install the Istio `demo` [configuration profile](/docs/setup/additional-setup/config-profiles/)
 using the operator, run the following command:
@@ -100,7 +100,7 @@ kiali-7964898d8c-9gfs4                    1/1     Running   0          1m
 prometheus-586d4445c7-ctxlg               1/1     Running   0          1m
 {{< /text >}}
 
-## Update
+## Update{#update}
 
 Now, with the controller running, you can change the Istio configuration by editing or replacing
 the `IstioControlPlane` resource. The controller will detect the change and respond by updating
@@ -141,7 +141,7 @@ EOF
 Refer to the [`IstioControlPlane` API](/docs/reference/config/istio.operator.v1alpha12.pb/)
 for the complete set of configuration settings.
 
-## Uninstall
+## Uninstall{#uninstall}
 
 Delete the Istio operator and Istio deployment:
 

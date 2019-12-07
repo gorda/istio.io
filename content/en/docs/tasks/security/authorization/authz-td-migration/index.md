@@ -13,7 +13,7 @@ In Istio 1.4, we introduce an alpha feature to support {{< gloss >}}trust domain
  the identity of said workload is `spiffe://my-td/ns/foo/sa/bar`. By default, the Istio mesh trust domain is `cluster.local`,
  unless you specify it during the installation.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 1. Read the [authorization concept guide](/docs/concepts/security/#authorization).
 
@@ -90,7 +90,7 @@ Notice that it may take tens of seconds for the authorization policy to be propa
     200
     {{< /text >}}
 
-## Migrate trust domain without trust domain aliases
+## Migrate trust domain without trust domain aliases{#migrate-trust-domain-without-trust-domain-aliases}
 
 1. Install Istio with a new trust domain.
 
@@ -151,7 +151,7 @@ you don't need to follow this step. Learn more about [Provisioning Identity thro
      to `httpbin` were allowed before are now being denied. Prior to Istio 1.4, the only way to make this work is to change the authorization
      policy manually. In Istio 1.4, we introduce an easy way, as shown below.
 
-## Migrate trust domain with trust domain aliases
+## Migrate trust domain with trust domain aliases{#migrate-trust-domain-with-trust-domain-aliases}
 
 1. Install Istio with a new trust domain and trust domain aliases.
 
@@ -188,7 +188,7 @@ you don't need to follow this step. Learn more about [Provisioning Identity thro
     200
     {{< /text >}}
 
-## Best practices
+## Best practices{#best-practices}
 
 Starting from Istio 1.4, when writing authorization policy, you should consider using the value `cluster.local` as the
 trust domain part in the policy. For example, instead of `old-td/ns/sleep-allow/sa/sleep`, it should be `cluster.local/ns/sleep-allow/sa/sleep`.
@@ -197,7 +197,7 @@ in authorization policy, `cluster.local` is a pointer that points to the current
 By using `cluster.local` in the authorization policy, when you migrate to a new trust domain, Istio will detect this and treat the new trust domain
 as the old trust domain without you having to include the aliases.
 
-## Clean up
+## Clean up{#clean-up}
 
 {{< text bash >}}
 $ kubectl delete authorizationpolicy service-httpbin.default.svc.cluster.local

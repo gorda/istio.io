@@ -14,7 +14,7 @@ applications. Circuit breaking allows you to write applications that limit the i
 In this task, you will configure circuit breaking rules and then test the
 configuration by intentionally "tripping" the circuit breaker.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Setup Istio by following the instructions in the
   [Installation guide](/docs/setup/).
@@ -23,7 +23,7 @@ configuration by intentionally "tripping" the circuit breaker.
 
 The `httpbin` application serves as the backend service for this task.
 
-## Configuring the circuit breaker
+## Configuring the circuit breaker{#configuring-the-circuit-breaker}
 
 1.  Create a [destination rule](/docs/reference/config/networking/destination-rule/) to apply circuit breaking settings
 when calling the `httpbin` service:
@@ -81,7 +81,7 @@ when calling the `httpbin` service:
           maxEjectionPercent: 100
     {{< /text >}}
 
-## Adding a client
+## Adding a client{#adding-a-client}
 
 Create a client to send traffic to the `httpbin` service. The client is
 a simple load-testing client called [fortio](https://github.com/istio/fortio).
@@ -130,7 +130,7 @@ Pass in `-curl` to indicate that you just want to make one call:
 
 You can see the request succeeded! Now, it's time to break something.
 
-## Tripping the circuit breaker
+## Tripping the circuit breaker{#tripping-the-circuit-breaker}
 
 In the `DestinationRule` settings, you specified `maxConnections: 1` and
 `http1MaxPendingRequests: 1`. These rules indicate that if you exceed more than
@@ -241,7 +241,7 @@ one connection and request concurrently, you should see some failures when the
     You can see `12` for the `upstream_rq_pending_overflow` value which means `12`
     calls so far have been flagged for circuit breaking.
 
-## Cleaning up
+## Cleaning up{#cleaning-up}
 
 1.  Remove the rules:
 

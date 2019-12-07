@@ -12,9 +12,9 @@ This page provides the content guidelines for the Istio documentation. These
 guidelines do not supersede your best judgment and enhancements to this
 document in a pull request are welcome.
 
-## Formatting standards
+## Formatting standards{#formatting-standards}
 
-### Use consistent capitalization
+### Use consistent capitalization{#use-consistent-capitalization}
 
 Don't use capitalization for emphasis.
 
@@ -27,7 +27,7 @@ If you are not referencing values or code directly, use normal sentence
 capitalization, for example, "The Istio role binding configuration takes place
 in a YAML file."
 
-### Use angle brackets for placeholders
+### Use angle brackets for placeholders{#use-angle-brackets-for-placeholders}
 
 Use angle brackets for placeholders. Tell the reader what the placeholder
 represents. For example:
@@ -40,14 +40,14 @@ represents. For example:
 
     Where `<pod-name>` is the name of one of your pods.
 
-### Use **bold** for user interface elements
+### Use **bold** for user interface elements{#use-bold-for-user-interface-elements}
 
 |Do                | Don't
 |------------------|------
 |Click **Fork**.   | Click "Fork".
 |Select **Other**. | Select 'Other'.
 
-### Use _italics_ to define or introduce new terms
+### Use _italics_ to define or introduce new terms{#use-italics-to-define-or-introduce-new-terms}
 
 |Do                                         | Don't
 |-------------------------------------------|---
@@ -82,7 +82,7 @@ The text for the `title:` front-matter must use title case:
 Capitalize the first letter of every word except conjunctions and prepositions.
 This is unlike headings within the document, as described below.
 
-### Only capitalize the first letter of headings
+### Only capitalize the first letter of headings{#only-capitalize-the-first-letter-of-headings}
 
 For any headings use sentence case: only capitalize the first word of the
 heading, except for proper nouns or acronyms. Note that the
@@ -94,12 +94,12 @@ heading, except for proper nouns or acronyms. Note that the
 |Using Envoy for ingress | Using envoy for ingress
 |Using HTTPS             | Using https
 
-## Terminology standards
+## Terminology standards{#terminology-standards}
 
 We want to use the standard terms in this section consistently within the
 documentation for clarity.
 
-### Envoy
+### Envoy{#envoy}
 
 We prefer to use "Envoy” as it’s a more concrete term than "proxy" and
 resonates if used consistently throughout the docs.
@@ -117,7 +117,7 @@ Related Terms:
 - Proxy agent  - This is a minor infrastructural component and should only show
   up in low-level detail documentation. It is not a proper noun.
 
-### Miscellaneous
+### Miscellaneous{#miscellaneous}
 
 |Do              | Don't
 |----------------|------
@@ -135,9 +135,9 @@ Related Terms:
 | service mesh   | `Service Mesh`
 | sidecar        | `side-car`, `Sidecar`
 
-## Best practices
+## Best practices{#best-practices}
 
-### Use present tense
+### Use present tense{#use-present-tense}
 
 |Do                           | Don't
 |-----------------------------|------
@@ -146,14 +146,14 @@ Related Terms:
 Exception: Use future or past tense if it is required to convey the correct
 meaning. This exception is extremely rare and should be avoided.
 
-### Use active voice
+### Use active voice{#use-active-voice}
 
 |Do                                         | Don't
 |-------------------------------------------|------
 |You can explore the API using a browser.   | The API can be explored using a browser.
 |The YAML file specifies the replica count. | The replica count is specified in the YAML file.
 
-### Use simple and direct language
+### Use simple and direct language{#use-simple-and-direct-language}
 
 Use simple and direct language. Avoid using unnecessary phrases, such as saying
 "please."
@@ -164,14 +164,14 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying
 |See the configuration file. | Please see the configuration file.
 |View the Pods.              | With this next command, we'll view the Pods.
 
-### Address the reader as "you"
+### Address the reader as "you"{#address-the-reader-as-you}
 
 |Do                                     | Don't
 |---------------------------------------|------
 |You can create a `Deployment` by ...     | We'll create a `Deployment` by ...
 |In the preceding output, you can see...| In the preceding output, we can see ...
 
-### Create useful links
+### Create useful links{#create-useful-links}
 
 There are good hyperlinks, and bad hyperlinks. The common practice of calling
 links *here*  or *click here* are examples of bad hyperlinks. Check out [this
@@ -179,7 +179,7 @@ excellent article](https://medium.com/@heyoka/dont-use-click-here-f32f445d1021)
 explaining what makes a good hyperlink and try to keep these guidelines in
 mind when creating or reviewing site content.
 
-### Avoid using "we"
+### Avoid using "we"{#avoid-using-we}
 
 Using "we" in a sentence can be confusing, because the reader might not know
 whether they're part of the "we" you're describing.
@@ -190,7 +190,7 @@ whether they're part of the "we" you're describing.
 |Istio provides a new feature for ... | We provide a new feature ...
 |This page teaches you how to use pods.    | In this page, we are going to learn about pods.
 
-### Avoid jargon and idioms
+### Avoid jargon and idioms{#avoid-jargon-and-idioms}
 
 Some readers speak English as a second language. Avoid jargon and idioms to help make their understanding easier.
 
@@ -199,13 +199,13 @@ Some readers speak English as a second language. Avoid jargon and idioms to help
 |Internally, ...       | Under the hood, ...
 |Create a new cluster. | Turn up a new cluster.
 
-### Avoid statements about the future
+### Avoid statements about the future{#avoid-statements-about-the-future}
 
 Avoid making promises or giving hints about the future. If you need to talk
 about an alpha feature, put the text under a heading that identifies it as
 alpha information.
 
-### Avoid statements that will soon be out of date
+### Avoid statements that will soon be out of date{#avoid-statements-that-will-soon-be-out-of-date}
 
 Avoid words like "currently" and "new". A feature that is new today might not
 be considered new in a few months.
@@ -215,7 +215,7 @@ be considered new in a few months.
 |In version 1.4, ...                 | In the current version, ...
 |The Federation feature provides ... | The new Federation feature provides ...
 
-### Minimize use of callouts
+### Minimize use of callouts{#minimize-use-of-callouts}
 
 [Callouts](/about/contribute/creating-and-editing-pages/#callouts) let you highlight some particular content in your pages, but
 they need to be used sparingly. Callouts are intended for special notes to the user and over-using them

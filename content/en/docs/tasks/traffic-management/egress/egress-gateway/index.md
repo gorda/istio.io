@@ -23,7 +23,7 @@ An ingress gateway allows you to define entry points into the mesh that all inco
 Egress gateway is a symmetrical concept; it defines exit points from the mesh. Egress gateways allow
 you to apply Istio features, for example, monitoring and route rules, to traffic exiting the mesh.
 
-## Use case
+## Use case{#use-case}
 
 Consider an organization that has a strict security requirement that all traffic leaving
 the service mesh must flow through a set of dedicated nodes. These nodes will run on dedicated machines,
@@ -39,7 +39,7 @@ controlled way.
 
 *   [Enable Envoy’s access logging](/docs/tasks/observability/logs/access-log/#enable-envoy-s-access-logging)
 
-## Deploy Istio egress gateway
+## Deploy Istio egress gateway{#deploy-Istio-egress-gateway}
 
 1.  Check if the Istio egress gateway is deployed:
 
@@ -66,7 +66,7 @@ and the client requests will fail.
 
 {{< /warning >}}
 
-## Egress gateway for HTTP traffic
+## Egress gateway for HTTP traffic{#egress-gateway-for-HTTP-traffic}
 
 First create a `ServiceEntry` to allow direct traffic to an external service.
 
@@ -274,7 +274,7 @@ First create a `ServiceEntry` to allow direct traffic to an external service.
     Note that you only redirected the traffic from port 80 to the egress gateway. The HTTPS traffic to port 443
     went directly to _edition.cnn.com_.
 
-### Cleanup HTTP gateway
+### Cleanup HTTP gateway{#cleanup-HTTP-gateway}
 
 Remove the previous definitions before proceeding to the next step:
 
@@ -285,7 +285,7 @@ $ kubectl delete virtualservice direct-cnn-through-egress-gateway
 $ kubectl delete destinationrule egressgateway-for-cnn
 {{< /text >}}
 
-## Egress gateway for HTTPS traffic
+## Egress gateway for HTTPS traffic{#egress-gateway-for-https-traffic}
 
 In this section you direct HTTPS traffic (TLS originated by the application) through an egress gateway.
 You need to specify port 443 with protocol `TLS` in a corresponding `ServiceEntry`, an egress `Gateway` and a `VirtualService`.
@@ -506,7 +506,7 @@ You need to specify port 443 with protocol `TLS` in a corresponding `ServiceEntr
     [2019-01-02T11:46:46.981Z] "- - -" 0 - 627 1879689 44 - "-" "-" "-" "-" "151.101.129.67:443" outbound|443||edition.cnn.com 172.30.109.80:41122 172.30.109.80:443 172.30.109.112:59970 edition.cnn.com
     {{< /text >}}
 
-### Cleanup HTTPS gateway
+### Cleanup HTTPS gateway{#cleanup-https-gateway}
 
 {{< text bash >}}
 $ kubectl delete serviceentry cnn
@@ -515,7 +515,7 @@ $ kubectl delete virtualservice direct-cnn-through-egress-gateway
 $ kubectl delete destinationrule egressgateway-for-cnn
 {{< /text >}}
 
-## Additional security considerations
+## Additional security considerations{#additional-security-considerations}
 
 Note that defining an egress `Gateway` in Istio does not in itself provides any special treatment for the nodes
 on which the egress gateway service runs. It is up to the cluster administrator or the cloud provider to deploy
@@ -536,7 +536,7 @@ only access the Internet via a gateway. To do this, the cluster administrator or
 allocation of public IPs to pods other than gateways and can configure NAT devices to drop packets not originating at
 the egress gateways.
 
-## Apply Kubernetes network policies
+## Apply Kubernetes network policies{#apply-Kubernetes-network-policies}
 
 This section shows you how to create a
 [Kubernetes network policy](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to prevent
@@ -728,7 +728,7 @@ external service.
     cluster.outbound|443||edition.cnn.com.upstream_cx_total: 2
     {{< /text >}}
 
-### Cleanup network policies
+### Cleanup network policies{#cleanup-network-policies}
 
 1.  Delete the resources created in this section:
 
@@ -743,7 +743,7 @@ external service.
 
 1.  Follow the steps in the [Cleanup HTTPS gateway](#cleanup-https-gateway) section.
 
-## Troubleshooting
+## Troubleshooting{#troubleshooting}
 
 1.  Check if you have [mutual TLS Authentication](/docs/tasks/security/authentication/mutual-tls/) enabled in Istio, following the
     steps in [Verify mutual TLS configuration](/docs/tasks/security/authentication/mutual-tls/#verify-mutual-tls-configuration).
@@ -784,7 +784,7 @@ external service.
     cluster.outbound|443||edition.cnn.com.upstream_cx_total: 2
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Shutdown the [sleep]({{< github_tree >}}/samples/sleep) service:
 

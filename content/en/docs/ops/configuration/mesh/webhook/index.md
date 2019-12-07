@@ -26,7 +26,7 @@ The webhook setup guides assuming general familiarity with Kubernetes
 Dynamic Admission Webhooks. Consult the [Kubernetes API references](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/) for
 detailed documentation of the mutating and validating webhook configuration.
 
-## Verify dynamic admission webhook prerequisites
+## Verify dynamic admission webhook prerequisites{#verify-dynamic-admission-webhook-prerequisites}
 
 See the [platform setup instructions](/docs/setup/platform-setup/)
 for Kubernetes provider specific setup instructions. Webhooks will not

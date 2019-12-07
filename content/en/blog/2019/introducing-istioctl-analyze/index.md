@@ -18,7 +18,7 @@ apply changes to a cluster.
 
 To get started with it in just minutes, head over to the [documentation](/docs/ops/diagnostic-tools/istioctl-analyze/).
 
-## Designed to be approachable for novice users
+## Designed to be approachable for novice users{#designed-to-be-approachable-for-novice-users}
 
 One of the key design goals that we followed for this feature is to make it extremely approachable.
 This is achieved by making the command useful without having to pass any required complex parameters.
@@ -39,7 +39,7 @@ can figure out that you need to run this specific command, and which pod to run 
 So really, the one-line pitch for `analyze` is: just run it! It's completely safe, it takes no thinking,
 it might help you, and at worst, you'll have wasted a minute!
 
-## Improving this tool over time
+## Improving this tool over time{#improving-this-tool-over-time}
 
 In Istio 1.4, `analyze` comes with a nice set of analyzers that can detect a number of common issues.
 But this is just the beginning, and we are planning to keep growing and fine tuning the analyzers with

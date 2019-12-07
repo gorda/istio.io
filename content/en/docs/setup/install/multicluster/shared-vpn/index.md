@@ -22,7 +22,7 @@ Istio control plane, Envoy can then form a mesh network across multiple clusters
 
 {{< image width="80%" link="./multicluster-with-vpn.svg" caption="Istio mesh spanning multiple Kubernetes clusters with direct network access to remote pods over VPN" >}}
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 * Two or more clusters running a supported Kubernetes version ({{< supported_kubernetes_versions >}}).
 
@@ -42,12 +42,12 @@ across the multicluster environment and may not overlap.
 This guide describes how to install a multicluster Istio topology using the
 remote configuration profile provided by Istio.
 
-## Deploy the local control plane
+## Deploy the local control plane{#deploy-the-local-control-plane}
 
 [Install the Istio control plane](/docs/setup/install/istioctl/)
 on **one** Kubernetes cluster.
 
-### Set environment variables {#environment-var}
+### Set environment variables {#environment-var}{#set-environment-variables-{-environment-var}}
 
 Wait for the Istio control plane to finish initializing before following the
 steps in this section.
@@ -67,7 +67,7 @@ $ export TELEMETRY_POD_IP=$(kubectl -n istio-system get pod -l istio-mixer-type=
 Normally, automatic sidecar injection on the remote clusters is enabled. To
 perform a manual sidecar injection refer to the [manual sidecar example](#manual-sidecar)
 
-## Install the Istio remote
+## Install the Istio remote{#install-the-Istio-remote}
 
 You must deploy the `istio-remote` component to each remote Kubernetes
 cluster. You can install the component in one of two ways:
@@ -105,7 +105,7 @@ cluster. You can install the component in one of two ways:
     Repeat for all Kubernetes namespaces that need to setup automatic sidecar
     injection.
 
-### Installation configuration parameters
+### Installation configuration parameters{#installation-configuration-parameters}
 
 You must configure the remote cluster's sidecars interaction with the Istio
 control plane including the following endpoints in the `istio-remote` profile:
@@ -123,7 +123,7 @@ The following table shows the `istioctl` configuration values for remote cluster
 | `values.sidecarInjectorWebhook.enabled` | true, false | true | Specifies whether to enable automatic sidecar injection on the remote cluster |
 | `values.global.remotePilotCreateSvcEndpoint` | true, false | false | If set, a selector-less service and endpoint for `istio-pilot` are created with the `remotePilotAddress` IP, which ensures the `istio-pilot.<namespace>` is DNS resolvable in the remote cluster. |
 
-## Generate configuration files for remote clusters {#kubeconfig}
+## Generate configuration files for remote clusters {#kubeconfig}{#generate-configuration-files-for-remote-clusters-{-kubeconfig}}
 
 The Istio control plane requires access to all clusters in the mesh to
 discover services, endpoints, and pod attributes. The following steps
@@ -192,7 +192,7 @@ At this point, you created the remote clusters' `kubeconfig` files in the
 current directory. The filename of the `kubeconfig` file is the same as the
 original cluster name.
 
-## Instantiate the credentials {#credentials}
+## Instantiate the credentials {#credentials}{#instantiate-the-credentials-{-credentials}}
 
 Perform this procedure on the cluster running the Istio control plane. This
 procedure uses the `WORK_DIR`, `CLUSTER_NAME`, and `NAMESPACE` environment
@@ -229,7 +229,7 @@ example, the filename can't have underscores.  Resolve any issue with the
 filename simply by changing the filename to conform with the format.
 {{< /warning >}}
 
-## Uninstalling the remote cluster
+## Uninstalling the remote cluster{#uninstalling-the-remote-cluster}
 
 To uninstall the cluster run the following command:
 
@@ -245,7 +245,7 @@ To uninstall the cluster run the following command:
     --set autoInjection.enabled=true | kubectl delete -f -
 {{< /text >}}
 
-## Manual sidecar injection example {#manual-sidecar}
+## Manual sidecar injection example {#manual-sidecar}{#manual-sidecar-injection-example-{-manual-sidecar}}
 
 The following example shows how to use the `istioctl manifest` command to generate
 the manifest for a remote cluster with the automatic sidecar injection
@@ -277,7 +277,7 @@ Before you begin, set the endpoint IP environment variables as described in the
 
 1. [Instantiate the credentials](#credentials) for each remote cluster.
 
-### Manually inject the sidecars into the application manifests
+### Manually inject the sidecars into the application manifests{#manually-inject-the-sidecars-into-the-application-manifests}
 
 The following example `istioctl` command injects the sidecars into the
 application manifests. Run the following commands in a shell with the
@@ -288,7 +288,7 @@ $ ORIGINAL_SVC_MANIFEST=mysvc-v1.yaml
 $ istioctl kube-inject --injectConfigMapName istio-sidecar-injector --meshConfigMapName istio -f ${ORIGINAL_SVC_MANIFEST} | kubectl apply -f -
 {{< /text >}}
 
-## Access services from different clusters
+## Access services from different clusters{#access-services-from-different-clusters}
 
 Kubernetes resolves DNS on a cluster basis. Because the DNS resolution is tied
 to the cluster, you must define the service object in every cluster where a
@@ -299,7 +299,7 @@ cluster. Since the service objects are defined in a namespace, you must define
 the namespace if it doesn't exist, and include it in the service definitions in
 all clusters.
 
-## Deployment considerations
+## Deployment considerations{#deployment-considerations}
 
 The previous procedures provide a simple and step-by-step guide to deploy a
 multicluster environment. A production environment might require additional
@@ -323,7 +323,7 @@ section provides a high level overview of these options:
 * Use a load balancer service type
 * Expose the Istio services via a gateway
 
-### Update the DNS entries
+### Update the DNS entries{#update-the-DNS-entries}
 
 Upon any failure or restart of the local Istio control plane, `kube-dns` on the remote clusters must be
 updated with the correct endpoint mappings for the Istio services.  There
@@ -331,7 +331,7 @@ are a number of ways this can be done. The most obvious is to rerun the
 `istioctl` command in the remote cluster after the Istio services on the control plane
 cluster have restarted.
 
-### Use load balance service type
+### Use load balance service type{#use-load-balance-service-type}
 
 In Kubernetes, you can declare a service with a service type of `LoadBalancer`.
 See the Kubernetes documentation on [service types](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)
@@ -350,7 +350,7 @@ Currently, the Istio installation doesn't provide an option to specify service
 types for the Istio services. You can manually specify the service types in the
 Istio manifests.
 
-### Expose the Istio services via a gateway
+### Expose the Istio services via a gateway{#expose-the-Istio-services-via-a-gateway}
 
 This method uses the Istio ingress gateway functionality. The remote clusters
 have the `istio-pilot`, `istio-telemetry` and `istio-policy` services
@@ -366,12 +366,12 @@ This method provides two alternatives:
 
 * Create another Istio ingress gateway specifically for the multicluster.
 
-## Security
+## Security{#security}
 
 Istio supports deployment of mutual TLS between the control plane components as
 well as between sidecar injected application pods.
 
-### Control plane security
+### Control plane security{#control-plane-security}
 
 To enable control plane security follow these general steps:
 
@@ -402,7 +402,7 @@ To enable control plane security follow these general steps:
 
     * Set control plane IPs or resolvable host names.
 
-### Mutual TLS between application pods
+### Mutual TLS between application pods{#mutual-TLS-between-application-pods}
 
 To enable mutual TLS for all application pods, follow these general steps:
 
@@ -431,7 +431,7 @@ The CA certificate steps are identical for both control plane security and
 application pod security steps.
 {{< /tip >}}
 
-### Example deployment
+### Example deployment{#example-deployment}
 
 This example procedure installs Istio with both the control plane mutual TLS
 and the application pod mutual TLS enabled. The procedure sets up a remote
@@ -439,7 +439,7 @@ cluster with a selector-less service and endpoint. Istio Pilot uses the service
 and endpoint to allow the remote sidecars to resolve the
 `istio-pilot.istio-system` hostname via Istio's local Kubernetes DNS.
 
-#### Primary cluster: deploy the control plane cluster
+#### Primary cluster: deploy the control plane cluster{#primary-cluster-deploy-the-control-plane-cluster}
 
 1. Create the `cacerts` secret using the Istio certificate samples in the
    `istio-system` namespace:
@@ -459,7 +459,7 @@ and endpoint to allow the remote sidecars to resolve the
       --set values.global.controlPlaneSecurityEnabled=true
     {{< /text >}}
 
-#### Remote cluster: deploy Istio components
+#### Remote cluster: deploy Istio components{#remote-cluster-deploy-Istio-components}
 
 1. Create the `cacerts` secret using the Istio certificate samples in the
    `istio-system` namespace:
@@ -494,7 +494,7 @@ and endpoint to allow the remote sidecars to resolve the
 1. To generate the `kubeconfig` configuration file for the remote cluster,
    follow the steps in the [Kubernetes configuration section](#kubeconfig)
 
-### Primary cluster: instantiate credentials
+### Primary cluster: instantiate credentials{#primary-cluster-instantiate-credentials}
 
 You must instantiate credentials for each remote cluster. Follow the
 [instantiate credentials procedure](#credentials)

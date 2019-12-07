@@ -25,12 +25,12 @@ Istio does **NOT** support skip level upgrades. Only upgrades from {{< istio_pre
 are supported. If you are on an older version, please upgrade to {{< istio_previous_version >}} first.
 {{< /tip >}}
 
-## Upgrade steps
+## Upgrade steps{#upgrade-steps}
 
 [Download the new Istio release](/docs/setup/getting-started/#download)
 and change directory to the new release directory.
 
-### Istio CNI upgrade
+### Istio CNI upgrade{#Istio-CNI-upgrade}
 
 If you have installed or are planning to install [Istio CNI](/docs/setup/additional-setup/cni/),
 choose one of the following **mutually exclusive** options to check whether
@@ -106,7 +106,7 @@ the preferred upgrade option is to let Helm take care of the upgrade.
 {{< /tab >}}
 {{< /tabset >}}
 
-### Control plane upgrade
+### Control plane upgrade{#control-plane-upgrade}
 
 Pilot, Galley, Policy, Telemetry and Sidecar injector.
 Choose one of the following **mutually exclusive** options
@@ -167,7 +167,7 @@ the preferred upgrade option is to let Helm take care of the upgrade.
 {{< /tab >}}
 {{< /tabset >}}
 
-### Sidecar upgrade
+### Sidecar upgrade{#sidecar-upgrade}
 
 After the control plane upgrade, the applications already running Istio will
 still be using an older sidecar. To upgrade the sidecar, you will need to re-inject it.

@@ -11,7 +11,7 @@ aliases:
 
 This task shows how to control access to a service using simple denials, attribute-based white or black listing, or IP-based white or black listing.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Set up Istio on Kubernetes by following the instructions in the
   [Installation guide](/docs/setup/).
@@ -42,7 +42,7 @@ This task shows how to control access to a service using simple denials, attribu
     use `kubectl -n namespace ...` to specify the namespace.
     {{< /tip >}}
 
-## Simple _denials_
+## Simple _denials_{#simple-denials}
 
 Using Istio you can control access to a service based on any attributes that are available within Mixer.
 This simple form of access control is based on conditionally denying requests using Mixer selectors.
@@ -95,7 +95,7 @@ of the `reviews` service. We would like to cut off access to version `v3` of the
     In contrast, if you log in as user "jason" (the `reviews:v2` user) you continue to see
     the black ratings stars.
 
-## Attribute-based _whitelists_ or _blacklists_
+## Attribute-based _whitelists_ or _blacklists_{#attribute-based-whitelists-or-blacklists}
 
 Istio supports attribute-based whitelists and blacklists. The following
 whitelist configuration is equivalent to the `denier` configuration in the
@@ -136,7 +136,7 @@ the `reviews` service.
 1.  Verify that when you access the Bookinfo `productpage` (`http://$GATEWAY_URL/productpage`) without logging in, you see **no** stars.
 Verify that after logging in as "jason" you see black stars.
 
-## IP-based _whitelists_ or _blacklists_
+## IP-based _whitelists_ or _blacklists_{#IP-based-whitelists-or-blacklists}
 
 Istio supports _whitelists_ and _blacklists_ based on IP address. You can
 configure Istio to accept or reject requests from a specific IP address or a
@@ -167,7 +167,7 @@ subnet.
     to: `PERMISSION_DENIED:staticversion.istio-system:<your mesh source ip> is
     not whitelisted`
 
-## Cleanup
+## Cleanup{#cleanup}
 
 * Remove the Mixer configuration for simple denials:
 

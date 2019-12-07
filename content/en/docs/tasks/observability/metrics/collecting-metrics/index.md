@@ -16,14 +16,14 @@ calls to services within your mesh.
 The [Bookinfo](/docs/examples/bookinfo/) sample application is used
 as the example application throughout this task.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * [Install Istio](/docs/setup) in your cluster and deploy an
   application. This task assumes that Mixer is setup in a default configuration
   (`--configDefaultNamespace=istio-system`). If you use a different
   value, update the configuration and commands in this task to match the value.
 
-## Collecting new metrics
+## Collecting new metrics{#collecting-new-metrics}
 
 1.  Apply a YAML file with configuration for the new metric
     that Istio will generate and collect automatically.
@@ -74,7 +74,7 @@ as the example application throughout this task.
     For more on querying Prometheus for metric values, see the
     [Querying Istio Metrics](/docs/tasks/observability/metrics/querying-metrics/) task.
 
-## Understanding the metrics configuration
+## Understanding the metrics configuration{#understanding-the-metrics-configuration}
 
 In this task, you added Istio configuration that instructed Mixer to
 automatically generate and report a new metric for all
@@ -136,7 +136,7 @@ rule directs Mixer to send all `doublerequestcount` instances to the
 rule, and because the rule is in the configured default configuration namespace
 (`istio-system`), the rule is executed for all requests in the mesh.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 *   Remove the new metrics configuration:
 

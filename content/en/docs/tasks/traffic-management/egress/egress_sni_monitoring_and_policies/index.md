@@ -27,7 +27,7 @@ example extends that example to show how to configure SNI monitoring and apply p
     [Enabling Policy Enforcement](/docs/tasks/policy-enforcement/enabling-policy/) to ensure that policy enforcement is enabled.
     {{< /warning >}}
 
-## SNI monitoring and access policies
+## SNI monitoring and access policies{#SNI-monitoring-and-access-policies}
 
 Since you configured the egress traffic to flow through the egress gateway, you can apply monitoring and access policy
 enforcement on the egress traffic, **securely**. In this section you will define a log entry and an access policy for
@@ -83,14 +83,14 @@ the egress traffic to _*.wikipedia.org_.
 
     Access to Wikipedia sites in other languages is allowed, as expected.
 
-### Cleanup of monitoring and policy enforcement
+### Cleanup of monitoring and policy enforcement{#cleanup-of-monitoring-and-policy-enforcement}
 
 {{< text bash >}}
 $ kubectl delete -f @samples/sleep/telemetry/sni-logging.yaml@
 $ kubectl delete -f @samples/sleep/policy/sni-wikipedia.yaml@
 {{< /text >}}
 
-## Monitor the SNI and the source identity, and enforce access policies based on them
+## Monitor the SNI and the source identity, and enforce access policies based on them{#monitor-the-SNI-and-the-source-identity-and-enforce-access-policies-based-on-them}
 
 Since you enabled mutual TLS between the sidecar proxies and the egress gateway, you can monitor the [service identity](/docs/ops/deployment/architecture/#citadel) of the applications that access external services, and enforce policies
 based on the identities of the traffic source.
@@ -182,7 +182,7 @@ access the English and the French versions.
     Note that only the allowed Wikipedia sites for `sleep-canada` service account are allowed, namely Wikipedia in
     English and French.
 
-### Cleanup of monitoring and policy enforcement of SNI and source identity
+### Cleanup of monitoring and policy enforcement of SNI and source identity{#cleanup-of-monitoring-and-policy-enforcement-of-SNI-and-source-identity}
 
 {{< text bash >}}
 $ kubectl delete service sleep-us sleep-canada
@@ -192,7 +192,7 @@ $ kubectl delete -f @samples/sleep/telemetry/sni-logging.yaml@
 $ kubectl delete -f @samples/sleep/policy/sni-serviceaccount.yaml@
 {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Perform
     [the cleanup steps](/docs/tasks/traffic-management/egress/wildcard-egress-hosts/#cleanup-wildcard-configuration-for-arbitrary-domains)

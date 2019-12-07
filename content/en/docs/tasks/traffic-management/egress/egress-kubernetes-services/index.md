@@ -54,7 +54,7 @@ Kubernetes Services for egress traffic work with other protocols as well.
     sleep-66c8d79ff5-8tqrl   1/1     Running   0          32s
     {{< /text >}}
 
-## Kubernetes ExternalName service to access an external service
+## Kubernetes ExternalName service to access an external service{#Kubernetes-ExternalName-service-to-access-an-external-service}
 
 1.  Create a Kubernetes
     [ExternalName](https://kubernetes.io/docs/concepts/services-networking/service/#externalname) service
@@ -135,14 +135,14 @@ Kubernetes Services for egress traffic work with other protocols as well.
     }
     {{< /text >}}
 
-### Cleanup of Kubernetes ExternalName service
+### Cleanup of Kubernetes ExternalName service{#cleanup-of-Kubernetes-ExternalName-service}
 
 {{< text bash >}}
 $ kubectl delete destinationrule my-httpbin
 $ kubectl delete service my-httpbin
 {{< /text >}}
 
-## Use a Kubernetes service with endpoints to access an external service
+## Use a Kubernetes service with endpoints to access an external service{#use-a-Kubernetes-service-with-endpoints-to-access-an-external-service}
 
 1.  Create a Kubernetes service without selector for Wikipedia:
 
@@ -233,7 +233,7 @@ $ kubectl delete service my-httpbin
     ...
     {{< /text >}}
 
-### Cleanup of Kubernetes service with endpoints
+### Cleanup of Kubernetes service with endpoints{#cleanup-of-Kubernetes-service-with-endpoints}
 
 {{< text bash >}}
 $ kubectl delete destinationrule my-wikipedia
@@ -241,7 +241,7 @@ $ kubectl delete endpoints my-wikipedia
 $ kubectl delete service my-wikipedia
 {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Shutdown the [sleep]({{< github_tree >}}/samples/sleep) service:
 

@@ -12,12 +12,12 @@ keywords: [contribute]
 
 This page shows how to create, test, and maintain Istio documentation topics.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 Before you can work on Istio documentation, you first need to create a fork of the Istio documentation repository as described in
 [Working with GitHub](/about/contribute/github/).
 
-## Choosing a page type
+## Choosing a page type{#choosing-a-page-type}
 
 As you prepare to write a new topic, think about which of these page types
 is the best fit for your content:
@@ -95,13 +95,13 @@ is the best fit for your content:
   </tr>
 </table>
 
-## Naming a topic
+## Naming a topic{#naming-a-topic}
 
 Choose a title for your topic that has the keywords you want search engines to find.
 Create a filename for your topic that uses the words in your title, separated by hyphens,
 all in lower case.
 
-## Updating front matter
+## Updating front matter{#updating-front-matter}
 
 Every documentation file needs to start with
 [front matter](https://gohugo.io/content-management/front-matter/).
@@ -163,7 +163,7 @@ There are a few more front matter fields available specifically for blog posts:
 |`twitter`        | Optional Twitter handle of the post's author
 |`target_release` | Release this blog is written with in mind (this is normally the current major Istio release at the time the blog is authored or updated)
 
-## Adding images
+## Adding images{#adding-images}
 
 Put image files in the same directory as your markdown file. The preferred image format is SVG.
 Within markdown, use the following sequence to add the image:
@@ -191,7 +191,7 @@ value is calculated automatically for any local image content, but must be calcu
 manually when referencing external image content.
 In that case, `ratio` should be set to (image height / image width) * 100.
 
-## Adding icons
+## Adding icons{#adding-icons}
 
 You can embed some common icons in your content using:
 
@@ -205,7 +205,7 @@ You can embed some common icons in your content using:
 
 which look like {{< warning_icon >}}, {{< idea_icon >}}, {{< checkmark_icon >}}, {{< cancel_icon >}} and {{< tip_icon >}}.
 
-## Linking to other pages
+## Linking to other pages{#linking-to-other-pages}
 
 There are three types of links that can be included in documentation. Each uses a different
 way to indicate the link target:
@@ -232,7 +232,7 @@ current hierarchy:
     [see here](/docs/adir/afile/)
     {{< /text >}}
 
-### GitHub
+### GitHub{#GitHub}
 
 There are a few ways to reference files from GitHub:
 
@@ -261,7 +261,7 @@ The above annotations yield links to the appropriate branch in GitHub, relative 
 documentation is currently targeting. If you need to manually construct a URL, you can use the sequence `{{</* source_branch_name */>}}`
 to get the name of the currently targeted branch.
 
-## Version information
+## Version information{#version-information}
 
 You can obtain the current Istio version described by the web site using either of `{{</* istio_version */>}}` or
 `{{</* istio_full_version */>}}` which render as {{< istio_version >}} and {{< istio_full_version >}} respectively.
@@ -269,7 +269,7 @@ You can obtain the current Istio version described by the web site using either 
 `{{</* source_branch_name */>}}` gets expanded to the name of the branch of the `istio/istio` GitHub repository that the
 web site is targeting. This renders as {{< source_branch_name >}}.
 
-## Embedding preformatted blocks
+## Embedding preformatted blocks{#embedding-preformatted-blocks}
 
 You can embed blocks of preformatted content using the `text` sequence:
 
@@ -312,7 +312,7 @@ func HelloWorld() {
 Supported syntax are `plain`, `markdown`, `yaml`, `json`, `java`, `javascript`, `c`, `cpp`, `csharp`, `go`, `html`, `protobuf`,
 `perl`, `docker`, and `bash`.
 
-### Command-lines
+### Command-lines{#command-lines}
 
 When showing one or more bash command-lines, you start each command-line with a $:
 
@@ -395,7 +395,7 @@ $ kubectl -n istio-system logs $(kubectl -n istio-system get pods -l istio-mixer
 {"level":"warn","ts":"2017-09-21T04:33:31.233Z","instance":"newlog.logentry.istio-system","destination":"ingress.istio-system.svc.cluster.local","latency":"74.47ms","responseCode":200,"responseSize":5599,"source":"unknown","user":"unknown"}
 {{< /text >}}
 
-### Expanded form
+### Expanded form{#expanded-form}
 
 To use the more advanced features for preformatted content which are described in the following sections, you must use the
 extended form of the `text` sequence rather than the simplified form shown so far. The expanded form uses normal HTML attributes:
@@ -424,7 +424,7 @@ The available attributes are:
 |`snippet`     | The name of the [snippet](#snippets) of content to extract from the preformatted block.
 |`repo`        | The repository to use for [GitHub links](#links-to-github-files) embedded in preformatted blocks.
 
-### Inline vs. imported content
+### Inline vs. imported content{#inline-vs.-imported-content}
 
 So far, you've seen examples of inline preformatted content but it's also possible to import content, either
 from a file in the documentation repository or from an arbitrary URL on the Internet. For this, you use the
@@ -455,7 +455,7 @@ which produces the following result:
 If the file is from a different origin site, CORS should be enabled on that site. Note that the
 GitHub raw content site (`raw.githubusercontent.com`) may be used here.
 
-### Download name
+### Download name{#download-name}
 
 You can control the name that the browser
 uses when the user chooses to download the preformatted content by using the `downloadas` attribute. For example:
@@ -472,7 +472,7 @@ If you don't specify a download name, then it is derived automatically based on 
 title of the current page for inline content, or from the name of the file or URL for imported
 content.
 
-### Links to GitHub files
+### Links to GitHub files{#links-to-GitHub-files}
 
 If your preformatted content references a file from Istio's GitHub repository, you can surround the relative path name of the file with a pair
 of @ symbols. These indicate that the path should be rendered as a link to the file from the current branch in GitHub. For example:
@@ -513,7 +513,7 @@ $ kubectl apply -f @samples/bookinfo/networking/virtual-service-reviews-v3.yaml@
 {{</* /text */>}}
 {{< /text >}}
 
-### Snippets
+### Snippets{#snippets}
 
 When using imported content, you can control which parts of the content to render using _named snippets_, which represent portions
 of a file. You declare snippets in a file using the `$snippets` annotation with a paired `$endsnippet` annotation. The content
@@ -539,7 +539,7 @@ include the syntax of the output. For example:
 $snippet MySnippetFile.txt syntax="bash" outputis="json"
 {{< /text >}}
 
-## Glossary terms
+## Glossary terms{#glossary-terms}
 
 When first introducing a specialized Istio term in a page, it is desirable to annotate the term as being in the glossary. This
 will produce special rendering inviting the user to click on the term in order to get a pop-up with the definition.
@@ -564,7 +564,7 @@ Mixer uses an {{<gloss adapters>}}adapter{{</gloss>}} to interface to a backend.
 
 So even though the glossary entry is for *adapters*, the singular form of *adapter* can be used in the text.
 
-## Callouts
+## Callouts{#Callouts}
 
 You can bring special attention to blocks of content by highlighting warnings, ideas, tips, and quotes:
 
@@ -607,7 +607,7 @@ This is a quote from somewhere
 Please use these callouts sparingly. Callouts are intended for special notes to the user and over-using them
 throughout the site neutralizes their special attention-grabbing nature.
 
-## Embedding boilerplate text
+## Embedding boilerplate text{#embedding-boilerplate-text}
 
 You can embed common boilerplate text into any markdown output using the `boilerplate` sequence:
 
@@ -623,7 +623,7 @@ You supply the name of a boilerplate file to insert at the current location. Ava
 located in the `boilerplates` directory. Boilerplates are just
 normal markdown files.
 
-## Using tabs
+## Using tabs{#using-tabs}
 
 If you have some content to display in a variety of formats, it is convenient to use a tab set and display each
 format in a different tab. To insert tabbed content, you use a combination of `tabset` and `tabs` annotations:
@@ -674,7 +674,7 @@ in the site that hold the same types of formats.
 For example, if many tab sets are used to represent a choice between `GCP`, `BlueMix` and `AWS`, they can all use a category name of `environment` and values of
 `gcp`, `bluemix`, and `aws`. When a user selects a tab in one page, the equivalent tab will automatically be selected in any other tab set of any page visited.
 
-### Limitations
+### Limitations{#limitations}
 
 You can use almost any markdown in a tab, except for the following:
 
@@ -683,7 +683,7 @@ table of contents will not automatically select the tab.
 
 - *No nested tab sets*. Don't try it, it's horrible.
 
-## Banners and stickers
+## Banners and stickers{#banners-and-stickers}
 
 You can automatically insert time-sensitive banners and stickers into the generated site in order
 to advertise upcoming events, or publicize something new.
@@ -753,7 +753,7 @@ file per event. Within these files, you use the following dedicated front-matter
     </tbody>
 </table>
 
-## Renaming, moving, or deleting pages
+## Renaming, moving, or deleting pages{#renaming-moving-or-deleting-pages}
 
 If you move pages around or delete them completely, you should make sure existing links users may have to those pages continue to work.
 You do this by adding aliases which will cause the user to be redirected automatically from the old URL to a new URL.
@@ -795,7 +795,7 @@ aliases:
 ---
 {{< /text >}}
 
-## Building and testing the site
+## Building and testing the site{#building-and-testing-the-site}
 
 Once you've edited some content files, you'll want to build the site in order to test
 your changes. We use [Hugo](https://gohugo.io/) to generate our sites. To build and test the site locally, we use a Docker
@@ -821,7 +821,7 @@ at `http://192.168.7.105:1313`.
 All English content for the site is located in the `content/en` directory, as well as in sibling translated
 directories such as `content/zh`.
 
-### Linting
+### Linting{#linting}
 
 We use linters to ensure some base quality to the site's content. These linters must run without
 complaining before you can submit your changes into the repository. The linters check:
@@ -853,7 +853,7 @@ If you're having trouble with the link checker due to poor Internet connectivity
 $ make INTERNAL_ONLY=True lint
 {{< /text >}}
 
-## Using GitHub
+## Using GitHub{#using-GitHub}
 
 Checkout [Working with GitHub](/about/contribute/github) to learn how to generally use GitHub to submit
 documentation changes. Of particular interest, see the [section on branching](/about/contribute/github#branching)

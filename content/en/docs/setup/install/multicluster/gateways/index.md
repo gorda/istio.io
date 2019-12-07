@@ -27,7 +27,7 @@ Cross-cluster communication occurs over Istio gateways of the respective cluster
 
 {{< image width="80%" link="./multicluster-with-gateways.svg" caption="Istio mesh spanning multiple Kubernetes clusters using Istio Gateway to reach remote pods" >}}
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 * Two or more Kubernetes clusters with versions: {{< supported_kubernetes_versions >}}.
 
@@ -49,7 +49,7 @@ Cross-cluster communication occurs over Istio gateways of the respective cluster
   sample root CA certificate available in the Istio installation
   under the `samples/certs` directory.
 
-## Deploy the Istio control plane in each cluster
+## Deploy the Istio control plane in each cluster{#deploy-the-Istio-control-plane-in-each-cluster}
 
 1. Generate intermediate CA certificates for each cluster's Citadel from your
     organization's root CA. The shared root CA enables mutual TLS communication
@@ -100,7 +100,7 @@ Cross-cluster communication occurs over Istio gateways of the respective cluster
     For further details and customization options, refer to the
     [installation instructions](/docs/setup/install/istioctl/).
 
-## Setup DNS
+## Setup DNS{#setup-DNS}
 
 Providing DNS resolution for services in remote clusters will allow
 existing applications to function unmodified, as applications typically
@@ -220,7 +220,7 @@ EOF
 {{< /tab >}}
 {{< /tabset >}}
 
-## Configure application services
+## Configure application services{#configure-application-services}
 
 Every service in a given cluster that needs to be accessed from a different remote
 cluster requires a `ServiceEntry` configuration in the remote cluster.
@@ -236,7 +236,7 @@ running in a second cluster. Before you begin:
 
 {{< boilerplate kubectl-multicluster-contexts >}}
 
-### Configure the example services
+### Configure the example services{#configure-the-example-services}
 
 1. Deploy the `sleep` service in `cluster1`.
 
@@ -353,7 +353,7 @@ running in a second cluster. Before you begin:
     $ kubectl exec --context=$CTX_CLUSTER1 $SLEEP_POD -n foo -c sleep -- curl -I httpbin.bar.global:8000/headers
     {{< /text >}}
 
-### Send remote traffic via an egress gateway
+### Send remote traffic via an egress gateway{#send-remote-traffic-via-an-egress-gateway}
 
 If you want to route traffic from `cluster1` via a dedicated egress gateway, instead of directly from the sidecars,
 use the following service entry for `httpbin.bar` instead of the one in the previous section.
@@ -443,7 +443,7 @@ EOF
 
 {{< /tabset >}}
 
-### Cleanup the example
+### Cleanup the example{#cleanup-the-example}
 
 Execute the following commands to clean up the example services.
 
@@ -468,7 +468,7 @@ Execute the following commands to clean up the example services.
     $ unset SLEEP_POD CLUSTER2_GW_ADDR CLUSTER1_EGW_ADDR CTX_CLUSTER1 CTX_CLUSTER2
     {{< /text >}}
 
-## Version-aware routing to remote services
+## Version-aware routing to remote services{#version-aware-routing-to-remote-services}
 
 If the remote service has multiple versions, you can add
 labels to the service entry endpoints.
@@ -509,7 +509,7 @@ The instructions are the same as those used for routing to a local service.
 See [multicluster version routing](/blog/2019/multicluster-version-routing/)
 for a complete example.
 
-## Uninstalling
+## Uninstalling{#uninstalling}
 
 Uninstall Istio by running the following commands on **every cluster**:
 
@@ -519,7 +519,7 @@ $ istioctl manifest generate \
     | kubectl delete -f -
 {{< /text >}}
 
-## Summary
+## Summary{#summary}
 
 Using Istio gateways, a common root CA, and service entries, you can configure
 a single Istio service mesh across multiple Kubernetes clusters.

@@ -9,7 +9,7 @@ aliases:
 
 This task shows you how to inject faults to test the resiliency of your application.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Set up Istio by following the instructions in the
   [Installation guide](/docs/setup/).
@@ -33,7 +33,7 @@ This task shows you how to inject faults to test the resiliency of your applicat
     *  `productpage` → `reviews:v2` → `ratings` (only for user `jason`)
     *  `productpage` → `reviews:v1` (for everyone else)
 
-## Injecting an HTTP delay fault
+## Injecting an HTTP delay fault{#injecting-an-HTTP-delay-fault}
 
 To test the Bookinfo application microservices for resiliency, inject a 7s delay
 between the `reviews:v2` and `ratings` microservices for user `jason`. This test
@@ -84,7 +84,7 @@ still expect the end-to-end flow to continue without any errors.
 
     Allow several seconds for the new rule to propagate to all pods.
 
-## Testing the delay configuration
+## Testing the delay configuration{#testing-the-delay-configuration}
 
 1. Open the [Bookinfo](/docs/examples/bookinfo) web application in your browser.
 
@@ -105,7 +105,7 @@ still expect the end-to-end flow to continue without any errors.
     1. Open the Network tab
     1. Reload the `/productpage` web page. You will see that the page actually loads in about 6 seconds.
 
-## Understanding what happened
+## Understanding what happened{#understanding-what-happened}
 
 You've found a bug. There are hard-coded timeouts in the microservices that have
 caused the `reviews` service to fail.
@@ -125,7 +125,7 @@ Notice that the fault injection test is restricted to when the logged in user is
 `jason`. If you login as any other user, you will not experience any delays.
 {{< /tip >}}
 
-## Fixing the bug
+## Fixing the bug{#fixing-the-bug}
 
 You would normally fix the problem by:
 
@@ -142,7 +142,7 @@ If you migrate all traffic to `reviews:v3` as described in the
 try to change the delay rule to any amount less that 2.5s, for example 2s, and confirm
 that the end-to-end flow continues without any errors.
 
-## Injecting an HTTP abort fault
+## Injecting an HTTP abort fault{#injecting-an-HTTP-abort-fault}
 
 Another way to test microservice resiliency is to introduce an HTTP abort fault.
 In this task, you will introduce an HTTP abort to the `ratings` microservices for
@@ -189,7 +189,7 @@ service is currently unavailable` message.
             subset: v1
     {{< /text >}}
 
-## Testing the abort configuration
+## Testing the abort configuration{#testing-the-abort-configuration}
 
 1. Open the [Bookinfo](/docs/examples/bookinfo) web application in your browser.
 
@@ -203,7 +203,7 @@ service is currently unavailable` message.
    (which does not call `ratings` at all) for everybody but `jason`. Therefore you
    will not see any error message.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1. Remove the application routing rules:
 

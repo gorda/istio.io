@@ -15,7 +15,7 @@ This example shows how to configure Istio to perform {{< gloss >}}TLS originatio
 for traffic to an external service. Istio will open HTTPS connections to the external service while the original
 traffic is HTTP.
 
-## Use case
+## Use case{#use-case}
 
 Consider a legacy application that performs HTTP calls to external sites. Suppose the organization that operates the
 application receives a new requirement which states that all the external traffic must be encrypted. With Istio,
@@ -25,7 +25,7 @@ The application can send unencrypted HTTP requests and Istio will then encrypt t
 Another benefit of sending unencrypted HTTP requests from the source, and letting Istio perform the TLS upgrade,
 is that Istio can produce better telemetry and provide more routing control for requests that are not encrypted.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Setup Istio by following the instructions in the [Installation guide](/docs/setup/).
 
@@ -52,7 +52,7 @@ is that Istio can produce better telemetry and provide more routing control for 
     $ export SOURCE_POD=$(kubectl get pod -l app=sleep -o jsonpath={.items..metadata.name})
     {{< /text >}}
 
-## Configuring access to an external service
+## Configuring access to an external service{#configuring-access-to-an-external-service}
 
 First start by configuring access to an external service, `edition.cnn.com`,
 using the same technique shown in the [Control Egress Traffic](/docs/tasks/traffic-management/egress/) task.
@@ -132,7 +132,7 @@ For privacy reasons, you might want to prevent such disclosure.
 
 Both of these issues can be resolved by configuring Istio to perform TLS origination.
 
-## TLS origination for egress traffic
+## TLS origination for egress traffic{#TLS-origination-for-egress-traffic}
 
 1.  Redefine your `ServiceEntry` and `VirtualService` from the previous section to rewrite the HTTP request port
     and add a `DestinationRule` to perform TLS origination.
@@ -228,7 +228,7 @@ Both of these issues can be resolved by configuring Istio to perform TLS origina
     ...
     {{< /text >}}
 
-## Additional security considerations
+## Additional security considerations{#additional-security-considerations}
 
 Because the traffic between the application pod and the sidecar proxy on the local host is still unencrypted,
 an attacker that is able to penetrate the node of your application would still be able to see the unencrypted
@@ -242,7 +242,7 @@ are being sent by inspecting [Server Name Indication (SNI)](https://en.wikipedia
 The _SNI_ field is sent unencrypted during the TLS handshake. Using HTTPS prevents the attackers from knowing specific
 topics and articles but does not prevent an attackers from learning that `edition.cnn.com` is accessed.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1.  Remove the Istio configuration items you created:
 

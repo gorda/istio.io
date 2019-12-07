@@ -10,7 +10,7 @@ compatibility.  We also mention cases where backwards compatibility was
 preserved but new behavior was introduced that would be surprising to someone
 familiar with the use and operation of Istio 1.1.
 
-## Installation and upgrade
+## Installation and upgrade{#installation-and-upgrade}
 
 {{< tip >}}
 The configuration model for Mixer has been simplified. Support for

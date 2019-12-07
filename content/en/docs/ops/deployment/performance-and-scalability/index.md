@@ -29,7 +29,7 @@ The Istio data plane components, the Envoy proxies, handle data flowing through
 the system. The Istio control plane components, Pilot, Galley and Citadel, configure
 the data plane. The data plane and control plane have distinct performance concerns.
 
-## Performance summary for Istio {{< istio_release_name >}}
+## Performance summary for Istio {{< istio_release_name >}}{#performance-summary-for-Istio-{{< istio_release_name >}}}
 
 The [Istio load tests](https://github.com/istio/tools/tree/{{< source_branch_name >}}/perf/load) mesh consists
 of **1000** services and **2000** sidecars with 70,000 mesh-wide requests per second.
@@ -40,7 +40,7 @@ After running the tests using Istio {{< istio_release_name >}}, we get the follo
 - Pilot uses **1 vCPU** and 1.5 GB of memory.
 - The Envoy proxy adds 6.3 ms to the 90th percentile latency.
 
-## Control plane performance
+## Control plane performance{#control-plane-performance}
 
 Pilot configures sidecar proxies based on user authored configuration files and the current
 state of the system. In a Kubernetes environment, Custom Resource Definitions (CRDs) and deployments
@@ -65,7 +65,7 @@ a single Pilot instance can support 1000 services, 2000 sidecars with 1 vCPU and
 You can increase the number of Pilot instances to reduce the amount of time it takes for the configuration
 to reach all proxies.
 
-## Data plane performance
+## Data plane performance{#data-plane-performance}
 
 Data plane performance depends on many factors, for example:
 
@@ -79,7 +79,7 @@ Data plane performance depends on many factors, for example:
 
 The latency, throughput, and the proxies' CPU and memory consumption are measured as a function of said factors.
 
-### CPU and memory
+### CPU and memory{#CPU-and-memory}
 
 Since the sidecar proxy performs additional work on the data path, it consumes CPU
 and memory. As of Istio 1.1, a proxy consumes about 0.6 vCPU per 1000
@@ -93,7 +93,7 @@ to a proxy. In a large namespace, the proxy consumes approximately 50 MB of memo
 Since the proxy normally doesn't buffer the data passing through,
 request rate doesn't affect the memory consumption.
 
-### Latency
+### Latency{#latency}
 
 Since Istio injects a sidecar proxy on the data path, latency is an important
 consideration. Istio adds an authentication and a Mixer filter to the proxy. Every
@@ -110,7 +110,7 @@ Inside the mesh, a request traverses the client-side proxy and then the server-s
 proxy. This two proxies on the data path add about 6.3 ms to the 90th percentile latency at 1000 requests per second.
 The server-side proxy alone adds 1.7 ms to the 90th percentile latency.
 
-### Latency for Istio {{< istio_release_name >}}
+### Latency for Istio {{< istio_release_name >}}{#latency-for-Istio-{{< istio_release_name >}}}
 
 The default configuration of Istio {{< istio_release_name >}} adds 6.3 ms to the 90th percentile latency of the data plane over the baseline.
 We obtained these results using the [Istio benchmarks](https://github.com/istio/tools/tree/{{< source_branch_name >}}/perf/benchmark)
@@ -133,7 +133,7 @@ This will decrease the amount data flowing through the system, which will in tur
 - `telemetryv2-nullvm_both` Same as **both-sidecars** but with telemetry v2. This is targeted to perform the same as "No Mixer" in the future.
 - `telemetryv2-nullvm_serveronly` Same as **server-sidecar** but with telemetry v2. This is targeted to perform the same as "No Mixer" in the future.
 
-### Benchmarking tools
+### Benchmarking tools{#benchmarking-tools}
 
 Istio uses the following tools for benchmarking
 

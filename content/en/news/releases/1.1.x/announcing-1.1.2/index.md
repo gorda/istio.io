@@ -16,7 +16,7 @@ We're announcing immediate availability of Istio 1.1.2 which contains some impor
 
 {{< relnote >}}
 
-## Security update
+## Security update{#security-update}
 
 Two security vulnerabilities have recently been identified in the Envoy proxy
 ([CVE 2019-9900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900) and [CVE 2019-9901](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901)). The
@@ -27,7 +27,7 @@ immediately to mitigate security risks arising from these vulnerabilities.
 The vulnerabilities are centered on the fact that Envoy did not normalize HTTP URI paths and did not fully validate HTTP/1.1 header values. These
 vulnerabilities impact Istio features that rely on Envoy to enforce any of authorization, routing, or rate limiting.
 
-## Affected Istio releases
+## Affected Istio releases{#affected-Istio-releases}
 
 The following Istio releases are vulnerable:
 
@@ -42,7 +42,7 @@ The following Istio releases are vulnerable:
 - 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8
     - These releases are no longer supported and will not be patched. Please upgrade to a supported release with the necessary fixes.
 
-## Vulnerability impact
+## Vulnerability impact{#vulnerability-impact}
 
 [CVE 2019-9900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900) and [CVE 2019-9901](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901)
 allow remote attackers access to unauthorized resources by using specially crafted request URI paths (9901) and NUL bytes in
@@ -54,7 +54,7 @@ As Istio is based on Envoy, Istio customers can be affected by these vulnerabili
 policies or routing rules and how the backend HTTP implementation resolves them. If prefix path matching rules are used by Mixer or by Istio authorization
 policies or the routing rules, an attacker could exploit these vulnerabilities to gain access to unauthorized paths on certain HTTP backends.
 
-## Mitigation
+## Mitigation{#mitigation}
 
 Eliminating the vulnerabilities requires updating to a corrected version of Envoy. We’ve incorporated the necessary updates in the latest Istio patch releases.
 
@@ -65,7 +65,7 @@ For Istio 1.0.x deployments: update to a minimum of [Istio 1.0.7](/news/releases
 While Envoy 1.9.1 requires opting in to path normalization to address CVE 2019-9901, the version of Envoy embedded in Istio 1.1.2 and 1.0.7 enables path
 normalization by default.
 
-## Detection of NUL header exploit
+## Detection of NUL header exploit{#detection-of-NUL-header-exploit}
 
 Based on current information, this only affects HTTP/1.1 traffic. If this is not structurally possible in your network or configuration, then it is unlikely
 that this vulnerability applies.
@@ -77,7 +77,7 @@ intended in the `RouteConfiguration`.
 External authorization and rate limit services can check for NULs in headers. Backend servers might have sufficient logging to detect NULs or unintended
 access; it’s likely that many will simply reject NULs in this scenario via 400 Bad Request, as per RFC 7230.
 
-## Detection of path traversal exploit
+## Detection of path traversal exploit{#detection-of-path-traversal-exploit}
 
 Envoy’s access logs (whether file-based or gRPC) will contain the unnormalized path, so it is possible to examine these logs to detect suspicious patterns and
 requests that are incongruous with the intended operator configuration intent. In addition, unnormalized paths are available at `ext_authz`, rate limiting

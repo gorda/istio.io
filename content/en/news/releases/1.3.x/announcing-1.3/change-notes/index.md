@@ -6,11 +6,11 @@ aliases:
     - /about/notes/1.3
 ---
 
-## Installation
+## Installation{#installation}
 
 - **Added** experimental [manifest and profile commands](/docs/setup/install/istioctl/) to install and manage the Istio control plane for evaluation.
 
-## Traffic management
+## Traffic management{#traffic-management}
 
 - **Added** [automatic protocol determination](/docs/ops/configuration/traffic-management/protocol-selection/) of HTTP or TCP for outbound traffic when ports are not named according to Istio’s [conventions](/docs/ops/deployment/requirements/).
 - **Added** a mode to the Gateway API for mutual TLS operation.
@@ -24,7 +24,7 @@ aliases:
 - **Improved** the `ServiceEntry` API to allow for the same hostname in different namespaces.
 - **Improved** the [Sidecar API](/docs/reference/config/networking/sidecar/#OutboundTrafficPolicy) to customize the `OutboundTrafficPolicy` policy.
 
-## Security
+## Security{#security}
 
 - **Added** trust domain validation for services using mutual TLS. By default, the server only authenticates the requests from the same trust domain.
 - **Added** [labels]((/docs/ops/configuration/mesh/secret-creation/) to control service account secret generation by namespace.
@@ -39,7 +39,7 @@ aliases:
 - **Removed** integration with Vault CA temporarily. SDS requirements caused the temporary removal but we will reintroduce Vault CA integration in a future release.
 - **Enabled** the Envoy JWT filter by default to improve security and reliability.
 
-## Telemetry
+## Telemetry{#telemetry}
 
 - **Added** Access Log Service [ALS](https://www.envoyproxy.io/docs/envoy/latest/api-v2/service/accesslog/v2/als.proto#grpc-access-log-service-als) support for Envoy gRPC.
 - **Added** a Grafana dashboard for Citadel monitoring.
@@ -56,11 +56,11 @@ aliases:
 - **Removed** deprecated `Adapter` and `Template` custom resource definitions (CRDs).
 - **Deprecated** the HTTP API spec used to produce API attributes. We will remove support for producing API attributes in Istio 1.4.
 
-## Policy
+## Policy{#policy}
 
 - **Improved** rate limit enforcement to allow communication when the quota backend is unavailable.
 
-## Configuration management
+## Configuration management{#configuration-management}
 
 - **Fixed** Galley to stop too many gRPC pings from closing connections.
 - **Improved** Galley to avoid control plane upgrade failures.
@@ -76,7 +76,7 @@ aliases:
 - **Promoted** the [`istioctl experimental convert-ingress`](/docs/reference/commands/istioctl/#istioctl-convert-ingress) command to `istioctl convert-ingress`.
 - **Promoted** the [`istioctl experimental dashboard`](/docs/reference/commands/istioctl/#istioctl-dashboard) command to `istioctl dashboard`.
 
-## Miscellaneous
+## Miscellaneous{#miscellaneous}
 
 - **Added** new images based on [distroless](/docs/ops/configuration/security/harden-docker-images/) base images.
 - **Improved** the Istio CNI Helm chart to have consistent versions with Istio.

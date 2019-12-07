@@ -26,7 +26,7 @@ plane components through Chiron. Using this feature has the following advantages
 
 * Simplified root certificate distribution to TLS clients. Clients no longer need to wait for Citadel to generate and distribute its CA certificate.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 * Install Istio through `istioctl` with DNS certificates configured.
 The configuration is read when Pilot starts.
@@ -49,20 +49,20 @@ $ istioctl manifest apply -f ./istio.yaml
 
 * Install [`jq`](https://stedolan.github.io/jq/) for validating the results from running the task.
 
-## DNS certificate provisioning and management
+## DNS certificate provisioning and management{#DNS-certificate-provisioning-and-management}
 
 Istio provisions the DNS names and secret names for the DNS certificates based on configuration you provide.
 The DNS certificates provisioned are signed by the Kubernetes CA and stored in the secrets following your configuration.
 Istio also manages the lifecycle of the DNS certificates, including their rotations and regenerations.
 
-## Configure DNS certificates
+## Configure DNS certificates{#configure-DNS-certificates}
 
 The `IstioControlPlane` custom resource used to configure Istio in the `istioctl manifest apply` command, above,
 contains an example DNS certificate configuration. Within, the `dnsNames` field specifies the DNS
 names in a certificate and the `secretName` field specifies the name of the Kubernetes secret used to
 store the certificate and the key.
 
-## Check the provisioning of DNS certificates
+## Check the provisioning of DNS certificates{#check-the-provisioning-of-DNS-certificates}
 
 After configuring Istio to generate DNS certificates and storing them in secrets
 of your choosing, you can verify that the certificates were provisioned and work properly.
@@ -82,7 +82,7 @@ X509v3 Subject Alternative Name:
   DNS:istio-galley.istio-system.svc, DNS:istio-galley.istio-system
 {{< /text >}}
 
-## Regenerating a DNS certificate
+## Regenerating a DNS certificate{#regenerating-a-DNS-certificate}
 
 Istio can also regenerate DNS certificates that were mistakenly deleted. Next,
 we show how you can delete a recently configured certificate and verify Istio regenerates it automatically.

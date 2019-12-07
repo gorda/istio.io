@@ -16,7 +16,7 @@ aliases:
 This example shows how to integrate a VM or a bare metal host into a single-network
 Istio mesh deployed on Kubernetes.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 - You have already set up Istio on Kubernetes. If you haven't done so, you can
   find out how in the [Installation guide](/docs/setup/getting-started/).
@@ -37,11 +37,11 @@ The following instructions:
 - Assume the expansion VM is running on GCE.
 - Use Google platform-specific commands for some steps.
 
-## Installation steps
+## Installation steps{#installation-steps}
 
 Setup consists of preparing the mesh for expansion and installing and configuring each VM.
 
-### Preparing the Kubernetes cluster for VMs
+### Preparing the Kubernetes cluster for VMs{#preparing-the-Kubernetes-cluster-for-VMs}
 
 The first step when adding non-Kubernetes services to an Istio mesh is to
 configure the Istio installation itself, and generate the configuration files
@@ -129,7 +129,7 @@ following commands on a machine with cluster admin privileges:
           -o jsonpath='{.data.cert-chain\.pem}' |base64 --decode > cert-chain.pem
     {{< /text >}}
 
-### Setting up the VM
+### Setting up the VM{#setting-up-the-VM}
 
 Next, run the following commands on each machine that you want to add to the mesh:
 
@@ -189,7 +189,7 @@ The following example updates the `/etc/hosts` file with the Istio gateway addre
     $ sudo systemctl start istio
     {{< /text >}}
 
-## Send requests from VM workloads to Kubernetes services
+## Send requests from VM workloads to Kubernetes services{#send-requests-from-VM-workloads-to-Kubernetes-services}
 
 After setup, the machine can access services running in the Kubernetes cluster
 or on other VMs.
@@ -220,7 +220,7 @@ $ curl -v productpage.default.svc.cluster.local:9080
 
 The `server: envoy` header indicates that the sidecar intercepted the traffic.
 
-## Running services on the added VM
+## Running services on the added VM{#running-services-on-the-added-VM}
 
 1. Setup an HTTP server on the VM instance to serve HTTP traffic on port 8080:
 
@@ -282,7 +282,7 @@ The `server: envoy` header indicates that the sidecar intercepted the traffic.
 send traffic to a service running on a VM outside of the cluster and tested that
 the configuration worked.
 
-## Cleanup
+## Cleanup{#cleanup}
 
 Run the following commands to remove the expansion VM from the mesh's abstract
 model.
@@ -293,7 +293,7 @@ Kubernetes Service "vmhttp.vm" has been deleted for external service "vmhttp"
 Service Entry "mesh-expansion-vmhttp" has been deleted for external service "vmhttp"
 {{< /text >}}
 
-## Troubleshooting
+## Troubleshooting{#troubleshooting}
 
 The following are some basic troubleshooting steps for common VM-related issues.
 

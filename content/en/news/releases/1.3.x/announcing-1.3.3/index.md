@@ -14,7 +14,7 @@ This release includes bug fixes to improve robustness. This release note describ
 
 {{< relnote >}}
 
-## Bug fixes
+## Bug fixes{#bug-fixes}
 
 - **Fixed** an issue which caused Prometheus to install improperly when using `istioctl x manifest apply`. ([Issue 16970](https://github.com/istio/istio/issues/16970))
 - **Fixed** a bug where locality load balancing can not read locality information from the node. ([Issue 17337](https://github.com/istio/istio/issues/17337))

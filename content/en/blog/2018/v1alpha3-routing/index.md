@@ -28,7 +28,7 @@ review process that has hopefully resulted in a greatly improved API that will s
 we will introduce the new configuration model and attempt to explain some of the motivation and design principles that
 influenced it.
 
-## Design principles
+## Design principles{#design-principles}
 
 A few key design principles played a role in the routing model redesign:
 
@@ -38,7 +38,7 @@ A few key design principles played a role in the routing model redesign:
   rules associated with a particular host are configured together, instead of individually.
 * Clear separation of routing from post-routing behaviors.
 
-## Configuration resources in v1alpha3
+## Configuration resources in v1alpha3{#configuration-resources-in-v1alpha3}
 
 A typical mesh will have one or more load balancers (we call them gateways)
 that terminate TLS from external networks and allow traffic into the mesh.
@@ -381,7 +381,7 @@ including the following:
    text ports (e.g., `http://google.com:443`). This should be fixed in the coming weeks, allowing you to directly access
    `https://google.com` from your application. Stay tuned for an Istio patch release (0.8.x) that addresses this limitation.
 
-## Creating and deleting v1alpha3 route rules
+## Creating and deleting v1alpha3 route rules{#creating-and-deleting-v1alpha3-route-rules}
 
 Because all route rules for a given destination are now stored together as an ordered
 list in a single `VirtualService` resource, adding a second and subsequent rules for a particular destination
@@ -407,7 +407,7 @@ When adding or removing routes that refer to service versions, the `subsets` wil
 the service's corresponding `DestinationRule`.
 As you might have guessed, this is also done using `kubectl apply`.
 
-## Summary
+## Summary{#summary}
 
 The Istio `v1alpha3` routing API has significantly more functionality than
 its predecessor, but unfortunately is not backwards compatible, requiring a
@@ -419,7 +419,7 @@ routing features (e.g., traffic split across two versions) will require use
 of `Gateway`, a significantly more functional and highly
 recommended `Ingress` replacement.
 
-## Acknowledgments
+## Acknowledgments{#acknowledgments}
 
 Credit for the routing model redesign and implementation work goes to the
 following people (in alphabetical order):

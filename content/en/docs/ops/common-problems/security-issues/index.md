@@ -10,7 +10,7 @@ aliases:
     - /docs/ops/troubleshooting/repairing-citadel
 ---
 
-## End-user authentication fails
+## End-user authentication fails{#end-user-authentication-fails}
 
 With Istio, you can enable authentication for end users. Currently, the end user credential supported by the Istio authentication policy is JWT. The following is a guide for troubleshooting the end user JWT authentication.
 
@@ -57,7 +57,7 @@ With Istio, you can enable authentication for end users. Currently, the end user
     [2018-07-04T19:13:40.463Z] "GET /ip HTTP/1.1" 401 - 0 29 0 - "-" "curl/7.35.0" "9badd659-fa0e-9ca9-b4c0-9ac225571929" "httpbin.foo:8000" "-"
     {{< /text >}}
 
-## Authorization is too restrictive
+## Authorization is too restrictive{#authorization-is-too-restrictive}
 
 When you first enable authorization for a service, all requests are denied by default. After you add one or more authorization policies, then
 matching requests should flow through. If all requests continue to be denied, you can try the following:
@@ -79,7 +79,7 @@ for a mesh should be in the same namespace.
 1. Visit [Ensure Authorization is Enabled Correctly](#ensure-authorization-is-enabled-correctly)
    to find out the exact cause.
 
-## Authorization is too permissive
+## Authorization is too permissive{#authorization-is-too-permissive}
 
 If authorization checks are enabled for a service and yet requests to the
 service aren't being blocked, then authorization was likely not enabled
@@ -102,7 +102,7 @@ successfully. To verify, follow these steps:
 1. Visit [Ensure Authorization is Enabled Correctly](#ensure-authorization-is-enabled-correctly)
    to find out the exact cause.
 
-## Ensure authorization is enabled correctly
+## Ensure authorization is enabled correctly{#ensure-authorization-is-enabled-correctly}
 
 The `ClusterRbacConfig` default cluster level singleton custom resource controls the authorization functionality globally.
 
@@ -123,7 +123,7 @@ authorization functionality and ignores all policies.
 1. If there is more than one `ClusterRbacConfig` instance, remove any additional `ClusterRbacConfig` instances and
 ensure **only one** instance is named `default`.
 
-## Ensure Pilot accepts the policies
+## Ensure Pilot accepts the policies{#ensure-pilot-accepts-the-policies}
 
 Pilot converts and distributes your authorization policies to the proxies. The following steps help
 you ensure Pilot is working as expected:
@@ -188,7 +188,7 @@ you ensure Pilot is working as expected:
     - An config for `productpage.default.svc.cluster.local` and Istio will allow anyone to access it
       with GET method.
 
-## Ensure Pilot distributes policies to proxies correctly
+## Ensure Pilot distributes policies to proxies correctly{#ensure-pilot-distributes-policies-to-proxies-correctly}
 
 Pilot distributes the authorization policies to proxies. The following steps help you ensure Pilot
 is working as expected:
@@ -261,7 +261,7 @@ with rules that allows anyone to access it via `GET` method. The `shadow_rules` 
     },
     {{< /text >}}
 
-## Ensure proxies enforce policies correctly
+## Ensure proxies enforce policies correctly{#ensure-proxies-enforce-policies-correctly}
 
 Proxies eventually enforce the authorization policies. The following steps help you ensure the proxy
 is working as expected:
@@ -348,7 +348,7 @@ The `shadow denied` has no effect and you can ignore it safely.
     ...
     {{< /text >}}
 
-## Keys and certificates errors
+## Keys and certificates errors{#keys-and-certificates-errors}
 
 If you suspect that some of the keys and/or certificates used by Istio aren't correct, the
 first step is to ensure that [Citadel is healthy](#repairing-citadel).
@@ -524,7 +524,7 @@ Certificate:
          8e:d5:d0:1e
 {{< /text >}}
 
-## Mutual TLS errors
+## Mutual TLS errors{#mutual-TLS-errors}
 
 If you suspect problems with mutual TLS, first ensure that [Citadel is healthy](#repairing-citadel), and
 second ensure that [keys and certificates are being delivered](#keys-and-certificates-errors) to sidecars properly.
@@ -532,7 +532,7 @@ second ensure that [keys and certificates are being delivered](#keys-and-certifi
 If everything appears to be working so far, the next step is to verify that the right [authentication policy](/docs/tasks/security/authentication/authn-policy/)
 is applied and the right destination rules are in place.
 
-## Citadel is not behaving properly {#repairing-citadel}
+## Citadel is not behaving properly {#repairing-citadel}{#citadel-is-not-behaving-properly-{-repairing-citadel}}
 
 {{< warning >}}
 Citadel does not support multiple instances. Running multiple Citadel instances

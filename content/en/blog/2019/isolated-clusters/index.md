@@ -41,7 +41,7 @@ In this blog post I describe the requirements for isolation and boundary protect
 multi-mesh deployments. Finally, I touch on the current state of mesh-federation support and automation work under way for
 Istio.
 
-## Isolation and boundary protection
+## Isolation and boundary protection{#isolation-and-boundary-protection}
 
 Isolation and boundary protection mechanisms are explained in the
 [NIST Special Publication 800-53, Revision 4, Security and Privacy Controls for Federal Information Systems and Organizations](http://dx.doi.org/10.6028/NIST.SP.800-53r4),
@@ -98,7 +98,7 @@ You put each subsystem into a separate service mesh, preferably on a separate ne
 You connect the Istio meshes using gateways. The gateways monitor and control cross-mesh traffic at the boundary of
 each mesh.
 
-## Features of multi-mesh deployments
+## Features of multi-mesh deployments{#features-of-multi-mesh-deployments}
 
 - **non-uniform naming**. The `withdraw` service in the `accounts` namespace in one mesh might have
 different functionality and API than the `withdraw` services in the `accounts` namespace in other meshes.
@@ -128,7 +128,7 @@ service names, for example, in Kubernetes, `reviews.default.svc.cluster.local`.
 consumed services, for example when some service is migrated from private cloud to public cloud, without changing the
 code of your applications.
 
-## The current mesh-federation work
+## The current mesh-federation work{#the-current-mesh-federation-work}
 
 While you can perform mesh federation using standard Istio configurations already today,
 it requires writing a lot of boilerplate YAML files and is error-prone. There is an effort under way to automate
@@ -136,7 +136,7 @@ the mesh federation process. In the meantime, you can look at these
 [multi-mesh deployment examples](https://github.com/istio-ecosystem/multi-mesh-examples)
 to get an idea of what a generated federation might include.
 
-## Summary
+## Summary{#summary}
 
 In this blog post I described the requirements for isolation and boundary protection of sensitive data environments by
 using Istio multi-mesh deployments. I outlined the principles of Istio

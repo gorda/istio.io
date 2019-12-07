@@ -47,11 +47,11 @@ The SDS approach has the following benefits:
 * The sidecar Envoy is able to dynamically renew the key and certificate
   through the SDS API: Certificate rotations no longer require Envoy to restart.
 
-## Before you begin
+## Before you begin{#before-you-begin}
 
 Follow the [Istio installation guide](/docs/setup/install/helm/) to set up Istio with SDS and global mutual TLS enabled.
 
-## Service-to-service mutual TLS using key/certificate provisioned through SDS
+## Service-to-service mutual TLS using key/certificate provisioned through SDS{#service-to-service-mutual-TLS-using-key-certificate-provisioned-through-sds}
 
 Follow the [authentication policy task](/docs/tasks/security/authentication/authn-policy/) to
 setup test services.
@@ -75,7 +75,7 @@ sleep.bar to httpbin.foo: 200
 sleep.bar to httpbin.bar: 200
 {{< /text >}}
 
-## Verifying no secret-volume mounted file is generated
+## Verifying no secret-volume mounted file is generated{#verifying-no-secret-volume-mounted-file-is-generated}
 
 To verify that no secret-volume mounted file is generated, access the deployed
 workload sidecar container:
@@ -86,7 +86,7 @@ $ kubectl exec -it $(kubectl get pod -l app=sleep -n foo -o jsonpath={.items..me
 
 As you can see there is no secret file mounted at `/etc/certs` folder.
 
-## Securing SDS with pod security policies
+## Securing SDS with pod security policies{#securing-sds-with-pod-security-policies}
 
 The Istio Secret Discovery Service (SDS) uses the Citadel agent to distribute the certificate to the
 Envoy sidecar via a Unix domain socket. All pods running in the same Kubernetes node share the Citadel
@@ -324,7 +324,7 @@ To enable the pod security policy, perform the following steps:
       Warning  FailedCreate  4s (x13 over 24s)  replicaset-controller  Error creating: pods "malicious-7dcfb8d648-" is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]
     {{< /text >}}
 
-## Cleanup
+## Cleanup{#cleanup}
 
 1. Clean up the test services and the Istio control plane:
 
@@ -349,7 +349,7 @@ To enable the pod security policy, perform the following steps:
     $ kubectl delete deploy normal
     {{< /text >}}
 
-## Caveats
+## Caveats{#caveats}
 
 Currently, the SDS identity provision flow has the following caveats:
 

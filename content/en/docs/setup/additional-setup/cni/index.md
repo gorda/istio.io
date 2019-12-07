@@ -28,7 +28,7 @@ setup phase, thereby removing the [`NET_ADMIN` capability requirement](/docs/ops
 for users deploying pods into the Istio mesh.  The Istio CNI plugin
 replaces the functionality provided by the `istio-init` container.
 
-## Prerequisites
+## Prerequisites{#prerequisites}
 
 1.  Install Kubernetes with the container runtime supporting CNI and `kubelet` configured
     with the main [CNI](https://github.com/containernetworking/cni) plugin enabled via `--network-plugin=cni`.
@@ -42,7 +42,7 @@ replaces the functionality provided by the `istio-init` container.
     *  The Kubernetes documentation highly recommends this for all Kubernetes installations
        where `ServiceAccounts` are utilized.
 
-## Installation
+## Installation{#installation}
 
 1.  Determine the Kubernetes environment's CNI plugin `--cni-bin-dir` and `--cni-conf-dir` settings.
     Refer to [Hosted Kubernetes settings](#hosted-kubernetes-settings) for any non-default settings required.
@@ -52,7 +52,7 @@ replaces the functionality provided by the `istio-init` container.
     Pass `--set values.cni.cniBinDir=...` and/or `--set values.cni.cniConfDir=...` options when installing `istio-cni` if non-default,
     as determined in the previous step.
 
-### Helm chart parameters
+### Helm chart parameters{#helm-chart-parameters}
 
 The following table shows all the options that the `istio-cni` configuration supports:
 
@@ -72,7 +72,7 @@ The following table shows all the options that the `istio-cni` configuration sup
 These options are accessed through `values.cni.<option-name>` in `istioctl manifest` commands, either as a `--set` flag,
 or the corresponding path in a custom overlay file.
 
-### Excluding specific Kubernetes namespaces
+### Excluding specific Kubernetes namespaces{#excluding-specific-Kubernetes-namespaces}
 
 This example uses `Istioctl` to perform the following tasks:
 
@@ -112,7 +112,7 @@ spec:
 $ istioctl manifest apply -f cni.yaml
 {{< /text >}}
 
-### Hosted Kubernetes settings
+### Hosted Kubernetes settings{#hosted-Kubernetes-settings}
 
 The Istio CNI solution is not ubiquitous. Some platforms, especially hosted Kubernetes environments, do not enable the
 CNI plugin in the `kubelet` configuration.
@@ -128,7 +128,7 @@ The following table shows the required settings for many common Kubernetes envir
 | Red Hat OpenShift 3.10+ | _(none)_ | _(none)_ |
 | Red Hat OpenShift 4.2+ | `--set cni.components.cni.namespace=kube-system --set values.cni.cniBinDir=/var/lib/cni/bin --set values.cni.cniConfDir=/var/run/multus/cni/net.d` | _(none)_ |
 
-### GKE setup
+### GKE setup{#setup}
 
 1.  Refer to the procedure to [prepare a GKE cluster for Istio](/docs/setup/platform-setup/gke/) and
     enable [network-policy](https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy) in your cluster.
@@ -144,7 +144,7 @@ The following table shows the required settings for many common Kubernetes envir
     $ istioctl manifest apply --set cniBinDir=/home/kubernetes/bin
     {{< /text >}}
 
-## Sidecar injection compatibility
+## Sidecar injection compatibility{#sidecar-injection-compatibility}
 
 The use of the Istio CNI plugin requires Kubernetes pods to be deployed with a sidecar injection method
 that uses the `istio-sidecar-injector` configmap created from the installation with the
@@ -170,14 +170,14 @@ The following sidecar injection methods are supported for use with the Istio CNI
         $ kubectl apply -f deployment-injected.yaml
         {{< /text >}}
 
-## Operational details
+## Operational details{#operational-details}
 
 The Istio CNI plugin handles Kubernetes pod create and delete events and does the following:
 
 1.  Identify Istio user application pods with Istio sidecars requiring traffic redirection
 1.  Perform pod network namespace configuration to redirect traffic to/from the Istio sidecar
 
-### Identifying pods requiring traffic redirection
+### Identifying pods requiring traffic redirection{#identifying-pods-requiring-traffic-redirection}
 
 The Istio CNI plugin identifies pods requiring traffic redirection to/from the
 accompanying Istio proxy sidecar by checking that the pod meets all of the following conditions:
@@ -187,7 +187,7 @@ accompanying Istio proxy sidecar by checking that the pod meets all of the follo
 1.  The pod has more than 1 container.
 1.  The pod has no annotation with key `sidecar.istio.io/inject` OR the value of the annotation is `true`.
 
-### Traffic redirection parameters
+### Traffic redirection parameters{#traffic-redirection-parameters}
 
 To redirect traffic in the application pod's network namespace to/from the Istio proxy sidecar, the Istio
 CNI plugin configures the namespace's iptables.  The following table describes the parameters to the
@@ -206,12 +206,12 @@ application pod annotation key.
 | `traffic.sidecar.istio.io/excludeOutboundPorts` | `<port1>,<port2>,...` | | Comma separated list of outbound ports to be excluded from redirection to Envoy. |
 | `traffic.sidecar.istio.io/kubevirtInterfaces` | `<ethX>,<ethY>,...` | | Comma separated list of virtual interfaces whose inbound traffic (from VM) will be treated as outbound. |
 
-### Logging
+### Logging{#logging}
 
 The Istio CNI plugin runs in the container runtime process space.
 Due to this, the `kubelet` process writes the plugin's log entries into its log.
 
-### Compatibility with application init containers
+### Compatibility with application init containers{#compatibility-with-application-init-containers}
 
 The Istio CNI plugin may cause networking connectivity problems for any application `initContainers`. When using Istio CNI, `kubelet`
 starts an injected pod with the following steps:
@@ -228,7 +228,7 @@ Avoid this traffic loss with one or both of the following settings:
 * Set the `traffic.sidecar.istio.io/excludeOutboundPorts` annotation to disable redirecting traffic to the
   specific outbound ports the init containers use.
 
-### Compatibility with other CNI plugins
+### Compatibility with other CNI plugins{#compatibility-with-other-CNI-plugins}
 
 The Istio CNI plugin maintains compatibility with the same set of CNI plugins as the current `NET_ADMIN`
 `istio-init` container.

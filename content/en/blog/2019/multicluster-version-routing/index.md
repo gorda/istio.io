@@ -32,7 +32,7 @@ We'll show how to configure Istio route rules to call remote services in a multi
 by deploying the [Bookinfo sample]({{< github_tree >}}/samples/bookinfo) with version `v1` of the `reviews` service
 running in one cluster, versions `v2` and `v3` running in a second cluster.
 
-## Set up clusters
+## Set up clusters{#set-up-clusters}
 
 To start, you'll need two Kubernetes clusters, both running a slightly customized configuration of Istio.
 
@@ -339,7 +339,7 @@ Once the request reaches the destination cluster, a local destination rule will 
 to identify the actual pod labels (`version: v1` or `version: v2`) corresponding to the
 requested subset.
 
-## Create a destination rule on both clusters for the local reviews service
+## Create a destination rule on both clusters for the local reviews service{#create-a-destination-rule-on-both-clusters-for-the-local-reviews-service}
 
 Technically, we only need to define the subsets of the local service that are being used
 in each cluster (i.e., `v1` in `cluster1`, `v2` and `v3` in `cluster2`), but for simplicity we'll
@@ -394,7 +394,7 @@ spec:
 EOF
 {{< /text >}}
 
-## Create a virtual service to route reviews service traffic
+## Create a virtual service to route reviews service traffic{#create-a-virtual-service-to-route-reviews-service-traffic}
 
 At this point, all calls to the `reviews` service will go to the local `reviews` pods (`v1`) because
 if you look at the source code you will see that the `productpage` implementation is simply making
@@ -451,7 +451,7 @@ Return to your browser and login as user `jason`. If you refresh the page severa
 the display alternating between black and red ratings stars (`v2` and `v3`). If you logout, you will
 only see reviews without ratings (`v1`).
 
-## Summary
+## Summary{#summary}
 
 In this article, we've seen how to use Istio route rules to distribute the versions of a service
 across clusters in a multicluster service mesh with a replicated control plane model.

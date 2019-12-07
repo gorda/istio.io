@@ -17,7 +17,7 @@ The tables below show changes made to the installation options used to customize
 
 <!-- AUTO-GENERATED-START -->
 
-## Modified configuration options
+## Modified configuration options{#modified-configuration-options}
 
 ### Modified `kiali` key/value pairs
 
@@ -44,7 +44,7 @@ The tables below show changes made to the installation options used to customize
 | `tracing.jaeger.tag` | `1.9` | `1.12` |  |  |
 | `tracing.zipkin.tag` | `2` | `2.14.2` |  |  |
 
-## New configuration options
+## New configuration options{#new-configuration-options}
 
 ### New `tracing` key/value pairs
 
@@ -186,7 +186,7 @@ The tables below show changes made to the installation options used to customize
 | `pilot.rollingMaxUnavailable` | `25%` |  |
 | `pilot.enableProtocolSniffing` | `false` | `if protocol sniffing is enabled. Default to false.` |
 
-## Removed configuration options
+## Removed configuration options{#removed-configuration-options}
 
 ### Removed `global` key/value pairs
 
