@@ -20,7 +20,7 @@ aliases:
 
 - 现在必须 [验证 webhook](/zh/docs/ops/common-problems/validation)。禁用它可能导致 Pilot 崩溃。
 
-- 现在，在配置 DNS 解析时，[Service entry](/zh/docs/reference/config/networking/service-entry/) 验证会拒绝通配主机名（`*`）。API 从未允许这样做，只是在以前的版本中，`ServiceEntry` 被错误地排除在验证之外。请将通配符作为主机名的一部分，例如 *.bar.com，可以保持不变。
+- 现在，在配置 DNS 解析时，[Service entry](/zh/docs/reference/config/networking/service-entry/) 验证会拒绝通配主机名（`*`）。API 从未允许这样做，只是在以前的版本中，`ServiceEntry` 被错误地排除在验证之外。请将通配符作为主机名的一部分，例如 `*.bar.com`，可以保持不变。
 
 - `istio-proxy` 的核心转储路径已更改为 `/var/lib/istio`。
 
