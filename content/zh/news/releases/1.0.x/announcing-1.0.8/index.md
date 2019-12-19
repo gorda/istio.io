@@ -12,7 +12,7 @@ aliases:
     - /zh/news/announcing-1.0.8
 ---
 
-我们很高兴的宣布 Istio 1.0.8  现已正式发布。下面是更新详情。
+我们很高兴的宣布 Istio 1.0.8 现已正式发布。下面是更新详情。
 
 {{< relnote >}}
 
