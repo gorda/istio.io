@@ -90,23 +90,17 @@ Istio 团队非常感谢为该项目做出贡献的每个人。没有您的帮�
 
 #### 适配器{#adapters}
 
-- **SignalFX**. There is a new `signalfx` adapter.
+- **SignalFX**。新的 `signalfx` 适配器。
 
-- **Stackdriver**. The [`stackdriver`](/zh/docs/reference/config/policy-and-telemetry/adapters/stackdriver/) adapter has been substantially enhanced in this
-release to add new features and improve performance.
+- **Stackdriver**。[`stackdriver`](/zh/docs/reference/config/policy-and-telemetry/adapters/stackdriver/) 适配器在此发行版中得到大幅增强，添加了新功能并提高性能。
 
-### Security
+### 安全{#security}
 
-- **Authorization**. We've reimplemented our [authorization functionality](/zh/docs/concepts/security/#authorization).
-RPC-level authorization policies can now be implemented without the need for Mixer and Mixer adapters.
+- **授权**。我们已经重新实现了 [授权功能] 的 RPC 级授权策略，此功能现在的实现，不再需要使用 Mixer 和 Mixer 适配器。
 
-- **Improved Mutual TLS Authentication Control**. It's now easier to [control mutual TLS authentication](/zh/docs/concepts/security/#authentication) between services. We provide 'PERMISSIVE' mode so that you can
-[incrementally turn on mutual TLS](/zh/docs/tasks/security/authentication/mtls-migration/) for your services.
-We removed service annotations and have a [unique approach to turn on mutual TLS](/zh/docs/tasks/security/authentication/authn-policy/),
-coupled with client-side [destination rules](/zh/docs/concepts/traffic-management/#destination-rules).
+- **改进双向 TLS 身份认证控制**。现在，可以更轻松地控制服务之间的 [双向 TLS 身份认证](/zh/docs/concepts/security/#authentication)。我们提供 `PERMISSIVE` 模式，以便您可以为您的服务 [递增地启用双向TLS](/zh/docs/tasks/security/authentication/mtls-migration/)。我们移除了服务注释，采用 [独特的方法来启用双向 TLS](/zh/docs/tasks/security/authentication/authn-policy/)，并结合了客户端 [目标规则](/zh/docs/concepts/traffic-management/#destination-rules)。
 
-- **JWT Authentication**. We now support [JWT authentication](/zh/docs/concepts/security/#authentication) which can
-be configured using [authentication policies](/zh/docs/concepts/security/#authentication-policies).
+- **JWT 授权**。 现在支持 [JWT 身份验证](/zh/docs/concepts/security/#authentication)，可以使用 [身份验证策略](/zh/docs/concepts/security/#authentication-policies) 对其进行配置。
 
 ### `istioctl`
 
