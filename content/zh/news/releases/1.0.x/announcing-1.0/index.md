@@ -1,8 +1,8 @@
 ---
-title: Announcing Istio 1.0
+title: Istio 1.0 发布公告
 linktitle: "1.0"
-subtitle: The production ready service mesh
-description: Istio is ready for production use with its 1.0 release.
+subtitle: service mesh 生产就绪
+description: Istio 1.0 已经生产就绪。
 publishdate: 2018-07-31
 release: 1.0.0
 aliases:
@@ -15,23 +15,26 @@ aliases:
 
 Today, we’re excited to announce Istio 1.0! It’s been a little over a year since our initial 0.1 release. Since then, Istio has evolved significantly with the help of a thriving and growing community of contributors and users. We’ve now reached the point where many companies have successfully adopted Istio in production and have gotten real value from the insight and control it provides over their deployments. We’ve helped large enterprises and fast-moving startups like [eBay](https://www.ebay.com/), [Auto Trader UK](https://www.autotrader.co.uk/), [Descartes Labs](http://www.descarteslabs.com/), [HP FitStation](https://www.fitstation.com/), [JUSPAY](https://juspay.in), [Namely](https://www.namely.com/), [PubNub](https://www.pubnub.com/) and [Trulia](https://www.trulia.com/) use Istio to connect, manage and secure their services from the ground up. Shipping this release as 1.0 is recognition that we’ve built a core set of functionality that our users can rely on for production use.
 
+今天，我们激动的宣布，Istio 1.0 正式发布！自我们最初发布 0.1 版以来已经一年多了。从那时起，一个由贡献者和用户组成的蓬勃发展的社区，使得 Istio 有了长足的发展。现在，许多公司已成功将 Istio 投入生产，并从 Istio 对部署的洞察力和控制力中获得了真正的价值。我们帮助了很多大型企业和快速发展的初创企业，例如：[eBay](https://www.ebay.com/)、[Auto Trader UK](https://www.autotrader.co.uk/)、[Descartes Labs](http://www.descarteslabs.com/)、[HP FitStation](https://www.fitstation.com/)、[JUSPAY](https://juspay.in)、[Namely](https://www.namely.com/)、[PubNub](https://www.pubnub.com/) 和 [Trulia](https://www.trulia.com/) 已经使用 Istio 从头开始连接、管理和保护其服务。将此版本发布为 1.0 表示我们已经建立了一套核心功能，可供用户在生产中使用。
+
 {{< relnote >}}
 
-## Ecosystem
+## 生态系统{#ecosystem}
 
-We’ve seen substantial growth in Istio's ecosystem in the last year. [Envoy](https://www.envoyproxy.io/) continues its impressive growth and added numerous
-features that are crucial for a production quality service mesh. Observability providers like [Datadog](https://www.datadoghq.com/),
-[SolarWinds](https://www.solarwinds.com/), [Sysdig](https://sysdig.com/blog/monitor-istio/), [Google Stackdriver](https://cloud.google.com/stackdriver/) and
-[Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) have written plugins to integrate Istio with their products.
-[Tigera](https://www.tigera.io/resources/using-network-policy-concert-istio-2/), [Aporeto](https://www.aporeto.com/), [Cilium](https://cilium.io/)
-and [Styra](https://styra.com/) built extensions to our policy enforcement and networking capabilities. [Red Hat](https://www.redhat.com/en) built [Kiali](https://www.kiali.io) to wrap a nice user-experience around mesh management and observability. [Cloud Foundry](https://www.cloudfoundry.org/) is building on  Istio for it’s next generation traffic routing stack, the recently announced [Knative](https://github.com/knative/docs) serverless project is doing the same and [Apigee](https://apigee.com/) announced that they plan to use it in their API management solution. These are just some of the integrations the community has added in the last year.
+去年，我们发现 Istio 的生态系统有了大幅增长。
+[Envoy](https://www.envoyproxy.io/) 继续保持惊人的增长，并增加了许多对服务网格生产质量至关重要的功能。
+诸如 [Datadog](https://www.datadoghq.com/)、[SolarWinds](https://www.solarwinds.com/)、[Sysdig](https://sysdig.com/blog/monitor-istio/)、[Google Stackdriver](https://cloud.google.com/stackdriver/) 和 [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) 之类的可观察性提供商已经编写了将 Istio 与他们的产品集成的插件。
+[Tigera](https://www.tigera.io/resources/using-network-policy-concert-istio-2/)、[Aporeto](https://www.aporeto.com/)、[Cilium](https://cilium.io/) 和 [Styra](https://styra.com/) 为我们的策略执行和网络功能构建了扩展。
+[Red Hat](https://www.redhat.com/en)  构建了 [Kiali](https://www.kiali.io)，以围绕网格管理和可观察性提供不错的用户体验。
+[Cloud Foundry](https://www.cloudfoundry.org/) 基于Istio的下一代流量路由栈，
+最近宣布的 [Knative](https://github.com/knative/docs) serverless 项目也在做同样的事情，并且 [Apigee](https://apigee.com/) 宣布他们计划在其 API 管理中使用它。
+这些只是社区去年添加集成中的一部分。
 
-## Features
+## 特性{#features}
 
-Since the 0.8 release we’ve added some important new features and more importantly marked many of our existing features as Beta signaling that they’re ready for production use.
-Here are some highlights:
+自 0.8 版以来，我们添加了一些重要的新功能，更重要的是将许多现有功能标记为 Beta，表明它们已可以投入生产。以下是一些要点：
 
-- Multiple Kubernetes clusters can now be [added to a single mesh](/zh/docs/setup/install/multicluster/) and enabling cross-cluster communication and consistent policy enforcement. Multicluster support is now Beta.
+- 现在可以将多个Kubernetes集群 [添加到单个网格](/zh/docs/setup/install/multicluster/) 中，并实现跨集群通信和一致的策略实施。多群集支持现在为Beta。
 
 - Networking APIs that enable fine grained control over the flow of traffic through a mesh are now Beta. Explicitly modeling ingress and egress concerns using Gateways allows operators to [control the network topology](/zh/blog/2018/v1alpha3-routing/) and meet access security requirements at the edge.
 
