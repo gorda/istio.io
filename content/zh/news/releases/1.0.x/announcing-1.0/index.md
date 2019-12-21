@@ -36,73 +36,59 @@ Today, we’re excited to announce Istio 1.0! It’s been a little over a year s
 
 - 现在可以将多个Kubernetes集群 [添加到单个网格](/zh/docs/setup/install/multicluster/) 中，并实现跨集群通信和一致的策略实施。多群集支持现在为Beta。
 
-- Networking APIs that enable fine grained control over the flow of traffic through a mesh are now Beta. Explicitly modeling ingress and egress concerns using Gateways allows operators to [control the network topology](/zh/blog/2018/v1alpha3-routing/) and meet access security requirements at the edge.
+- 现在，可以对通过网状网络的流量进行细粒度控制的网络 API 已成为 Beta。使用网关对进入和退出问题进行显式建模，使运营商可以 [控制网络拓扑](/zh/blog/2018/v1alpha3-routing/) 并满足边缘的访问安全性要求。
 
-- Mutual TLS can now be [rolled out incrementally](/zh/docs/tasks/security/authentication/mtls-migration) without requiring all clients of a service to be updated. This is a critical feature that unblocks adoption in-place by existing production deployments.
+- 双向 TLS 现在 [以增量方式推出]，无需更新服务的所有客户端。这是一项关键功能，现有生产部署可以无障碍的就地采用。
 
-- Mixer now has support for [developing out-of-process adapters](https://github.com/istio/istio/wiki/Out-Of-Process-gRPC-Adapter-Dev-Guide). This will become the default way to extend Mixer over the coming releases and makes building adapters much simpler.
+- Mixer 开始支持 [开发进程外适配器](https://github.com/istio/istio/wiki/Out-Of-Process-gRPC-Adapter-Dev-Guide)。这将成为在未来发行版中扩展 Mixer 的默认方法，并使构建适配器更加简单。
 
-- [Authorization policies](/zh/docs/concepts/security/#authorization) which control access to services are now entirely evaluated locally in Envoy increasing
-their performance and reliability.
+- 现在，由 Envoy 完全控制本地控制访问服务的 [授权策略]((/zh/docs/concepts/security/#authorization))，以提高其性能和可靠性。
 
-- [Helm chart installation](/zh/docs/setup/install/helm/) is now the recommended install method offering rich customization options to adopt Istio on your terms.
+- 现在建议使用 [Helm chart 安装](/zh/docs/setup/install/helm/) 方法，该方法提供了丰富的自定义选项，可以按您的意愿采用 Istio。
 
 - We’ve put a lot of effort into performance including continuous regression testing, large scale environment simulation and targeted fixes. We’re very happy with the results and will share more on this in detail in the coming weeks.
 
-## What’s next?
+-我们已经在性能上做出了很多努力，包括连续回归测试，大规模环境模拟和目标修复。我们对结果感到非常满意，并将在未来几周内详细分享更多信息。
 
-While this is a significant milestone for the project there’s lots more to do. In working with adopters we’ve gotten a lot of great feedback about what to focus next. We’ve heard consistent themes around support for hybrid-cloud, install modularity, richer networking features and scalability for massive deployments. We’ve already taken some of this feedback into account in the 1.0 release and we’ll continue to aggressively tackle this work in the coming months.
+## 接下来呢？{#what-is-next}
 
-## Getting started
+尽管这是该项目的重要里程碑，但还有很多工作要做。通过与使用者合作，我们获得了很多有关下一步重点的反馈。我们听到了围绕以下功能的一致诉求：混合云、安装模块化、更丰富的网络功能和大规模部署的可伸缩性。我们已经在 1.0 版本中考虑了其中一些反馈，并且在接下来的几个月中我们将继续积极地解决这项工作。
 
-If you’re new to Istio and looking to use it for your deployment we’d love to hear from you. Take a look at [our docs](/zh/docs/) or stop by our
-[chat forum](https://discuss.istio.io). If you’d like
-to go deeper and [contribute to the project](/zh/about/community) come to one of our community meetings and say hello.
+## 开始之前{#getting-started}
 
-## Thanks
+如果您是Istio的新手，并希望将其用于您的部署，我们很乐意听取您的意见。
+可以看看 [我们的文档](/zh/docs/) 或者移步我们的 [聊天室](https://discuss.istio.io)。 
+如果您想更深入地 [为项目做贡献](/zh/about/community)，请参加一个我们的社区会议，并打个招呼。
 
-The Istio team would like to give huge thanks to everyone who has made a contribution to the project. It wouldn’t be where it is today without your help. The last year has been pretty amazing and we look forward to the next one with excitement about what we can achieve together as a community.
+## 感谢{#thanks}
 
-## Release notes
+Istio 团队非常感谢为该项目做出贡献的每个人。没有您的帮助，就没有 Istio 的今天。这一年真的太神奇了，我们非常期待接下来的一年，我们共同构成的社区又可以取得什么样的成就呢。
 
-### Networking
+## 发行说明{#release-notes}
 
-- **SNI Routing using Virtual Services**. Newly introduced `TLS` sections in
-[`VirtualService`](/zh/docs/reference/config/networking/virtual-service/) can be used to route TLS traffic
-based on SNI values. Service ports named as TLS/HTTPS can be used in conjunction with
-virtual service TLS routes. TLS/HTTPS ports without an accompanying virtual service will be treated as opaque TCP.
+### 网络{#networking}
 
-- **Streaming gRPC Restored**. Istio 0.8 caused periodic termination of long running streaming gRPC connections. This has been fixed in 1.0.
+- **使用虚拟服务的 SNI 路由**。[`VirtualService`](/zh/docs/reference/config/networking/virtual-service/) 新引入的 `TLS` 部分，可用于基于 SNI 值的路由 TLS 流量。可以将名为 TLS/HTTPS 的服务端口与虚拟服务 TLS 路由结合使用。没有附带虚拟服务的 TLS/HTTPS 端口将被视为不透明的 TCP。
 
-- **Old (v1alpha1) Networking APIs Removed**. Support for the old `v1alpha1` traffic management model
-has been removed.
+- **恢复流式 gRPC**。Istio 0.8 导致长时间运行的流式 gRPC 连接的定期终止。此问题已在 1.0 中修复。
 
-- **Istio Ingress Deprecated**. The old Istio ingress is deprecated and disabled by default. We encourage users to use [gateways](/zh/docs/concepts/traffic-management/#gateways) instead.
+- **移除旧的（v1alpha1）网络 API**。对旧的 `v1alpha1` 流量管理模型的支持已被删除。
 
-### Policy and telemetry
+- **弃用 Istio Ingress**。默认情况下，旧的 Istio Ingress 已被弃用并禁用。我们鼓励用户改用 [gateway](/zh/docs/concepts/traffic-management/#gateways)。
 
-- **Updated Attributes**. The set of [attributes](/zh/docs/reference/config/policy-and-telemetry/attribute-vocabulary/) used to describe the source and
-destination of traffic have been completely revamped in order to be more
-precise and comprehensive.
+### 策略和遥测{#policy-and-telemetry}
 
-- **Policy Check Cache**. Mixer now features a large level 2 cache for policy checks, complementing the level 1 cache
-present in the sidecar proxy. This further reduces the average latency of externally-enforced
-policy checks.
+- **更新的属性**。用于描述流量来源和目的地的一组 [属性](/zh/docs/reference/config/policy-and-telemetry/attribute-vocabulary/) 已被彻底修改，变得更加精确和全面。
 
-- **Telemetry Buffering**. Mixer now buffers report calls before dispatching to adapters, which gives an opportunity for
-adapters to process telemetry data in bigger chunks, reducing overall computational overhead
-in Mixer and its adapters.
+- **策略检查缓存**。Mixer 现在具有了用于策略检查的大型 2 级缓存，补充了 sidecar 代理中存在的1级缓存。这进一步减少了外部强制策略检查的平均延迟。
 
-- **Out of Process Adapters**. Mixer now includes initial support for out-of-process adapters. This will
-be the recommended approach moving forward for integrating with Mixer. Initial documentation on
-how to build an out-of-process adapter is provided by the
-[Out Of Process Adapter Dev Guide](https://github.com/istio/istio/wiki/Mixer-Out-Of-Process-Adapter-Dev-Guide)
-and the [Out Of Process Adapter Walk-through](https://github.com/istio/istio/wiki/Mixer-Out-Of-Process-Adapter-Walkthrough).
+- **遥测缓冲**。Mixer 现在可以在将调用报告分配给适配器之前先缓冲调用报告，这为适配器提供了机会以更大的块处理遥测数据，从而减少了 Mixer 及其适配器的总体计算开销。
 
-- **Client-Side Telemetry**. It's now possible to collect telemetry from the client of an interaction,
-in addition to the server-side telemetry.
+- **进程外适配器**。Mixer现在包括对进程外适配器的初始支持。这将是与 Mixer 集成的推荐方法。[进程外适配器开发指南](https://github.com/istio/istio/wiki/Mixer-Out-Of-Process-Adapter-Dev-Guide) 和[进程外适配器遍历](https://github.com/istio/istio/wiki/Mixer-Out-Of-Process-Adapter-Walkthrough) 提供了有关如何构建进程外适配器的初始文档。
 
-#### Adapters
+- **客户端遥测**。现在，除了服务器端遥测之外，还可以从交互的客户端收集遥测。
+
+#### 适配器{#adapters}
 
 - **SignalFX**. There is a new `signalfx` adapter.
 
