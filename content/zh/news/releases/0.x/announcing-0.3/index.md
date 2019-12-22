@@ -1,7 +1,7 @@
 ---
 title: Istio 0.3 发布公告
 linktitle: 0.3
-subtitle: 重大升级
+subtitle: 重大更新
 description: Istio 0.3 发布公告。
 publishdate: 2017-11-29
 release: 0.3.0
