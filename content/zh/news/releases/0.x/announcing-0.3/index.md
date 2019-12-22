@@ -29,11 +29,9 @@ aliases:
 
 - **选择性认证**。现在，您可以通过服务注释在每个服务的基础上控制身份验证，这有助于逐步迁移到 Istio。
 
-
 ## 网络{#networking}
 
 - **TCP Egress 规则**。现在，您可以指定影响 TCP 级别流量的 Egress 规则。
-
 
 ## 策略执行和遥测{#policy-enforcement-and-telemetry}
 
