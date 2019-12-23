@@ -37,8 +37,8 @@ aliases:
 
 - **改善缓存**。Envoy 和 Mixer 之间的缓存得到了很大改善，大大降低了授权检查的平均延迟。
 
-- **改进的列表适配器**。Mixer “列表” 适配器现在支持正则表达式匹配。关详细信息，请参见适配器的 [配置选项](/zh/docs/reference/config/policy-and-telemetry/adapters/list/)。
+- **改进的列表适配器**。Mixer “列表” 适配器现在支持正则表达式匹配。有关详细信息，请参见适配器的[配置选项](/zh/docs/reference/config/policy-and-telemetry/adapters/list/)。
 
 - **配置校验**。Mixer 对配置状态进行更广泛的验证，以便更早发现问题。我们希望在即将发布的版本中，投入更多的精力在此功能上。
 
-如果您想了解细节，可以在 [这里](https://github.com/istio/istio/wiki/v0.3.0) 查看我们更详细的低级发行说明。
+如果您想了解细节，可以在[这里](https://github.com/istio/istio/wiki/v0.3.0)查看我们更详细的低级发行说明。
