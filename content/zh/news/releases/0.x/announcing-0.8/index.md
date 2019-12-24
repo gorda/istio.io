@@ -1,8 +1,8 @@
 ---
-title: Announcing Istio 0.8
+title: Istio 0.8 发布公告
 linktitle: 0.8
-subtitle: Major Update
-description: Istio 0.8 announcement.
+subtitle: 重大更新
+description: Istio 0.8 发布公告。
 publishdate: 2018-06-01
 release: 0.8.0
 aliases:
@@ -12,18 +12,15 @@ aliases:
     - /zh/news/announcing-0.8
 ---
 
-This is a major release for Istio on the road to 1.0. There are a great many new features and architectural improvements in addition to the usual pile of bug fixes and performance improvements.
+这是迈向 Istio 1.0 前的一个重要版本。除了常规的 bug 修复和性能改进之外，还包含许多新功能和体系结构改进。
 
 {{< relnote >}}
 
-## Networking
+## 网络{#networking}
 
-- **Revamped Traffic Management Model**. We're finally ready to take the wraps off our
-[new traffic management APIs](/zh/blog/2018/v1alpha3-routing/). We believe this new model is easier to understand while covering more real world
-deployment [use-cases](/zh/docs/tasks/traffic-management/). For folks upgrading from earlier releases there is a
-[migration guide](/zh/docs/setup/upgrade/) and a conversion tool built into `istioctl` to help convert your configuration from the old model.
+- **改良的流量管理模型**。我们终于准备好完成我们的[新流量管理 API](/zh/blog/2018/v1alpha3-routing/) 的总结。 我们相信，在涵盖更多实际部署[用例](/zh/docs/tasks/traffic-management/)的同时，这种新模型更易于理解。 对于从早期发行版升级的人，这儿有一个[迁移指南](/zh/docs/setup/upgrade/)和内置在 `istioctl` 中的转换工具，可帮助您从旧模型转换配置。
 
-- **Streaming Envoy configuration**. By default Pilot now streams configuration to Envoy using its [ADS API](https://github.com/envoyproxy/data-plane-api/blob/master/xds_protocol.rst). This new approach increases effective scalability, reduces rollout delay and should eliminate spurious 404 errors.
+- **流 Envoy 配置**。默认情况下，Pilot现在使用其 [ADS API](https://github.com/envoyproxy/data-plane-api/blob/master/xds_protocol.rst) 将配置流式传输到 Envoy。 这种新方法提高了有效的可伸缩性，减少了推出延迟，应该能消除虚假的 404 错误。
 
 - **Gateway for Ingress/Egress**. We no longer support combining Kubernetes Ingress specs with Istio routing rules as it has led to several bugs and reliability issues. Istio now supports a platform independent [Gateway](/zh/docs/concepts/traffic-management/#gateways) model for ingress & egress proxies that works across Kubernetes and Cloud Foundry and works seamlessly with routing. The Gateway supports [Server Name Indication](https://en.wikipedia.org/wiki/Server_Name_Indication) based routing,
 as well as serving a certificate based on the server name presented by the client.
