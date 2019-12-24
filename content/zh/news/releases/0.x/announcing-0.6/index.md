@@ -22,7 +22,7 @@ aliases:
 
 ## Mixer 适配器{#mixer-adapters}
 
-- **SolarWinds**。Mixer 现在可以跟 AppOptics 和 Papertrail 交互。[Learn more](/zh/docs/reference/config/policy-and-telemetry/adapters/solarwinds/)
+- **SolarWinds**。Mixer 现在可以跟 AppOptics 和 Papertrail 交互。[了解更多](/zh/docs/reference/config/policy-and-telemetry/adapters/solarwinds/)
 
 - **Redis 配额**。现在，Mixer 支持了一个用于速率限制跟踪的基于 Redis 的适配器。[了解更多](/zh/docs/reference/config/policy-and-telemetry/adapters/redisquota/)
 
@@ -34,7 +34,7 @@ aliases:
 
 - **监控仪表盘**。Grafana 现在有了初步的 Mixer&Pilot 监控仪表盘。
 
-- **Liveness and Readiness Probes**. Istio components now provide canonical liveness and readiness probe support to help ensure mesh infrastructure health. [Learn more](/zh/docs/tasks/security/citadel-config/health-check/)
+- **Liveness and Readiness Probes**。Istio components now provide canonical liveness and readiness probe support to help ensure mesh infrastructure health. [了解更多](/zh/docs/tasks/security/citadel-config/health-check/)
 - **活性和就绪性调查**。Istio 组件现在提供了规范的活性和就绪性调查支持，以帮助确保网格基础结构的健康。
 
 - **Egress 策略和遥测**。Istio 可以监控由 `EgressRule` 或 External Service 定义的外部服务的流量。也可以将 Mixer 策略应用于该流量。
