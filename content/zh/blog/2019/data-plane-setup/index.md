@@ -191,7 +191,7 @@ Containers:
 
 ### 自动注入{#automatic-injection}
 
-在大多数情况下，您不想在每次部署应用程序时都使用 [istioctl](/zh/docs/reference/commands/istioctl) 命令手动注入边车，而是希望 Istio 自动将 sidecar 注入到您的 pod 中。这是推荐的方法，要使自动注入生效，您只需要用 `istio-injection=enabled` 标记想部署应用程序的命名空间。
+在大多数情况下，您不想在每次部署应用程序时都使用 [`istioctl`](/zh/docs/reference/commands/istioctl) 命令手动注入边车，而是希望 Istio 自动将 sidecar 注入到您的 pod 中。这是推荐的方法，要使自动注入生效，您只需要用 `istio-injection=enabled` 标记想部署应用程序的命名空间。
 
 贴上标签后，Istio 会自动为您在该命名空间中部署的所有 pod 注入 sidecar。在下面的示例中，sidecar 被自动注入到 `istio-dev` 命名空间中的已部署 pod 中。
 
@@ -214,6 +214,7 @@ kube-system    Active    40d       <none>
 {{< /tip >}}
 
 对于 sidecar 自动注入，Istio 依赖于 `更改准入 Webhook`。让我们来看看 `istio-sidecar-injector` 更改 webhook 配置的细节。
+
 {{< text bash yaml >}}
 $ kubectl get mutatingwebhookconfiguration istio-sidecar-injector -o yaml
 以下代码片段来自 output：
@@ -255,6 +256,7 @@ webhooks:
 {{< /text >}}
 
 在这里，您可以看到与标签 `istio-injection:enabled` 相匹配的 webhook `namespaceSelector` 标签。在这种情况下，您还会看到在创建容器时要完成的操作和资源。当 `apiserver` 接收到与其中一个规则匹配的请求时，`apiserver` 会根据 `clientconfig` 配置中指定的 `name: istio-sidecar-injector` 键值对，向 webhook 服务发送准入审查请求。我们应该能够看到该服务正在 `istio-system` 命名空间中运行。
+
 {{< text bash >}}
 $ kubectl get svc --namespace=istio-system | grep sidecar-injector
 istio-sidecar-injector   ClusterIP   10.102.70.184   <none>        443/TCP             24d
