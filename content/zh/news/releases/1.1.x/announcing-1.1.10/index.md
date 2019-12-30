@@ -16,7 +16,7 @@ aliases:
 
 {{< relnote >}}
 
-## Buf 修复{#bug-fixes}
+## Bug 修复{#bug-fixes}
 
 - 消除因 Envoy 重新启动后无法与 SDS 节点代理对话而导致的 503 错误（[Issue 14853](https://github.com/istio/istio/issues/14853)）。
 - 解决升级过程中由于 'TLS error: Secret is not supplied by SDS' 导致的错误（[Issue 15020](https://github.com/istio/istio/issues/15020)）。
