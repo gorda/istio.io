@@ -139,7 +139,7 @@ target_release: 1.0
 提醒一下，这是 [Bookinfo 示例应用程序](/zh/docs/examples/bookinfo/)中应用程序的原始整体架构图。
 
 {{< image width="80%"
-    link="/docs/examples/bookinfo/withistio.svg"
+    link="/zh/docs/examples/bookinfo/withistio.svg"
     caption="原始的 Bookinfo 应用程序"
     >}}
 
