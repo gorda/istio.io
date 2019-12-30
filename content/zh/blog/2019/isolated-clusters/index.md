@@ -17,7 +17,7 @@ target_release: 1.3
 |[HIPAA](http://www.gpo.gov/fdsys/search/pagedetails.action?granuleId=CRPT-104hrpt736&packageId=CRPT-104hrpt736)|个人健康数据|
 |[GDPR](https://gdpr-info.eu)| 个人资料|
 
-[PCI DSS](https://www.pcisecuritystandards.org/pci_security)，例如，建议将持卡人数据环境放置在和系统其它部分不同的网络上。它还需要使用[DMZ](https://en.wikipedia.org/wiki/DMZ_(computing)，并在公网和 DMZ 之间以及 DMZ 和内部网络之间设置防火墙。
+[PCI DSS](https://www.pcisecuritystandards.org/pci_security)，例如，建议将持卡人数据环境放置在和系统其它部分不同的网络上。它还需要使用 [DMZ](https://en.wikipedia.org/wiki/DMZ_(computing))，并在公网和 DMZ 之间以及 DMZ 和内部网络之间设置防火墙。
 
 将敏感数据环境与其他信息系统隔离可以减少合规性检查的范围并提高敏感数据的安全性。缩小范围可降低合规性检查失败的风险，并降低合规性成本，因为根据合规性要求，要检查和保护的组件较少。
 
@@ -37,7 +37,7 @@ target_release: 1.3
 组织可以隔离执行不同任务和/或业务功能的信息系统组件。这种隔离限制了系统组件之间未经授权的信息流，并且还提供了为所选组件部署更高级别的保护的机会。使用边界保护机制将系统组件分开提供了增强对单个组件的保护并更有效地控制这些组件之间的信息流的能力。这种类型的增强保护可限制网络攻击和错误带来的潜在危害。提供的分离程度取决于所选的机制。边界保护机制包括，路由器、网关和防火墙等，将系统组件分离为物理上分离的网络或子网；跨域设备将子网分离；虚拟化技术；以及使用不同的加密密钥对系统组件之间的信息流进行加密。
 {{< /quote >}}
 
-各种合规性标准隔离建议，用于处理组织其余部分的敏感数据的环境。[支付卡行业（PCI）数据安全标准](https://www.pcisecuritystandards.org/pci_security/)建议为 _持卡人数据_ 环境实现网络隔离，并要求将此环境与 [DMZ](https://en.wikipedia.org/wiki/DMZ_(computing) 隔离。[FedRAMP 边界授权指南](https://www.fedramp.gov/assets/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance.pdf) 描述了联邦信息和数据的 _授权边界_，而 [NIST 特别出版物 800-37，修订版 2，信息系统和组织的风险管理框架：用于安全性和隐私的系统生命周期方法](https://doi.org/10.6028/NIST.SP.800-37r2) _附录 G，授权边界注意事项_ 建议保护这样的边界：
+各种合规性标准隔离建议，用于处理组织其余部分的敏感数据的环境。[支付卡行业（PCI）数据安全标准](https://www.pcisecuritystandards.org/pci_security/)建议为 _持卡人数据_ 环境实现网络隔离，并要求将此环境与 [DMZ](https://en.wikipedia.org/wiki/DMZ_(computing)) 隔离。[FedRAMP 边界授权指南](https://www.fedramp.gov/assets/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance.pdf) 描述了联邦信息和数据的 _授权边界_，而 [NIST 特别出版物 800-37，修订版 2，信息系统和组织的风险管理框架：用于安全性和隐私的系统生命周期方法](https://doi.org/10.6028/NIST.SP.800-37r2) _附录 G，授权边界注意事项_ 建议保护这样的边界：
 
 {{< quote >}}
 将系统划分为子系统（即分而治之）有助于针对性地应用控制措施，以实现足够的安全性，保护个人隐私和具有成本效益的风险管理流程。将复杂的系统划分为子系统也支持域分离和网络分段的重要安全概念，这在处理高价值资产时可能非常重要。将系统划分为子系统时，组织可以选择制定单独的子系统安全和隐私计划，也可以选择在相同的安全和隐私计划中处理系统和子系统。
@@ -58,7 +58,7 @@ target_release: 1.3
 
 - **非统一命名**。一个网格 `accounts` 命名空间中的 `withdraw` 服务可能与其他网格 `accounts` 命名空间中的 `withdraw` 服务具有不同的功能和 API。这种情况可能发生在没有统一命名空间和服务命名策略的组织中，或者当网格属于不同组织时。
 - **默认不暴露任何内容**。默认情况下，网格中没有任何暴露的服务，网格所有者必须明确指定要暴露的服务。
-- **边界保护**。流量的访问控制必须在入口网关上执行，这将阻止未经允许的流量进入网格。该要求实现了[纵深防御原则](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)，并且是某些合规性标准的一部分，例如[支付卡行业（PCI）数据安全标准](https://www.pcisecuritystandards.org/pci_security/)。
+- **边界保护**。流量的访问控制必须在入口网关上执行，这将阻止未经允许的流量进入网格。该要求实现了[纵深防御原则](https://en.wikipedia.org/wiki/Defense_in_depth_(computing))，并且是某些合规性标准的一部分，例如[支付卡行业（PCI）数据安全标准](https://www.pcisecuritystandards.org/pci_security/)。
 - **可能不存在共同信任**。由于某些安全要求或由于网格所有者最初未计划网格联邦，可能会出现一个网格中的 Istio sidecar 不信任其他网格中的 Citadel 证书的情况。
 
 必需通过 **默认不暴露任何内容** 和 **边界保护** 来促进合规性并提高安全性。连接不同组织的网格，或者组织不能执行统一命名，或者不能建立网格之间的公共信任，**非统一命名** 和 **可能不存在共同信任** 也是必需的。
@@ -67,7 +67,7 @@ target_release: 1.3
 
 ## 网格联邦目前的工作{#the-current-mesh-federation-work}
 
-尽管您现在已经可以使用标准 Istio 配置完成网格联邦，但是它需要编写大量 YAML 文件模板，并且容易出错。我们正在努力使网格联合过程自动化。同时，您可以查看这些[多网格部署示例](https://github.com/istio-ecosystem/multi-mesh-examples)，以了解生成的联邦可能包括的内容。
+尽管您现在已经可以使用标准 Istio 配置完成网格联邦，但是它需要编写大量 YAML 文件模板，并且容易出错。我们正在努力使网格联邦过程自动化。同时，您可以查看这些[多网格部署示例](https://github.com/istio-ecosystem/multi-mesh-examples)，以了解生成的联邦可能包括的内容。
 
 ## 总结{#summary}
 
