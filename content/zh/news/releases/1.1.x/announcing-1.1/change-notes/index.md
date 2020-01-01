@@ -6,7 +6,7 @@ aliases:
     - /zh/about/notes/1.1
 ---
 
-## 从 1.0 开始的不兼容更改{#incompatible-changes-from-1-0} 
+## 从 1.0 开始的不兼容更改{#incompatible-changes-from-1-0}
 
 除了下面列出的新功能和改进之外，Istio 1.1 从 1.0 开始引入了许多重要更改，这些更改可以更改应用程序的行为。在[升级通知](/zh/news/releases/1.1.x/announcing-1.1/upgrade-notes)中可以找到这些更改的简明清单。
 
@@ -36,7 +36,7 @@ aliases:
 
 - **更新 `ServiceEntry` 资源**。现在支持指定，与双向 TLS 一起使用的服务及相关 SAN 的位置。具有 HTTPS 端口的服务条目不再需要其他虚拟服务来启用基于 SNI 的路由。
 
-- **位置感知路由**。添加了对在选择其他地区的服务之前路由到相同地区的服务的完整支持。请参阅[本地负载均衡器设置](/zh/docs/reference/config/networking/destination-rule#LocalityLoadBalancerSetting) 
+- **位置感知路由**。添加了对在选择其他地区的服务之前路由到相同地区的服务的完整支持。请参阅[本地负载均衡器设置](/zh/docs/reference/config/networking/destination-rule#LocalityLoadBalancerSetting)
 
 - **完善多集群路由**。简化了多集群设置并启用了其他部署模式。现在，您可以简单地使用它们的入口网关连接多个集群，而无需 Pod 级的 VPN，针对高可用性情况在每个集群中部署控制平面，并跨多个集群创建命名空间以实现创建全局命名空间。高可用控制平面解决方案默认启用位置感知路由。
 
@@ -57,7 +57,7 @@ aliases:
 - **TCP 服务授权**。除了 HTTP 和 gRPC 服务之外，还增加了对 TCP 服务的授权支持。有关更多信息，请参见[TCP服务授权](/zh/docs/tasks/security/authorization/authz-tcp)。
 
 - **终端用户组的授权**。添加了基于 `组` 声明或 JWT 中任何列表类型声明的授权。有关更多信息，请参见[组和列表声明的授权](/zh/docs/tasks/security/authorization/rbac-groups/)。
-  
+
 - **Ingress Gateway 控制器的外部证书管理**。添加了一个控制器以动态加载和轮转外部证书。
 
 - **自定义 PKI 集成**。添加了 Vault PKI 集成，并支持受 Vault 保护的签名密钥，并能直接与现有的 Vault PKI 集成。
@@ -101,12 +101,12 @@ aliases:
 - **更加灵活的 `statsd` 收集器**。删除了内置的 `statsd` 收集器。Istio 现在支持您自己的 `statsd`，以提高现有 Kubernetes 部署的灵活性。
 
 ### 配置管理{#configuration-management}
- 
+
 - **Galley**。添加 [Galley](/zh/docs/ops/deployment/architecture/#galley) 作为 Istio 主要的配置收集和分发装置。它提供了一个健壮的模型来验证，转换配置状态并将其分配给 Istio 组件，从而将 Istio 组件与 Kubernetes 详细信息隔离开来。Galley 使用[网格配置协议](https://github.com/istio/api/tree/{{< source_branch_name >}}/mcp)与组件进行交互。
 
 - **监听端口**。将 Galley 的默认监听端口从 9093 修改为 15014。
 
-## `istioctl` 和 `kubectl`{#istioctl-and-kubectl}
+## `istioctl` 和 `kubectl`{#Istio-ctl-and-Kube-ctl}
 
 - **验证命名**。添加 [`istioctl validate`](/zh/docs/reference/commands/istioctl/#istioctl-validate) 命令，用于 Istio Kubernetes 资源的离线验证。
 
