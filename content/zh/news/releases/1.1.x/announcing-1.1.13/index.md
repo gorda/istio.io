@@ -2,7 +2,7 @@
 title: Istio 1.1.13 发布公告
 linktitle: 1.1.13
 subtitle: 补丁发布
-description: Istio 1.1.13 补丁发布公告
+description: Istio 1.1.13 补丁发布公告。
 publishdate: 2019-08-13
 release: 1.1.13
 aliases:
