@@ -106,7 +106,7 @@ aliases:
 
 - **监听端口**。将 Galley 的默认监听端口从 9093 修改为 15014。
 
-## `istioctl` 和 `kubectl`{#Istio-ctl-and-Kube-ctl}
+## `istioctl` 和 `kubectl`{#Istio-and-Kube}
 
 - **验证命名**。添加 [`istioctl validate`](/zh/docs/reference/commands/istioctl/#istioctl-validate) 命令，用于 Istio Kubernetes 资源的离线验证。
 
