@@ -8,7 +8,7 @@ aliases:
 
 ## 从 1.0 开始的不兼容更改{#incompatible-changes-from-1-0} 
 
-除了下面列出的新功能和改进之外，Istio 1.1 从 1.0 开始引入了许多重要更改，这些更改可以更改应用程序的行为。 在[升级通知](/zh/news/releases/1.1.x/announcing-1.1/upgrade-notes)中可以找到这些更改的简明清单。
+除了下面列出的新功能和改进之外，Istio 1.1 从 1.0 开始引入了许多重要更改，这些更改可以更改应用程序的行为。在[升级通知](/zh/news/releases/1.1.x/announcing-1.1/upgrade-notes)中可以找到这些更改的简明清单。
 
 ## 升级{#upgrades}
 
@@ -36,7 +36,7 @@ aliases:
 
 - **更新 `ServiceEntry` 资源**。现在支持指定，与双向 TLS 一起使用的服务及相关 SAN 的位置。具有 HTTPS 端口的服务条目不再需要其他虚拟服务来启用基于 SNI 的路由。
 
-- **位置感知路由**。添加了对在选择其他地区的服务之前路由到相同地区的服务的完整支持。请参阅[本地负载均衡器设置](/zh/docs/reference/config/networking/destination-rule#LocalityLoadBalancerSetting)  
+- **位置感知路由**。添加了对在选择其他地区的服务之前路由到相同地区的服务的完整支持。请参阅[本地负载均衡器设置](/zh/docs/reference/config/networking/destination-rule#LocalityLoadBalancerSetting) 
 
 - **完善多集群路由**。简化了多集群设置并启用了其他部署模式。现在，您可以简单地使用它们的入口网关连接多个集群，而无需 Pod 级的 VPN，针对高可用性情况在每个集群中部署控制平面，并跨多个集群创建命名空间以实现创建全局命名空间。高可用控制平面解决方案默认启用位置感知路由。
 
@@ -50,15 +50,11 @@ aliases:
 
 - **就绪和存活探针**。添加了启用双向 TLS 时，对 Kubernetes HTTP [就绪和存活探针](/zh/faq/security/#k8s-health-checks) 的支持。
 
-- **群集 RBAC 配置**。用 `ClusterRbacConfig` 资源替换了 `RbacConfig` 资源，以实现正确的集群范围。关于迁移说明，请参见[将 RbacConfig 迁移到 ClusterRbacConfig](https://archive.istio.io/v1.1/docs/setup/kubernetes/upgrade/steps/#migrating-from-rbacconfig-to-clusterrbacconfig)。
+- **群集 RBAC 配置**。用 `ClusterRbacConfig` 资源替换了 `RbacConfig` 资源，以实现正确的集群范围。关于迁移说明，请参见[将 `RbacConfig` 迁移到 `ClusterRbacConfig`](https://archive.istio.io/v1.1/docs/setup/kubernetes/upgrade/steps/#migrating-from-rbacconfig-to-clusterrbacconfig)。
 
 - **通过 SDS 进行身份认证**。添加了 SDS 支持，通过节点密钥生成以及动态证书轮换，来提供更强的安全性，并且无需重启 Envoy。有关更多信息，请参见[通过 SDS 进行身份认证](/zh/docs/tasks/security/citadel-config/auth-sds)。
 
 - **TCP 服务授权**。除了 HTTP 和 gRPC 服务之外，还增加了对 TCP 服务的授权支持。有关更多信息，请参见[TCP服务授权](/zh/docs/tasks/security/authorization/authz-tcp)。
-
-- **Authorization for End-User Groups**. Added authorization based on `groups`
-  claim or any list-typed claims in JWT. See [Authorization for groups and list claims](/zh/docs/tasks/security/authorization/rbac-groups/)
-  for more information.
 
 - **终端用户组的授权**。添加了基于 `组` 声明或 JWT 中任何列表类型声明的授权。有关更多信息，请参见[组和列表声明的授权](/zh/docs/tasks/security/authorization/rbac-groups/)。
   
@@ -102,7 +98,7 @@ aliases:
 
 - **附加安全凭证**。更改了附加凭证的存储。为了提高安全性与合规性，Grafana、Kiali 以及 Jaeger 的用户名密码现在存储在 [Kubernetes secret](https://kubernetes.io/docs/concepts/configuration/secret/) 中。
 
-- **更加灵活的 `statsd` 收集器**。删除了内置的 `statsd` 收集器。Istio 现在支持您自己的 `statsd`，以提高现有 Kubernetes 部署的灵活性。 
+- **更加灵活的 `statsd` 收集器**。删除了内置的 `statsd` 收集器。Istio 现在支持您自己的 `statsd`，以提高现有 Kubernetes 部署的灵活性。
 
 ### 配置管理{#configuration-management}
  
