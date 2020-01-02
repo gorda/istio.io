@@ -19,7 +19,7 @@ aliases:
 
 ## 修改的配置选项{#modified-configuration-options}
 
-### 修改 `kiali` 键/值对{#modified-kiali-key-value-pairs}
+### 修改 `kiali` 键/值对{#modified-key-value-pairs}
 
 |  键   |  老的默认值    |   新的默认值     |   老的说明     |     新的说明    |
 | --- | --- | --- | --- | --- |
@@ -110,7 +110,7 @@ aliases:
 | `mixer.telemetry.reportBatchMaxEntries` | `100` | `将 reportBatchMaxEntries 设置为 0 表示使用默认的批处理行为（即每 100 个批处理一次）。 正值表示遥测数据发送到 mixer 服务器之前已批处理的请求数` |
 | `mixer.telemetry.reportBatchMaxTime` | `1s` | `将 reportBatchMaxTime 设置为 0 以使用默认的批处理行为（即每 1 秒批处理一次）。 正值表示处理完上次请求并将遥测数据发送到 mixer 服务器后，进行下次批处理前的最大等待时间` |
 
-### 添加 `grafana` 键/值对{#new-grafana-key-value-pairs}
+### 添加 `grafana` 键/值对{#new-1-key-value-pairs}
 
 |  键   |         默认值     |        说明       |
 | --- | --- | --- |
@@ -127,7 +127,7 @@ aliases:
 | `grafana.dashboardProviders.dashboardproviders.providers.orgId.disableDeletion` | `false` |  |
 | `grafana.dashboardProviders.dashboardproviders.providers.orgId.options.path` | `/var/lib/grafana/dashboards/istio` |  |
 
-### 添加 `prometheus` 键/值对{#new-prometheus-key-value-pairs}
+### 添加 `prometheus` 键/值对{#new-2-key-value-pairs}
 
 |  键   |         默认值     |        说明       |
 | --- | --- | --- |
@@ -144,13 +144,13 @@ aliases:
 | `gateways.istio-ilbgateway.rollingMaxSurge` | `100%` |  |
 | `gateways.istio-ilbgateway.rollingMaxUnavailable` | `25%` |  |
 
-### 添加 `certmanager` 键/值对{#new-certmanager-key-value-pairs}
+### 添加 `certmanager` 键/值对{#new-cert-manager-key-value-pairs}
 
 |  键   |         默认值     |        说明       |
 | --- | --- | --- |
 | `certmanager.image` | `cert-manager-controller` |  |
 
-### 添加 `kiali` 键/值对{#new-kiali-key-value-pairs}
+### 添加 `kiali` 键/值对{#new-3-key-value-pairs}
 
 |  键   |         默认值     |        说明       |
 | --- | --- | --- |
@@ -161,7 +161,7 @@ aliases:
 | `kiali.security.cert_file` | `/kiali-cert/cert-chain.pem` |  |
 | `kiali.security.private_key_file` | `/kiali-cert/key.pem` |  |
 
-### 添加 `istiocoredns` 键/值对{#new-istio-core-dns-key-value-pairs}
+### 添加 `istiocoredns` 键/值对{#new-core-dns-key-value-pairs}
 
 |  键   |         默认值     |        说明       |
 | --- | --- | --- |
@@ -202,7 +202,7 @@ aliases:
 | --- | --- | --- |
 | `mixer.templates.seTemplateCRDs` | `false` |  |
 
-### 删除 `grafana` 键/值对{#removed-grafana-key-value-pairs}
+### 删除 `grafana` 键/值对{#removed-key-value-pairs}
 
 |  键   |         默认值     |        说明       |
 | --- | --- | --- |
