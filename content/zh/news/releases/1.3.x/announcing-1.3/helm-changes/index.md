@@ -161,7 +161,7 @@ aliases:
 | `kiali.security.cert_file` | `/kiali-cert/cert-chain.pem` |  |
 | `kiali.security.private_key_file` | `/kiali-cert/key.pem` |  |
 
-### 添加 `istiocoredns` 键/值对{#new-core-dns-key-value-pairs}
+### 添加 `istiocoredns` 键/值对{#new-4-key-value-pairs}
 
 |  键   |         默认值     |        说明       |
 | --- | --- | --- |
